@@ -1,0 +1,6 @@
+# Project-local dependencies not already in the repo root requirements.txt.
+# Root already provides: torch, transformers, accelerate, datasets, tokenizers, anthropic, openai, pandas, numpy, scikit-learn.
+peft>=0.13.0
+pdfplumber>=0.11.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
