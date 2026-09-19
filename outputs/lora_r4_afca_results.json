@@ -1,0 +1,148 @@
+{
+  "rank": 4,
+  "dataset": "afca",
+  "per_field": {
+    "claim_type": 0.75,
+    "date_of_loss": 0.75,
+    "cause": 0.4262594893029676,
+    "damaged_item": 0.7046772875816993,
+    "estimated_amount": 1.0,
+    "policy_number": 1.0
+  },
+  "overall_mean_of_fields": 0.7718227961474445,
+  "n": 8,
+  "parse_failures": 0,
+  "avg_latency_s": 2.580878875007329,
+  "predictions": [
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2022-03-01",
+      "cause": "Dutch gable lead flashing cracked due to wind-driven rain",
+      "damaged_item": "master bedroom ceiling, cornice, walls, and mould growth",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2020-10-31",
+      "cause": "large hailstones puncturing roof during storm",
+      "damaged_item": "asbestos corrugated roof and adjacent patio roof",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2025-04-01",
+      "cause": "water entering subfloor due to stormy weather exceeding drainage capacity",
+      "damaged_item": "timber subfloor and particleboard flooring across multiple rooms",
+      "estimated_amount": 96470.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2021-05-24",
+      "cause": "undetermined",
+      "damaged_item": "entire house",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2022-03-01",
+      "cause": "flexihose under kitchen sink burst",
+      "damaged_item": "sink cabinet and kickboards",
+      "estimated_amount": 15400.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2022-12-31",
+      "cause": "vandalism",
+      "damaged_item": "external windows",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2022-02-23",
+      "cause": "rainfall exceeding normal limits due to prolonged heavy precipitation",
+      "damaged_item": "multiple rooms in the property flooded",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2018-04-01",
+      "cause": "boulder collapse due to heavy rain",
+      "damaged_item": "external cladding, rear wall of garage, and bedroom wall",
+      "estimated_amount": 88362.0,
+      "policy_number": null
+    }
+  ],
+  "gold": [
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2022-03-01",
+      "cause": "wind-driven rain entered through Dutch gable lead flashing during storm",
+      "damaged_item": "master bedroom ceiling, cornice, wall, with resulting mould",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2020-10-31",
+      "cause": "hailstones (6-8cm) punctured asbestos corrugated roof during hailstorm",
+      "damaged_item": "asbestos corrugated roof and adjacent patio roof",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2025-04-01",
+      "cause": "heavy rainfall (1,148mm over 13 days) overwhelmed perimeter drainage, water entered subfloor",
+      "damaged_item": "timber subfloor and particleboard flooring across up to seven rooms",
+      "estimated_amount": 96470.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2021-05-24",
+      "cause": "undetermined -- forensic investigation inconclusive",
+      "damaged_item": "house (severe fire damage, extent not itemised)",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2022-03-01",
+      "cause": "burst flexihose under kitchen sink",
+      "damaged_item": "kitchen sink cabinet and kickboards",
+      "estimated_amount": 15400.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2022-01-01",
+      "cause": "vandals smashed all external windows",
+      "damaged_item": "all external windows",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2022-02-23",
+      "cause": "700mm+ rainfall over 5 days overwhelmed western wall foundations",
+      "damaged_item": "multiple rooms flooded (not itemised further)",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2018-09-01",
+      "cause": "boulder/rockface collapse during storm with heavy rain",
+      "damaged_item": "external cladding at rear of property, garage rear wall, bedroom wall",
+      "estimated_amount": 88362.0,
+      "policy_number": null
+    }
+  ]
+}
