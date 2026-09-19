@@ -1,0 +1,47 @@
+[
+  {
+    "question": "Is accidental glass breakage covered under AAMI contents insurance?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 64}, {"doc_type": "PDS", "page": 65}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Does the RAA policy cover flood damage to contents?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 50}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "What does the Allianz home policy say about storm damage exclusions?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 52}, {"doc_type": "PDS", "page": 4}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Is theft from an unlocked garage covered under the AAMI building policy?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 45}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Does NRMA home insurance cover damage caused by a burst water pipe?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 14}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Under Real Insurance's contents policy, is malicious damage by a tenant covered?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 14}],
+    "source": "manually located: data/extracted/realinsurance-contents-pds.jsonl page 14 contains the 'Malicious damage (including vandalism)' exclusion clause naming 'someone who lives in your home'. Generation failed to cite it (pass=false) due to a vocabulary mismatch with the query's word 'tenant', not a retrieval miss -- the page is in the top-5 retrieved chunks."
+  },
+  {
+    "question": "Does Allianz landlord insurance cover loss of rent while the property is uninhabitable?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 5}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Is accidental damage to a swimming pool covered under RAA contents insurance?",
+    "relevant_pages": [{"doc_type": "PDS", "page": 50}, {"doc_type": "PDS", "page": 45}, {"doc_type": "PDS", "page": 60}],
+    "source": "human-verified citations in outputs/phase1_eval.jsonl (pass=true)"
+  },
+  {
+    "question": "Does NRMA cover satellite dish coverage or space tourism liability under home insurance?",
+    "no_ground_truth": true,
+    "source": "adversarial no-answer probe -- no real NRMA policy page covers this fabricated topic; correct behavior is refusal (pass=true), not a retrievable fact. Excluded from hit-rate/MRR rather than assigned a fake relevant page."
+  }
+]

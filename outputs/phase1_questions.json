@@ -1,0 +1,11 @@
+[
+  {"q": "Is accidental glass breakage covered under AAMI contents insurance?", "insurer": "AAMI", "product": "Contents"},
+  {"q": "Does the RAA policy cover flood damage to contents?", "insurer": "RAA", "product": "Contents"},
+  {"q": "What does the Allianz home policy say about storm damage exclusions?", "insurer": "Allianz", "product": "Home"},
+  {"q": "Is theft from an unlocked garage covered under the AAMI building policy?", "insurer": "AAMI", "product": "Building"},
+  {"q": "Does NRMA home insurance cover damage caused by a burst water pipe?", "insurer": "NRMA", "product": "Home"},
+  {"q": "Under Real Insurance's contents policy, is malicious damage by a tenant covered?", "insurer": "RealInsurance", "product": "Contents"},
+  {"q": "Does Allianz landlord insurance cover loss of rent while the property is uninhabitable?", "insurer": "Allianz", "product": "Landlord"},
+  {"q": "Is accidental damage to a swimming pool covered under RAA contents insurance?", "insurer": "RAA", "product": "Contents"},
+  {"q": "Does NRMA cover satellite dish coverage or space tourism liability under home insurance?", "insurer": "NRMA", "product": "Home"}
+]
