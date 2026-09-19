@@ -1,0 +1,550 @@
+{
+  "dataset": "test",
+  "model": "claude-sonnet-5",
+  "per_field": {
+    "claim_type": 0.8484848484848485,
+    "date_of_loss": 1.0,
+    "cause": 0.7517409511383709,
+    "damaged_item": 0.8894723121995849,
+    "estimated_amount": 1.0,
+    "policy_number": 1.0
+  },
+  "overall_mean_of_fields": 0.9149496853038007,
+  "n": 33,
+  "parse_failures": 0,
+  "cost_usd": 0.09202,
+  "latency_p50_s": 2.599386375019094,
+  "latency_p95_s": 3.24359133397229,
+  "predictions": [
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek broke its banks after heavy rain, flooding backyard and garage",
+      "damaged_item": "chest freezer and stored boxes in garage",
+      "estimated_amount": 2500.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-08-14",
+      "cause": "washing machine hose burst overnight",
+      "damaged_item": "laundry vinyl flooring, hallway carpet, and bedroom skirting boards",
+      "estimated_amount": 6500.0,
+      "policy_number": "HC-4489213"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2024-02-09",
+      "cause": "graffiti spray-painted overnight by unknown person(s)",
+      "damaged_item": "front fence and garage door",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2023-02-03",
+      "cause": "creek overflow from heavy rain",
+      "damaged_item": "living room carpets and bottom of plasterboard walls",
+      "estimated_amount": 9000.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2024-02-14",
+      "cause": "shed padlock cut and mountain bike stolen",
+      "damaged_item": "husband's mountain bike",
+      "estimated_amount": 2200.0,
+      "policy_number": "HOM-4471203"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2023-08-03",
+      "cause": "electrical fault in the laundry",
+      "damaged_item": "washing machine, dryer, wall cabinetry, ceiling, and hallway carpet",
+      "estimated_amount": 14000.0,
+      "policy_number": "HM-559213"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2023-08-03",
+      "cause": "clothes dryer caught fire while running",
+      "damaged_item": "laundry wall and cabinetry",
+      "estimated_amount": 2800.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2024-02-03",
+      "cause": "candle left burning tipped over and caught curtains on fire",
+      "damaged_item": "curtains, wall, and carpet in lounge room",
+      "estimated_amount": null,
+      "policy_number": "HC-882913"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2023-09-03",
+      "cause": "vandalism - spray painting and kicked-in timber paling overnight",
+      "damaged_item": "front fence and letterbox",
+      "estimated_amount": 850.0,
+      "policy_number": "HM-773245"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2024-02-03",
+      "cause": "cricket ball hit by kids playing in the street smashed the window",
+      "damaged_item": "large front window",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2024-03-12",
+      "cause": "ride-on mower hit a hidden tree root and rolled onto its side",
+      "damaged_item": "ride-on mower (plastic housing and cutting deck)",
+      "estimated_amount": null,
+      "policy_number": "HM-772341"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-06-08",
+      "cause": "large branch from neighbour's tree fell onto carport during heavy winds",
+      "damaged_item": "carport roofing panels",
+      "estimated_amount": 3200.0,
+      "policy_number": "HM-448291"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-08-12",
+      "cause": "break-in through forced back sliding door",
+      "damaged_item": "laptop, jewellery box with engagement ring and necklace, PlayStation 5 and games",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM2287451"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2024-02-08",
+      "cause": "soccer ball kicked into sliding glass door",
+      "damaged_item": "sliding glass door",
+      "estimated_amount": 650.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2024-03-14",
+      "cause": "burst flexible hose under kitchen sink",
+      "damaged_item": "kitchen cabinetry and timber flooring",
+      "estimated_amount": 4500.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-06-08",
+      "cause": "break-in via smashed back window",
+      "damaged_item": "back window, laptop, and watches",
+      "estimated_amount": null,
+      "policy_number": "HM-2231987"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-11-03",
+      "cause": "Wild storm weather causing possible wind-opened gap or tree branch damage to roof, allowing water ingress",
+      "damaged_item": "lounge room ceiling plaster",
+      "estimated_amount": null,
+      "policy_number": "HC-2231987"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2024-02-03",
+      "cause": "wild weather (possibly wind, hail, or a falling branch) during the weekend",
+      "damaged_item": "back patio roof sheets and ceiling below (water staining)",
+      "estimated_amount": null,
+      "policy_number": "HM-448210"
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2023-08-14",
+      "cause": "TV knocked off its stand",
+      "damaged_item": "65-inch Samsung TV screen",
+      "estimated_amount": 1800.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-11-03",
+      "cause": "tree branch fell during storm",
+      "damaged_item": "roof, back fence, car, and side window",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2024-02-09",
+      "cause": "graffiti spray painted overnight while away",
+      "damaged_item": "front fence and garage door",
+      "estimated_amount": null,
+      "policy_number": "HM-2287451"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2023-08-14",
+      "cause": "cricket ball smashed through sliding glass door",
+      "damaged_item": "sliding glass door in living room",
+      "estimated_amount": 850.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2023-08-03",
+      "cause": "Unknown, possibly a stray ball or object impact during renovations",
+      "damaged_item": "living room window and wall",
+      "estimated_amount": 1200.0,
+      "policy_number": "HOM-4471293"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2023-09-03",
+      "cause": "unknown - shattered glass panel, no storm or obvious impact observed",
+      "damaged_item": "large glass panel in back sliding door",
+      "estimated_amount": 900.0,
+      "policy_number": "HC-559213"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-02-12",
+      "cause": "storm winds tore off roof tiles causing water damage, and a falling tree branch smashed the fence and dented the patio roof",
+      "damaged_item": "roof tiles, ceiling plasterboard in two bedrooms, back fence, and patio roof",
+      "estimated_amount": 14500.0,
+      "policy_number": "HOM-88213-QLD"
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2024-02-08",
+      "cause": "bookshelf fell against wall while being moved",
+      "damaged_item": "plasterboard wall in lounge room",
+      "estimated_amount": null,
+      "policy_number": "HOM-227591"
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-07-08",
+      "cause": "burst flexible hose under bathroom vanity",
+      "damaged_item": "hallway timber flooring and bathroom vanity cabinet",
+      "estimated_amount": 6500.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek overflow due to heavy rain",
+      "damaged_item": "carpet, skirting boards, and furniture in living room",
+      "estimated_amount": null,
+      "policy_number": "HB-2291087"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-09-03",
+      "cause": "bike went missing from side of house, gate left open, no broken locks found",
+      "damaged_item": "mountain bike",
+      "estimated_amount": 1800.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-09-08",
+      "cause": "burst flexible hose on washing machine",
+      "damaged_item": "laundry vinyl flooring, hallway timber boards, spare bedroom carpet and skirting boards",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM-2287341"
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek overflow from heavy rain causing floodwater to enter the home",
+      "damaged_item": "living room carpet and underlay",
+      "estimated_amount": null,
+      "policy_number": "HM-2201938"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2024-02-03",
+      "cause": "candle left burning tipped over and set fire to curtains",
+      "damaged_item": "curtains, carpet and wall",
+      "estimated_amount": null,
+      "policy_number": "HM-2249871"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2024-02-12",
+      "cause": "storm with hail and strong winds",
+      "damaged_item": "roof tiles, two windows, and back fence",
+      "estimated_amount": null,
+      "policy_number": "BRS-448291"
+    }
+  ],
+  "gold": [
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek broke its banks after heavy rain, flooding the garage",
+      "damaged_item": "chest freezer and stored boxes in garage",
+      "estimated_amount": 2500.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-08-14",
+      "cause": "burst washing machine hose",
+      "damaged_item": "laundry vinyl flooring, hallway carpet, and bedroom skirting boards",
+      "estimated_amount": 6500.0,
+      "policy_number": "HC-4489213"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2024-02-09",
+      "cause": "graffiti spray-painted on property overnight by unknown person",
+      "damaged_item": "front fence and garage door",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2023-02-03",
+      "cause": "creek overflow due to heavy rain",
+      "damaged_item": "living room carpets and plasterboard walls",
+      "estimated_amount": 9000.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2024-02-14",
+      "cause": "shed break-in with padlock cut",
+      "damaged_item": "mountain bike",
+      "estimated_amount": 2200.0,
+      "policy_number": "HOM-4471203"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2023-08-03",
+      "cause": "electrical fault in laundry causing fire",
+      "damaged_item": "washing machine, dryer, wall cabinetry, ceiling, and hallway carpet",
+      "estimated_amount": 14000.0,
+      "policy_number": "HM-559213"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2023-08-03",
+      "cause": "clothes dryer caught fire while running",
+      "damaged_item": "laundry wall and cabinetry",
+      "estimated_amount": 2800.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2024-02-03",
+      "cause": "candle tipped over and caught curtains on fire",
+      "damaged_item": "curtains, wall and carpet in lounge room",
+      "estimated_amount": null,
+      "policy_number": "HC-882913"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2023-09-03",
+      "cause": "unknown person(s) spray painted and damaged front fence overnight",
+      "damaged_item": "front fence and letterbox",
+      "estimated_amount": 850.0,
+      "policy_number": "HM-773245"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2024-02-03",
+      "cause": "cricket ball hit window",
+      "damaged_item": "front living room window",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "other",
+      "date_of_loss": "2024-03-12",
+      "cause": "ride-on mower rolled onto its side after hitting a hidden tree root",
+      "damaged_item": "ride-on mower",
+      "estimated_amount": null,
+      "policy_number": "HM-772341"
+    },
+    {
+      "claim_type": "other",
+      "date_of_loss": "2023-06-08",
+      "cause": "large tree branch fell onto carport during heavy winds",
+      "damaged_item": "carport roof panels",
+      "estimated_amount": 3200.0,
+      "policy_number": "HM-448291"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-08-12",
+      "cause": "forced entry through back sliding door while home was unoccupied",
+      "damaged_item": "laptop, jewellery (engagement ring and necklace), and PlayStation 5 with games",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM2287451"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2024-02-08",
+      "cause": "soccer ball kicked into sliding glass door",
+      "damaged_item": "sliding glass door",
+      "estimated_amount": 650.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2024-03-14",
+      "cause": "burst flexible hose under kitchen sink",
+      "damaged_item": "kitchen cabinetry and timber flooring",
+      "estimated_amount": 4500.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-06-08",
+      "cause": "break-in through smashed back window",
+      "damaged_item": "back window, laptop and watches stolen",
+      "estimated_amount": null,
+      "policy_number": "HM-2231987"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-11-03",
+      "cause": "unclear - possible wind-driven rain ingress or storm-related tree branch damage to roof",
+      "damaged_item": "lounge room ceiling",
+      "estimated_amount": null,
+      "policy_number": "HC-2231987"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2024-02-03",
+      "cause": "unclear storm-related damage, possibly wind, hail or a fallen branch during severe weather",
+      "damaged_item": "patio roof sheeting and ceiling below",
+      "estimated_amount": null,
+      "policy_number": "HM-448210"
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2023-08-14",
+      "cause": "knocked TV off its stand while cleaning",
+      "damaged_item": "65-inch Samsung TV",
+      "estimated_amount": 1800.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "other",
+      "date_of_loss": "2023-11-03",
+      "cause": "tree branch fell during a storm",
+      "damaged_item": "roof, back fence, car, and side window",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM-2298471"
+    },
+    {
+      "claim_type": "malicious_damage",
+      "date_of_loss": "2024-02-09",
+      "cause": "spray painted graffiti by unknown person(s)",
+      "damaged_item": "front fence and garage door",
+      "estimated_amount": null,
+      "policy_number": "HM-2287451"
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2023-08-14",
+      "cause": "cricket ball smashed through sliding glass door",
+      "damaged_item": "sliding glass door",
+      "estimated_amount": 850.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2023-08-03",
+      "cause": "unclear - possibly struck by object during tradesperson work or children playing outside",
+      "damaged_item": "living room window and adjacent wall",
+      "estimated_amount": 1200.0,
+      "policy_number": "HOM-4471293"
+    },
+    {
+      "claim_type": "glass_breakage",
+      "date_of_loss": "2023-09-03",
+      "cause": "unknown - large glass panel in sliding door found shattered, no storm or obvious impact identified",
+      "damaged_item": "glass panel in back sliding door",
+      "estimated_amount": 900.0,
+      "policy_number": "HC-559213"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2023-02-12",
+      "cause": "storm with strong winds causing roof tile damage and a falling tree branch",
+      "damaged_item": "roof tiles, bedroom ceilings/plasterboard, back fence, and patio roof",
+      "estimated_amount": 14500.0,
+      "policy_number": "HOM-88213-QLD"
+    },
+    {
+      "claim_type": "accidental_damage",
+      "date_of_loss": "2024-02-08",
+      "cause": "bookshelf fell against the wall while being moved",
+      "damaged_item": "lounge room wall plasterboard",
+      "estimated_amount": null,
+      "policy_number": "HOM-227591"
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-07-08",
+      "cause": "burst flexible hose under bathroom vanity",
+      "damaged_item": "hallway timber flooring and bathroom vanity cabinet",
+      "estimated_amount": 6500.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek overflow due to heavy rain flooding lower level of house",
+      "damaged_item": "carpet, skirting boards, and living room furniture",
+      "estimated_amount": null,
+      "policy_number": "HB-2291087"
+    },
+    {
+      "claim_type": "theft",
+      "date_of_loss": "2023-09-03",
+      "cause": "bike went missing from side of house, possibly stolen through unlocked gate, no signs of forced entry",
+      "damaged_item": "mountain bike",
+      "estimated_amount": 1800.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "escape_of_liquid",
+      "date_of_loss": "2023-09-08",
+      "cause": "burst flexible hose on washing machine",
+      "damaged_item": "laundry vinyl flooring, hallway timber boards, spare bedroom carpet and skirting boards",
+      "estimated_amount": 9500.0,
+      "policy_number": "HM-2287341"
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2024-02-03",
+      "cause": "creek overflow due to heavy rain",
+      "damaged_item": "living room carpet",
+      "estimated_amount": null,
+      "policy_number": "HM-2201938"
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2024-02-03",
+      "cause": "candle tipped over and ignited curtains",
+      "damaged_item": "curtains, carpet and wall",
+      "estimated_amount": null,
+      "policy_number": "HM-2249871"
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2024-02-12",
+      "cause": "hail and strong winds during storm",
+      "damaged_item": "roof tiles, two windows, and back fence",
+      "estimated_amount": null,
+      "policy_number": "BRS-448291"
+    }
+  ]
+}
