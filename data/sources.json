@@ -1,0 +1,146 @@
+[
+  {
+    "insurer": "AAMI",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-building-15-12-2020.pdf",
+    "text": "Key Fact Sheet",
+    "date_key": "2020"
+  },
+  {
+    "insurer": "AAMI",
+    "product": "Building",
+    "doc_type": "PDS",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds.pdf",
+    "text": "/content/dam/assets/documents/aami/home/aami-home-building-insurance-pds.pdf",
+    "date_key": ""
+  },
+  {
+    "insurer": "AAMI",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-contents-15-12-2020.pdf",
+    "text": "Key Fact Sheet",
+    "date_key": "2020"
+  },
+  {
+    "insurer": "AAMI",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds.pdf",
+    "text": "/content/dam/assets/documents/aami/home/aami-home-contents-insurance-pds.pdf",
+    "date_key": ""
+  },
+  {
+    "insurer": "Allianz",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPB00112241224/$FILE/KFSDIHomeITMPB0011224.pdf?open",
+    "text": "Allianz Home Insurance (purchased from 20 July 2025) - Building - key facts sheet (PDF, 115 KB)",
+    "date_key": "2025"
+  },
+  {
+    "insurer": "Allianz",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPC00112241224/$FILE/KFSDIHomeITMPC0011224.pdf?open",
+    "text": "Allianz Home Insurance (purchased from 20 July 2025) - Contents - key facts sheet (PDF,\u00a0 117 KB)",
+    "date_key": "2025"
+  },
+  {
+    "insurer": "Allianz",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open",
+    "text": "Allianz Home Insurance (purchased from 20 July 2025) Product Disclosure Statement (PDF, 1.6 MB)",
+    "date_key": "20250720"
+  },
+  {
+    "insurer": "Allianz",
+    "product": "Landlord",
+    "doc_type": "KFS",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDILandlordITMPB00112241224/$FILE/KFSDILandlordITMPB0011224.pdf?open",
+    "text": "Allianz Landlord Insurance (purchased from 20 July 2025) - Building - key facts sheet (PDF, 115 KB)",
+    "date_key": "2025"
+  },
+  {
+    "insurer": "Allianz",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open",
+    "text": "Allianz Landlord Insurance (purchased from 20 July 2025) Product Disclosure Statement (PDF, 1.5 MB)",
+    "date_key": "20250720"
+  },
+  {
+    "insurer": "NRMA",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-contents-kfs-nrmaconkfs-rev3-0225.pdf",
+    "text": "Home Contents KFS February 2025",
+    "date_key": "2025"
+  },
+  {
+    "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "KFS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-buildings-kfs-nrmabldkfs-rev3-0524.pdf",
+    "text": "Home Buildings KFS May 2024",
+    "date_key": "2024"
+  },
+  {
+    "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf",
+    "text": "Home Insurance PDS April 2024",
+    "date_key": "2024"
+  },
+  {
+    "insurer": "NRMA",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf",
+    "text": "Landlord Insurance PDS April 2024",
+    "date_key": "2024"
+  },
+  {
+    "insurer": "RAA",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.raa.com.au/-/media/Project/RAA/Web/Files/Home/HomeInsurance/raa-home-and-contents-insurance-pds-product-disclosure-statement-30-9-2021.pdf?la=en&hash=062A650923E940EA7F2E9A3EED101C53",
+    "text": "Download a PDF version (1.1MB)",
+    "date_key": "2021"
+  },
+  {
+    "insurer": "RealInsurance",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.realinsurance.com.au/documents/real-home-contents-key-facts-sheet.pdf",
+    "text": "Contents Key Facts Sheet",
+    "date_key": ""
+  },
+  {
+    "insurer": "RealInsurance",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf",
+    "text": "Home Insurance (including Contents cover) Product Disclosure Statement \u2013 Dated 1 July 2026",
+    "date_key": "2026"
+  },
+  {
+    "insurer": "RealInsurance",
+    "product": "Home",
+    "doc_type": "KFS",
+    "url": "https://www.realinsurance.com.au/documents/real-home-key-facts-sheet.pdf",
+    "text": "Home Key Facts Sheet",
+    "date_key": ""
+  },
+  {
+    "insurer": "RealInsurance",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf",
+    "text": "Landlords Insurance Product Disclosure Statement \u2013 Dated 1 July 2026",
+    "date_key": "2026"
+  }
+]

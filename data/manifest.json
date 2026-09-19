@@ -1,0 +1,182 @@
+{
+  "aami-building-kfs": {
+    "insurer": "AAMI",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "aami-building-kfs.pdf",
+    "path": "data/raw_pdfs/AAMI/aami-building-kfs.pdf",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-building-15-12-2020.pdf",
+    "sha256": "51bfce19be72a99838b0ba984e9691b30d4cad44ea557e9170b910a19dba2954",
+    "num_bytes": 124824
+  },
+  "aami-building-pds": {
+    "insurer": "AAMI",
+    "product": "Building",
+    "doc_type": "PDS",
+    "filename": "aami-building-pds.pdf",
+    "path": "data/raw_pdfs/AAMI/aami-building-pds.pdf",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds.pdf",
+    "sha256": "c8ed9fc6fa8e869a95cecb1fcf6bcf66e48bdac1f651334295abc9cf4c4c0edd",
+    "num_bytes": 4051566
+  },
+  "aami-contents-kfs": {
+    "insurer": "AAMI",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "aami-contents-kfs.pdf",
+    "path": "data/raw_pdfs/AAMI/aami-contents-kfs.pdf",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-contents-15-12-2020.pdf",
+    "sha256": "8f13e177feba59ed93a4060ad4dcc3dc686f2d5d53db13d1b8c4123d9f5be42e",
+    "num_bytes": 226998
+  },
+  "aami-contents-pds": {
+    "insurer": "AAMI",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "filename": "aami-contents-pds.pdf",
+    "path": "data/raw_pdfs/AAMI/aami-contents-pds.pdf",
+    "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds.pdf",
+    "sha256": "ffc958e155cd8934e1ea6b4adb3787b1d9465e713d619b9be03244567f6b5624",
+    "num_bytes": 3938486
+  },
+  "allianz-building-kfs": {
+    "insurer": "Allianz",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "allianz-building-kfs.pdf",
+    "path": "data/raw_pdfs/Allianz/allianz-building-kfs.pdf",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPB00112241224/$FILE/KFSDIHomeITMPB0011224.pdf?open",
+    "sha256": "c0e27822f8d19848a66aa9f55bb7ec29e26224f456daa3942916ecbc55522172",
+    "num_bytes": 117493
+  },
+  "allianz-contents-kfs": {
+    "insurer": "Allianz",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "allianz-contents-kfs.pdf",
+    "path": "data/raw_pdfs/Allianz/allianz-contents-kfs.pdf",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPC00112241224/$FILE/KFSDIHomeITMPC0011224.pdf?open",
+    "sha256": "a51d967abd1810f88f272085eb7bc3903343660f8c3d013ddd39551864f8182c",
+    "num_bytes": 119250
+  },
+  "allianz-home-pds": {
+    "insurer": "Allianz",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "allianz-home-pds.pdf",
+    "path": "data/raw_pdfs/Allianz/allianz-home-pds.pdf",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open",
+    "sha256": "2f7fa6575d4f49c7f5c37861d0398ae02842543eb891877e7aa1ddb49a97696e",
+    "num_bytes": 1624609
+  },
+  "allianz-landlord-kfs": {
+    "insurer": "Allianz",
+    "product": "Landlord",
+    "doc_type": "KFS",
+    "filename": "allianz-landlord-kfs.pdf",
+    "path": "data/raw_pdfs/Allianz/allianz-landlord-kfs.pdf",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDILandlordITMPB00112241224/$FILE/KFSDILandlordITMPB0011224.pdf?open",
+    "sha256": "dbdf20c2412573e7408aec3fe2d5a7301e766a0d09f15d98c9fc7eeead154975",
+    "num_bytes": 117389
+  },
+  "allianz-landlord-pds": {
+    "insurer": "Allianz",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "filename": "allianz-landlord-pds.pdf",
+    "path": "data/raw_pdfs/Allianz/allianz-landlord-pds.pdf",
+    "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open",
+    "sha256": "89bd2ccfb8ecd68c53d6effbe6a41091da20bbbc4617af7d12f8069915811a97",
+    "num_bytes": 1544275
+  },
+  "nrma-contents-kfs": {
+    "insurer": "NRMA",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "nrma-contents-kfs.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-contents-kfs.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-contents-kfs-nrmaconkfs-rev3-0225.pdf",
+    "sha256": "4613e30f5f7a74ee9763595fe6d5bc13203cf75841e94fbe9e430aabfbfb09b7",
+    "num_bytes": 149501
+  },
+  "nrma-home-kfs": {
+    "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "KFS",
+    "filename": "nrma-home-kfs.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-home-kfs.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-buildings-kfs-nrmabldkfs-rev3-0524.pdf",
+    "sha256": "869965a4e5a9e414ca941da4b3df714defe7222b608c58e40807c7b7186725cd",
+    "num_bytes": 142926
+  },
+  "nrma-home-pds": {
+    "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "nrma-home-pds.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-home-pds.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf",
+    "sha256": "91a0d6fdab8496768fc5f387abfcbb1aeb6d61bdfaf4f8ba9d404332abd61ad4",
+    "num_bytes": 528963
+  },
+  "nrma-landlord-pds": {
+    "insurer": "NRMA",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "filename": "nrma-landlord-pds.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-landlord-pds.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf",
+    "sha256": "a269a29e43bf4fda25e86718774de5d7526b31d116952d6bbe9835c6c5e24c4f",
+    "num_bytes": 386163
+  },
+  "raa-contents-pds": {
+    "insurer": "RAA",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "filename": "raa-contents-pds.pdf",
+    "path": "data/raw_pdfs/RAA/raa-contents-pds.pdf",
+    "url": "https://www.raa.com.au/-/media/Project/RAA/Web/Files/Home/HomeInsurance/raa-home-and-contents-insurance-pds-product-disclosure-statement-30-9-2021.pdf?la=en&hash=062A650923E940EA7F2E9A3EED101C53",
+    "sha256": "d40d483556a4311bdca488f3a50a28ad1fef9f2a9c5a663c01b522dcc7733f5e",
+    "num_bytes": 1144080
+  },
+  "realinsurance-contents-kfs": {
+    "insurer": "RealInsurance",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "realinsurance-contents-kfs.pdf",
+    "path": "data/raw_pdfs/RealInsurance/realinsurance-contents-kfs.pdf",
+    "url": "https://www.realinsurance.com.au/documents/real-home-contents-key-facts-sheet.pdf",
+    "sha256": "9dd84158345652f973b61b42de1bd106106793c29acae2b84765a1b35d8c2542",
+    "num_bytes": 165665
+  },
+  "realinsurance-contents-pds": {
+    "insurer": "RealInsurance",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "filename": "realinsurance-contents-pds.pdf",
+    "path": "data/raw_pdfs/RealInsurance/realinsurance-contents-pds.pdf",
+    "url": "https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf",
+    "sha256": "5ff2a4841ef9cc99882b83324cb2324927d788185d2877e7b29781c85f335313",
+    "num_bytes": 1189063
+  },
+  "realinsurance-home-kfs": {
+    "insurer": "RealInsurance",
+    "product": "Home",
+    "doc_type": "KFS",
+    "filename": "realinsurance-home-kfs.pdf",
+    "path": "data/raw_pdfs/RealInsurance/realinsurance-home-kfs.pdf",
+    "url": "https://www.realinsurance.com.au/documents/real-home-key-facts-sheet.pdf",
+    "sha256": "701d4f1223c87c4ca7b26a36c48399a3d2a393e40d6043c5c6c8758249ced05a",
+    "num_bytes": 162568
+  },
+  "realinsurance-landlord-pds": {
+    "insurer": "RealInsurance",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "filename": "realinsurance-landlord-pds.pdf",
+    "path": "data/raw_pdfs/RealInsurance/realinsurance-landlord-pds.pdf",
+    "url": "https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf",
+    "sha256": "2bb9c0f05109d87c1368d6afebb2d2fbdd5e6b62bfa61fc246057dea20cc42a8",
+    "num_bytes": 1059888
+  }
+}
