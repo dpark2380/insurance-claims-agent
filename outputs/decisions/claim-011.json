@@ -1,0 +1,117 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 16 February 2024 I noticed new cracks running through the brickwork and internal walls on the western side of my house. A builder has advised that the ground beneath that part of the house has subsided and the footings have moved. I have been quoted approximately $12,500 for the repairs."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-02-16",
+        "cause": "footing movement due to subsidence",
+        "damaged_item": "brickwork and internal walls",
+        "estimated_amount": 12500.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is subsidence or land/ground movement causing footing and wall cracking covered or excluded?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, **soil movement (including subsidence) is generally excluded**, with a specific exception.\n\nAccording to [Allianz Home PDS, page 55], \"Soil movement\" \u2014 which explicitly includes erosion, landslide, mudslide or subsidence \u2014 is excluded **unless it is directly caused by and occurs within 72 hours of** one of the following events:\n- explosion\n- earthquake\n- tsunami\n- storm\n- cyclone\n- rainwater or flood or flood water, combined with run-off and/or rainwater\n\nSo if the footing and wall cracking resulted from subsidence that occurred within 72 hours of one of these specified insured events, it would be covered. Otherwise, subsidence-related damage is excluded [Allianz Home PDS, page 55].\n\nThe excerpts do not provide further detail on what evidence is needed to establish the 72-hour causal link, or how claims involving gradual subsidence (unrelated to a triggering event) are assessed. If your situation involves gradual ground movement without a specific triggering event listed above, the excerpts do not give enough information to confirm coverage, and you may need to consult additional policy sections or your insurer directly for clarification.",
+        "citations": [
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim involves subsidence/footing movement causing wall cracking. Per the Allianz Home PDS (page 55), soil movement including subsidence is excluded unless it occurs within 72 hours of a specified triggering event (explosion, earthquake, tsunami, storm, cyclone, or rainwater/flood). The claim narrative gives no indication of any such triggering event \u2014 it describes gradual subsidence noticed over time and confirmed by a builder as ground movement, with no mention of a storm, flood, or other qualifying peril. This directly conflicts with a policy exclusion, and there isn't enough information to confirm whether the 72-hour exception applies. Per escalation policy, a claimed cause that directly conflicts with a policy exclusion (without clear evidence of an exception) must be escalated to a human reviewer rather than approved or denied outright.\n\nCitations: [Allianz Home PDS, page 55] \u2014 soil movement/subsidence exclusion and 72-hour exception clause."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves subsidence/footing movement causing wall cracking. Per the Allianz Home PDS (page 55), soil movement including subsidence is excluded unless it occurs within 72 hours of a specified triggering event (explosion, earthquake, tsunami, storm, cyclone, or rainwater/flood). The claim narrative gives no indication of any such triggering event \u2014 it describes gradual subsidence noticed over time and confirmed by a builder as ground movement, with no mention of a storm, flood, or other qualifying peril. This directly conflicts with a policy exclusion, and there isn't enough information to confirm whether the 72-hour exception applies. Per escalation policy, a claimed cause that directly conflicts with a policy exclusion (without clear evidence of an exception) must be escalated to a human reviewer rather than approved or denied outright.\n\nCitations: [Allianz Home PDS, page 55] \u2014 soil movement/subsidence exclusion and 72-hour exception clause.",
+  "citations": [
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    }
+  ],
+  "claim_id": "claim-011"
+}

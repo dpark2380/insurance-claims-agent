@@ -1,0 +1,117 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2024 a cricket ball hit by kids playing in the street smashed one of our large front windows. Glass shattered onto the living room floor but thankfully no one was hurt. I've boarded it up for now but haven't had a glazier come out to quote the replacement yet. Policyholder with RealInsurance home insurance."
+      },
+      "output": {
+        "claim_type": "glass_breakage",
+        "date_of_loss": "2024-02-03",
+        "cause": "cricket ball hit window while children were playing outside",
+        "damaged_item": "front window glass",
+        "estimated_amount": null,
+        "policy_number": "RealIns123"
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is accidental glass breakage from an external object like a cricket ball covered?",
+        "insurer": "RealInsurance",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, \"Accidental breakage\" is a covered event, defined as \"\u2018Accidental Glass Breakage\u2019 and covers glass breakage only,\" excluding \"breakage of glass in a glasshouse, greenhouse or conservatory\" [RealInsurance Home KFS, page 1].\n\nHowever, the excerpts do not specify whether glass breakage caused by an external object such as a cricket ball is included or excluded from this cover. The document notes that \"This Key Fact Sheet is a guide only. The examples provided are only some of many conditions, exclusions and limits in this policy. You must read the PDS and policy documentation for all information about this policy\" [RealInsurance Home KFS, page 1].\n\n**I cannot confirm from these excerpts whether damage from a specific external cause like a cricket ball is covered or excluded.** You would need to consult the full PDS and policy documentation for that level of detail.",
+        "citations": [
+          {
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
+          },
+          {
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
+          },
+          {
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 40000
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim is for accidental glass breakage under a RealInsurance Home policy. While the policy's Key Fact Sheet indicates \"Accidental Glass Breakage\" is generally a covered event (excluding glasshouse/greenhouse/conservatory glass), it does not explicitly confirm whether damage from an external object like a cricket ball is covered or excluded, and directs to the full PDS for details [RealInsurance Home KFS, page 1].\n\nMore critically, `extract_fields` returned a null `estimated_amount` \u2014 the policyholder has not yet obtained a glazier's quote for the replacement window, so there is no claimed dollar figure to run through `calculate_payout`, and this cannot be resolved from any other available source (excess: $500, coverage limit: $40,000 are known, but the actual claim amount is not).\n\nPer escalation policy, both the ambiguous coverage language and the unresolvable null estimated amount warrant human review before a payout decision can be made. Recommend the policyholder obtain a glazier's quote, and have a human reviewer confirm coverage for third-party-caused glass breakage under the full PDS."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for accidental glass breakage under a RealInsurance Home policy. While the policy's Key Fact Sheet indicates \"Accidental Glass Breakage\" is generally a covered event (excluding glasshouse/greenhouse/conservatory glass), it does not explicitly confirm whether damage from an external object like a cricket ball is covered or excluded, and directs to the full PDS for details [RealInsurance Home KFS, page 1].\n\nMore critically, `extract_fields` returned a null `estimated_amount` \u2014 the policyholder has not yet obtained a glazier's quote for the replacement window, so there is no claimed dollar figure to run through `calculate_payout`, and this cannot be resolved from any other available source (excess: $500, coverage limit: $40,000 are known, but the actual claim amount is not).\n\nPer escalation policy, both the ambiguous coverage language and the unresolvable null estimated amount warrant human review before a payout decision can be made. Recommend the policyholder obtain a glazier's quote, and have a human reviewer confirm coverage for third-party-caused glass breakage under the full PDS.",
+  "citations": [
+    {
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "claim_id": "claim-009"
+}

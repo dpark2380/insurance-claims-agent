@@ -1,0 +1,103 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $18,000."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2023-04-15",
+        "cause": "King tide and storm surge caused water to overflow onto the property.",
+        "damaged_item": "ground floor, flooring, and skirting boards",
+        "estimated_amount": 18000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "storm surge king tide flood coverage exclusion"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here's what I can tell you about storm surge, king tide, and flood coverage/exclusions:\n\n**Storm Surge Coverage [AAMI Building PDS, page 41]:**\n- Storm surge is covered only when it **happens at the same time as other insured damage caused by storm**.\n- Exclusions under storm surge cover include:\n  - Loss or damage caused by **actions or movements of the sea**\n  - Loss or damage caused by **erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or any other earth movement** \u2014 *however*, landslide or subsidence damage to the building **is** covered if proven to have occurred within **72 hours** of, and directly because of, a storm surge that happens at the same time as other insured storm damage (and not caused by erosion, structural fault, or design fault)\n  - Loss or damage to **retaining walls, sea walls, revetments, garden borders, and free-standing outdoor walls**\n  - **Cracking to sealed paths, sealed roads, and sealed driveways** \u2014 *however*, these are covered if washed away by the storm surge\n  - Loss or damage to a **sporting surface or court** (e.g., tennis court, squash court, multi-court surface)\n  - Loss or damage to **boat jetties, pontoons, mooring poles** (the excerpt is cut off here, so there may be additional exclusions not shown)\n\n**Flood:**\nThe excerpts confirm that Flood is a separately listed insured event under both AAMI Building PDS [page 39] and AAMI Contents PDS [page 8], but **no details on flood coverage terms or exclusions are included** in the provided excerpts.\n\n**King Tide:**\nThe provided excerpts **do not mention \"king tide\" specifically**. I cannot confirm whether king tide is treated as a form of storm surge, flood, or is separately addressed, as this term does not appear in the supplied policy text.\n\n**What I cannot answer:**\n- Full definitions of \"storm surge\" or \"flood\" as used in the policy\n- Whether king tide events are covered, excluded, or classified under either peril\n- The complete list of exclusions under \"General exclusions\" (pages 23\u201336) referenced in the storm surge section, as this section's full text was not provided\n- Flood-specific exclusions (only the page reference was given, not the content)\n\nIf you need clarification on king tide or full flood/storm exclusion details,",
+        "citations": [
+          {
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 8
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 8
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 41
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning:\n1. The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 this alone requires escalation per policy.\n2. Additionally, the coverage question itself is ambiguous/contradictory: policy text found (AAMI Building PDS, page 41) indicates storm surge is only covered when it occurs *simultaneously with other insured storm damage*, and explicitly excludes \"loss or damage caused by actions or movements of the sea.\" A \"king tide combined with storm surge\" pushing sea water onto the property could plausibly fall under this \"movement of the sea\" exclusion, and \"king tide\" is not defined anywhere in the retrieved policy text, and flood-specific exclusion details were not available. This is a genuinely ambiguous coverage determination that conflicts with a possible exclusion.\n\nGiven both the missing insurer identification and the ambiguous/conflicting exclusion language, this claim must be handed to a human reviewer rather than decided automatically.\n\nCitations:\n- AAMI Building PDS, page 41 (storm surge coverage and \"actions or movements of the sea\" exclusion)\n- AAMI Building PDS, page 39 / AAMI Contents PDS, page 8 (flood listed as insured event, but no exclusion detail retrieved)"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning:\n1. The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 this alone requires escalation per policy.\n2. Additionally, the coverage question itself is ambiguous/contradictory: policy text found (AAMI Building PDS, page 41) indicates storm surge is only covered when it occurs *simultaneously with other insured storm damage*, and explicitly excludes \"loss or damage caused by actions or movements of the sea.\" A \"king tide combined with storm surge\" pushing sea water onto the property could plausibly fall under this \"movement of the sea\" exclusion, and \"king tide\" is not defined anywhere in the retrieved policy text, and flood-specific exclusion details were not available. This is a genuinely ambiguous coverage determination that conflicts with a possible exclusion.\n\nGiven both the missing insurer identification and the ambiguous/conflicting exclusion language, this claim must be handed to a human reviewer rather than decided automatically.\n\nCitations:\n- AAMI Building PDS, page 41 (storm surge coverage and \"actions or movements of the sea\" exclusion)\n- AAMI Building PDS, page 39 / AAMI Contents PDS, page 8 (flood listed as insured event, but no exclusion detail retrieved)",
+  "citations": [
+    {
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 8
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 8
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 41
+    }
+  ],
+  "claim_id": "claim-017"
+}

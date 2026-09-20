@@ -1,0 +1,36 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $15,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2025-07-10",
+        "cause": "break-in",
+        "damaged_item": "jewellery and electronics",
+        "estimated_amount": 15000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined.",
+  "citations": [],
+  "claim_id": "claim-019"
+}

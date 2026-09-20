@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2023 heavy rain caused the creek behind our property to overflow and water came into our home, ruining the carpets in the living room and soaking the bottom of the plasterboard walls. It happened really fast, within about an hour the water was ankle deep inside. We've had to rip up the carpet already because it started smelling. I think it'll cost around $9,000 to fix the flooring and walls."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2023-02-03",
+        "cause": "creek overflowed due to heavy rain",
+        "damaged_item": "living room carpets and plasterboard walls",
+        "estimated_amount": 9000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is flood damage from creek overflow covered?",
+        "insurer": "RAA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "flood definition coverage rising water creek river overflow exclusion",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the policy excerpts provided, here is the relevant information on Flood coverage:\n\n**Definition of Flood:**\nFlood means \"the covering of normally dry land by water that has escaped or been released from the normal confines of: any lake, or any river, creek or other natural watercourse, whether or not altered or modified; or any reservoir, canal or dam\" [RAA Contents PDS, page 87].\n\n**Exclusion from the Flood definition:**\nFlood excludes water from Actions of the Sea, except when caused by:\n- a Storm Surge, if it occurs at the same time your Insured Property is damaged by a Storm; or\n- a Tsunami.\n\nFlood also excludes a mixture of water from Actions of the Sea and water from any other source [RAA Contents PDS, page 88].\n\n**Coverage exclusions (under Section 12 \u2013 Flood):**\nThis cover does not apply to loss or damage:\n- to any part of the Home that is not fully built;\n- to tennis courts;\n- to a wharf, jetty, pontoon or sea wall;\n- to water in a tank, swimming pool or spa, including the cost of cleaning mud or debris out of a tank, swimming pool or spa;\n- to swimming pools or spas and their covers or liners, except for permanently attached hard lid style pool covers;\n- to paint when there is no structural damage caused by a Flood to other parts of the Home;\n- caused by underground (hydrostatic) water;\n- to a glasshouse or greenhouse;\n- to unsealed paths or driveways, such as gravel or constructed with any loose materials;\n- caused by Flood which arises from deliberate or Malicious Damage to, or destruction of, a reservoir or dam; and/or\n- to a path or driveway (and other listed items, cut off in the excerpt) if they were not structurally sound or not maintained in a reasonable manner prior to the loss or damage occurring\n[RAA Contents PDS, page 50].\n\nNote: The excerpt on page 50 is cut off after \"\u2013 a path; \u2013 a driveway; \u2013\", so the full list of items subject to the \"not structurally sound or not maintained\" exclusion is incomplete in the provided material. If you need the complete list, additional pages of the PDS would be required.",
+        "citations": [
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 87
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 67
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 50
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 46
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 4,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 9000,
+        "excess": 500,
+        "coverage_limit": 45000
+      },
+      "output": {
+        "payout": 8500
+      }
+    },
+    {
+      "turn": 5,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim involves water entering the home due to a creek overflowing after heavy rain, which matches RAA's policy definition of \"Flood\" \u2014 \"the covering of normally dry land by water that has escaped ... from any river, creek or other natural watercourse\" (RAA Contents PDS, p.87). None of the listed flood exclusions apply here (the damage is not to unbuilt structures, pools, tanks, paint-only, driveways, or from actions of the sea) \u2014 the loss is to living room carpet and plasterboard walls, which is standard coverable flood damage (RAA Contents PDS, p.50, 87-88).\n\nThe policyholder's certificate shows an excess of $500 and a coverage limit of $45,000, well above the claimed $9,000. Applying the excess: payout = $9,000 - $500 = $8,500.\n\nFinal payout: $8,500, approved under the Flood section of the RAA Home/Contents policy."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves water entering the home due to a creek overflowing after heavy rain, which matches RAA's policy definition of \"Flood\" \u2014 \"the covering of normally dry land by water that has escaped ... from any river, creek or other natural watercourse\" (RAA Contents PDS, p.87). None of the listed flood exclusions apply here (the damage is not to unbuilt structures, pools, tanks, paint-only, driveways, or from actions of the sea) \u2014 the loss is to living room carpet and plasterboard walls, which is standard coverable flood damage (RAA Contents PDS, p.50, 87-88).\n\nThe policyholder's certificate shows an excess of $500 and a coverage limit of $45,000, well above the claimed $9,000. Applying the excess: payout = $9,000 - $500 = $8,500.\n\nFinal payout: $8,500, approved under the Flood section of the RAA Home/Contents policy.",
+  "citations": [
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 87
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 67
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 50
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 46
+    }
+  ],
+  "claim_id": "claim-003"
+}

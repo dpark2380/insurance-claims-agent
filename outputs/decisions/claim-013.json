@@ -1,0 +1,130 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 8 February 2024 my son was kicking a soccer ball in the backyard and it smashed straight through our sliding glass door. The whole pane shattered and we've had to board it up until it can be replaced. I think it'll cost around $650 to fix."
+      },
+      "output": {
+        "claim_type": "glass_breakage",
+        "date_of_loss": "2024-02-08",
+        "cause": "son kicking soccer ball into sliding glass door",
+        "damaged_item": "sliding glass door",
+        "estimated_amount": 650.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Accidental breakage of glass sliding door caused by child playing sport - is this covered?",
+        "insurer": "RAA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "accidental damage to glass, windows, sliding doors cover",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, there is **no information addressing accidental damage to glass, windows, or sliding doors specifically**. \n\nThe excerpts do cover related topics such as:\n- **Storm and Rainwater Runoff** exclusions, which mention rain, hail, or wind entering the home through open windows, doors, or skylights, or due to defects, structural faults, or wear and tear [RAA Contents PDS, page 45].\n- **Accidental Damage Optional Cover** exclusions, which list specific exclusions (e.g., Tools of Trade whilst in use, Sporting Equipment whilst in use, certain theft scenarios), but **glass, windows, or sliding doors are not mentioned** in these exclusions [RAA Contents PDS, page 60].\n- General **Contents limits**, which specify sub-limits for categories like antiques, bicycles, cameras, and car parts, but **no specific limit or provision for glass, windows, or sliding doors** is mentioned [RAA Contents PDS, page 41].\n\nSince none of the excerpts explicitly discuss coverage, exclusions, or limits for accidental damage to glass, windows, or sliding doors, **I cannot provide a definitive answer on this topic based on the available policy excerpts**. You may need to consult additional sections of the policy document (such as the full \"Accidental Damage\" section or a \"Glass Breakage\" specific clause, if one exists) that were not included here.",
+        "citations": [
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 60
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 63
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 41
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "This is ambiguous \u2014 the retrieved policy text doesn't clearly confirm or deny coverage for accidental glass breakage caused by sporting equipment/play, and it flags \"Sporting Equipment whilst in use\" as a listed exclusion category under Accidental Damage Optional Cover, without clarifying whether it applies here. This is a direct conflict risk that requires human judgment rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim (soccer ball kicked by son shattering a sliding glass door) is a case of accidental damage. The RAA policy text retrieved is ambiguous \u2014 it references an \"Accidental Damage Optional Cover\" with an exclusion list that includes \"Sporting Equipment whilst in use,\" which could plausibly apply to a soccer ball causing damage, but the retrieved excerpts do not clarify the scope of that exclusion or confirm whether glass/sliding doors are separately covered under a glass-breakage clause. Per policy, when retrieve_policy returns contradictory/ambiguous coverage text or a claimed cause potentially conflicts with a policy exclusion, I must escalate to a human reviewer rather than approve or deny based on a guess.\n\nCitations:\n- RAA Contents PDS, page 60 (Accidental Damage Optional Cover exclusions, including \"Sporting Equipment whilst in use\")\n- RAA Contents PDS, page 63\n- RAA Contents PDS, page 41, 45\n\nPolicyholder-specific figures on file (for reference, not used in a decision): Excess $500, Coverage limit $45,000 \u2014 note the claimed amount ($650) is below the excess, which is an additional factor a human reviewer should confirm before finalizing."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This is ambiguous \u2014 the retrieved policy text doesn't clearly confirm or deny coverage for accidental glass breakage caused by sporting equipment/play, and it flags \"Sporting Equipment whilst in use\" as a listed exclusion category under Accidental Damage Optional Cover, without clarifying whether it applies here. This is a direct conflict risk that requires human judgment rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim (soccer ball kicked by son shattering a sliding glass door) is a case of accidental damage. The RAA policy text retrieved is ambiguous \u2014 it references an \"Accidental Damage Optional Cover\" with an exclusion list that includes \"Sporting Equipment whilst in use,\" which could plausibly apply to a soccer ball causing damage, but the retrieved excerpts do not clarify the scope of that exclusion or confirm whether glass/sliding doors are separately covered under a glass-breakage clause. Per policy, when retrieve_policy returns contradictory/ambiguous coverage text or a claimed cause potentially conflicts with a policy exclusion, I must escalate to a human reviewer rather than approve or deny based on a guess.\n\nCitations:\n- RAA Contents PDS, page 60 (Accidental Damage Optional Cover exclusions, including \"Sporting Equipment whilst in use\")\n- RAA Contents PDS, page 63\n- RAA Contents PDS, page 41, 45\n\nPolicyholder-specific figures on file (for reference, not used in a decision): Excess $500, Coverage limit $45,000 \u2014 note the claimed amount ($650) is below the excess, which is an additional factor a human reviewer should confirm before finalizing.",
+  "citations": [
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 60
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 63
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 41
+    }
+  ],
+  "claim_id": "claim-013"
+}

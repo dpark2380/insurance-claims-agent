@@ -1,0 +1,15 @@
+{
+  "_note": "Synthetic certificate-of-insurance data. Real excess/coverage-limit figures are policyholder-specific and printed on an individual certificate of insurance, never in the PDS/KFS text itself (confirmed in AAMI's PDS, page 17/23) -- this file stands in for that per-customer data source so calculate_payout has real numbers to work with in this demo.",
+  "AAMI": {"excess": 500, "coverage_limit": 50000},
+  "Allianz": {"excess": 600, "coverage_limit": 60000},
+  "NRMA": {"excess": 550, "coverage_limit": 55000},
+  "RAA": {"excess": 500, "coverage_limit": 45000},
+  "RealInsurance": {"excess": 500, "coverage_limit": 40000},
+  "Suncorp": {"excess": 550, "coverage_limit": 55000},
+  "CGU": {"excess": 500, "coverage_limit": 50000},
+  "BudgetDirect": {"excess": 450, "coverage_limit": 40000},
+  "GIO": {"excess": 550, "coverage_limit": 50000},
+  "Woolworths": {"excess": 500, "coverage_limit": 45000},
+  "RACV": {"excess": 550, "coverage_limit": 55000},
+  "RACQ": {"excess": 550, "coverage_limit": 55000}
+}

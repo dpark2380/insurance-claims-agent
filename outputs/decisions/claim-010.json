@@ -1,0 +1,125 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 11 November 2024 I noticed the mortar joints around my brick chimney had deteriorated badly and several bricks had become loose. The mason said the mortar has gradually broken down with age and needs to be repointed and repaired. I have not been given a final price yet."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-11-11",
+        "cause": "masonry deterioration due to age-related mortar breakdown",
+        "damaged_item": "brick chimney mortar joints and bricks",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual deterioration, wear and tear, or age-related mortar/chimney damage covered or excluded?",
+        "insurer": "AAMI",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "wear and tear exclusion general maintenance deterioration exclusion",
+        "insurer": "AAMI"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what applies to wear, tear, and deterioration exclusions:\n\n**AAMI Building PDS:**\nThe policy excludes loss or damage, or legal liability, caused by, connected with, or arising from **wear, tear, and deterioration** of the building resulting from either:\n- its ordinary use, or\n- the ordinary effects of natural forces (weather, action of light, atmospheric or climatic conditions, and rising damp)\n\nExamples given include (but aren't limited to):\n- tiles and their adhesive or grouting breaking down\n- weathering of roof tiles or roof ridge capping\n- weathering and breakdown of bricks, mortar, or concrete\n\n[AAMI Building PDS, page 35]\n\n**AAMI Contents PDS:**\nThis excerpt references a related exclusion concerning building maintenance/disrepair, which applies where:\n- items are broken down, missing, or rusted through or otherwise in disrepair\n- previous damage (including flood damage) hasn't been repaired\n- the building or unit is infested with vermin\n- the building (including sheds, outbuildings, and other structural improvements) isn't structurally sound, unsafe, or unfit to live in\n- plant matter is growing on the building (e.g., walls, windows, or gutters)\n\nIf you're a tenant, this exclusion applies only to the extent you're required to maintain the building or unit under your tenancy rental agreement.\n\n[AAMI Contents PDS, page 30]\n\nAdditionally, the Contents PDS defines related terms \u2014 noting that certain damage exclusions relate to \"wear and tear, use of excessive force, lack of due care or action, poor housekeeping, or neglect\" [AAMI Contents PDS, page 103], though the full context of this specific exclusion clause is not included in the excerpts provided.\n\n**Note:** The excerpts do not provide the complete wear-and-tear exclusion wording for the Contents policy itself (as opposed to the building maintenance provisions referenced within it), nor do they specify how these exclusions interact with any \"Legal liability\" cover mentioned on page 54 of the Contents PDS. If you need the full Contents-specific wear and tear clause, additional pages would be required.",
+        "citations": [
+          {
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 24
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 28
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 103
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim cause is explicitly gradual, age-related mortar/brick deterioration ('mortar has gradually broken down with age'), which directly matches the AAMI Building PDS wear-and-tear exclusion citing 'weathering and breakdown of bricks, mortar, or concrete' (AAMI Building PDS, page 35). Additionally, estimated_amount is null with no final repair price provided. Per policy, a claimed cause directly conflicting with a found exclusion requires human review rather than an automated deny/approve decision, especially given the missing cost estimate."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim cause is explicitly gradual, age-related mortar/brick deterioration ('mortar has gradually broken down with age'), which directly matches the AAMI Building PDS wear-and-tear exclusion citing 'weathering and breakdown of bricks, mortar, or concrete' (AAMI Building PDS, page 35). Additionally, estimated_amount is null with no final repair price provided. Per policy, a claimed cause directly conflicting with a found exclusion requires human review rather than an automated deny/approve decision, especially given the missing cost estimate."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim cause is explicitly gradual, age-related mortar/brick deterioration ('mortar has gradually broken down with age'), which directly matches the AAMI Building PDS wear-and-tear exclusion citing 'weathering and breakdown of bricks, mortar, or concrete' (AAMI Building PDS, page 35). Additionally, estimated_amount is null with no final repair price provided. Per policy, a claimed cause directly conflicting with a found exclusion requires human review rather than an automated deny/approve decision, especially given the missing cost estimate.",
+  "citations": [
+    {
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 28
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 103
+    }
+  ],
+  "claim_id": "claim-010"
+}

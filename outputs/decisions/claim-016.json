@@ -1,0 +1,29 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Something happened to our house last month and there is some damage we noticed. We are not sure of the cause or how much it will cost to fix."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2023-10-05",
+        "cause": "unknown",
+        "damaged_item": "entire front yard due to recent heavy rains",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative lacks critical information needed for triage. extract_fields returned a null estimated_amount that cannot be resolved from the text, the cause of damage is explicitly \"unknown,\" and no insurer is named in the claim. Without a named insurer, get_policy_certificate cannot be used to retrieve excess/coverage_limit, and calculate_payout would require guessing these figures, which is not permitted. Additionally, with an unknown cause, I cannot verify coverage or check for exclusions via retrieve_policy. This claim requires human review to gather more details (specific cause of damage, cost estimate, and insurer/policy information) before a coverage or payout decision can be made."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative lacks critical information needed for triage. extract_fields returned a null estimated_amount that cannot be resolved from the text, the cause of damage is explicitly \"unknown,\" and no insurer is named in the claim. Without a named insurer, get_policy_certificate cannot be used to retrieve excess/coverage_limit, and calculate_payout would require guessing these figures, which is not permitted. Additionally, with an unknown cause, I cannot verify coverage or check for exclusions via retrieve_policy. This claim requires human review to gather more details (specific cause of damage, cost estimate, and insurer/policy information) before a coverage or payout decision can be made.",
+  "citations": [],
+  "claim_id": "claim-016"
+}

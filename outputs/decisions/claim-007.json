@@ -1,0 +1,111 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913. Insurer: NRMA."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2024-02-03",
+        "cause": "candle flame ignited curtains causing fire that spread to wall and carpet.",
+        "damaged_item": "lounge room wall and carpet",
+        "estimated_amount": null,
+        "policy_number": "HC-882913"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is accidental fire damage from a candle covered under home insurance?",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, there is relevant information about fire coverage but not a specific scenario involving candles.\n\nThe policy covers fire and explosion as separate events under home insurance [NRMA Home KFS, page 1]. Fire coverage excludes \"scorching or melting where there is no flame\" [NRMA Home KFS, page 1]. Additionally, the PDS states that fire caused with the intention to cause damage by the policyholder, their family, or anyone normally living in the home (including a tenant) is not covered [NRMA Home PDS, page 14].\n\nHowever, the excerpts do not specifically address accidental fire damage caused by a candle. If the fire from a candle involved an actual flame (rather than just scorching/melting without flame) and was accidental rather than intentional, it may fall under general fire coverage, but I cannot confirm this definitively without more specific policy language addressing candle-related incidents or accidental fire causation scenarios.\n\nTo get a clear answer, you should consult the full PDS section on Fire coverage or contact NRMA directly, as these excerpts do not provide sufficient detail to confirm coverage for this specific scenario.",
+        "citations": [
+          {
+            "insurer": "NRMA",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "insurer": "NRMA",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim HC-882913 (NRMA) cannot be automatically triaged: (1) estimated_amount is null because the property has not yet been inspected/assessed, so no claim amount exists to run through calculate_payout; (2) policy text confirms fire damage is generally covered and excludes 'scorching or melting where there is no flame' and intentional fire-setting, but does not clearly address an accidental candle-caused fire with actual flame spread -- retrieve_policy's own answer states it cannot definitively confirm coverage for this scenario. Recommend human review to obtain a damage estimate/assessment and confirm coverage applicability before processing."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim HC-882913 (NRMA) cannot be automatically triaged: (1) estimated_amount is null because the property has not yet been inspected/assessed, so no claim amount exists to run through calculate_payout; (2) policy text confirms fire damage is generally covered and excludes 'scorching or melting where there is no flame' and intentional fire-setting, but does not clearly address an accidental candle-caused fire with actual flame spread -- retrieve_policy's own answer states it cannot definitively confirm coverage for this scenario. Recommend human review to obtain a damage estimate/assessment and confirm coverage applicability before processing."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim HC-882913 (NRMA) cannot be automatically triaged: (1) estimated_amount is null because the property has not yet been inspected/assessed, so no claim amount exists to run through calculate_payout; (2) policy text confirms fire damage is generally covered and excludes 'scorching or melting where there is no flame' and intentional fire-setting, but does not clearly address an accidental candle-caused fire with actual flame spread -- retrieve_policy's own answer states it cannot definitively confirm coverage for this scenario. Recommend human review to obtain a damage estimate/assessment and confirm coverage applicability before processing.",
+  "citations": [
+    {
+      "insurer": "NRMA",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "insurer": "NRMA",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    }
+  ],
+  "claim_id": "claim-007"
+}
