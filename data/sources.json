@@ -144,6 +144,30 @@
     "date_key": ""
   },
   {
+    "insurer": "ING",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2019-KFS-HB.pdf",
+    "text": "Key Facts Sheet - Home Building\r\n\t\t\t\t\t\t\t\t\t\t\t\tInsurance",
+    "date_key": "2019"
+  },
+  {
+    "insurer": "ING",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2019-KFS-HC.pdf",
+    "text": "Key Facts Sheet - Contents\r\n\t\t\t\t\t\t\t\t\t\t\t\tInsurance",
+    "date_key": "2019"
+  },
+  {
+    "insurer": "ING",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2021-pds.pdf",
+    "text": "Product Disclosure Statement (PDS)",
+    "date_key": "2021"
+  },
+  {
     "insurer": "NRMA",
     "product": "Contents",
     "doc_type": "KFS",

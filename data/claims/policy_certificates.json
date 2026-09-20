@@ -11,5 +11,6 @@
   "GIO": {"excess": 550, "coverage_limit": 50000},
   "Woolworths": {"excess": 500, "coverage_limit": 45000},
   "RACV": {"excess": 550, "coverage_limit": 55000},
-  "RACQ": {"excess": 550, "coverage_limit": 55000}
+  "RACQ": {"excess": 550, "coverage_limit": 55000},
+  "ING": {"excess": 500, "coverage_limit": 50000}
 }

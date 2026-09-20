@@ -179,6 +179,36 @@
     "sha256": "a596832f6d1aada24c0a347b3fddf21844ad09254bdb4ff69273d06617a7454b",
     "num_bytes": 1754554
   },
+  "ing-building-kfs": {
+    "insurer": "ING",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "ing-building-kfs.pdf",
+    "path": "data/raw_pdfs/ING/ing-building-kfs.pdf",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2019-KFS-HB.pdf",
+    "sha256": "5f8606ebe28ff7df8b8b80632491f0cbde5a748d0239a1b99674c71722dd424f",
+    "num_bytes": 119268
+  },
+  "ing-contents-kfs": {
+    "insurer": "ING",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "ing-contents-kfs.pdf",
+    "path": "data/raw_pdfs/ING/ing-contents-kfs.pdf",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2019-KFS-HC.pdf",
+    "sha256": "bc12557c7b97de1a4a5b4c2bb660f1d1257f3366eb2702b1b0b0f28919b36c9b",
+    "num_bytes": 167452
+  },
+  "ing-home-pds": {
+    "insurer": "ING",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "ing-home-pds.pdf",
+    "path": "data/raw_pdfs/ING/ing-home-pds.pdf",
+    "url": "https://www.ing.com.au/pdf/insurance/Home-2021-pds.pdf",
+    "sha256": "e109b50af056da50255a4ae43958342645c84d9a65cc120de6e0483a5309d469",
+    "num_bytes": 1689228
+  },
   "nrma-contents-kfs": {
     "insurer": "NRMA",
     "product": "Contents",

@@ -40,6 +40,13 @@ SOURCES = {
     "Woolworths": "https://insurance.everyday.com.au/home-insurance/useful-documents.html",
     "RACV": "https://www.racv.com.au/insurance/policy-documents/home.html",
     "RACQ": "https://www.racq.com.au/insurance/insurance-disclosure-documents",
+    # Coles (home PDS/KFS hosted off this landing page, only FSG/TMD found
+    # here), Australia Post (home insurance discontinued Sept 2025, no home
+    # docs left on this page), and Bank of Melbourne (home PDS not linked
+    # from this particular sub-page) were also tried and excluded -- none
+    # cleanly scrapable via this generic pattern without hardcoding a
+    # one-off direct PDF URL, which isn't worth doing for one insurer each.
+    "ING": "https://www.ing.com.au/help-and-support/documents-and-forms/insurance.html",
 }
 
 HOME_KEYWORDS = re.compile(r"home|building|contents|dwelling|landlord|strata", re.I)
