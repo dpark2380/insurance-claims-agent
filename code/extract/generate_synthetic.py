@@ -29,7 +29,7 @@ TRAIN_PATH = ROOT / "data" / "claims" / "train.jsonl"
 VAL_PATH = ROOT / "data" / "claims" / "val.jsonl"
 TEST_PATH = ROOT / "data" / "claims" / "test.jsonl"
 
-TARGET = 150
+TARGET = 300
 CLAIM_TYPES = list(ClaimType)
 COMPLEXITY_HINTS = [
     "a clean, single-item claim with no ambiguity",
@@ -37,6 +37,21 @@ COMPLEXITY_HINTS = [
     "a claim involving multiple damaged items",
     "a claim where the claimant doesn't mention a policy number",
     "a claim where the claimant hasn't got a repair estimate yet, so no dollar amount",
+]
+# Independent axis from COMPLEXITY_HINTS -- varies HOW the claimant writes, not WHAT
+# happened. Without this every narrative was written in one uniform "clean Claude
+# prose" register, so a model trained on it risks learning that register rather than
+# real claimant phrasing variance. len()=4 vs COMPLEXITY_HINTS' 5 means the two axes
+# fall out of phase every iteration and cover all 20 combinations every 20 rows.
+REGISTER_HINTS = [
+    "clean, professional writing",
+    "informal and casual, with a couple of minor typos or dropped punctuation",
+    "terse and a bit incomplete, as if dashed off quickly, but every field the schema "
+    "needs must still be genuinely stated or clearly implied -- terse is not an excuse "
+    "to be ambiguous",
+    "written the way a non-native English speaker might phrase it -- simpler sentence "
+    "structure, occasional slightly unusual word choice -- but still perfectly clear "
+    "and grammatical enough to read",
 ]
 
 SCHEMA_JSON = json.dumps(ClaimExtraction.model_json_schema(), indent=2)
@@ -71,6 +86,11 @@ Rules:
   example, the narrative must name that watercourse. Any other rain-caused scenario
   (wind-driven rain, roof ingress, drainage overwhelm, surface pooling with no named
   watercourse) must be labelled "storm" instead, regardless of rainfall volume.
+- Write the narrative in the requested register (see the "register" hint in the
+  request), varying vocabulary and sentence structure accordingly -- but the
+  groundedness rule above still applies without exception: every gold_extraction
+  field must still be genuinely readable off the narrative. A messier register is a
+  style change, never an excuse to make the underlying facts ambiguous or missing.
 - Output ONLY the JSON object, no other text, no markdown code fences."""
 
 
@@ -85,8 +105,11 @@ def _strip_fences(text: str) -> str:
     return text.strip()
 
 
-def generate_one(claim_type: ClaimType, complexity: str) -> dict | None:
-    user_msg = f"Generate one example. claim_type: {claim_type.value}. complexity: {complexity}."
+def generate_one(claim_type: ClaimType, complexity: str, register: str = REGISTER_HINTS[0]) -> dict | None:
+    user_msg = (
+        f"Generate one example. claim_type: {claim_type.value}. "
+        f"complexity: {complexity}. register: {register}."
+    )
     last_error: Exception | None = None
     for _attempt in range(2):
         response = _client().messages.create(
@@ -125,8 +148,9 @@ def main():
         while accepted < TARGET:
             claim_type = CLAIM_TYPES[i % len(CLAIM_TYPES)]
             complexity = COMPLEXITY_HINTS[i % len(COMPLEXITY_HINTS)]
+            register = REGISTER_HINTS[i % len(REGISTER_HINTS)]
             i += 1
-            row = generate_one(claim_type, complexity)
+            row = generate_one(claim_type, complexity, register)
             if row is None:
                 skipped += 1
                 continue
