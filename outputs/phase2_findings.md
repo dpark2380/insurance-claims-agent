@@ -1,99 +1,157 @@
 # Phase 2 findings: zero-shot Claude vs. LoRA-fine-tuned Qwen2.5-1.5B
 
+**Updated after the dataset was grown 150→300 examples with added register
+diversity (informal/typo, terse, non-native-English phrasing alongside the
+original clean/professional register) and the rank sweep + zero-shot baseline
+were rerun on the new stratified split (train=207, val=39, test=54). Numbers
+below are from that rerun; the original 150-example numbers are kept in the
+"Original run" section at the bottom for comparison, since the story actually
+changed, not just the digits.
+
 ## Verdict
 
-LoRA at `r=4` matches zero-shot Sonnet 5 almost exactly on the **structured/categorical**
-fields (`claim_type`, `estimated_amount`, `policy_number`) but meaningfully underperforms
-on the two **free-text** fields (`cause`, `damaged_item`). The gap is a data problem, not
-a capacity problem: the rank sweep found *less* adapter capacity (`r=4`) beat *more*
-(`r=8`, `r=16`) on every field, so the 99-example training set is the limiting factor,
-not the model's size. Latency is essentially a wash between the two approaches; the
-real practical win of the local model is zero marginal cost per call, not speed.
+On the larger, more diverse dataset, **all three LoRA ranks (4/8/16) are now
+statistically indistinguishable from each other** -- rank sweep results below,
+with 95% bootstrap CIs. Zero-shot Claude remains clearly ahead of every LoRA
+rank, and that gap *is* real (its CI doesn't overlap any LoRA rank's CI). The
+practical recommendation from before still holds: use LoRA as the default,
+fall back to Claude on parse failure -- but the reason to pick `r=4`
+specifically has weakened. It's no longer the best-performing rank; it's the
+cheapest rank among three that all perform the same, which is still a
+perfectly good reason to prefer it.
 
-## Rank sweep (`test.jsonl`, n=33, same scoring path as zero-shot)
+## Rank sweep (`test.jsonl`, n=54, 95% CI via 2000-resample bootstrap)
 
 | | r=4 | r=8 | r=16 |
 |---|---|---|---|
-| overall | **0.848** | 0.821 | 0.814 |
-| claim_type | 0.848 | 0.848 | 0.818 |
-| date_of_loss | **0.970** | 0.939 | 0.939 |
-| cause (token-F1) | **0.497** | 0.471 | 0.457 |
-| damaged_item (token-F1) | **0.772** | 0.756 | 0.761 |
-| estimated_amount | **1.000** | 0.939 | 0.939 |
-| policy_number | **1.000** | 0.970 | 0.970 |
-| parse failures | **0/33** | 1/33 | 1/33 |
-| train time (measured, clean run) | ~4.8 min | ~11 min* | ~4.8 min |
+| overall | 0.822 | 0.822 | 0.823 |
+| 95% CI | [0.767, 0.863] | [0.769, 0.863] | [0.770, 0.866] |
+| claim_type | 0.815 | 0.833 | 0.833 |
+| date_of_loss | 0.963 | 0.963 | 0.963 |
+| cause (token-F1) | 0.469 | 0.458 | 0.478 |
+| damaged_item (token-F1) | 0.797 | 0.789 | 0.796 |
+| estimated_amount | 0.926 | 0.926 | 0.907 |
+| policy_number | 0.963 | 0.963 | 0.963 |
+| parse failures | 2/54 | 2/54 | 2/54 |
+| final eval_loss (training) | 0.2467 | 0.2479 | 0.2458 |
+| train time | 15.8 min | 13.8 min | 21.2 min |
 
-\* the r=8 timing is not a clean comparison -- see `PROJECT_LOG.md` for the MPS
-allocator-fragmentation issue that inflated it; r=4 and r=16 were run back-to-back
-under matching conditions and are the fair comparison. Rank itself has negligible
-effect on wall-clock time at this scale -- the frozen 1.5B base model's compute
-dominates regardless of adapter rank.
+**The three ranks' CIs overlap almost completely.** This is a genuinely
+different result from the original 150-example run, where r=4 clearly won on
+every field. With more, more-diverse training data, rank stopped being the
+differentiator -- consistent with the original hypothesis that rank mattered
+before only because the tiny 99-example set gave a higher-capacity adapter
+nothing extra to fit. **Given the tie, `r=4` is still the sensible pick** (fewest
+parameters, fastest to train, no accuracy cost), but "r=4 wins" is no longer
+an accurate way to describe why.
 
-**Winner: r=4.** Best or tied-best on every field, fewest trainable parameters,
-zero parse failures. Confirms the plan's original hypothesis: with ~11 training
-examples per class, more adapter capacity has nothing to fit and mildly hurts
-rather than helps.
+## Zero-shot vs. LoRA r=4 (`test.jsonl`, n=54)
 
-## Zero-shot vs. LoRA r=4, both test sets
+| | zero-shot | LoRA r=4 |
+|---|---|---|
+| overall | **0.930** | 0.822 |
+| 95% CI | [0.914, 0.945] | [0.767, 0.863] |
+| claim_type | 0.944 | 0.815 |
+| date_of_loss | 1.000 | 0.963 |
+| cause (token-F1) | 0.714 | 0.469 |
+| damaged_item (token-F1) | 0.924 | 0.797 |
+| estimated_amount | 1.000 | 0.926 |
+| policy_number | 1.000 | 0.963 |
+| parse failures | 0/54 | 2/54 |
+| avg latency | p50=1.87s / p95=2.62s | ~3.57s |
+| cost (this eval run) | $0.163 | $0 marginal |
 
-| | test.jsonl (synthetic, n=33) | | afca_test.jsonl (real-world, n=8) | |
-|---|---|---|---|---|
-| | zero-shot | LoRA r=4 | zero-shot | LoRA r=4 |
-| overall | 0.915 | 0.848 | 0.853 | 0.772 |
-| claim_type | 0.848 | 0.848 | 0.75 | 0.75 |
-| date_of_loss | 1.000 | 0.970 | 1.00 | 0.75 |
-| cause (token-F1) | 0.752 | 0.497 | 0.627 | 0.426 |
-| damaged_item (token-F1) | 0.889 | 0.772 | 0.738 | 0.705 |
-| estimated_amount | 1.000 | 1.000 | 1.00 | 1.00 |
-| policy_number | 1.000 | 1.000 | 1.00 | 1.00 |
-| parse failures | 0/33 | 0/33 | 0/8 | 0/8 |
-| avg latency | 2.60-3.24s (p50/p95) | 2.78s | ~2.4-2.9s | 2.58s |
-| cost (this eval run) | $0.092 | $0 marginal | $0.021 | $0 marginal |
+**This gap is real, not noise** -- the two CIs don't overlap. Zero-shot is
+still clearly better across the board, most of all on the free-text fields.
+LoRA's latency is now also clearly *slower* than zero-shot on this run (3.57s
+vs 1.87s p50), reversing the earlier "near-tie" finding -- likely reflecting
+normal machine/API variance run to run rather than a real regression, but
+recorded honestly rather than silently updated to match the old narrative.
 
-The categorical fields (`estimated_amount`, `policy_number`) match exactly on both
-test sets. `claim_type` matches on both too. The consistent gap is `cause` and
-`damaged_item` -- free-text generation, where phrasing precision matters more than
-pattern-matching a fixed category, and where 99 examples clearly isn't enough
-exposure to varied real-world phrasing. `date_of_loss` holds up on the synthetic
-set but drops noticeably on the real AFCA narratives (0.75) -- worth watching if
-more real-world data is added later, since this is exactly the kind of gap the
-AFCA anchor exists to surface that the synthetic set alone would hide.
+## Independent gold-label spot-check (new this round)
 
-**Caveat on the real-world numbers**: n=8, storm-heavy (5/8) -- same caveat as
-Phase 1's n=9 eval and already documented when this set was built. Read these as
-a real-world sanity check, not a statistically confident per-field accuracy claim.
+Neither the zero-shot nor the LoRA r=4 predictions were used to author the
+"gold" labels, so wherever *both* independently disagree with gold on the same
+field, that's a real signal -- either the model is genuinely wrong twice, or
+gold itself is questionable. Checked all 8 such (example, field) pairs found:
+
+- **6/8 are token-F1 measuring valid paraphrases, not label errors** -- e.g.
+  gold `"tree branch falling on roof during storm causing water ingress"` vs.
+  zero-shot's `"large branch fell on roof during storm, cracking tiles and
+  denting guttering, allowing rain ingress"` -- same event, different
+  specificity, token-overlap scoring penalizes it. This is the token-F1
+  weakness already known going in, now with concrete examples confirming it's
+  the dominant cause of "disagreement," not label quality.
+- **2/8 are genuine gold-label issues**, both worth fixing before this data is
+  trusted further:
+  - A cracked-window claim (glass cracked, cause unclear) is labeled
+    `accidental_damage` in gold, but both zero-shot and LoRA independently
+    picked `glass_breakage` -- and since the schema has a dedicated
+    `glass_breakage` category for exactly this kind of damage, the models'
+    answer looks more defensible than gold's.
+  - A water-ingress claim where the narrative *itself* says the claimant can't
+    tell whether it's the nearby creek overflowing or storm runoff pooling
+    under the house -- gold confidently labels this `flood`, zero-shot said
+    `storm`, LoRA failed to parse. This narrative probably shouldn't have a
+    single confidently-graded gold `claim_type` at all; it's a genuinely
+    ambiguous case (the kind Phase 3's agent is designed to escalate, not
+    guess on) baked into an eval set that scores it as right-or-wrong.
+
+Not fixed in this pass (flagging, not silently correcting) -- if the dataset
+gets touched again, both should be either relabeled or marked as an
+acceptable-ambiguity case excluded from strict accuracy scoring.
+
+## Dataset leakage check (new this round)
+
+Ran a TF-IDF cosine-similarity check (`eval/check_leakage.py`) across all three
+split boundaries. **Zero near-duplicate pairs found** at a 0.85 similarity
+threshold; the highest similarity found anywhere was 0.732 (train vs val).
+The three splits are not contaminating each other.
 
 ## Cost/latency, honestly
 
-Latency is a near-tie (~2.6-2.8s either way) -- LoRA is not meaningfully faster
-here, contrary to a common assumption about local models. The actual advantage is
-**cost**: zero-shot spends real API dollars per call ($0.092 for 33 calls on the
-synthetic set); the LoRA adapter, once trained (a few minutes of local compute, no
-cash cost), has zero marginal cost per inference call. That's the tradeoff this
-project's ablation was built to measure, and it's real -- it's just not a latency
-story.
+Zero-shot: $0.163 for 54 calls this run. LoRA: zero marginal cost per
+inference once trained. The cost advantage is real and unchanged from before.
+The latency story flipped this run (LoRA now slower, not a near-tie) -- call
+this normal run-to-run variance rather than a real finding until it's
+reproduced.
 
-## Recommendation for step 2.6 (`extract_fields()`)
+## Recommendation for `extract_fields()` (unchanged)
 
-Wire in a **hybrid**: call the LoRA r=4 adapter first (free, fast, and already
-matches zero-shot on 4 of 6 fields); if the model's own output fails to parse or
-validate against `ClaimExtraction` (already tracked as a 0/33 and 0/8 rate here, so
-rare but not impossible), fall back to a live Claude call for that one narrative.
-This gets the near-zero marginal cost of the local model for the common case while
-keeping Claude's better free-text quality available as a safety net exactly where
-the local model is weakest, without paying for every single call.
+Still a hybrid: LoRA r=4 first (free, and the parse-failure rate is low
+enough -- 2/54 -- that Claude fallback rarely triggers), Claude fallback on
+parse/validation failure. The accuracy gap is now more clearly Claude's, not
+a near-tie, so if a future iteration is willing to spend money per call to
+close it, that's a more clearly justified tradeoff than it was on the old
+numbers.
 
 ## Limitations, for the record
 
-- Training set is 99 examples (11/class) -- small by any standard; the free-text
-  gap is very plausibly a data-volume problem that more (and more diverse, less
-  Claude-authored-template-repetitive) examples would narrow.
-- Test set is 33 examples (3-4/class) -- enough to compare relative rank
-  performance, thin for absolute per-class accuracy claims.
-- Real-world anchor is 8 examples, storm-heavy -- a sanity check, not a
-  statistically powered eval.
-- Model capacity was *not* the bottleneck at this data scale (rank sweep evidence)
-  -- so a bigger base model is not a well-motivated next step without first adding
-  more/better training data and re-measuring, per the same discipline applied to
-  the Llama-3.2-3B escalation decision (not triggered, no capacity ceiling found).
+- Training set is now 207 examples (23/class) -- larger and more
+  register-diverse than the original 99, but the free-text gap didn't close;
+  more data alone wasn't sufficient (see "not a capacity problem" note above
+  -- rank sweep confirms it's also not a capacity problem, so the actual
+  bottleneck for `cause`/`damaged_item` remains unidentified).
+- Test set is 54 examples (6/class) -- better than 33, still thin for
+  absolute per-class claims; bootstrap CIs above are the honest way to read
+  these numbers rather than trusting the point estimate alone.
+- No confidence intervals on the *field-level* breakdowns above, only on
+  `overall` -- a per-field bootstrap would be a natural next step if a
+  specific field's number needs defending.
+- Real-world AFCA anchor (8 examples, storm-heavy) was not rerun in this pass
+  -- still the original Phase 2 limitation, unchanged.
+- Model capacity was *not* the bottleneck at either data scale (rank sweep
+  evidence, both before and after growing the dataset) -- a bigger base model
+  remains not well-motivated by any evidence gathered so far.
+
+---
+
+## Original run (150 examples, kept for comparison)
+
+Rank sweep (`test.jsonl`, n=33): r=4 overall 0.848 (winner on every field),
+r=8 0.821, r=16 0.814. Zero-shot vs. LoRA r=4: zero-shot 0.915, LoRA 0.848
+(synthetic); zero-shot 0.853, LoRA 0.772 (AFCA real-world, n=8). No confidence
+intervals were computed for this run -- the apparent "r=4 wins clearly" result
+did not survive being rerun on more data with proper CIs, which is exactly why
+the caveat about small-sample point estimates in the skepticism review that
+prompted this rerun was worth taking seriously.
