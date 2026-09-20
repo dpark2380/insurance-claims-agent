@@ -167,16 +167,31 @@ consistent with how every other date in this project has been handled.
 | 95% CI | [0.853, 0.917] | [0.574, 0.858] | [0.716, 0.843] | [0.728, 0.859] |
 | parse failures | 0/11 | 1/11 | 0/11 | 0/11 |
 
-At n=11 the confidence intervals are wide enough to change the story: r=4's
-CI is enormous ([0.574, 0.858]) and clearly overlaps zero-shot's, so on
-real-world data zero-shot's advantage over r=4 specifically is *not*
-statistically distinguishable from noise, unlike on the 54-example synthetic
-set where it clearly was. r=16's CI upper bound (0.859) barely touches
-zero-shot's lower bound (0.853) -- borderline, not a clean gap either way.
-**The synthetic-set finding "zero-shot is significantly better" does not
-straightforwardly replicate on real-world data at this sample size.** This
-doesn't mean the synthetic finding is wrong; it means n=11 isn't powered to
-confirm or contradict it, which is itself the honest conclusion.
+**Correction:** an earlier version of this section only discussed r=4 and
+r=16 and concluded the synthetic-set finding "does not straightforwardly
+replicate" on real-world data. That was an overgeneralization -- it ignored
+r=8, whose CI upper bound (0.843) sits *below* zero-shot's lower bound
+(0.853), a clean non-overlap by the same heuristic. Checking all three ranks
+against zero-shot's CI [0.853, 0.917]:
+
+| rank | CI upper bound | vs. zero-shot's 0.853 lower bound | overlap? |
+|---|---|---|---|
+| r=4 | 0.858 | +0.005 | barely overlaps |
+| r=8 | 0.843 | -0.010 | does **not** overlap |
+| r=16 | 0.859 | +0.006 | barely overlaps |
+
+This is not a clean "replicates" or "doesn't replicate" result -- it's
+**inconsistent across ranks that shouldn't differ this much in real
+underlying performance**, which is itself the more informative finding: it
+means the CI-overlap heuristic is unstable at n=11, swinging a rank's
+verdict on a fraction of a percentage point. Trying to read a real
+directional signal out of which side of a knife-edge each rank happens to
+land on would be overfitting to sampling noise. The honest conclusion is
+narrower than either "replicates" or "doesn't replicate": **n=11 is not
+powered to settle whether zero-shot's synthetic-set advantage holds on
+real-world data, and this table demonstrates why rather than just asserting
+it** -- three ranks expected to behave similarly produced three different
+overlap verdicts.
 
 ## Limitations, for the record
 
