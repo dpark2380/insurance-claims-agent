@@ -2,19 +2,19 @@
   "dataset": "afca",
   "model": "claude-sonnet-5",
   "per_field": {
-    "claim_type": 0.75,
+    "claim_type": 1.0,
     "date_of_loss": 1.0,
-    "cause": 0.6270763656633221,
-    "damaged_item": 0.7379801302498671,
+    "cause": 0.641779696575093,
+    "damaged_item": 0.6734138660538886,
     "estimated_amount": 1.0,
     "policy_number": 1.0
   },
-  "overall_mean_of_fields": 0.8525094159855314,
-  "n": 8,
+  "overall_mean_of_fields": 0.8858655937714969,
+  "n": 11,
   "parse_failures": 0,
-  "cost_usd": 0.02087,
-  "latency_p50_s": 2.360218874993734,
-  "latency_p95_s": 2.935846042004414,
+  "cost_usd": 0.03128,
+  "latency_p50_s": 1.95671158299956,
+  "latency_p95_s": 2.3709373750025406,
   "predictions": [
     {
       "claim_type": "storm",
@@ -27,15 +27,15 @@
     {
       "claim_type": "storm",
       "date_of_loss": "2020-10-31",
-      "cause": "hailstorm with large hailstones 6-8 cm",
+      "cause": "hailstorm with large hailstones puncturing the roof",
       "damaged_item": "asbestos corrugated roof and adjacent patio roof",
       "estimated_amount": null,
       "policy_number": null
     },
     {
-      "claim_type": "flood",
+      "claim_type": "storm",
       "date_of_loss": "2025-04-01",
-      "cause": "heavy rainfall overwhelmed perimeter drainage causing water to enter the subfloor",
+      "cause": "excessive rainfall overwhelmed perimeter drainage causing water to enter the subfloor",
       "damaged_item": "timber subfloor and particleboard flooring across up to seven rooms",
       "estimated_amount": 96470.0,
       "policy_number": null
@@ -60,14 +60,14 @@
       "claim_type": "malicious_damage",
       "date_of_loss": "2022-01-01",
       "cause": "vandals broke into the property and smashed windows",
-      "damaged_item": "all external windows",
+      "damaged_item": "external windows",
       "estimated_amount": null,
       "policy_number": null
     },
     {
-      "claim_type": "flood",
+      "claim_type": "storm",
       "date_of_loss": "2022-02-23",
-      "cause": "over 700 mm of rain in five days overwhelmed the foundations along the western wall",
+      "cause": "500 mm+ rainfall over five days overwhelmed foundations along the western wall",
       "damaged_item": "multiple rooms in the property",
       "estimated_amount": null,
       "policy_number": null
@@ -75,9 +75,33 @@
     {
       "claim_type": "storm",
       "date_of_loss": "2018-09-01",
-      "cause": "boulder and rockface collapse during heavy rain storm",
-      "damaged_item": "external cladding at rear, garage rear wall, bedroom wall",
+      "cause": "boulder and rockface collapse during a storm with heavy rain",
+      "damaged_item": "external cladding at the rear of the property, rear wall of the garage and a bedroom wall",
       "estimated_amount": 88362.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2022-02-01",
+      "cause": "Richmond River flooding inundated the property",
+      "damaged_item": "garage floor, home office and ceiling",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2022-03-01",
+      "cause": "wind-driven rain and roof tile movement allowing water ingress",
+      "damaged_item": "kitchen and bedroom ceilings, belongings, and front eaves",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2020-05-07",
+      "cause": "started from a candle or cigarette",
+      "damaged_item": "home",
+      "estimated_amount": 100000.0,
       "policy_number": null
     }
   ],
@@ -144,6 +168,30 @@
       "cause": "boulder/rockface collapse during storm with heavy rain",
       "damaged_item": "external cladding at rear of property, garage rear wall, bedroom wall",
       "estimated_amount": 88362.0,
+      "policy_number": null
+    },
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2022-02-01",
+      "cause": "Richmond River flooding combined with earlier stormwater pooling in the garage",
+      "damaged_item": "garage floor, home office, and ceiling, with resulting mould",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "storm",
+      "date_of_loss": "2022-03-01",
+      "cause": "wind-driven rain and roof tile movement during heavy rainfall allowed water ingress",
+      "damaged_item": "kitchen and bedroom ceilings and contents, with resulting mould and eaves damage",
+      "estimated_amount": null,
+      "policy_number": null
+    },
+    {
+      "claim_type": "fire",
+      "date_of_loss": "2020-05-07",
+      "cause": "fire, believed started by a candle or cigarette",
+      "damaged_item": "residential home, building and contents",
+      "estimated_amount": 100000.0,
       "policy_number": null
     }
   ]

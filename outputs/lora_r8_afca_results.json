@@ -1,24 +1,24 @@
 {
-  "rank": 4,
+  "rank": 8,
   "dataset": "afca",
   "per_field": {
-    "claim_type": 0.8181818181818182,
-    "date_of_loss": 0.7272727272727273,
-    "cause": 0.5129006940635815,
-    "damaged_item": 0.5675963324288683,
-    "estimated_amount": 0.9090909090909091,
-    "policy_number": 0.9090909090909091
+    "claim_type": 0.7272727272727273,
+    "date_of_loss": 0.8181818181818182,
+    "cause": 0.49510386638533094,
+    "damaged_item": 0.628515676242949,
+    "estimated_amount": 1.0,
+    "policy_number": 1.0
   },
-  "overall_mean_of_fields": 0.7406888983548022,
+  "overall_mean_of_fields": 0.7781790146804709,
   "n": 11,
-  "parse_failures": 1,
-  "avg_latency_s": 3.1430574733636933,
+  "parse_failures": 0,
+  "avg_latency_s": 3.1747831968162,
   "predictions": [
     {
       "claim_type": "storm",
       "date_of_loss": "2022-03-01",
       "cause": "wind-driven rain through Dutch gable lead flashing",
-      "damaged_item": "master bedroom ceiling, cornice and walls",
+      "damaged_item": "master bedroom ceiling, cornice, walls and mould growth",
       "estimated_amount": null,
       "policy_number": null
     },
@@ -30,7 +30,14 @@
       "estimated_amount": null,
       "policy_number": null
     },
-    null,
+    {
+      "claim_type": "flood",
+      "date_of_loss": "2025-04-01",
+      "cause": "overwhelmed perimeter drainage due to excessive rainfall",
+      "damaged_item": "timber subfloor and particleboard flooring",
+      "estimated_amount": 96470.0,
+      "policy_number": null
+    },
     {
       "claim_type": "fire",
       "date_of_loss": "2021-05-24",
@@ -65,33 +72,33 @@
     },
     {
       "claim_type": "storm",
-      "date_of_loss": "2018-04-05",
-      "cause": "boulder collapse due to heavy rain during storm",
-      "damaged_item": "external cladding, garage wall and bedroom wall",
+      "date_of_loss": "2018-04-01",
+      "cause": "boulder collapse due to heavy rain",
+      "damaged_item": "external cladding, garage wall, and bedroom wall",
       "estimated_amount": 88362.0,
       "policy_number": null
     },
     {
       "claim_type": "flood",
       "date_of_loss": "2022-02-01",
-      "cause": "catastrophic flood along Richmond River and pre-existing stormwater pooling in garage",
+      "cause": "catastrophic flood along Richmond River",
       "damaged_item": "garage floor, home office and ceiling",
       "estimated_amount": null,
       "policy_number": null
     },
     {
-      "claim_type": "storm",
+      "claim_type": "flood",
       "date_of_loss": "2022-03-01",
       "cause": "heavy rainfall causing wind-driven rain and roof tile movement",
-      "damaged_item": "kitchen and bedroom ceilings and front eaves of the roof",
+      "damaged_item": "kitchen and bedroom ceilings, as well as front eaves of the roof",
       "estimated_amount": null,
       "policy_number": null
     },
     {
       "claim_type": "fire",
       "date_of_loss": "2020-05-07",
-      "cause": "candle or cigarette",
-      "damaged_item": "home interior",
+      "cause": "candle or cigarette ignited nearby flammable material",
+      "damaged_item": "entire home",
       "estimated_amount": 100000.0,
       "policy_number": null
     }
