@@ -4,15 +4,15 @@
     "product": "Building",
     "doc_type": "KFS",
     "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-building-15-12-2020.pdf",
-    "text": "Key Fact Sheet",
-    "date_key": "2020"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "AAMI",
     "product": "Building",
     "doc_type": "PDS",
     "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds.pdf",
-    "text": "/content/dam/assets/documents/aami/home/aami-home-building-insurance-pds.pdf",
+    "text": "",
     "date_key": ""
   },
   {
@@ -20,15 +20,15 @@
     "product": "Contents",
     "doc_type": "KFS",
     "url": "https://www.aami.com.au/assets/documents/aami/home/kfs-contents-15-12-2020.pdf",
-    "text": "Key Fact Sheet",
-    "date_key": "2020"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "AAMI",
     "product": "Contents",
     "doc_type": "PDS",
     "url": "https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds.pdf",
-    "text": "/content/dam/assets/documents/aami/home/aami-home-contents-insurance-pds.pdf",
+    "text": "",
     "date_key": ""
   },
   {
@@ -36,87 +36,207 @@
     "product": "Building",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPB00112241224/$FILE/KFSDIHomeITMPB0011224.pdf?open",
-    "text": "Allianz Home Insurance (purchased from 20 July 2025) - Building - key facts sheet (PDF, 115 KB)",
-    "date_key": "2025"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "Allianz",
     "product": "Contents",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPC00112241224/$FILE/KFSDIHomeITMPC0011224.pdf?open",
-    "text": "Allianz Home Insurance (purchased from 20 July 2025) - Contents - key facts sheet (PDF,\u00a0 117 KB)",
-    "date_key": "2025"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "Allianz",
     "product": "Home",
     "doc_type": "PDS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open",
-    "text": "Allianz Home Insurance (purchased from 20 July 2025) Product Disclosure Statement (PDF, 1.6 MB)",
-    "date_key": "20250720"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "Allianz",
     "product": "Landlord",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDILandlordITMPB00112241224/$FILE/KFSDILandlordITMPB0011224.pdf?open",
-    "text": "Allianz Landlord Insurance (purchased from 20 July 2025) - Building - key facts sheet (PDF, 115 KB)",
-    "date_key": "2025"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "Allianz",
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open",
-    "text": "Allianz Landlord Insurance (purchased from 20 July 2025) Product Disclosure Statement (PDF, 1.5 MB)",
-    "date_key": "20250720"
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "BudgetDirect",
+    "product": "Home",
+    "doc_type": "KFS",
+    "url": "https://www.autogeneral.com.au/prd/aagwebsite/agca/web/branding/resources/BUDD/legal/home/20190912_HBKFS.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "BudgetDirect",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.autogeneral.com.au/prd/aagwebsite/agca/web/branding/resources/BUDD/legal/home/20210302_HPDSBUDD.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "CGU",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-home-building-kfs-des1713-rev3-1025.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "CGU",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-home-contents-kfs-des1920-rev3-1025.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "CGU",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-accidental-damage-home-pds-coo19-f-rev12-0623.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "CGU",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "GIO",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-building-kfs-g30033a-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "GIO",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-kfs-g30034a-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "GIO",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-contents-product-disclosure-statement-220321.pdf",
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "NRMA",
     "product": "Contents",
     "doc_type": "KFS",
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-contents-kfs-nrmaconkfs-rev3-0225.pdf",
-    "text": "Home Contents KFS February 2025",
-    "date_key": "2025"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "NRMA",
     "product": "Home",
     "doc_type": "KFS",
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-buildings-kfs-nrmabldkfs-rev3-0524.pdf",
-    "text": "Home Buildings KFS May 2024",
-    "date_key": "2024"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "NRMA",
     "product": "Home",
     "doc_type": "PDS",
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf",
-    "text": "Home Insurance PDS April 2024",
-    "date_key": "2024"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "NRMA",
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf",
-    "text": "Landlord Insurance PDS April 2024",
-    "date_key": "2024"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "RAA",
     "product": "Contents",
     "doc_type": "PDS",
     "url": "https://www.raa.com.au/-/media/Project/RAA/Web/Files/Home/HomeInsurance/raa-home-and-contents-insurance-pds-product-disclosure-statement-30-9-2021.pdf?la=en&hash=062A650923E940EA7F2E9A3EED101C53",
-    "text": "Download a PDF version (1.1MB)",
-    "date_key": "2021"
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACQ",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/keyfactsheet/household-insurance/household_kfsbld_01092025.pdf?rev=e9a5e33d184445d4b6b658112cd0e54e&hash=FCC26F0FD6AD384C5A6E0615B62E0B3B",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACQ",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/keyfactsheet/household-insurance/household_kfscts_01092025.pdf?rev=b1017019809e44228bd8db2bb2e5abc3&hash=E270C55E0E331F59DC1FEEEA438FDA08",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACV",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/kfs/key-facts-home-building-policy-current.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACV",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/kfs/key-facts-home-contents-policy-current.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACV",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACV",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/landlord-insurance-pds-current.pdf",
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "RealInsurance",
     "product": "Contents",
     "doc_type": "KFS",
     "url": "https://www.realinsurance.com.au/documents/real-home-contents-key-facts-sheet.pdf",
-    "text": "Contents Key Facts Sheet",
+    "text": "",
     "date_key": ""
   },
   {
@@ -124,15 +244,15 @@
     "product": "Contents",
     "doc_type": "PDS",
     "url": "https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf",
-    "text": "Home Insurance (including Contents cover) Product Disclosure Statement \u2013 Dated 1 July 2026",
-    "date_key": "2026"
+    "text": "",
+    "date_key": ""
   },
   {
     "insurer": "RealInsurance",
     "product": "Home",
     "doc_type": "KFS",
     "url": "https://www.realinsurance.com.au/documents/real-home-key-facts-sheet.pdf",
-    "text": "Home Key Facts Sheet",
+    "text": "",
     "date_key": ""
   },
   {
@@ -140,7 +260,71 @@
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf",
-    "text": "Landlords Insurance Product Disclosure Statement \u2013 Dated 1 July 2026",
-    "date_key": "2026"
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-building-kfs-27378a-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-kfs-27379a-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Woolworths",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://insurance.everyday.com.au/content/dam/Woolworths/Insurance/Home/UsefulDocumentsHome/Woolworths_BuildingKeyFactSheet.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Woolworths",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://insurance.everyday.com.au/content/dam/Woolworths/Insurance/Home/UsefulDocumentsHome/Woolworths_ContentsKeyFactSheet.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Woolworths",
+    "product": "Home",
+    "doc_type": "KFS",
+    "url": "https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_BuildingKeyFactSheet.pdf",
+    "text": "",
+    "date_key": ""
+  },
+  {
+    "insurer": "Woolworths",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Feb-23.pdf",
+    "text": "",
+    "date_key": ""
   }
 ]

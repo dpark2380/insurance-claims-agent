@@ -28,6 +28,18 @@ SOURCES = {
     "RealInsurance": "https://www.realinsurance.com.au/product-disclosure-statements",
     "RAA": "https://www.raa.com.au/help-centre/insurance-support/pds-and-fact-sheets/home-and-contents-insurance-product-disclosure-statement",
     "NRMA": "https://www.nrma.com.au/policy-booklets",
+    # Added in the corpus expansion pass. Youi (JS-rendered page, no static PDF
+    # links) and QBE (active 403 on this landing page) were tried and excluded
+    # deliberately -- not worth a headless-browser workaround for one insurer,
+    # and a 403 is a site's own decision to block automated access, respected
+    # the same way afca.org.au's bot-detection was earlier in this project.
+    "Suncorp": "https://www.suncorp.com.au/insurance/policy-documents.html",
+    "CGU": "https://www.cgu.com.au/policy-booklets",
+    "BudgetDirect": "https://www.autogeneral.com.au/customers/find-pds/budd/home/",
+    "GIO": "https://www.gio.com.au/policy-documents/home-contents.html",
+    "Woolworths": "https://insurance.everyday.com.au/home-insurance/useful-documents.html",
+    "RACV": "https://www.racv.com.au/insurance/policy-documents/home.html",
+    "RACQ": "https://www.racq.com.au/insurance/insurance-disclosure-documents",
 }
 
 HOME_KEYWORDS = re.compile(r"home|building|contents|dwelling|landlord|strata", re.I)

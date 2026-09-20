@@ -7,5 +7,10 @@
   {"q": "Under Real Insurance's contents policy, is malicious damage by a tenant covered?", "insurer": "RealInsurance", "product": "Contents"},
   {"q": "Does Allianz landlord insurance cover loss of rent while the property is uninhabitable?", "insurer": "Allianz", "product": "Landlord"},
   {"q": "Is accidental damage to a swimming pool covered under RAA contents insurance?", "insurer": "RAA", "product": "Contents"},
-  {"q": "Does NRMA cover satellite dish coverage or space tourism liability under home insurance?", "insurer": "NRMA", "product": "Home"}
+  {"q": "Does NRMA cover satellite dish coverage or space tourism liability under home insurance?", "insurer": "NRMA", "product": "Home"},
+  {"q": "Does Suncorp home and contents insurance cover flood damage?", "insurer": "Suncorp"},
+  {"q": "Is accidental damage covered under a CGU home policy?", "insurer": "CGU"},
+  {"q": "What excess applies to a Woolworths home insurance claim?", "insurer": "Woolworths"},
+  {"q": "Does RACV landlord insurance cover loss of rent?", "insurer": "RACV", "product": "Landlord"},
+  {"q": "Is NRMA's home insurance PDS returned when filtering by product Contents, given it's a combined Home & Contents document?", "insurer": "NRMA", "product": "Contents"}
 ]
