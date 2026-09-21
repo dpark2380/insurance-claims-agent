@@ -10,8 +10,8 @@
       "output": {
         "claim_type": "escape_of_liquid",
         "date_of_loss": "2023-08-14",
-        "cause": "washing machine hose burst due to pressure build-up",
-        "damaged_item": "laundry floor, hallway carpet, bedroom skirting boards",
+        "cause": "burst washing machine hose during night time",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, bedroom skirting boards",
         "estimated_amount": 6500.0,
         "policy_number": "HC-4489213"
       }
@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Water damage from burst washing machine hose - sudden escape of water coverage and exclusions",
+        "query": "Water damage from burst washing machine hose - is sudden escape of water covered?",
         "insurer": "Allianz",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the policy excerpts provided, here's what applies to a burst washing machine hose scenario:\n\n**Coverage:**\nLoss or damage resulting directly from bursting, leaking, discharging, or overflowing of certain items is covered under Sudden Escape of Liquid, for both Buildings and Contents Insurance [Allianz Home PDS, page 27].\n\n**Exclusion - Domestic Appliances:**\nHowever, the excerpt explicitly lists an exclusion for loss or damage from **domestic appliances \u2013 for example a dishwasher or washing machine** [Allianz Home PDS, page 27]. This suggests that damage arising specifically from a domestic appliance like a washing machine is *not* covered under this section.\n\n**Other relevant exclusions mentioned:**\n- Gradual escape of water or liquid over time, where you could reasonably have been expected to be aware of it (e.g., visible staining, mould, mildew, or deterioration) [Allianz Home PDS, page 27].\n- Sinks, baths, or basins overflowing due to a tap being left running [Allianz Home PDS, page 27].\n\n**Gap in the excerpts:**\nThe excerpt names \"domestic appliances \u2013 for example a dishwasher or washing machine\" under the \"What's not covered?\" column, but it does not clarify whether this exclusion applies specifically to damage caused by the appliance itself malfunctioning (e.g., a burst hose) versus other appliance-related water escape scenarios. The excerpts do not provide the specific policy wording addressing burst hoses supplying domestic appliances, nor do they clarify if hose fittings are treated differently from the appliance itself.\n\n**Conclusion:**\nBased strictly on the provided excerpts, damage from a \"domestic appliance \u2013 for example... a washing machine\" appears to fall under the exclusions list on [Allianz Home PDS, page 27]. However, I do not have enough information in these excerpts to definitively confirm whether a burst hose specifically (as opposed to the appliance malfunctioning internally) would be treated the same way, or whether it might instead be covered under the \"bursting... of fixed pipes... or water carrying apparatus\" language also found on the same page. I'd recommend seeking clarification from Allianz directly or reviewing the full policy wording, as this distinction is not explicitly addressed in the excerpts provided.",
+        "answer": "Based on the excerpts provided, this scenario involves some nuance:\n\n**Domestic appliances are explicitly excluded** from the sudden escape of liquid cover. The policy states that loss or damage is **not covered** as a result of \"domestic appliances \u2013 for example a dishwasher or washing machine\" [Allianz Home PDS, page 27].\n\nThis means a burst washing machine **hose** would likely fall under this exclusion, since the washing machine itself is specifically named as an excluded source.\n\nHowever, if the hose is considered part of \"fixed pipes... or water carrying apparatus,\" there could be an argument for coverage under the sudden escape provisions, which do cover \"bursting, leaking, discharging or overflowing\" of fixed pipes and water carrying apparatus [Allianz Home PDS, page 27]. But the excerpt does not clarify whether a washing machine's water supply hose is treated as part of the \"domestic appliance\" exclusion or as a separate \"fixed pipe/water carrying apparatus.\"\n\n**The excerpts do not explicitly resolve** whether a hose connected to a washing machine (as opposed to the appliance itself) is covered or excluded.\n\nAdditionally, note the general condition that if the escape was gradual and you could reasonably have been expected to be aware of it (e.g., visible staining, mould, deterioration), it is **not covered** [Allianz Home PDS, page 27]. This only applies to gradual leaks, not sudden bursts.\n\n**Summary:** Based solely on these excerpts, damage directly from a washing machine (as a domestic appliance) is excluded from sudden escape of liquid cover [Allianz Home PDS, page 27]. Whether the connecting hose itself is treated differently is not clarified in the provided excerpts, so I cannot give a definitive answer on that specific point. I'd recommend checking the full policy wording or contacting Allianz directly to clarify how hoses connected to appliances are classified.",
         "citations": [
           {
             "insurer": "Allianz",
@@ -38,13 +38,13 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 11
+            "page": 24
           },
           {
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 24
+            "page": 45
           },
           {
             "insurer": "Allianz",
@@ -56,7 +56,7 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 11
+            "page": 14
           }
         ]
       }
@@ -76,11 +76,11 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim is for water damage caused by a burst washing machine hose. Per Allianz Home PDS (page 27), \"Sudden Escape of Liquid\" cover generally applies to bursting/leaking/discharging of water-carrying apparatus, but the same page explicitly lists an exclusion for damage from \"domestic appliances \u2013 for example a dishwasher or washing machine.\" The retrieved policy text is ambiguous/contradictory as to whether a burst hose supplying a washing machine falls under the covered \"bursting of fixed pipes/water carrying apparatus\" language or the excluded \"domestic appliance\" category \u2014 the excerpt itself acknowledges this gap and cannot resolve it.\n\nPer the escalation policy, when retrieve_policy returns contradictory or ambiguous coverage text, or the claimed cause directly conflicts with a possible exclusion, I must escalate rather than decide. This claim meets that criterion, so I am not proceeding to calculate a payout despite having the policyholder's excess ($600) and coverage limit ($60,000) on file.\n\nCitations: Allianz Home PDS, page 27 (Sudden Escape of Liquid cover and domestic appliance exclusion)."
+      "text": "DECISION: escalate\n\nReasoning: The claim is for water damage caused by a burst washing machine hose. The Allianz Home PDS text is ambiguous on this exact scenario: it explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" (p.27) from sudden escape of liquid cover, but also states that \"fixed pipes... or water carrying apparatus\" bursting/leaking IS covered (p.27). The retrieved policy text does not clarify whether a washing machine's supply hose is treated as part of the excluded \"domestic appliance\" or as a separately-covered \"water carrying apparatus.\" This is a direct, unresolved conflict between a potential exclusion and a potential coverage grant for the same claimed cause.\n\nPer escalation policy, this ambiguity (\"retrieve_policy returns contradictory or ambiguous coverage text\" and \"the claimed cause directly conflicts with a policy exclusion you found\") requires human review rather than an automated approve/deny decision. I have not proceeded to calculate a payout since coverage itself is unresolved.\n\nCitations: Allianz Home PDS, page 27 (sudden escape of liquid exclusions and coverage for fixed pipes/water carrying apparatus); page 24, 25, 45, 14 (supporting context, not directly resolving the hose classification)."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for water damage caused by a burst washing machine hose. Per Allianz Home PDS (page 27), \"Sudden Escape of Liquid\" cover generally applies to bursting/leaking/discharging of water-carrying apparatus, but the same page explicitly lists an exclusion for damage from \"domestic appliances \u2013 for example a dishwasher or washing machine.\" The retrieved policy text is ambiguous/contradictory as to whether a burst hose supplying a washing machine falls under the covered \"bursting of fixed pipes/water carrying apparatus\" language or the excluded \"domestic appliance\" category \u2014 the excerpt itself acknowledges this gap and cannot resolve it.\n\nPer the escalation policy, when retrieve_policy returns contradictory or ambiguous coverage text, or the claimed cause directly conflicts with a possible exclusion, I must escalate rather than decide. This claim meets that criterion, so I am not proceeding to calculate a payout despite having the policyholder's excess ($600) and coverage limit ($60,000) on file.\n\nCitations: Allianz Home PDS, page 27 (Sudden Escape of Liquid cover and domestic appliance exclusion).",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for water damage caused by a burst washing machine hose. The Allianz Home PDS text is ambiguous on this exact scenario: it explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" (p.27) from sudden escape of liquid cover, but also states that \"fixed pipes... or water carrying apparatus\" bursting/leaking IS covered (p.27). The retrieved policy text does not clarify whether a washing machine's supply hose is treated as part of the excluded \"domestic appliance\" or as a separately-covered \"water carrying apparatus.\" This is a direct, unresolved conflict between a potential exclusion and a potential coverage grant for the same claimed cause.\n\nPer escalation policy, this ambiguity (\"retrieve_policy returns contradictory or ambiguous coverage text\" and \"the claimed cause directly conflicts with a policy exclusion you found\") requires human review rather than an automated approve/deny decision. I have not proceeded to calculate a payout since coverage itself is unresolved.\n\nCitations: Allianz Home PDS, page 27 (sudden escape of liquid exclusions and coverage for fixed pipes/water carrying apparatus); page 24, 25, 45, 14 (supporting context, not directly resolving the hose classification).",
   "citations": [
     {
       "insurer": "Allianz",
@@ -92,13 +92,13 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 11
+      "page": 24
     },
     {
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 24
+      "page": 45
     },
     {
       "insurer": "Allianz",
@@ -110,7 +110,7 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 11
+      "page": 14
     }
   ],
   "claim_id": "claim-001"

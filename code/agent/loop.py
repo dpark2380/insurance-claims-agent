@@ -12,6 +12,8 @@ from pathlib import Path
 from rag.generate import MODEL, _client
 from rag.index import build_indexes
 
+from eval.instrumentation import instrument_call
+
 from .tools import (
     TOOLS,
     run_calculate_payout,
@@ -137,13 +139,15 @@ def run_claim(claim_text: str) -> dict:
     citations: list[dict] = []
 
     for turn_count in range(1, MAX_TURNS + 1):
-        response = _client().messages.create(
-            model=MODEL,
-            max_tokens=1024,
-            system=SYSTEM_PROMPT,
-            tools=TOOLS,
-            messages=messages,
-        )
+        with instrument_call("loop") as rec:
+            response = _client().messages.create(
+                model=MODEL,
+                max_tokens=1024,
+                system=SYSTEM_PROMPT,
+                tools=TOOLS,
+                messages=messages,
+            )
+            rec["response"] = response
         messages.append({"role": "assistant", "content": response.content})
 
         # No more tool calls -- the model has committed to a final decision.

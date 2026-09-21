@@ -10,7 +10,7 @@
       "output": {
         "claim_type": "glass_breakage",
         "date_of_loss": "2024-02-08",
-        "cause": "son kicking soccer ball into sliding glass door",
+        "cause": "soccer ball kicked into sliding glass door",
         "damaged_item": "sliding glass door",
         "estimated_amount": 650.0,
         "policy_number": null
@@ -21,7 +21,7 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Accidental breakage of glass sliding door caused by child playing sport - is this covered?",
+        "query": "Accidental damage to glass/sliding door caused by family member - is it covered?",
         "insurer": "RAA",
         "product": "Home"
       },
@@ -31,39 +31,21 @@
       }
     },
     {
-      "turn": 1,
-      "type": "tool_call",
-      "tool": "get_policy_certificate",
-      "input": {
-        "insurer": "RAA"
-      },
-      "output": {
-        "excess": 500,
-        "coverage_limit": 45000
-      }
-    },
-    {
       "turn": 2,
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "accidental damage to glass, windows, sliding doors cover",
+        "query": "glass breakage cover accidental damage sliding door",
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, there is **no information addressing accidental damage to glass, windows, or sliding doors specifically**. \n\nThe excerpts do cover related topics such as:\n- **Storm and Rainwater Runoff** exclusions, which mention rain, hail, or wind entering the home through open windows, doors, or skylights, or due to defects, structural faults, or wear and tear [RAA Contents PDS, page 45].\n- **Accidental Damage Optional Cover** exclusions, which list specific exclusions (e.g., Tools of Trade whilst in use, Sporting Equipment whilst in use, certain theft scenarios), but **glass, windows, or sliding doors are not mentioned** in these exclusions [RAA Contents PDS, page 60].\n- General **Contents limits**, which specify sub-limits for categories like antiques, bicycles, cameras, and car parts, but **no specific limit or provision for glass, windows, or sliding doors** is mentioned [RAA Contents PDS, page 41].\n\nSince none of the excerpts explicitly discuss coverage, exclusions, or limits for accidental damage to glass, windows, or sliding doors, **I cannot provide a definitive answer on this topic based on the available policy excerpts**. You may need to consult additional sections of the policy document (such as the full \"Accidental Damage\" section or a \"Glass Breakage\" specific clause, if one exists) that were not included here.",
+        "answer": "Based on the provided excerpts, here's what the policy says about accidental glass breakage:\n\n**If \"Home\" is shown on your Certificate of Insurance:**\nThe policy provides cover for the cost of repairing or replacing \"fixed glass forming part of the Insured Property including windows\" if accidentally broken [RAA Contents PDS, page 52]. A glass sliding door, if it is a fixed glass component of the home's structure, would likely fall under this \"fixed glass...including windows\" provision, though the excerpt does not explicitly use the term \"sliding door.\"\n\n**If \"Contents\" is shown on your Certificate of Insurance:**\nCover for glass breakage is limited to glass in furniture, pictures/paintings/prints/mirrors (designed to be hung or freestanding), or glass forming part of aquariums [RAA Contents PDS, page 52]. This would not extend to a sliding door, as that is a building fixture rather than a contents item.\n\n**Exclusions to this Additional Benefit include** [RAA Contents PDS, page 52]:\n- Repairing scratches that don't extend through the entire thickness of the item\n- Glass in a glasshouse or greenhouse\n- Repair/replacement of tiles, tiled fixtures, or splashbacks (tiled or glass)\n- Toilet seats\n- Glass in a stove, heater, oven, or cooktop damaged by direct heat\n- Picture tubes/screens of televisions or visual display units\n",
         "citations": [
           {
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 45
-          },
-          {
-            "insurer": "RAA",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 45
+            "page": 52
           },
           {
             "insurer": "RAA",
@@ -75,7 +57,13 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 63
+            "page": 35
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 52
           },
           {
             "insurer": "RAA",
@@ -87,25 +75,44 @@
       }
     },
     {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
       "turn": 3,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 650,
+        "excess": 500,
+        "coverage_limit": 45000
+      },
+      "output": {
+        "payout": 150
+      }
+    },
+    {
+      "turn": 4,
       "type": "final",
-      "text": "This is ambiguous \u2014 the retrieved policy text doesn't clearly confirm or deny coverage for accidental glass breakage caused by sporting equipment/play, and it flags \"Sporting Equipment whilst in use\" as a listed exclusion category under Accidental Damage Optional Cover, without clarifying whether it applies here. This is a direct conflict risk that requires human judgment rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim (soccer ball kicked by son shattering a sliding glass door) is a case of accidental damage. The RAA policy text retrieved is ambiguous \u2014 it references an \"Accidental Damage Optional Cover\" with an exclusion list that includes \"Sporting Equipment whilst in use,\" which could plausibly apply to a soccer ball causing damage, but the retrieved excerpts do not clarify the scope of that exclusion or confirm whether glass/sliding doors are separately covered under a glass-breakage clause. Per policy, when retrieve_policy returns contradictory/ambiguous coverage text or a claimed cause potentially conflicts with a policy exclusion, I must escalate to a human reviewer rather than approve or deny based on a guess.\n\nCitations:\n- RAA Contents PDS, page 60 (Accidental Damage Optional Cover exclusions, including \"Sporting Equipment whilst in use\")\n- RAA Contents PDS, page 63\n- RAA Contents PDS, page 41, 45\n\nPolicyholder-specific figures on file (for reference, not used in a decision): Excess $500, Coverage limit $45,000 \u2014 note the claimed amount ($650) is below the excess, which is an additional factor a human reviewer should confirm before finalizing."
+      "text": "DECISION: approve\n\nReasoning: The claim is for accidental breakage of a fixed glass sliding door, caused by a soccer ball kicked by the policyholder's son on 8 Feb 2024, estimated at $650. Per RAA's Home PDS, accidental breakage of \"fixed glass forming part of the Insured Property including windows\" is covered as an Additional Benefit, and a sliding glass door being a fixed structural glass component falls under this provision (RAA Home/Contents PDS, p.52). None of the listed exclusions (scratches not through full thickness, glasshouse glass, tiles/splashbacks, toilet seats, heater/stove glass, TV screens) apply to this loss.\n\nUsing the policyholder's RAA certificate figures (excess $500, coverage limit $45,000) against the claimed $650 repair cost, the calculated payout is $150 ($650 - $500 excess), which is within the coverage limit.\n\nCitations: RAA Contents/Home PDS, page 52 (fixed glass breakage cover and exclusions)."
     }
   ],
-  "final_decision": "escalate",
-  "reasoning": "This is ambiguous \u2014 the retrieved policy text doesn't clearly confirm or deny coverage for accidental glass breakage caused by sporting equipment/play, and it flags \"Sporting Equipment whilst in use\" as a listed exclusion category under Accidental Damage Optional Cover, without clarifying whether it applies here. This is a direct conflict risk that requires human judgment rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim (soccer ball kicked by son shattering a sliding glass door) is a case of accidental damage. The RAA policy text retrieved is ambiguous \u2014 it references an \"Accidental Damage Optional Cover\" with an exclusion list that includes \"Sporting Equipment whilst in use,\" which could plausibly apply to a soccer ball causing damage, but the retrieved excerpts do not clarify the scope of that exclusion or confirm whether glass/sliding doors are separately covered under a glass-breakage clause. Per policy, when retrieve_policy returns contradictory/ambiguous coverage text or a claimed cause potentially conflicts with a policy exclusion, I must escalate to a human reviewer rather than approve or deny based on a guess.\n\nCitations:\n- RAA Contents PDS, page 60 (Accidental Damage Optional Cover exclusions, including \"Sporting Equipment whilst in use\")\n- RAA Contents PDS, page 63\n- RAA Contents PDS, page 41, 45\n\nPolicyholder-specific figures on file (for reference, not used in a decision): Excess $500, Coverage limit $45,000 \u2014 note the claimed amount ($650) is below the excess, which is an additional factor a human reviewer should confirm before finalizing.",
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim is for accidental breakage of a fixed glass sliding door, caused by a soccer ball kicked by the policyholder's son on 8 Feb 2024, estimated at $650. Per RAA's Home PDS, accidental breakage of \"fixed glass forming part of the Insured Property including windows\" is covered as an Additional Benefit, and a sliding glass door being a fixed structural glass component falls under this provision (RAA Home/Contents PDS, p.52). None of the listed exclusions (scratches not through full thickness, glasshouse glass, tiles/splashbacks, toilet seats, heater/stove glass, TV screens) apply to this loss.\n\nUsing the policyholder's RAA certificate figures (excess $500, coverage limit $45,000) against the claimed $650 repair cost, the calculated payout is $150 ($650 - $500 excess), which is within the coverage limit.\n\nCitations: RAA Contents/Home PDS, page 52 (fixed glass breakage cover and exclusions).",
   "citations": [
     {
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 45
-    },
-    {
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 45
+      "page": 52
     },
     {
       "insurer": "RAA",
@@ -117,7 +124,13 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 63
+      "page": 35
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 52
     },
     {
       "insurer": "RAA",

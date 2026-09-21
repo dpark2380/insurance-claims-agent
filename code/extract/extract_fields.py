@@ -8,7 +8,9 @@ from extract.schema import ClaimExtraction
 from extract.zero_shot import SYSTEM_PROMPT, _strip_fences, extract_one
 from extract.lora_infer import extract_one as lora_extract_one
 
-# Extracting the path that showed the best results.
+# r=4, r=8, and r=16 are statistically indistinguishable on held-out accuracy
+# (see outputs/phase2_findings.md) -- r=4 is used because it's the cheapest
+# of three tied ranks, not because it scored best.
 ROOT = Path(__file__).resolve().parents[2]
 ADAPTER_PATH = ROOT / "outputs" / "lora-claims-extractor-r4"
 

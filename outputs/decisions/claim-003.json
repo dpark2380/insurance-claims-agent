@@ -21,32 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is flood damage from creek overflow covered?",
-        "insurer": "RAA",
-        "product": "Home"
-      },
-      "output": {
-        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
-        "citations": []
-      }
-    },
-    {
-      "turn": 2,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "flood definition coverage rising water creek river overflow exclusion",
+        "query": "Is flood or creek overflow water damage covered under home insurance?",
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the policy excerpts provided, here is the relevant information on Flood coverage:\n\n**Definition of Flood:**\nFlood means \"the covering of normally dry land by water that has escaped or been released from the normal confines of: any lake, or any river, creek or other natural watercourse, whether or not altered or modified; or any reservoir, canal or dam\" [RAA Contents PDS, page 87].\n\n**Exclusion from the Flood definition:**\nFlood excludes water from Actions of the Sea, except when caused by:\n- a Storm Surge, if it occurs at the same time your Insured Property is damaged by a Storm; or\n- a Tsunami.\n\nFlood also excludes a mixture of water from Actions of the Sea and water from any other source [RAA Contents PDS, page 88].\n\n**Coverage exclusions (under Section 12 \u2013 Flood):**\nThis cover does not apply to loss or damage:\n- to any part of the Home that is not fully built;\n- to tennis courts;\n- to a wharf, jetty, pontoon or sea wall;\n- to water in a tank, swimming pool or spa, including the cost of cleaning mud or debris out of a tank, swimming pool or spa;\n- to swimming pools or spas and their covers or liners, except for permanently attached hard lid style pool covers;\n- to paint when there is no structural damage caused by a Flood to other parts of the Home;\n- caused by underground (hydrostatic) water;\n- to a glasshouse or greenhouse;\n- to unsealed paths or driveways, such as gravel or constructed with any loose materials;\n- caused by Flood which arises from deliberate or Malicious Damage to, or destruction of, a reservoir or dam; and/or\n- to a path or driveway (and other listed items, cut off in the excerpt) if they were not structurally sound or not maintained in a reasonable manner prior to the loss or damage occurring\n[RAA Contents PDS, page 50].\n\nNote: The excerpt on page 50 is cut off after \"\u2013 a path; \u2013 a driveway; \u2013\", so the full list of items subject to the \"not structurally sound or not maintained\" exclusion is incomplete in the provided material. If you need the complete list, additional pages of the PDS would be required.",
+        "answer": "Yes, flood damage\u2014including water escaping from a creek\u2014is covered under this policy, subject to certain conditions and exclusions.\n\n**Definition of Flood:**\nFlood means \"the covering of normally dry land by water that has escaped or been released from the normal confines of: any lake, or any river, creek or other natural watercourse, whether or not altered or modified; or any reservoir, canal or dam\" [RAA Contents PDS, page 87]. This confirms that creek overflow water falls within the policy's definition of Flood.\n\n**Coverage:**\nUnder Insured Event 12 (Flood), the policy states: \"What we Cover for loss or damage to the Insured Property provide as a result of Flood\" [RAA Contents PDS, page 50].\n\n**Key Exclusions to Flood Cover:**\nThe policy excludes flood-related loss or damage in several circumstances, including:\n- To any part of the Home that is not fully built\n- To tennis courts, wharves, jetties, pontoons or sea walls\n- To water in a tank, swimming pool or spa (including cleaning costs)\n- To swimming pools/spas and their covers/liners (except permanently attached hard lid pool covers)\n- To paint, unless there is structural damage to other parts of the Home\n- Caused by underground (hydrostatic) water\n- To a glasshouse or greenhouse\n- To unsealed paths or driveways (e.g., gravel or loose materials)\n- Caused by Flood arising from deliberate or Malicious Damage to a reservoir or dam\n- To paths or driveways that were not structurally sound or reasonably maintained prior to the damage [RAA Contents PDS, page 50]\n\n**Note on \"Actions of the Sea\":**\nThe policy also clarifies that \"Flood excludes water from Actions of the Sea, except caused by: a Storm Surge if it occurs at the same time your Insured Property is damaged by a Storm; or a Tsunami. Flood also excludes a mixture of water from Actions of the Sea and water from any other source\" [RAA Contents PDS, page 88].\n\n**Summary:** Based on these excerpts, creek overflow water damage would generally be covered as \"Flood\" under Insured Event 12, provided none of the listed exclusions apply. I do not have enough",
         "citations": [
-          {
-            "insurer": "RAA",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 87
-          },
           {
             "insurer": "RAA",
             "product": "Contents",
@@ -57,7 +37,7 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 67
+            "page": 87
           },
           {
             "insurer": "RAA",
@@ -69,13 +49,19 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 46
+            "page": 14
+          },
+          {
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
           }
         ]
       }
     },
     {
-      "turn": 3,
+      "turn": 2,
       "type": "tool_call",
       "tool": "get_policy_certificate",
       "input": {
@@ -87,7 +73,7 @@
       }
     },
     {
-      "turn": 4,
+      "turn": 3,
       "type": "tool_call",
       "tool": "calculate_payout",
       "input": {
@@ -100,20 +86,14 @@
       }
     },
     {
-      "turn": 5,
+      "turn": 4,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning: The claim involves water entering the home due to a creek overflowing after heavy rain, which matches RAA's policy definition of \"Flood\" \u2014 \"the covering of normally dry land by water that has escaped ... from any river, creek or other natural watercourse\" (RAA Contents PDS, p.87). None of the listed flood exclusions apply here (the damage is not to unbuilt structures, pools, tanks, paint-only, driveways, or from actions of the sea) \u2014 the loss is to living room carpet and plasterboard walls, which is standard coverable flood damage (RAA Contents PDS, p.50, 87-88).\n\nThe policyholder's certificate shows an excess of $500 and a coverage limit of $45,000, well above the claimed $9,000. Applying the excess: payout = $9,000 - $500 = $8,500.\n\nFinal payout: $8,500, approved under the Flood section of the RAA Home/Contents policy."
+      "text": "DECISION: approve\n\nReasoning: The claim involves flood damage caused by a creek overflowing due to heavy rain, which flows into normally dry land \u2014 this matches RAA's policy definition of \"Flood\" under Insured Event 12 (RAA Contents PDS, page 50, 87). None of the listed exclusions (unbuilt structures, pools/spas, hydrostatic water, paint-only damage, unsealed paths, etc.) apply to this claim, since the damage is to living room carpet and plasterboard walls \u2014 legitimate structural/contents damage from flood water ingress.\n\nPolicy certificate for RAA: excess = $500, coverage limit = $45,000. Claimed amount = $9,000, which is well within the coverage limit.\n\nPayout calculation: $9,000 \u2212 $500 excess = **$8,500 approved payout**.\n\nCitations:\n- RAA Contents PDS, page 50 (Insured Event 12 \u2013 Flood coverage)\n- RAA Contents PDS, page 87 (Definition of Flood, including creek overflow)\n- RAA Contents PDS, page 88 (Actions of the Sea clarification, not applicable here)"
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning: The claim involves water entering the home due to a creek overflowing after heavy rain, which matches RAA's policy definition of \"Flood\" \u2014 \"the covering of normally dry land by water that has escaped ... from any river, creek or other natural watercourse\" (RAA Contents PDS, p.87). None of the listed flood exclusions apply here (the damage is not to unbuilt structures, pools, tanks, paint-only, driveways, or from actions of the sea) \u2014 the loss is to living room carpet and plasterboard walls, which is standard coverable flood damage (RAA Contents PDS, p.50, 87-88).\n\nThe policyholder's certificate shows an excess of $500 and a coverage limit of $45,000, well above the claimed $9,000. Applying the excess: payout = $9,000 - $500 = $8,500.\n\nFinal payout: $8,500, approved under the Flood section of the RAA Home/Contents policy.",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves flood damage caused by a creek overflowing due to heavy rain, which flows into normally dry land \u2014 this matches RAA's policy definition of \"Flood\" under Insured Event 12 (RAA Contents PDS, page 50, 87). None of the listed exclusions (unbuilt structures, pools/spas, hydrostatic water, paint-only damage, unsealed paths, etc.) apply to this claim, since the damage is to living room carpet and plasterboard walls \u2014 legitimate structural/contents damage from flood water ingress.\n\nPolicy certificate for RAA: excess = $500, coverage limit = $45,000. Claimed amount = $9,000, which is well within the coverage limit.\n\nPayout calculation: $9,000 \u2212 $500 excess = **$8,500 approved payout**.\n\nCitations:\n- RAA Contents PDS, page 50 (Insured Event 12 \u2013 Flood coverage)\n- RAA Contents PDS, page 87 (Definition of Flood, including creek overflow)\n- RAA Contents PDS, page 88 (Actions of the Sea clarification, not applicable here)",
   "citations": [
-    {
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 87
-    },
     {
       "insurer": "RAA",
       "product": "Contents",
@@ -124,7 +104,7 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 67
+      "page": 87
     },
     {
       "insurer": "RAA",
@@ -136,7 +116,13 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 46
+      "page": 14
+    },
+    {
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
     }
   ],
   "claim_id": "claim-003"

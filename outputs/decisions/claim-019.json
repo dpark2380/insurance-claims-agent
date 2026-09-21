@@ -10,7 +10,7 @@
       "output": {
         "claim_type": "theft",
         "date_of_loss": "2025-07-10",
-        "cause": "break-in",
+        "cause": "break-in by unknown person",
         "damaged_item": "jewellery and electronics",
         "estimated_amount": 15000.0,
         "policy_number": null
@@ -21,16 +21,16 @@
       "type": "tool_call",
       "tool": "escalate_to_human",
       "input": {
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined."
+        "reason": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer."
       },
       "output": {
         "status": "escalated",
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined."
+        "reason": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer."
       }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing excess and coverage-limit figures. Additionally, the claimant raises a specific concern about sub-limits for unspecified valuables (jewellery/electronics without receipts) which requires policy-specific verification against the correct insurer's PDS before a payout figure can be determined.",
+  "reasoning": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer.",
   "citations": [],
   "claim_id": "claim-019"
 }

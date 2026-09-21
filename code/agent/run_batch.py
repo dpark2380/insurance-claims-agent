@@ -12,11 +12,14 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from eval.instrumentation import RECORDS, aggregate_report, set_current_claim, write_report
+
 from .loop import run_claim
 
 ROOT = Path(__file__).resolve().parents[2]
 DECISIONS_DIR = ROOT / "outputs" / "decisions"
 SUMMARY_PATH = ROOT / "outputs" / "decisions_summary.csv"
+PHASE4_REPORT_PATH = ROOT / "outputs" / "phase4_report.md"
 
 load_dotenv(ROOT / ".env")
 
@@ -46,6 +49,7 @@ def main():
         # point of isolating each claim's failure.
         claim_id = claim.get("claim_id", f"row-{i}")
         row = {"claim_id": claim_id, "decision": "", "escalated": "", "tool_calls_count": 0, "error": ""}
+        set_current_claim(claim_id)
         try:
             result = run_claim(claim["narrative"])
             result["claim_id"] = claim_id
@@ -56,6 +60,8 @@ def main():
             row["tool_calls_count"] = sum(1 for t in result["turns"] if t["type"] == "tool_call")
         except Exception as e:
             row["error"] = str(e)
+        finally:
+            set_current_claim(None)
         rows.append(row)
         print(f"[{claim_id}] decision={row['decision'] or 'ERROR'} error={row['error']}")
 
@@ -71,6 +77,12 @@ def main():
     n_escalated = sum(1 for r in rows if r["escalated"])
     print(f"\n{len(rows)} claims processed, {n_errors} errors, {n_escalated} escalated")
     print(f"Summary: {SUMMARY_PATH}")
+
+    write_report(RECORDS, PHASE4_REPORT_PATH)
+    agg = aggregate_report(RECORDS)
+    print(f"\nmean latency/claim: {agg['mean_latency_s']:.2f}s  p95 latency/claim: {agg['p95_latency_s']:.2f}s")
+    print(f"mean cost/claim: ${agg['mean_cost_usd']:.4f}  total cost: ${agg['total_cost_usd']:.4f}")
+    print(f"Phase 4 report: {PHASE4_REPORT_PATH}")
 
 
 if __name__ == "__main__":

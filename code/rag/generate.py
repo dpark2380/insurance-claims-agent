@@ -6,6 +6,8 @@ import os
 
 import anthropic
 
+from eval.instrumentation import instrument_call
+
 MODEL = os.environ.get("LLM_MODEL", "claude-sonnet-5")
 
 SYSTEM_PROMPT = (
@@ -50,16 +52,18 @@ def generate_answer(question: str, retrieved_chunks: list[dict]) -> str:
         return "I don't have enough information to answer that -- no matching policy text was found."
 
     context = build_context(retrieved_chunks)
-    response = _client().messages.create(
-        model=MODEL,
-        max_tokens=800,
-        system=[
-            {"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}},
-        ],
-        messages=[
-            {"role": "user", "content": f"Policy excerpts:\n\n{context}\n\nQuestion: {question}"}
-        ],
-    )
+    with instrument_call("retrieve_policy") as rec:
+        response = _client().messages.create(
+            model=MODEL,
+            max_tokens=800,
+            system=[
+                {"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}},
+            ],
+            messages=[
+                {"role": "user", "content": f"Policy excerpts:\n\n{context}\n\nQuestion: {question}"}
+            ],
+        )
+        rec["response"] = response
     text = next((block.text for block in response.content if block.type == "text"), None)
     if text is None:
         raise RuntimeError(

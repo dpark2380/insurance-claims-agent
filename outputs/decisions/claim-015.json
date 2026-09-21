@@ -8,96 +8,17 @@
         "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
       },
       "output": {
-        "claim_type": "other",
-        "date_of_loss": "2023-10-05",
-        "cause": "corrosion and gradual deterioration of hot water pipes due to age",
-        "damaged_item": "hot water pipes under the house",
-        "estimated_amount": null,
-        "policy_number": null
-      }
-    },
-    {
-      "turn": 1,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "Is gradual corrosion of pipes and resulting rot/damage covered, or excluded as wear and tear / gradual deterioration?"
-      },
-      "output": {
-        "answer": "Based on the excerpts provided, gradual corrosion of pipes and resulting rot/damage would be **excluded** under these policies, for the following reasons:\n\n1. **Wear and tear/gradual deterioration exclusion**: The Allianz policies explicitly exclude \"rust, corrosion, algae, mould or mildew\" as a form of damage, whether caused directly or indirectly, under the \"Rust, damp or chemical damage\" exclusion [Allianz Landlord PDS, page 52]. This is stated for both the Landlord PDS and mirrored in the Home PDS context discussing \"Wear and tear\" [Allianz Home PDS, page 55], which includes \"depreciation, gradual deterioration, or lack of maintenance.\"\n\n2. **Escape of liquid exclusions**: The RealInsurance policies specifically exclude loss or damage caused by \"the gradual seepage of water or other liquids\" and \"wear and tear, gradual deterioration\" under the Escape of Liquid insured event [RealInsurance Landlord PDS, page 17; RealInsurance Contents PDS, page 17]. This means if pipe corrosion leads to a gradual leak (rather than a sudden, unexpected escape), it would not be covered.\n\n3. **Exception for corrosion under Allianz**: The Allianz exclusion does note an exception \u2014 \"we will cover you for loss or damage when it is a direct result of an insured event\" [Allianz Landlord PDS, page 52]. This suggests that if corrosion/rot resulted directly from a covered insured event (e.g., a sudden burst pipe), the resulting damage might be covered, but the gradual corrosion process itself remains excluded.\n\n**Summary**: Across all four excerpts, gradual corrosion and the resulting rot/damage from pipes fall under wear and tear/gradual deterioration exclusions and are **not covered**, unless the damage is a direct result of a separate insured event (per the Allianz exception) [Allianz Landlord PDS, page 52]. The RealInsurance policies require the escape of liquid to be \"sudden, unexpected, accidental and without warning\" [RealInsurance Landlord PDS, page 17; RealInsurance Contents PDS, page 17] \u2014 gradual corrosion-related leaks would not meet this definition and are explicitly excluded.",
-        "citations": [
-          {
-            "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 17
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 52
-          },
-          {
-            "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 17
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 55
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 52
-          }
-        ]
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
       }
     },
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: deny\n\nReasoning: The claim explicitly describes gradual corrosion of hot water pipes building up \"over the last several years, not a sudden event,\" causing rot to bearers. Policy text retrieved (across Allianz and RealInsurance PDS documents) consistently excludes this type of loss:\n\n- Allianz excludes \"rust, corrosion, algae, mould or mildew\" and gradual deterioration/wear and tear from cover, with the only exception being if it's a direct result of a separate sudden insured event [Allianz Landlord PDS, p.52; Allianz Home PDS, p.55].\n- RealInsurance requires an \"escape of liquid\" to be \"sudden, unexpected, accidental and without warning\" to be covered, and explicitly excludes gradual seepage and wear and tear/gradual deterioration [RealInsurance Landlord PDS, p.17; RealInsurance Contents PDS, p.17].\n\nThe claimant's own narrative confirms the cause is gradual, long-term corrosion rather than a sudden event, which directly matches the exclusionary language in every policy excerpt reviewed. There is no indication of a sudden triggering event that would bring it back into cover.\n\nAdditional notes: No insurer was named in the claim, so get_policy_certificate/calculate_payout could not be performed regardless \u2014 but this is moot since the cause itself is excluded across all relevant insurers' policy wording, and the exclusion is clear and consistent (not ambiguous or contradictory), so this is a denial rather than an escalation."
+      "text": "DECISION: escalate\n\nReasoning: \n1. The `extract_fields` tool failed to parse this claim narrative (both extraction methods errored out), so I cannot obtain a reliable estimated_amount, claim_type, or policy_number from it.\n2. The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and I would have to guess an excess/coverage limit to run `calculate_payout` \u2014 which I must not do.\n3. Substantively, the narrative describes gradual corrosion of pipes over \"years\" and explicitly states \"not a sudden event,\" which strongly suggests this falls under a typical wear-and-tear/gradual deterioration exclusion common in Australian home policies. This is a direct conflict with likely exclusion language, compounding the need for human review rather than an automated decision.\n\nGiven the failed field extraction, missing insurer identification, and the apparent gradual-damage exclusion conflict, this claim must be escalated to a human reviewer for manual assessment of policy wording and cause of loss."
     }
   ],
-  "final_decision": "deny",
-  "reasoning": "DECISION: deny\n\nReasoning: The claim explicitly describes gradual corrosion of hot water pipes building up \"over the last several years, not a sudden event,\" causing rot to bearers. Policy text retrieved (across Allianz and RealInsurance PDS documents) consistently excludes this type of loss:\n\n- Allianz excludes \"rust, corrosion, algae, mould or mildew\" and gradual deterioration/wear and tear from cover, with the only exception being if it's a direct result of a separate sudden insured event [Allianz Landlord PDS, p.52; Allianz Home PDS, p.55].\n- RealInsurance requires an \"escape of liquid\" to be \"sudden, unexpected, accidental and without warning\" to be covered, and explicitly excludes gradual seepage and wear and tear/gradual deterioration [RealInsurance Landlord PDS, p.17; RealInsurance Contents PDS, p.17].\n\nThe claimant's own narrative confirms the cause is gradual, long-term corrosion rather than a sudden event, which directly matches the exclusionary language in every policy excerpt reviewed. There is no indication of a sudden triggering event that would bring it back into cover.\n\nAdditional notes: No insurer was named in the claim, so get_policy_certificate/calculate_payout could not be performed regardless \u2014 but this is moot since the cause itself is excluded across all relevant insurers' policy wording, and the exclusion is clear and consistent (not ambiguous or contradictory), so this is a denial rather than an escalation.",
-  "citations": [
-    {
-      "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 17
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 52
-    },
-    {
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 17
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 55
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 52
-    }
-  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: \n1. The `extract_fields` tool failed to parse this claim narrative (both extraction methods errored out), so I cannot obtain a reliable estimated_amount, claim_type, or policy_number from it.\n2. The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and I would have to guess an excess/coverage limit to run `calculate_payout` \u2014 which I must not do.\n3. Substantively, the narrative describes gradual corrosion of pipes over \"years\" and explicitly states \"not a sudden event,\" which strongly suggests this falls under a typical wear-and-tear/gradual deterioration exclusion common in Australian home policies. This is a direct conflict with likely exclusion language, compounding the need for human review rather than an automated decision.\n\nGiven the failed field extraction, missing insurer identification, and the apparent gradual-damage exclusion conflict, this claim must be escalated to a human reviewer for manual assessment of policy wording and cause of loss.",
+  "citations": [],
   "claim_id": "claim-015"
 }

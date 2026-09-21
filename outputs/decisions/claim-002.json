@@ -8,9 +8,9 @@
         "claim_text": "On 9 February 2024 I woke up to find someone had spray-painted graffiti all over our front fence and garage door overnight. It looks like it happened while we were asleep since there was nothing there when we went to bed. I haven't had anyone come out to quote on repainting or replacing the panels yet, so I don't have a cost figure at this stage."
       },
       "output": {
-        "claim_type": "glass_breakage",
+        "claim_type": "malicious_damage",
         "date_of_loss": "2024-02-09",
-        "cause": "spray-paint graffiti on front fence and garage door",
+        "cause": "unknown person spray-painted graffiti on front fence and garage door overnight",
         "damaged_item": "front fence and garage door",
         "estimated_amount": null,
         "policy_number": null
@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is vandalism or malicious damage (graffiti) to fences and garage doors covered?",
+        "query": "Is vandalism or graffiti damage to fences and garage doors covered?",
         "insurer": "NRMA",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the provided excerpts, I can partially answer this question.\n\n**Malicious damage/vandalism coverage:** Malicious damage is covered as a \"deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Home KFS, page 1], provided it is not committed by \"You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Home KFS, page 1; NRMA Home PDS, page 13]. This cover applies to \"Your Home if You have 'Building' insurance\" and \"Your General Contents while in Your Home if You have 'Contents' insurance\" [NRMA Home PDS, page 13].\n\n**Specific to fences and garage doors:** The excerpts do not explicitly confirm whether fences or garage doors are included within the definition of \"Your Home\" for the purposes of this malicious damage cover. One excerpt notes that under a different peril (Flood or Rainwater Run-off), there are exclusions for \"retaining walls\" and \"gates, fences or free-standing walls\" in certain circumstances [NRMA Home PDS, page 14], but this exclusion appears tied specifically to flood/rainwater damage, not vandalism.\n\n**Reporting requirement:** If a claim is made, \"You must report any deliberate or intentional act to the police and provide Us with the report number and details of when and where the report was made\" [NRMA Home PDS, page 13, page 28].\n\n**Conclusion:** The excerpts confirm that vandalism/malicious damage to \"Your Home\" is generally covered (subject to the exclusions on who caused it), but they do not specifically state whether fences and garage doors fall within the definition of \"Home\" for this cover, nor do they explicitly address graffiti as a form of damage. I cannot confirm coverage specifically for fences and garage doors based on the excerpts provided \u2014 additional policy definitions (e.g., how \"Home\" is defined, or any specific exclusions for fences/gates under the malicious damage section) would be needed to give a complete answer.",
+        "answer": "Based on the excerpts provided, here is what can be established:\n\n**Vandalism/malicious damage generally:** Vandalism and malicious acts are covered as part of \"deliberate or intentional act\" damage: \"We cover loss or damage by a deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Home PDS, page 13], and this is confirmed in the KFS: \"Covered as deliberate or intentional act (including vandalism and a malicious act) but not by You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Home KFS, page 1].\n\n**Fences specifically:** The excerpts do not exclude fences from the deliberate/intentional act (vandalism) cover. However, an exclusion for \"gates, fences or free-standing walls\" appears elsewhere in the excerpts, but specifically in the context of **Flood or Rainwater Run-off** damage (\"We will not cover: loss or damage to: ...gates, fences or free-standing walls if the loss or damage was caused because...\") [NRMA Home PDS, page 14], and again in the context of **Storm Surge or tsunami / Storm** exclusions (\"loss or damage to: retaining walls; gates, fences or free-standing walls if the loss or damage was caused because they are not structurally sound or well-maintained\") [NRMA Home PDS, page 15]. These exclusions relate to water/storm-related perils, not vandalism.\n\n**Garage doors:** The excerpts do not mention garage doors at all in relation to vandalism, glass breakage, or any other peril.\n\n**Conclusion:** Based solely on the provided excerpts, vandalism/malicious damage appears to be covered generally (subject to the exclusion for damage caused by the insured, family, or residents) [NRMA Home PDS, page 13; NRMA Home KFS, page 1]. However, the excerpts do not explicitly confirm whether fences are covered under the vandalism/malicious damage section specifically, nor do they contain any information about garage doors. I cannot definitively confirm coverage for vandalism/graffiti to fences and garage doors specifically, as the provided excerpts do not address these items in that context. You would need to consult additional policy sections (e.g., specific exclusions lists or definitions of insured property) not included here.",
         "citations": [
           {
             "insurer": "NRMA",
@@ -37,8 +37,8 @@
           {
             "insurer": "NRMA",
             "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
+            "doc_type": "PDS",
+            "page": 14
           },
           {
             "insurer": "NRMA",
@@ -50,37 +50,25 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 28
+            "page": 15
           },
           {
             "insurer": "NRMA",
             "product": "Home",
-            "doc_type": "PDS",
-            "page": 14
+            "doc_type": "KFS",
+            "page": 1
           }
         ]
       }
     },
     {
-      "turn": 1,
-      "type": "tool_call",
-      "tool": "get_policy_certificate",
-      "input": {
-        "insurer": "NRMA"
-      },
-      "output": {
-        "excess": 550,
-        "coverage_limit": 55000
-      }
-    },
-    {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning:\n1. **Missing estimated amount**: The policyholder has not yet obtained a repair/replacement quote, so `estimated_amount` is null and cannot be resolved from the narrative or any other source. Per policy, a null estimated amount that can't otherwise be determined requires escalation rather than a guessed payout.\n2. **Ambiguous coverage scope**: `retrieve_policy` confirms NRMA's Home policy generally covers malicious damage/vandalism (deliberate/intentional acts including vandalism), but the retrieved PDS/KFS excerpts do not clarify whether \"fences\" and \"garage doors\" fall within the definition of \"Your Home\" for this specific peril \u2014 the only fence-related exclusion found pertains to flood/rainwater damage, not vandalism. This leaves genuine ambiguity about whether the damaged items are covered items under this peril.\n\nGiven both an unresolvable null claim amount and ambiguous/incomplete coverage text regarding whether fences/garage doors qualify under the malicious damage benefit, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should also request a repair quote and confirm the \"Your Home\" definition (including boundary structures) in the full PDS before finalizing.\n\nCitations:\n- NRMA Home PDS, page 13 (malicious damage/vandalism cover, exclusions on who caused it)\n- NRMA Home KFS, page 1 (definition of deliberate/intentional act)\n- NRMA Home PDS, page 14 (fences/gates exclusion \u2014 tied to flood, not vandalism, but shows ambiguity in scope of \"Home\")\n- NRMA Home PDS, page 28 (reporting requirement for deliberate/intentional acts)"
+      "text": "Vandalism/malicious damage is generally covered under NRMA's policy, and there's no explicit exclusion for fences/garage doors under this peril, so coverage appears likely. However, this claim has no estimated repair cost yet \u2014 the policyholder hasn't obtained a quote, and there's no way to resolve a dollar figure from the information available. Without an amount, `calculate_payout` cannot be meaningfully run, and per policy this requires escalation rather than guessing a figure.\n\nDECISION: escalate\nReasoning: extract_fields returned a null estimated_amount (\"I don't have a cost figure at this stage\") with no other source to resolve a dollar amount. Coverage for vandalism/malicious damage generally appears to apply under NRMA's policy (NRMA Home PDS p.13: \"We cover loss or damage by a deliberate or intentional act (including vandalism and a malicious act)\"; NRMA Home KFS p.1 confirms this, excluding only damage caused by the insured/family/tenants), and no exclusion specific to fences or garage doors under vandalism was found (the fence exclusions cited apply only to flood/storm perils, per NRMA Home PDS pages 14\u201315). Since coverage looks plausible but the claim amount is entirely unresolved (no quote obtained), this must be routed to a human reviewer to obtain a repair estimate before a payout decision can be calculated."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning:\n1. **Missing estimated amount**: The policyholder has not yet obtained a repair/replacement quote, so `estimated_amount` is null and cannot be resolved from the narrative or any other source. Per policy, a null estimated amount that can't otherwise be determined requires escalation rather than a guessed payout.\n2. **Ambiguous coverage scope**: `retrieve_policy` confirms NRMA's Home policy generally covers malicious damage/vandalism (deliberate/intentional acts including vandalism), but the retrieved PDS/KFS excerpts do not clarify whether \"fences\" and \"garage doors\" fall within the definition of \"Your Home\" for this specific peril \u2014 the only fence-related exclusion found pertains to flood/rainwater damage, not vandalism. This leaves genuine ambiguity about whether the damaged items are covered items under this peril.\n\nGiven both an unresolvable null claim amount and ambiguous/incomplete coverage text regarding whether fences/garage doors qualify under the malicious damage benefit, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should also request a repair quote and confirm the \"Your Home\" definition (including boundary structures) in the full PDS before finalizing.\n\nCitations:\n- NRMA Home PDS, page 13 (malicious damage/vandalism cover, exclusions on who caused it)\n- NRMA Home KFS, page 1 (definition of deliberate/intentional act)\n- NRMA Home PDS, page 14 (fences/gates exclusion \u2014 tied to flood, not vandalism, but shows ambiguity in scope of \"Home\")\n- NRMA Home PDS, page 28 (reporting requirement for deliberate/intentional acts)",
+  "reasoning": "Vandalism/malicious damage is generally covered under NRMA's policy, and there's no explicit exclusion for fences/garage doors under this peril, so coverage appears likely. However, this claim has no estimated repair cost yet \u2014 the policyholder hasn't obtained a quote, and there's no way to resolve a dollar figure from the information available. Without an amount, `calculate_payout` cannot be meaningfully run, and per policy this requires escalation rather than guessing a figure.\n\nDECISION: escalate\nReasoning: extract_fields returned a null estimated_amount (\"I don't have a cost figure at this stage\") with no other source to resolve a dollar amount. Coverage for vandalism/malicious damage generally appears to apply under NRMA's policy (NRMA Home PDS p.13: \"We cover loss or damage by a deliberate or intentional act (including vandalism and a malicious act)\"; NRMA Home KFS p.1 confirms this, excluding only damage caused by the insured/family/tenants), and no exclusion specific to fences or garage doors under vandalism was found (the fence exclusions cited apply only to flood/storm perils, per NRMA Home PDS pages 14\u201315). Since coverage looks plausible but the claim amount is entirely unresolved (no quote obtained), this must be routed to a human reviewer to obtain a repair estimate before a payout decision can be calculated.",
   "citations": [
     {
       "insurer": "NRMA",
@@ -91,8 +79,8 @@
     {
       "insurer": "NRMA",
       "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
+      "doc_type": "PDS",
+      "page": 14
     },
     {
       "insurer": "NRMA",
@@ -104,13 +92,13 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 28
+      "page": 15
     },
     {
       "insurer": "NRMA",
       "product": "Home",
-      "doc_type": "PDS",
-      "page": 14
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "claim_id": "claim-002"

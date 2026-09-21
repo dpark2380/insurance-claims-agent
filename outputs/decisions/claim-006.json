@@ -5,13 +5,13 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 3 August 2023, our clothes dryer caught fire while running in the laundry and scorched the wall and cabinetry beside it. I managed to put it out with a fire extinguisher before it spread further. My policy number is HM-2298471. I'd estimate the damage to be around $2,800 to repair. Insurer: Allianz."
+        "claim_text": "On 3 August 2023, our clothes dryer caught fire while running in the laundry and scorched the wall and cabinetry beside it. I managed to put it out with a fire extinguisher before it spread further. My policy number is HM-2298471. I'd estimate the damage to be around $2,800 to repair."
       },
       "output": {
         "claim_type": "fire",
         "date_of_loss": "2023-08-03",
-        "cause": "clothes dryer caught fire while running in laundry",
-        "damaged_item": "wall and cabinetry beside clothes dryer",
+        "cause": "clothes dryer malfunctioned and caught fire while running",
+        "damaged_item": "laundry room wall and cabinetry near clothes dryer",
         "estimated_amount": 2800.0,
         "policy_number": "HM-2298471"
       }
@@ -21,30 +21,18 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is fire damage caused by an electrical appliance (clothes dryer) fire covered?",
+        "query": "Is fire damage caused by a malfunctioning appliance (clothes dryer) covered under home insurance?",
         "insurer": "Allianz",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, fire damage is covered under the policy's Fire insured event: loss or damage caused by fire is covered under both Buildings and Contents Insurance [Allianz Home PDS, page 23].\n\nHowever, there are relevant exclusions to consider:\n\n1. **Heat-resistant items designed to be exposed to heat**: The exclusion states there is no cover for damage \"of an item that is designed to be exposed to heat \u2013 for example if a heat resistant item like a cooking appliance or fireplace is damaged during normal use\" [Allianz Home PDS, page 23]. It's unclear from the excerpts whether a clothes dryer would fall into this category of \"designed to be exposed to heat\" items.\n\n2. **Mechanical or electrical failure exclusion**: There is a general exclusion for \"loss or damage caused by mechanical or electrical breakdown, failure or derangement, unless the breakdown or failure results in loss or damage to the insured property that is covered by an insured event\" [Allianz Home PDS, page 54]. This suggests that if an electrical fault in the dryer *caused* a fire, and that fire then damages property, this may still be covered as fire damage (an insured event), since the exclusion carves out situations where the failure \"results in loss or damage... covered by an insured event.\"\n\n**Conclusion**: The excerpts do not provide a clear, definitive answer specific to a clothes dryer fire. If the electrical fault caused an actual fire that spread and damaged property, this would likely fall under the Fire insured event and be covered, per the carve-out in the mechanical/electrical failure exclusion [Allianz Home PDS, page 54; page 23]. However, if the damage was limited to the dryer itself failing/burning out without spreading fire, or if the dryer is considered a \"heat resistant item\" damaged during normal use, it could be excluded [Allianz Home PDS, page 23].\n\nThe provided excerpts do not contain enough detail (e.g., a specific definition of \"fire\" as an insured event, or clarification on what counts as a \"heat resistant item\") to give a definitive answer for this specific scenario. I recommend reviewing the full policy wording or contacting the insurer for clarification.",
+        "answer": "Based on the excerpts provided, fire damage caused by a malfunctioning clothes dryer would generally be covered under the Fire insured event, though the mechanical/electrical failure itself is treated separately.\n\n**Fire coverage:** Loss or damage caused by fire, including smoke, ash or soot from a fire, is covered under both Buildings and Contents Insurance [Allianz Home PDS, page 23]. The exclusions listed for this insured event relate to gradual damage from repeated exposure to fire/smoke, damage to heat-resistant items used normally, and scorching/melting \u2014 none of which describe a fire ignited by an appliance malfunction [Allianz Home PDS, page 23].\n\n**Mechanical/electrical failure exclusion:** Separately, the policy excludes \"loss or damage caused by mechanical or electrical breakdown, failure or derangement\" \u2014 **unless** that breakdown or failure \"results in loss or damage to the insured property that is covered by an insured event\" [Allianz Home PDS, page 54].\n\n**Applying this to your scenario:** If the clothes dryer's malfunction itself caused damage (e.g., burnt-out motor), that specific damage to the appliance from electrical/mechanical fail",
         "citations": [
           {
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 54
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Home",
-            "doc_type": "PDS",
             "page": 23
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 46
           },
           {
             "insurer": "Allianz",
@@ -56,7 +44,19 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 23
+            "page": 54
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 12
+          },
+          {
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
           }
         ]
       }
@@ -75,30 +75,31 @@
     },
     {
       "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 2800,
+        "excess": 600,
+        "coverage_limit": 60000
+      },
+      "output": {
+        "payout": 2200
+      }
+    },
+    {
+      "turn": 3,
       "type": "final",
-      "text": "The policy text is ambiguous on this specific scenario, which triggers the escalation policy.\n\nDECISION: escalate\n\nReasoning: The claim involves a clothes dryer fire that spread to the wall and cabinetry. retrieve_policy returned contradictory/ambiguous guidance from the Allianz Home PDS: fire is generally a covered insured event (page 23), and the mechanical/electrical failure exclusion (page 54) carves out cases where the failure results in fire damage covered under an insured event \u2014 suggesting coverage. However, the same page 23 excerpt also contains a \"heat-resistant item\" exclusion for damage to appliances \"designed to be exposed to heat\" during normal use, and it's unclear whether a clothes dryer qualifies, and whether that exclusion could extend to the surrounding scorched wall/cabinetry. The retrieved answer explicitly states the excerpts \"do not contain enough detail... to give a definitive answer for this specific scenario.\"\n\nPer policy: \"retrieve_policy returns contradictory or ambiguous coverage text\" requires escalation rather than a guessed approve/deny decision. I have not proceeded to calculate_payout since coverage itself is unresolved.\n\nCitations: Allianz Home PDS, page 23 (Fire insured event; heat-resistant item exclusion); Allianz Home PDS, page 54 (mechanical/electrical breakdown exclusion and carve-out)."
+      "text": "DECISION: approve\n\nReasoning: The claim involves fire damage to a wall and cabinetry caused by a clothes dryer catching fire. Per Allianz Home PDS (page 23), loss or damage caused by fire is a covered insured event, and none of the listed fire exclusions (gradual smoke/fire exposure, heat-resistant item damage, scorching/melting of normal use) apply to this sudden appliance fire. The mechanical/electrical breakdown exclusion (PDS page 54) applies to damage to the dryer itself, not to the consequential fire damage to the building/cabinetry being claimed, and that exclusion explicitly carves out loss \"covered by an insured event\" \u2014 which fire damage is.\n\nPolicy certificate for Allianz: excess = $600, coverage limit = $60,000.\n\nPayout calculation: $2,800 (claimed) \u2212 $600 (excess) = $2,200, within the $60,000 coverage limit.\n\nFinal payout: $2,200 approved, subject to standard claims verification (e.g., proof of damage/repair quotes).\n\nCitations: Allianz Home PDS, page 23 (Fire insured event & exclusions); Allianz Home PDS, page 54 (mechanical/electrical breakdown exclusion carve-out)."
     }
   ],
-  "final_decision": "escalate",
-  "reasoning": "The policy text is ambiguous on this specific scenario, which triggers the escalation policy.\n\nDECISION: escalate\n\nReasoning: The claim involves a clothes dryer fire that spread to the wall and cabinetry. retrieve_policy returned contradictory/ambiguous guidance from the Allianz Home PDS: fire is generally a covered insured event (page 23), and the mechanical/electrical failure exclusion (page 54) carves out cases where the failure results in fire damage covered under an insured event \u2014 suggesting coverage. However, the same page 23 excerpt also contains a \"heat-resistant item\" exclusion for damage to appliances \"designed to be exposed to heat\" during normal use, and it's unclear whether a clothes dryer qualifies, and whether that exclusion could extend to the surrounding scorched wall/cabinetry. The retrieved answer explicitly states the excerpts \"do not contain enough detail... to give a definitive answer for this specific scenario.\"\n\nPer policy: \"retrieve_policy returns contradictory or ambiguous coverage text\" requires escalation rather than a guessed approve/deny decision. I have not proceeded to calculate_payout since coverage itself is unresolved.\n\nCitations: Allianz Home PDS, page 23 (Fire insured event; heat-resistant item exclusion); Allianz Home PDS, page 54 (mechanical/electrical breakdown exclusion and carve-out).",
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves fire damage to a wall and cabinetry caused by a clothes dryer catching fire. Per Allianz Home PDS (page 23), loss or damage caused by fire is a covered insured event, and none of the listed fire exclusions (gradual smoke/fire exposure, heat-resistant item damage, scorching/melting of normal use) apply to this sudden appliance fire. The mechanical/electrical breakdown exclusion (PDS page 54) applies to damage to the dryer itself, not to the consequential fire damage to the building/cabinetry being claimed, and that exclusion explicitly carves out loss \"covered by an insured event\" \u2014 which fire damage is.\n\nPolicy certificate for Allianz: excess = $600, coverage limit = $60,000.\n\nPayout calculation: $2,800 (claimed) \u2212 $600 (excess) = $2,200, within the $60,000 coverage limit.\n\nFinal payout: $2,200 approved, subject to standard claims verification (e.g., proof of damage/repair quotes).\n\nCitations: Allianz Home PDS, page 23 (Fire insured event & exclusions); Allianz Home PDS, page 54 (mechanical/electrical breakdown exclusion carve-out).",
   "citations": [
     {
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 54
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Home",
-      "doc_type": "PDS",
       "page": 23
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 46
     },
     {
       "insurer": "Allianz",
@@ -110,7 +111,19 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 23
+      "page": 54
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 12
+    },
+    {
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
     }
   ],
   "claim_id": "claim-006"

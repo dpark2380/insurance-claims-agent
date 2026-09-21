@@ -10,8 +10,8 @@
       "output": {
         "claim_type": "malicious_damage",
         "date_of_loss": "2023-09-03",
-        "cause": "unknown",
-        "damaged_item": "front fence and letterbox, timber palings",
+        "cause": "unknown vandalism on front fence and letterbox",
+        "damaged_item": "front fence and timber palings",
         "estimated_amount": 850.0,
         "policy_number": "HM-773245"
       }
@@ -21,11 +21,11 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "vandalism malicious damage to fence coverage",
+        "query": "vandalism or malicious damage to fence and letterbox coverage",
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, coverage for malicious/vandal damage to a fence would be assessed as follows:\n\n**General Malicious Damage cover:** The policy covers \"loss or damage to the Insured Property...as a result of Malicious Damage, Intentional Damage or damage by vandals\" [RAA Contents",
+        "answer": "Based on the excerpts provided, malicious damage/vandalism to a fence is addressed, but coverage is limited:\n\n**General Malicious Damage cover:**\nThe policy covers loss or damage to Insured Property as a result of \"Malicious Damage, Intentional Damage or damage by vandals\" [RAA Contents PDS, page 47]. However, this cover does not apply to:\n- chips, scratches, dents or superficial markings;\n- wear and tear or damage caused over a period of time;\n- loss or damage caused by you, your Guest, an Occupier or Co-Insured;\n- loss or damage caused by a person who entered the Home with consent of you, your Guest, an Occupier or Co-Insured; or\n- loss or damage **not reported to the police** [RAA Contents PDS, page 47].\n\n**Specific exclusion affecting fences:**\nThere is a specific exclusion stating that Malicious Damage cover does **not apply** to a fence (or path, driveway, garden borders, paving, or freestanding/retaining walls, or gates) \"if they were not structurally sound or were not maintained in a reasonable manner prior to the loss or damage occurring\" [RAA Contents PDS, page 50]. Even where covered, a Waiting Period of 72 hours after the Policy's Inception Date applies, and a Specific Limit of 10% of the Sum Insured for the relevant Insured Property applies to loss or damage to fences, gates, paths, driveways, garden borders, paving, and freestanding/retaining walls [RAA Contents PDS, page 50].\n\n**Fence claims payment process:**\nSeparately, the excerpts note that if \"Your claim is for... the repair or replacement of a fence that adjoins another person's property,\" a different payment approach applies \u2014 the insurer will pay in cash or vouchers the cost to repair with new materials/nearest equivalent, or the cost to replace with As New items, whichever is lesser [RAA Contents PDS, page 80].\n\n**Letterbox:**\nThe provided excerpts do **not mention letterboxes** specifically anywhere. I cannot confirm whether malicious damage to a letterbox is covered, excluded, or subject to any specific limit based on the information given. You would need to check further policy sections (such as the definition of \"Insured Property\" or Contents definitions) not included in these excerpts.\n\n**Also note:** If the Home has been Unoccupied for more than 90 consecutive days and remains",
         "citations": [
           {
             "insurer": "RAA",
@@ -49,13 +49,13 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 80
+            "page": 50
           },
           {
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 50
+            "page": 80
           }
         ]
       }
@@ -74,39 +74,12 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "fence exclusion under malicious damage or vandalism cover",
-        "insurer": "RAA",
-        "product": "Home"
-      },
-      "output": {
-        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
-        "citations": []
-      }
-    },
-    {
-      "turn": 3,
-      "type": "tool_call",
-      "tool": "calculate_payout",
-      "input": {
-        "claim_amount": 850,
-        "excess": 500,
-        "coverage_limit": 45000
-      },
-      "output": {
-        "payout": 350
-      }
-    },
-    {
-      "turn": 4,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning: extract_fields identified this as malicious damage (spray-painted fence/letterbox, kicked-in paling) with a clear estimated cost of $850 and policy number HM-773245. retrieve_policy confirms RAA's policy covers \"loss or damage to the Insured Property...as a result of Malicious Damage, Intentional Damage or damage by vandals\" (RAA PDS, p.47), and no specific fence exclusion for vandalism was found in the RAA Home text. The policyholder's certificate shows an excess of $500 and coverage limit of $45,000, well above the claimed amount. Applying calculate_payout: $850 claim \u2212 $500 excess = $350 payout.\n\nCitations:\n- RAA Contents/Home PDS, p.47 \u2013 Malicious Damage/vandalism coverage clause.\n- RAA policy certificate (HM-773245): excess $500, coverage limit $45,000.\n\nFinal payout: $350."
+      "text": "DECISION: escalate\n\nReasoning: The claim involves malicious damage to a fence/paling and a letterbox under an RAA Contents policy (HM-773245, policyholder-specific excess $500, coverage limit $45,000).\n\nWhile the RAA PDS confirms general \"Malicious Damage, Intentional Damage or damage by vandals\" cover, several material conditions and ambiguities prevent a confident approve/deny decision:\n\n1. **Police report requirement**: The policy excludes malicious damage \"not reported to the police\" [RAA Contents PDS, p.47]. The claim narrative gives no indication whether the incident was reported to police, and this is a hard exclusion trigger if not.\n\n2. **Fence maintenance condition**: Cover for a fence is excluded if it \"was not structurally sound or was not maintained in a reasonable manner prior to the loss\" [RAA Contents PDS, p.50]. We have no information on the fence's condition prior to the incident.\n\n3. **Letterbox coverage is undefined**: The policy text retrieved does not mention letterboxes at all, so it's unclear whether the letterbox portion of the claim (spray paint) falls under \"Insured Property\" or a separate contents category, creating genuine ambiguity in coverage determination [RAA Contents PDS, various].\n\n4. **Specific limit and waiting period**: A specific limit of 10% of sum insured applies to fence damage, plus a 72-hour waiting period post-inception \u2014 we have no data on policy inception date to confirm the waiting period isn't a bar.\n\nGiven these unresolved conditions \u2014 missing police-report confirmation, unknown fence maintenance status, and undefined letterbox treatment \u2014 this meets the escalation criteria for \"ambiguous coverage text\" and a claimed cause that could directly conflict with a policy exclusion depending on facts not present in the claim. I'm escalating for a human reviewer to obtain the police report status and fence condition before making a coverage determination."
     }
   ],
-  "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning: extract_fields identified this as malicious damage (spray-painted fence/letterbox, kicked-in paling) with a clear estimated cost of $850 and policy number HM-773245. retrieve_policy confirms RAA's policy covers \"loss or damage to the Insured Property...as a result of Malicious Damage, Intentional Damage or damage by vandals\" (RAA PDS, p.47), and no specific fence exclusion for vandalism was found in the RAA Home text. The policyholder's certificate shows an excess of $500 and coverage limit of $45,000, well above the claimed amount. Applying calculate_payout: $850 claim \u2212 $500 excess = $350 payout.\n\nCitations:\n- RAA Contents/Home PDS, p.47 \u2013 Malicious Damage/vandalism coverage clause.\n- RAA policy certificate (HM-773245): excess $500, coverage limit $45,000.\n\nFinal payout: $350.",
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves malicious damage to a fence/paling and a letterbox under an RAA Contents policy (HM-773245, policyholder-specific excess $500, coverage limit $45,000).\n\nWhile the RAA PDS confirms general \"Malicious Damage, Intentional Damage or damage by vandals\" cover, several material conditions and ambiguities prevent a confident approve/deny decision:\n\n1. **Police report requirement**: The policy excludes malicious damage \"not reported to the police\" [RAA Contents PDS, p.47]. The claim narrative gives no indication whether the incident was reported to police, and this is a hard exclusion trigger if not.\n\n2. **Fence maintenance condition**: Cover for a fence is excluded if it \"was not structurally sound or was not maintained in a reasonable manner prior to the loss\" [RAA Contents PDS, p.50]. We have no information on the fence's condition prior to the incident.\n\n3. **Letterbox coverage is undefined**: The policy text retrieved does not mention letterboxes at all, so it's unclear whether the letterbox portion of the claim (spray paint) falls under \"Insured Property\" or a separate contents category, creating genuine ambiguity in coverage determination [RAA Contents PDS, various].\n\n4. **Specific limit and waiting period**: A specific limit of 10% of sum insured applies to fence damage, plus a 72-hour waiting period post-inception \u2014 we have no data on policy inception date to confirm the waiting period isn't a bar.\n\nGiven these unresolved conditions \u2014 missing police-report confirmation, unknown fence maintenance status, and undefined letterbox treatment \u2014 this meets the escalation criteria for \"ambiguous coverage text\" and a claimed cause that could directly conflict with a policy exclusion depending on facts not present in the claim. I'm escalating for a human reviewer to obtain the police report status and fence condition before making a coverage determination.",
   "citations": [
     {
       "insurer": "RAA",
@@ -130,13 +103,13 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 80
+      "page": 50
     },
     {
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 50
+      "page": 80
     }
   ],
   "claim_id": "claim-008"

@@ -10,94 +10,20 @@
       "output": {
         "claim_type": "flood",
         "date_of_loss": "2023-04-15",
-        "cause": "heavy rain causing river bank failure",
+        "cause": "river overflowed due to heavy rain",
         "damaged_item": "backyard shed containing tools and equipment",
         "estimated_amount": 8000.0,
         "policy_number": null
       }
     },
     {
-      "turn": 1,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "Is flood damage from a river breaking its banks covered under storm or flood peril, and is there any ambiguity between flood and storm definitions?"
-      },
-      "output": {
-        "answer": "Based on the provided excerpts, here's what can be determined:\n\n**Coverage classification:** None of the excerpts explicitly define \"flood\" to specify whether river water breaking its banks falls under \"flood\" or \"storm\" peril. However, the excerpts consistently treat flood and storm as **separate, distinct perils** with their own definitions and exclusions:\n\n- Allianz policies list \"Flood\" and \"Storm\" as separate line items with different exclusion conditions [Allianz Building KFS, page 1; Allianz Landlord KFS, page 1].\n- AAMI policies also separate \"Flood\" as its own coverage category with specific exclusions [AAMI Contents PDS, page 44; AAMI Building PDS, page 39].\n\n**Ambiguity/overlap noted in the excerpts:**\n\n1. **Storm surge vs. flood:** There is an explicit distinction (not ambiguity, but a boundary rule) in the RAA excerpt: \"Flood excludes water from Actions of the Sea, **except** caused by: a Storm Surge if it occurs at the same time your Insured Property is damaged by a Storm; or a Tsunami\" [RAA Contents PDS, page 88]. This shows insurers deliberately separate storm surge (a storm-related peril) from flood, but create a narrow overlap when storm surge coincides with storm damage.\n\n2. **AAMI exclusions for storm surge under flood:** AAMI's Flood cover excludes \"loss or damage caused by actions or movements of the sea or storm surge\" [AAMI Contents PDS, page 44; AAMI Building PDS, page 39], reinforcing that storm surge is treated separately from river/rainwater flood.\n\n3. **Allianz storm exclusions:** Allianz's Storm cover excludes \"storm surge\" and water entering \"due to lack of maintenance or poor housekeeping\" [Allianz Building KFS, page 1; Allianz Landlord KFS, page 1], but does not clarify how riverine flooding is distinguished from storm-driven water damage (e.g., heavy rain causing a river to overflow).\n\n**Answer to your specific question:** None of the excerpts provide an explicit definition of \"flood\" that confirms a river breaking its banks is covered under the \"flood\" peril specifically (as opposed to storm). The excerpts do not contain a definition clause for \"flood\" itself (e.g., AAMI's or Allianz's technical defin",
-        "citations": [
-          {
-            "insurer": "Allianz",
-            "product": "Building",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "insurer": "RAA",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 88
-          },
-          {
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          },
-          {
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 39
-          }
-        ]
-      }
-    },
-    {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: This claim does not name a specific insurer (the narrative only refers to \"the insurer\" generically), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. \n\nIndependently, the coverage question itself is ambiguous: `retrieve_policy` found that flood and storm are treated as distinct perils across insurers (e.g., Allianz Building KFS p.1, Allianz Landlord KFS p.1, AAMI Contents PDS p.44, AAMI Building PDS p.39, RAA Contents PDS p.88), but none of the retrieved policy excerpts contain an explicit definition of \"flood\" that clarifies whether river water breaking its banks due to heavy rain is classified as flood or storm damage. The policyholder themselves noted this ambiguity when contacting their insurer.\n\nGiven both the missing insurer identification (required for excess/coverage limit lookup) and the genuine ambiguity in peril classification found in the policy text, this claim meets two separate escalation triggers and must be handed to a human reviewer rather than decided automatically."
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be safely triaged for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer. Without that, `get_policy_certificate` cannot be looked up for the real excess/coverage limit, and `calculate_payout` would require guessing those figures, which is prohibited.\n\n2. **Ambiguous coverage classification** \u2013 The policyholder states that even the insurer's own call center could not clarify whether this event (river flooding caused by heavy rain) falls under \"flood\" cover or \"storm\" cover. This is a classic ambiguous peril-classification issue (flood vs. storm definitions vary significantly between policies and often carry different excess/exclusion terms), which directly matches the escalation criterion for contradictory/ambiguous coverage determination.\n\nGiven both the missing insurer identification and the inherent ambiguity in peril classification, this claim requires human review rather than an automated decision."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: This claim does not name a specific insurer (the narrative only refers to \"the insurer\" generically), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. \n\nIndependently, the coverage question itself is ambiguous: `retrieve_policy` found that flood and storm are treated as distinct perils across insurers (e.g., Allianz Building KFS p.1, Allianz Landlord KFS p.1, AAMI Contents PDS p.44, AAMI Building PDS p.39, RAA Contents PDS p.88), but none of the retrieved policy excerpts contain an explicit definition of \"flood\" that clarifies whether river water breaking its banks due to heavy rain is classified as flood or storm damage. The policyholder themselves noted this ambiguity when contacting their insurer.\n\nGiven both the missing insurer identification (required for excess/coverage limit lookup) and the genuine ambiguity in peril classification found in the policy text, this claim meets two separate escalation triggers and must be handed to a human reviewer rather than decided automatically.",
-  "citations": [
-    {
-      "insurer": "Allianz",
-      "product": "Building",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 88
-    },
-    {
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 44
-    },
-    {
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 39
-    }
-  ],
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be safely triaged for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer. Without that, `get_policy_certificate` cannot be looked up for the real excess/coverage limit, and `calculate_payout` would require guessing those figures, which is prohibited.\n\n2. **Ambiguous coverage classification** \u2013 The policyholder states that even the insurer's own call center could not clarify whether this event (river flooding caused by heavy rain) falls under \"flood\" cover or \"storm\" cover. This is a classic ambiguous peril-classification issue (flood vs. storm definitions vary significantly between policies and often carry different excess/exclusion terms), which directly matches the escalation criterion for contradictory/ambiguous coverage determination.\n\nGiven both the missing insurer identification and the inherent ambiguity in peril classification, this claim requires human review rather than an automated decision.",
+  "citations": [],
   "claim_id": "claim-018"
 }
