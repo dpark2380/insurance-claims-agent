@@ -12,7 +12,7 @@ An agent that triages Australian home insurance claims: it extracts structured f
 | 95% CI (bootstrap) | [0.914, 0.945] | [0.767, 0.863] | [0.769, 0.863] | [0.770, 0.866] |
 | Parse failures | 0/54 | 2/54 | 2/54 | 2/54 |
 
-The three LoRA ranks are statistically indistinguishable from each other. Zero-shot's advantage over all three is real (its confidence interval does not overlap any of theirs). See [Why r=4](#why-r4-despite-a-lower-score) for what this means for the production choice.
+The three LoRA ranks are statistically indistinguishable from each other. Zero-shot's advantage over all three is real (its confidence interval does not overlap any of theirs). That rules out adapter capacity as the bottleneck: giving the local model more trainable parameters didn't close the gap, so the production choice comes down to cost, not accuracy (see [Why r=4](#why-r4-despite-a-lower-score)). The gap is uneven across fields, not one uniform drop: `date_of_loss` and `policy_number` are within 0.04 of zero-shot, `estimated_amount` within 0.07, but `claim_type` (0.13), `damaged_item` (0.13), and especially `cause` (0.25) lag further behind. The fields the payout calculation actually depends on (the date, the amount, the policy number used to look up the certificate) are the fields LoRA is closest to matching; the fields it's weakest on are the free-text description of what happened, which is exactly the failure mode the Claude fallback exists to catch.
 
 **Agent cost and latency (20-claim batch, full pipeline: extraction, retrieval, payout calculation, decision)**
 
@@ -22,12 +22,16 @@ The three LoRA ranks are statistically indistinguishable from each other. Zero-s
 
 Mean cost per claim: $0.0316. Total cost for the 20-claim run: $0.6323. Measured with real per-call token and latency instrumentation ([code/eval/instrumentation.py](code/eval/instrumentation.py)), not estimated.
 
+This is the cost of the full agent, not a single model call: extraction, one or more `retrieve_policy` calls (each of which makes its own Claude call to generate a grounded answer), and the reasoning turns in between. At $0.0316 per claim, 10,000 claims a month would cost roughly $316 (a simple multiplication of the measured mean, not a separately measured figure), most of it coming from the number of tool-calling turns a claim takes rather than from the underlying model's per-token price.
+
 **Retrieval quality (hit-rate@5 and MRR@5, n=8)**
 
 | | Value |
 |---|---|
 | Hit-rate@5 | 1.000 (8/8) |
 | MRR@5 | 0.613 |
+
+Hit-rate@5 of 1.000 means the correct policy chunk was somewhere in the top 5 results for every one of the 8 questions. MRR@5 of 0.613 means it usually wasn't ranked first: an MRR of 1.0 would mean every correct chunk was the top result, and 0.613 corresponds to several questions where the right chunk placed 4th or 5th rather than 1st. In practice this means the generation step, which reads all 5 retrieved chunks rather than just the top one, is doing real work to find the right answer among plausible-looking distractors, not just passing through whatever ranked first.
 
 This only covers 8 hand-written questions against the original 5 insurers (AAMI, Allianz, NRMA, RAA, RealInsurance). The corpus has since grown to 13 insurers and no ground truth exists yet for the other 8, so this number says nothing about retrieval quality on most of the current corpus. See [Limitations](#limitations-and-next-steps).
 
