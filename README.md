@@ -190,6 +190,8 @@ python -m eval.hit_rate                            # retrieval hit-rate@5 / MRR@
 
 `data/raw_pdfs/`, `data/extracted/`, and `data/chunks.jsonl` are not committed to this repository. `data/manifest.json` and `data/sources.json` are, since they're just corpus metadata, not the documents themselves. Rebuild the actual corpus locally with the ingest commands above; every source is a public insurer disclosure page.
 
+The ingest pipeline downloads from insurer disclosure pages whose URLs may change without notice. It was last verified end to end on 2026-09-20.
+
 ## Repo structure
 
 ```
