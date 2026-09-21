@@ -6,3 +6,6 @@ __pycache__/
 graphify-out/
 .claude/
 CLAUDE.md
+data/raw_pdfs/
+data/extracted/
+data/chunks.jsonl
