@@ -6,6 +6,7 @@ from pathlib import Path
 from torch.utils.data import Dataset
 from peft import LoraConfig, get_peft_model
 from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments, TrainerCallback
+from extract.lora_infer import DEVICE
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
@@ -120,7 +121,8 @@ def setup_lora(model, rank, alpha):
 # fragmentation can't accumulate across steps even though shapes keep varying.
 class EmptyCacheCallback(TrainerCallback):
     def on_step_end(self, args, state, control, **kwargs):
-        torch.mps.empty_cache()
+        if DEVICE == "mps":
+            torch.mps.empty_cache()
 
 
 def parse_args():
@@ -154,7 +156,7 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL, 
         dtype=torch.bfloat16
-    ).to("mps")
+    ).to(DEVICE)
 
     # Injecting lora adapters to model. 
     model = setup_lora(model, rank=args.rank, alpha=args.alpha)

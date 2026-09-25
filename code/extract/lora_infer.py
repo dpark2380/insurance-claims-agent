@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 
@@ -21,6 +22,11 @@ TEST_PATH = ROOT / "data" / "claims" / "test.jsonl"
 AFCA_TEST_PATH = ROOT / "data" / "claims" / "afca_test.jsonl"
 OUTPUTS_DIR = ROOT / "outputs"
 
+# Override with DEVICE=cpu|cuda|mps; otherwise the best available backend.
+DEVICE = os.environ.get("DEVICE") or (
+    "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+)
+
 from extract.eval import score  # noqa: E402
 from extract.schema import ClaimExtraction  # noqa: E402
 from extract.zero_shot import SYSTEM_PROMPT, _strip_fences  # noqa: E402 -- same instruction as the zero-shot baseline
@@ -31,7 +37,7 @@ def load_model(rank: int):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to("mps")
+    base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to(DEVICE)
     adapter_dir = OUTPUTS_DIR / f"lora-claims-extractor-r{rank}"
     model = PeftModel.from_pretrained(base, str(adapter_dir))
     model.eval()
@@ -47,7 +53,7 @@ def extract_one(model, tokenizer, narrative: str) -> tuple[dict | None, float]:
     # version even with return_tensors="pt" -- pull the actual tensor out of it.
     input_ids = tokenizer.apply_chat_template(
         messages, tokenize=True, add_generation_prompt=True, return_tensors="pt",
-    )["input_ids"].to("mps")
+    )["input_ids"].to(model.device)
 
     start = time.monotonic()
     with torch.no_grad():

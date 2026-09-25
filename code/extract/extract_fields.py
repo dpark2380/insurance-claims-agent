@@ -6,7 +6,7 @@ from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from extract.schema import ClaimExtraction
 from extract.zero_shot import SYSTEM_PROMPT, _strip_fences, extract_one
-from extract.lora_infer import extract_one as lora_extract_one
+from extract.lora_infer import DEVICE, extract_one as lora_extract_one
 
 # r=4, r=8, and r=16 are statistically indistinguishable on held-out accuracy
 # (see outputs/phase2_findings.md) -- r=4 is used because it's the cheapest
@@ -22,7 +22,7 @@ _tokenizer = None
 def _get_model():
     global _model, _tokenizer
     if _model is None:
-        base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to("mps")
+        base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to(DEVICE)
         _model = PeftModel.from_pretrained(base, str(ADAPTER_PATH))
         _model.eval()
 
