@@ -1,0 +1,156 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 8 February 2024 my son was kicking a soccer ball in the backyard and it smashed straight through our sliding glass door. The whole pane shattered and we've had to board it up until it can be replaced. I think it'll cost around $650 to fix."
+      },
+      "output": {
+        "claim_type": "glass_breakage",
+        "date_of_loss": "2024-02-08",
+        "cause": "soccer ball kicked into sliding glass door",
+        "damaged_item": "sliding glass door",
+        "estimated_amount": 650.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "accidental breakage of glass sliding door covered",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here's what I can determine:\n\n**For Home cover:** The policy provides coverage for \"the cost of repairing or replacing any part of any fixed glass forming part of the Insured Property including windows... if accidentally broken\" [RAA Contents PDS, page 52]. A glass sliding door, if it is fixed glass forming part of the Home, would likely fall under this description, though the excerpt does not explicitly name \"sliding doors\" as a covered item.\n\n**For Contents cover:** The Accidental breakage benefit for Contents applies only to glass in \"furniture; pictures, paintings, prints and mirrors designed to be hung from a wall or freestanding; or forming part of aquariums\" [RAA Contents PDS, page 52]. A sliding door would not fall under this Contents-specific list.\n\n**Exclusions to note:** The excerpts list specific exclusions such as scratches not extending through the full thickness of the glass, glass in a glasshouse/greenhouse, tiled fixtures/splashbacks, toilet seats, glass on stoves/heaters/ovens/cooktops, television/VDU screens, and glass in radios, clocks, vases, ornaments, lamps, or photo frames [RAA Contents PDS, page 52]. None of these exclusions specifically mention sliding doors.\n\n**Conclusion:** The provided excerpts do not explicitly confirm or deny coverage for a glass sliding door by name. If the sliding door is \"fixed glass forming part of the Insured Property\" under Home cover, it appears likely to be covered based on the general wording \u2014 but I cannot state this with certainty since sliding doors are not specifically mentioned, and I don't have access to definitions (e.g., how \"Insured Property\" or \"fixed glass\" is defined elsewhere in the policy). I recommend confirming with the insurer or reviewing the full policy wording/definitions section for a definit",
+        "citations": [
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 60
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim involves accidental glass breakage of a sliding glass door caused by a soccer ball, which is a common, plausible cause under a \"fixed glass\" accidental breakage benefit. However, the retrieved policy text is ambiguous: RAA's Home cover appears to cover \"the cost of repairing or replacing any part of any fixed glass forming part of the Insured Property including windows... if accidentally broken\" [RAA Contents PDS, page 52], but sliding doors are not explicitly named as covered fixed glass, and the Contents-specific Accidental Breakage benefit explicitly limits glass coverage to furniture, mirrors, pictures, and aquariums [RAA Contents PDS, page 52], excluding sliding doors. The retrieval tool itself could not confirm with certainty whether a \"sliding glass door\" qualifies as \"fixed glass forming part of the Insured Property\" without further definitional text [RAA Contents PDS, page 35][RAA Contents PDS, page 45][RAA Contents PDS, page 60].\n\nBecause the coverage determination is genuinely ambiguous based on the policy excerpts retrieved (not clearly covered nor clearly excluded), and per escalation policy this ambiguity requires human review rather than a guessed decision, I am escalating this claim rather than issuing an approve/deny determination or running the payout calculation."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves accidental glass breakage of a sliding glass door caused by a soccer ball, which is a common, plausible cause under a \"fixed glass\" accidental breakage benefit. However, the retrieved policy text is ambiguous: RAA's Home cover appears to cover \"the cost of repairing or replacing any part of any fixed glass forming part of the Insured Property including windows... if accidentally broken\" [RAA Contents PDS, page 52], but sliding doors are not explicitly named as covered fixed glass, and the Contents-specific Accidental Breakage benefit explicitly limits glass coverage to furniture, mirrors, pictures, and aquariums [RAA Contents PDS, page 52], excluding sliding doors. The retrieval tool itself could not confirm with certainty whether a \"sliding glass door\" qualifies as \"fixed glass forming part of the Insured Property\" without further definitional text [RAA Contents PDS, page 35][RAA Contents PDS, page 45][RAA Contents PDS, page 60].\n\nBecause the coverage determination is genuinely ambiguous based on the policy excerpts retrieved (not clearly covered nor clearly excluded), and per escalation policy this ambiguity requires human review rather than a guessed decision, I am escalating this claim rather than issuing an approve/deny determination or running the payout calculation.",
+  "citations": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 60
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 60
+    }
+  ],
+  "claim_id": "claim-013"
+}

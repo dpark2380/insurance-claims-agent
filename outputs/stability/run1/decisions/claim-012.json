@@ -1,0 +1,233 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 12 August 2023 we came home from a weekend away to find our back sliding door forced open and the house ransacked. They took my husband's laptop, my jewellery box with my engagement ring and grandmother's necklace, and a PlayStation 5 with several games. Our policy number is HM2287451. We haven't had a chance to get a full quote yet but I'd estimate it's all worth around $9,500."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2023-08-12",
+        "cause": "forced entry into house through sliding door",
+        "damaged_item": "husband's laptop, jewellery box containing engagement ring and grandmother's necklace, and PlayStation 5 with games",
+        "estimated_amount": 9500.0,
+        "policy_number": "HM2287451"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Coverage for theft/burglary of contents including jewellery, forced entry break-in",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is what can be determined about theft/burglary coverage for contents, including jewellery:\n\n**General theft coverage for Contents:**\nThe comparison table confirms that \"Theft or attempted theft\" is a covered peril under both Building and Contents policies (both Plus and Standard levels) [NRMA Home PDS, page 3].\n\n**Theft during transit/storage:**\nFor Contents in transit or storage, cover applies for \"theft following violent or forced entry\" [NRMA Home PDS, page 19]. However, this specific transit/storage benefit **excludes Jewellery and Watches** from coverage while in storage [NRMA Home PDS, page 19].\n\n**Theft at temporary residence (Family Member benefit):**\nWhere a Family Member's temporary residence is treated as \"Your Home,\" theft cover excludes loss \"unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23]. General theft also excludes \"lost or misplaced items\" under this benefit [NRMA Home PDS, page 23].\n\n**Jewellery and Watches as Portable Contents:**\nJewellery and Watches (defined as \"watches, jewellery items and medals but not including a mobile device with a screen display or a smart watch\") can be insured under the optional \"Portable Contents\" benefit [NRMA Home PDS, page 25]. Under this benefit:\n- Cover applies if the policyholder has 'Plus' cover, or has 'Stand",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 19
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 31
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "standard contents sub-limit for jewellery and watches theft at home without Portable Contents option",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, the standard sub-limit for Jewellery and Watches as General Contents is **$2,500 in total** [NRMA Home PDS, page 16].\n\nThis limit applies to Jewellery and Watches items kept as General Contents. The excerpt notes that you have an \"Option to increase cover\" for this category, which refers to adding the 'Portable Contents' optional benefit [NRMA Home PDS, page 16]. Without that optional benefit selected, the $2,500 total limit applies to Jewellery and Watches under your General Contents cover.\n\nThe excerpts do not specify whether this sub-limit applies per item or in aggregate for theft specifically versus other causes of loss, nor do they provide additional detail distinguishing theft claims from other damage types for this sub-limit.",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 16
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 35
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim involves theft of jewellery (engagement ring and grandmother's necklace) alongside a laptop and PS5, with a single bundled estimate of $9,500. NRMA's PDS caps Jewellery and Watches under standard General Contents cover at $2,500 total unless the optional 'Portable Contents' benefit was purchased [NRMA Home PDS, page 16] [NRMA Home PDS, page 25]. The policy certificate only returned excess ($550) and overall coverage_limit ($55,000) - it does not indicate whether this policyholder holds the Portable Contents option, and the claim narrative gives no itemized breakdown of the jewellery's value versus the laptop/PS5. Without knowing whether the jewellery sub-limit applies, the payout cannot be accurately calculated - this is a genuine coverage ambiguity requiring human review to confirm optional coverage status and obtain an itemized valuation."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim involves theft of jewellery (engagement ring and grandmother's necklace) alongside a laptop and PS5, with a single bundled estimate of $9,500. NRMA's PDS caps Jewellery and Watches under standard General Contents cover at $2,500 total unless the optional 'Portable Contents' benefit was purchased [NRMA Home PDS, page 16] [NRMA Home PDS, page 25]. The policy certificate only returned excess ($550) and overall coverage_limit ($55,000) - it does not indicate whether this policyholder holds the Portable Contents option, and the claim narrative gives no itemized breakdown of the jewellery's value versus the laptop/PS5. Without knowing whether the jewellery sub-limit applies, the payout cannot be accurately calculated - this is a genuine coverage ambiguity requiring human review to confirm optional coverage status and obtain an itemized valuation."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim involves theft of jewellery (engagement ring and grandmother's necklace) alongside a laptop and PS5, with a single bundled estimate of $9,500. NRMA's PDS caps Jewellery and Watches under standard General Contents cover at $2,500 total unless the optional 'Portable Contents' benefit was purchased [NRMA Home PDS, page 16] [NRMA Home PDS, page 25]. The policy certificate only returned excess ($550) and overall coverage_limit ($55,000) - it does not indicate whether this policyholder holds the Portable Contents option, and the claim narrative gives no itemized breakdown of the jewellery's value versus the laptop/PS5. Without knowing whether the jewellery sub-limit applies, the payout cannot be accurately calculated - this is a genuine coverage ambiguity requiring human review to confirm optional coverage status and obtain an itemized valuation.",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 35
+    }
+  ],
+  "claim_id": "claim-012"
+}

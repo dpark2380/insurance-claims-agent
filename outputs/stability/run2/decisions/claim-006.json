@@ -1,0 +1,157 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 August 2023, our clothes dryer caught fire while running in the laundry and scorched the wall and cabinetry beside it. I managed to put it out with a fire extinguisher before it spread further. My policy number is HM-2298471. I'd estimate the damage to be around $2,800 to repair."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2023-08-03",
+        "cause": "clothes dryer malfunctioned and caught fire while running",
+        "damaged_item": "laundry room wall and cabinetry near clothes dryer",
+        "estimated_amount": 2800.0,
+        "policy_number": "HM-2298471"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is fire damage caused by a faulty appliance (clothes dryer) covered?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, this question cannot be fully answered.\n\nThe policy covers \"loss or damage caused by: fire, bushfires and grassfires, or smoke, ash or soot from a fire\" [Allianz Home PDS, page 23]. This suggests that if a faulty clothes dryer caused an actual fire, the resulting loss or damage would generally fall under this coverage.\n\nHowever, there is a relevant exclusion for damage \"of an item that is designed to be exposed to heat \u2013 for example if a heat resistant item like a cooking appliance or fireplace is damaged during normal use\" [Allianz Home PDS, page 23]. The excerpts do not specifically clarify whether a clothes dryer falls into this \"designed to be exposed to heat\" exclusion category, or whether the fire exclusion for \"gradual\" damage from repeated exposure to fire or smoke would apply to a fault developing over time [Allianz Home PDS, page 23].\n\nAdditionally, the excerpts reference \"Other general exclusions also apply \u2013 see What's not covered? on page 51\" [Allianz Home PDS, page 23], but the content of that page is not included here, and it may contain provisions relevant to appliance faults, electrical faults, or similar causes that could affect coverage.\n\n**In summary:** The excerpts confirm general fire damage is covered, but do not provide enough detail to determine definitively whether fire damage originating from a faulty clothes dryer specifically is covered, partially excluded, or excluded, due to missing information from page 51 and lack of specific reference to dryers or electrical/mechanical faults as a cause of fire.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 29
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 28
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "This is ambiguous coverage text \u2014 the policy confirms general fire damage is covered, but flags a potential exclusion for items \"designed to be exposed to heat\" that may or may not apply to a clothes dryer, and references additional exclusions on page 51 not included in the excerpt. This is a genuine ambiguity that could change the outcome, not a clear-cut case.\n\nDECISION: escalate\n\nThe claim is for fire damage caused by a malfunctioning clothes dryer, damaging the wall and cabinetry. Fire damage is generally covered under the Allianz Home PDS [Allianz Home PDS, page 23], but the same page contains an exclusion for damage to items \"designed to be exposed to heat\" during normal use, and it's unclear whether this exclusion could extend to the dryer itself or the fire it caused [Allianz Home PDS, page 23]. Additionally, the policy references further general exclusions on page 51 that were not available to review and could be relevant to appliance/electrical-fault-caused fires [Allianz Home PDS, page 26] [Allianz Home PDS, page 29] [Allianz Home PDS, page 28]. Because coverage cannot be determined definitively from the available policy text and there is a possible conflict with an exclusion, this claim should be escalated to a human reviewer rather than approved or denied automatically. (Excess: $600, Coverage limit: $60,000 \u2014 noted for reference once coverage is confirmed by a human reviewer.)"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This is ambiguous coverage text \u2014 the policy confirms general fire damage is covered, but flags a potential exclusion for items \"designed to be exposed to heat\" that may or may not apply to a clothes dryer, and references additional exclusions on page 51 not included in the excerpt. This is a genuine ambiguity that could change the outcome, not a clear-cut case.\n\nDECISION: escalate\n\nThe claim is for fire damage caused by a malfunctioning clothes dryer, damaging the wall and cabinetry. Fire damage is generally covered under the Allianz Home PDS [Allianz Home PDS, page 23], but the same page contains an exclusion for damage to items \"designed to be exposed to heat\" during normal use, and it's unclear whether this exclusion could extend to the dryer itself or the fire it caused [Allianz Home PDS, page 23]. Additionally, the policy references further general exclusions on page 51 that were not available to review and could be relevant to appliance/electrical-fault-caused fires [Allianz Home PDS, page 26] [Allianz Home PDS, page 29] [Allianz Home PDS, page 28]. Because coverage cannot be determined definitively from the available policy text and there is a possible conflict with an exclusion, this claim should be escalated to a human reviewer rather than approved or denied automatically. (Excess: $600, Coverage limit: $60,000 \u2014 noted for reference once coverage is confirmed by a human reviewer.)",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 29
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 28
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 29
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 28
+    }
+  ],
+  "claim_id": "claim-006"
+}

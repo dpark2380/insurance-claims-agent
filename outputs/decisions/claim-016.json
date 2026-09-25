@@ -18,12 +18,20 @@
     },
     {
       "turn": 2,
-      "type": "final",
-      "text": "This claim is missing essential information needed for a fair triage decision:\n\n- **No insurer named** \u2014 cannot look up policy certificate (excess/coverage limit) or run payout calculation without guessing.\n- **Cause is unknown** \u2014 cannot verify against policy coverage/exclusions.\n- **Estimated amount is null** \u2014 cannot be resolved from the narrative.\n\nPer escalation policy, this combination of an unresolvable null estimated amount, unknown cause, and missing insurer means I must not guess any of these values.\n\nDECISION: escalate\n\nReasoning: The claim narrative lacks a named insurer (required to retrieve excess/coverage limit and compute payout), lacks a determinable cause of loss (required to check coverage/exclusions via retrieve_policy), and extract_fields returned a null estimated_amount with no way to resolve it from the text. Per policy, any one of these triggers escalation, and here all three are present. This claim needs a human to gather more details from the policyholder (insurer name, cause of damage, and a repair estimate) before it can be triaged."
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout."
+      }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "This claim is missing essential information needed for a fair triage decision:\n\n- **No insurer named** \u2014 cannot look up policy certificate (excess/coverage limit) or run payout calculation without guessing.\n- **Cause is unknown** \u2014 cannot verify against policy coverage/exclusions.\n- **Estimated amount is null** \u2014 cannot be resolved from the narrative.\n\nPer escalation policy, this combination of an unresolvable null estimated amount, unknown cause, and missing insurer means I must not guess any of these values.\n\nDECISION: escalate\n\nReasoning: The claim narrative lacks a named insurer (required to retrieve excess/coverage limit and compute payout), lacks a determinable cause of loss (required to check coverage/exclusions via retrieve_policy), and extract_fields returned a null estimated_amount with no way to resolve it from the text. Per policy, any one of these triggers escalation, and here all three are present. This claim needs a human to gather more details from the policyholder (insurer name, cause of damage, and a repair estimate) before it can be triaged.",
+  "reasoning": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout.",
   "citations": [],
+  "retrieved_sources": [],
   "claim_id": "claim-016"
 }

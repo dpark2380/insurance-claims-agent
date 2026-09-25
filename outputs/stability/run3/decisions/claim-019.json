@@ -1,0 +1,129 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $15,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2025-07-10",
+        "cause": "break-in by unknown person",
+        "damaged_item": "jewellery and electronics",
+        "estimated_amount": 15000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "theft of jewellery and electronics unspecified valuables sub-limit coverage"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what I can determine regarding theft of jewellery and electronics under \"unspecified valuables\" sub-limit coverage:\n\n**Jewellery:**\n- Under Suncorp's Personal valuables optional cover, jewellery and watches are covered for accidental loss or damage anywhere in Australia and New Zealand, and also anywhere else in the world for up to 30 consecutive days while being worn or in a secure safe [Suncorp Contents PDS, page 26].\n- Under Suncorp's \"Personal valuables \u2013 unspecified items\" cover, there is a **$1,000 limit per item, pair, set, or collection**, with the overall maximum being the total sum insured shown on the certificate of insurance [Suncorp Contents PDS, page 26].\n- Similarly, AAMI's \"Extra Cover Portable valuables \u2013 unspecified items\" explicitly lists **jewellery and watches** as covered items under this category, with the same **$1,000 limit per item, pair, set, or collection**, up to the total sum insured shown on the certificate of insurance [AAMI Contents PDS, page 73].\n\n**Electronics:**\n- The excerpts do not clarify general electronics coverage under \"unspecified items,\" but they do specify certain exclusions. AAMI's PDS states that **mobile or satellite phones, laptops**, and other similar items are **not** insured as \"unspecified items\" and must instead be insured as \"specified items\" regardless of their value [AAMI Contents PDS, page 73]. The list is cut off in the excerpt, so it's unclear if this extends to other electronics (e.g., cameras, GPS devices).\n- Notably, AAMI's excerpt also states that **GPS or navigational devices** are **not covered** at all under this optional cover [AAMI Contents PDS, page 73].\n- Photographic and optical equipment **is** included under AAMI's unspecified items category [AAMI Contents PDS, page 73].\n\n**Not covered in the excerpts:**\n- The excerpts do not explicitly confirm whether \"theft\" specifically (as opposed to \"accidental loss or damage\") is covered under this optional cover \u2014 the language used describes \"accidental loss or damage,\" and theft is not explicitly named as a covered event in the excerpts provided.\n- The Suncorp excerpts do not specify a full list of what qualifies as \"unspecified items,\" beyond referencing pages 79\u201381, which are not included here",
+        "citations": [
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 98
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 73
+          },
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 66
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved to obtain the real excess/coverage limit, and `calculate_payout` would require guessing those figures \u2014 which is against policy. Additionally, the policy research itself is ambiguous/contradictory as applied to this claim: different insurers (Suncorp, AAMI) have different sub-limits (e.g., $1,000 per item/pair/set/collection for unspecified jewellery) [Suncorp Contents PDS, page 26] [AAMI Contents PDS, page 73], electronics coverage under \"unspecified items\" is unclear and may exclude certain electronics like phones/laptops entirely, requiring \"specified item\" cover instead [AAMI Contents PDS, page 73], and it's not even clear from the retrieved text whether theft (as opposed to accidental loss/damage) is a covered event under this optional cover [Suncorp Contents PDS, page 26]. Given (1) no insurer identified, (2) a claimed amount far above any applicable sub-limit that policyholder already flagged as an issue, and (3) ambiguous coverage text regarding theft vs. accidental loss and electronics categorization, this claim must be escalated to a human reviewer rather than approved or denied."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved to obtain the real excess/coverage limit, and `calculate_payout` would require guessing those figures \u2014 which is against policy. Additionally, the policy research itself is ambiguous/contradictory as applied to this claim: different insurers (Suncorp, AAMI) have different sub-limits (e.g., $1,000 per item/pair/set/collection for unspecified jewellery) [Suncorp Contents PDS, page 26] [AAMI Contents PDS, page 73], electronics coverage under \"unspecified items\" is unclear and may exclude certain electronics like phones/laptops entirely, requiring \"specified item\" cover instead [AAMI Contents PDS, page 73], and it's not even clear from the retrieved text whether theft (as opposed to accidental loss/damage) is a covered event under this optional cover [Suncorp Contents PDS, page 26]. Given (1) no insurer identified, (2) a claimed amount far above any applicable sub-limit that policyholder already flagged as an issue, and (3) ambiguous coverage text regarding theft vs. accidental loss and electronics categorization, this claim must be escalated to a human reviewer rather than approved or denied.",
+  "citations": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 73
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 98
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 73
+    },
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 66
+    }
+  ],
+  "claim_id": "claim-019"
+}

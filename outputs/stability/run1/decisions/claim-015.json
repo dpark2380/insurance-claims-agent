@@ -1,0 +1,131 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
+      },
+      "output": {
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual corrosion or wear and tear causing pipe leaks and resulting damage covered, or excluded?"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, gradual corrosion or wear and tear causing pipe leaks and resulting damage is **excluded** from cover.\n\nSpecifically:\n\n- Under the \"Escape of liquid\" section, the policy explicitly excludes: \"wear, tear and gradual deterioration or loss or damage as a result of a gradual process of liquid leaking, splashing, dripping or overflowing\" [GIO Contents PDS, page 48].\n\n- This exclusion is reinforced elsewhere, where \"wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" is listed as not covered in relation to escape of liquid claims [GIO Contents PDS, page 48].\n\n- The general \"Wear, tear and gradual deterioration\" exclusion also confirms that damage to \"any part of the home or contents that has wear, tear, rust, fading, rising damp, corrosion, rot, action of light, atmospheric or climatic conditions or gradual deterioration\" is not covered [GIO Contents PDS, page 33].\n\n- Additionally, under \"Accidental damage at home\" (an optional cover), the policy also excludes \"wear, tear and gradual deterioration, or loss or damage as a result of a gradual process of liquid leaking, splashing, dripping or overflowing over a period of time\" [GIO Contents PDS, page 81].\n\n**Note:** The excerpts do indicate that the cost of repairing or replacing the item from which the liquid escaped (e.g., a cracked pipe) is also excluded [GIO Contents PDS, page 48], meaning both the pipe itself and damage caused gradually by wear/corrosion would not be covered.\n\nIf you have the optional \"Accidental damage at home\" cover, the excerpts note \"there may be cover for some items that are not covered above\" [GIO Contents PDS, page 48], but the specific details of what additional items might be covered are not included in the excerpts provided, so I cannot confirm whether this optional cover would change the outcome for gradual corrosion-related pipe leaks.",
+        "citations": [
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 81
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate`/`calculate_payout` cannot be resolved without guessing figures \u2014 one automatic escalation trigger. Additionally, `extract_fields` failed to produce any structured extraction (including estimated_amount) from this narrative, and there is no way to resolve that gap independently \u2014 a second escalation trigger. Furthermore, the retrieved policy text I did check (from GIO's Contents PDS, the only insurer's data available in this lookup since none was specified) indicates gradual corrosion/wear-and-tear causing escape-of-liquid damage is explicitly excluded, which directly conflicts with the claimed cause (\"clearly been building up gradually over the last several years, not a sudden event\") \u2014 a third escalation trigger. Given these unresolved issues (no named insurer, failed field extraction, and a probable exclusion conflict that should be confirmed against the correct policy once the insurer is identified), this claim must go to a human reviewer rather than being auto-decided.\n\nCitations: [GIO Contents PDS, page 33] [GIO Contents PDS, page 48] [GIO Contents PDS, page 81]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate`/`calculate_payout` cannot be resolved without guessing figures \u2014 one automatic escalation trigger. Additionally, `extract_fields` failed to produce any structured extraction (including estimated_amount) from this narrative, and there is no way to resolve that gap independently \u2014 a second escalation trigger. Furthermore, the retrieved policy text I did check (from GIO's Contents PDS, the only insurer's data available in this lookup since none was specified) indicates gradual corrosion/wear-and-tear causing escape-of-liquid damage is explicitly excluded, which directly conflicts with the claimed cause (\"clearly been building up gradually over the last several years, not a sudden event\") \u2014 a third escalation trigger. Given these unresolved issues (no named insurer, failed field extraction, and a probable exclusion conflict that should be confirmed against the correct policy once the insurer is identified), this claim must go to a human reviewer rather than being auto-decided.\n\nCitations: [GIO Contents PDS, page 33] [GIO Contents PDS, page 48] [GIO Contents PDS, page 81]",
+  "citations": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 81
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 81
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    }
+  ],
+  "claim_id": "claim-015"
+}

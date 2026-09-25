@@ -1,0 +1,37 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $?,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2025-07-10",
+        "cause": "break-in by unknown person",
+        "damaged_item": "jewellery and electronics",
+        "estimated_amount": 30000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate (for excess/coverage_limit/jewellery sub-limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant lacks receipts and suspects the $30,000 estimated loss exceeds unspecified valuables sub-limits, which needs policy-specific verification once the insurer is identified."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate (for excess/coverage_limit/jewellery sub-limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant lacks receipts and suspects the $30,000 estimated loss exceeds unspecified valuables sub-limits, which needs policy-specific verification once the insurer is identified."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate (for excess/coverage_limit/jewellery sub-limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant lacks receipts and suspects the $30,000 estimated loss exceeds unspecified valuables sub-limits, which needs policy-specific verification once the insurer is identified.",
+  "citations": [],
+  "retrieved_sources": [],
+  "claim_id": "claim-019"
+}

@@ -1,0 +1,241 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 August 2023, our clothes dryer caught fire while running in the laundry and scorched the wall and cabinetry beside it. I managed to put it out with a fire extinguisher before it spread further. My policy number is HM-2298471. I'd estimate the damage to be around $2,800 to repair."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2023-08-03",
+        "cause": "clothes dryer malfunctioned and caught fire while running",
+        "damaged_item": "laundry room wall and cabinetry near clothes dryer",
+        "estimated_amount": 2800.0,
+        "policy_number": "HM-2298471"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "fire damage caused by faulty appliance (clothes dryer) coverage",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n- **Fire damage itself is covered.** The policy covers \"loss or damage caused by fire\" under the Fire, smoke, bushfires and grassfires insured event, for both Buildings and Contents insurance [Allianz Home PDS, page 23].\n\n- **The mechanical/elect",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "exclusion for mechanical or electrical breakdown of appliance causing fire - is resulting fire damage still covered",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, **yes, resulting fire damage would still be covered**, subject to specific conditions.\n\nThe policy excludes \"loss or damage caused by mechanical or electrical breakdown, failure or derangement,\" **unless the breakdown or failure results in loss or damage to the insured property that is covered by an insured event** [Allianz Home PDS, page 54]. Since fire is listed as a covered insured event under the Fire section [Allianz Home PDS, page 23], this suggests that if a mechanical or electrical breakdown causes a fire, the resulting fire damage would fall under this exception and be covered.\n\nAdditionally, the Fire section confirms coverage for \"loss or damage caused by fire\" [Allianz Home PDS, page 23], and excludes certain fire-related scenarios (e.g., gradual exposure, heat-resistant items used normally, scorching/melting) \u2014 but a fire directly caused by electrical/mechanical breakdown is not listed among those specific fire exclusions [Allianz Home PDS, page 23].\n\n**Important caveats from the excerpts:**\n- The exclusion for \"Electrical malfunctions, processing errors and computer faults\" separately excludes loss/damage from electrical, electronic, or mechanical derangement or malfunction, **unless it is a derangement or malfunction that is covered by an insured event** [Allianz Home PDS, page 54]. This mirrors the same \"unless\" logic \u2014 if the malfunction results in a fire (an insured event), the fire damage itself would likely be covered, though the excerpt notes this exclusion does not cover \"the cost of data recovery for any reason or consequential loss\" [Allianz Home PDS, page 54].\n- The breakdown/failure itself (e.g., repairing the faulty appliance or motor) is **not** covered by this exclusion \u2014 only resulting damage from a covered insured event (like fire) would be [Allianz Home PDS, page 54].\n- If the electrical breakdown involves a \"domestic household electrical motor\" and burnout from electrical current, that would instead fall under the separate **Motor Burnout** optional benefit, if selected, rather than general fire cover [Allianz Home PDS, page 54; page 46].\n\n**In summary:** The excerpts indicate that resulting fire damage from a mechanical or electrical breakdown should be covered as an insured event under the Fire section, but the breakdown/failure itself (i.e., repair of the",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 46
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 2800,
+        "excess": 600,
+        "coverage_limit": 60000
+      },
+      "output": {
+        "payout": 2200
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: approve\n\nThe claim is for fire damage to the laundry wall and cabinetry caused by a clothes dryer that caught fire while running. Allianz's Home PDS covers \"loss or damage caused by fire\" under the Fire, smoke, bushfires and grassfires insured event [Allianz Home PDS, page 23]. While the policy excludes loss/damage from mechanical or electrical breakdown, failure or derangement, that exclusion explicitly does not apply where the breakdown results in loss or damage covered by an insured event such as fire [Allianz Home PDS, page 54]. Since the claimed damage is the resulting fire damage to the wall/cabinetry (not the cost of repairing the dryer itself), it is covered.\n\nPolicy certificate for policy HM-2298471: excess $600, coverage limit $60,000. Claimed amount $2,800.\n\nPayout calculation: $2,800 \u2212 $600 excess = $2,200, well within the $60,000 coverage limit.\n\nFinal payout: $2,200 approved.\n\nSources cited: [Allianz Home PDS, page 23], [Allianz Home PDS, page 54]."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nThe claim is for fire damage to the laundry wall and cabinetry caused by a clothes dryer that caught fire while running. Allianz's Home PDS covers \"loss or damage caused by fire\" under the Fire, smoke, bushfires and grassfires insured event [Allianz Home PDS, page 23]. While the policy excludes loss/damage from mechanical or electrical breakdown, failure or derangement, that exclusion explicitly does not apply where the breakdown results in loss or damage covered by an insured event such as fire [Allianz Home PDS, page 54]. Since the claimed damage is the resulting fire damage to the wall/cabinetry (not the cost of repairing the dryer itself), it is covered.\n\nPolicy certificate for policy HM-2298471: excess $600, coverage limit $60,000. Claimed amount $2,800.\n\nPayout calculation: $2,800 \u2212 $600 excess = $2,200, well within the $60,000 coverage limit.\n\nFinal payout: $2,200 approved.\n\nSources cited: [Allianz Home PDS, page 23], [Allianz Home PDS, page 54].",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 46
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    }
+  ],
+  "claim_id": "claim-006"
+}

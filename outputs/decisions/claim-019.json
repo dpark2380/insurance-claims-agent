@@ -21,16 +21,17 @@
       "type": "tool_call",
       "tool": "escalate_to_human",
       "input": {
-        "reason": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer."
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application."
       },
       "output": {
         "status": "escalated",
-        "reason": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer."
+        "reason": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application."
       }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim does not name a specific insurer, so the policyholder's excess and coverage limit (including any sub-limit for unspecified valuables/jewellery) cannot be looked up via get_policy_certificate. Additionally, there are no receipts for the stolen jewellery/electronics, and the claimant themselves suspects the $15,000 estimate exceeds the unspecified valuables sub-limit, which needs policy-specific verification. Cannot calculate a payout or confirm coverage without guessing figures, so this must go to a human reviewer.",
+  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application.",
   "citations": [],
+  "retrieved_sources": [],
   "claim_id": "claim-019"
 }

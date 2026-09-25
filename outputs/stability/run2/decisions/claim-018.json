@@ -1,0 +1,37 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Heavy rain caused the river behind our property to break its banks and flood our backyard shed, destroying tools and equipment worth about $8,000. Our policy documents were unclear on whether this counts as flood or storm cover when we called the insurer."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2023-04-15",
+        "cause": "river overflowed due to heavy rain",
+        "damaged_item": "backyard shed containing tools and equipment",
+        "estimated_amount": 8000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination.",
+  "citations": [],
+  "retrieved_sources": [],
+  "claim_id": "claim-018"
+}

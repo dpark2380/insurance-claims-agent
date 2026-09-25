@@ -1,0 +1,136 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 August 2023 our washing machine hose burst overnight and flooded the laundry, spreading water into the hallway and adjoining bedroom. By morning the laundry vinyl flooring was lifting, the hallway carpet was soaked through, and the bedroom skirting boards had started swelling. My policy number is HC-4489213 and I think the repairs could run to around $6,500."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2023-08-14",
+        "cause": "burst washing machine hose during night time",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, bedroom skirting boards",
+        "estimated_amount": 6500.0,
+        "policy_number": "HC-4489213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Water damage from burst washing machine hose - sudden escape of water coverage",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here's what applies to a burst washing machine hose scenario:\n\n**Coverage exclusion:** Loss or damage from domestic appliances \u2014 for example, a dishwasher or washing machine \u2014 is explicitly listed as **not covered** under the \"Sudden escape of liquid\" insured event, for both Buildings Insurance and Contents Insurance [Allianz Home PDS, page 27].\n\n**What this means:** Even though \"sudden escape of liquid\" is generally a covered event (with a \u2713 for both Buildings and Contents Insurance) [Allianz Home PDS, page 27], the excerpt specifically carves out domestic appliances like washing machines as an exception under \"What's not covered\" [Allianz Home PDS, page 27].\n\n**Gradual damage exclusion (separate issue):** The excerpts also note that damage is not covered if it results from a gradual escape of liquid over time where you could reasonably have been expected to be aware of it (e.g., visible staining, mould, mildew, or deterioration) [Allianz Home PDS, page 27]. This would not apply to a genuinely sudden hose burst, but is noted for completeness.\n\n**Conclusion:** Based solely on these excerpts, water damage caused by a burst washing machine hose appears to fall under the specific exclusion for \"domestic appliances \u2013 for example a dishwasher or washing machine\" [Allianz Home PDS, page 27], meaning it would not be covered under the Sudden escape of liquid insured event.\n\nI don't have excerpts covering whether a separate insured event (such as a specific \"Water damage\" category apart from \"Sudden escape of liquid\") might apply, nor do I have information on the 72-hour exclusion period's relevance here, policy excesses, or any endorsements that might override this exclusion. If you have additional policy sections addressing appliance-related water damage specifically, I'd need those to give a complete answer.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 27
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 81
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "This claim's cause \u2014 a burst washing machine hose \u2014 directly conflicts with a specific exclusion in the Allianz Home PDS: while \"Sudden escape of liquid\" is generally a covered insured event, damage arising from domestic appliances (explicitly including washing machines) is carved out as **not covered** [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause and a policy exclusion, which per policy requires escalation rather than an automatic deny \u2014 there may be nuance (e.g., whether the exclusion applies to the appliance itself vs. resulting water damage to flooring/structure) that a human underwriter should confirm rather than a fully automated deny.\n\nDECISION: escalate\n\nReasoning: extract_fields confirms the cause as a burst washing machine hose causing escape-of-liquid damage to laundry flooring, hallway carpet, and bedroom skirting boards, estimated at $6,500, under Allianz policy HC-4489213. retrieve_policy found that while \"Sudden escape of liquid\" is a covered insured event under the Allianz Home PDS, there is an explicit exclusion for loss/damage arising from domestic appliances such as washing machines [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause (washing machine hose burst) and a named policy exclusion. Per escalation policy, any claim where the claimed cause directly conflicts with a found policy exclusion must be escalated to a human reviewer rather than decided automatically, since there is ambiguity about whether the exclusion bars the whole claim or only appliance-specific damage (as opposed to consequential damage to flooring/structure). I have not proceeded to calculate a payout because coverage itself is in dispute.\n\nCitations: [Allianz Home PDS, page 27]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This claim's cause \u2014 a burst washing machine hose \u2014 directly conflicts with a specific exclusion in the Allianz Home PDS: while \"Sudden escape of liquid\" is generally a covered insured event, damage arising from domestic appliances (explicitly including washing machines) is carved out as **not covered** [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause and a policy exclusion, which per policy requires escalation rather than an automatic deny \u2014 there may be nuance (e.g., whether the exclusion applies to the appliance itself vs. resulting water damage to flooring/structure) that a human underwriter should confirm rather than a fully automated deny.\n\nDECISION: escalate\n\nReasoning: extract_fields confirms the cause as a burst washing machine hose causing escape-of-liquid damage to laundry flooring, hallway carpet, and bedroom skirting boards, estimated at $6,500, under Allianz policy HC-4489213. retrieve_policy found that while \"Sudden escape of liquid\" is a covered insured event under the Allianz Home PDS, there is an explicit exclusion for loss/damage arising from domestic appliances such as washing machines [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause (washing machine hose burst) and a named policy exclusion. Per escalation policy, any claim where the claimed cause directly conflicts with a found policy exclusion must be escalated to a human reviewer rather than decided automatically, since there is ambiguity about whether the exclusion bars the whole claim or only appliance-specific damage (as opposed to consequential damage to flooring/structure). I have not proceeded to calculate a payout because coverage itself is in dispute.\n\nCitations: [Allianz Home PDS, page 27]",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 81
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "claim_id": "claim-001"
+}

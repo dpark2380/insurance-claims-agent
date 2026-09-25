@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 August 2023 our washing machine hose burst overnight and flooded the laundry, spreading water into the hallway and adjoining bedroom. By morning the laundry vinyl flooring was lifting, the hallway carpet was soaked through, and the bedroom skirting boards had started swelling. My policy number is HC-4489213 and I think the repairs could run to around $6,500."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2023-08-14",
+        "cause": "burst washing machine hose during night time",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, bedroom skirting boards",
+        "estimated_amount": 6500.0,
+        "policy_number": "HC-4489213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Water damage from burst washing machine hose - sudden accidental water escape coverage",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here's what applies to sudden escape of liquid coverage:\n\n**What's covered:**\nLoss or damage resulting directly from bursting, leaking, discharging, or overflowing is covered under both Buildings and Contents Insurance [Allianz Home PDS, page 27].\n\n**What's specifically NOT covered:**\nThe excerpt explicitly excludes loss or damage from **domestic appliances \u2013 for example a dishwasher or washing machine** [Allianz Home PDS, page 27].\n\n**Conclusion:**\nBased solely on this excerpt, damage caused by a burst washing machine hose falls under the domestic appliance exclusion, meaning it would **not** be covered under the \"Sudden escape of liquid\" insured event [Allianz Home PDS, page 27].\n\n**Possible alternative avenue:**\nIf you have \"Accidental damage cover\" as an optional benefit on your policy, this may provide broader coverage. The excerpt states that with this optional cover, Allianz will \"cover accidental damage or loss\" to buildings and/or contents, except for loss/damage \"specifically excluded by any of the insured events listed on pages 22 to 30\" [Allianz Home PDS, page 45]. \n\nHowever, the excerpts provided do not clarify whether the washing machine exclusion under \"Sudden escape of liquid\" (page 27) would also apply to exclude the same damage under Accidental Damage cover, or whether Accidental Damage cover operates independently of that specific exclusion. **The excerpts do not contain enough information to determine this with certainty** \u2014 you would need to review the full exclusions list on page 51 and the complete Accidental Damage terms to confirm.\n\n**Recommendation:** Based only on these excerpts, I cannot definitively confirm coverage for this scenario. Please consult the full policy document (particularly page 51's general exclusions) or contact Allianz directly to confirm whether Accidental Damage cover would override the domestic appliance exclusion in this case.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 27
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 81
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 45
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim involves water damage caused by a burst washing machine hose. Per Allianz's Home PDS, the \"Sudden escape of liquid\" insured event explicitly excludes loss or damage caused by domestic appliances such as washing machines [Allianz Home PDS, page 27]. This directly conflicts with the claimed cause. There is a possible alternative avenue via optional \"Accidental Damage\" cover [Allianz Home PDS, page 45], but the retrieved policy text does not clarify whether the domestic appliance exclusion under \"Sudden escape of liquid\" would still apply to override or limit Accidental Damage cover, and recommends reviewing full exclusions on page 51, which were not available in the excerpt.\n\nBecause the claimed cause directly conflicts with an exclusion found in the policy text, and the applicability of a potential override (Accidental Damage cover) is ambiguous/contradictory based on the retrieved excerpts, this claim must be escalated to a human reviewer rather than approved or denied outright.\n\nCitations: [Allianz Home PDS, page 27], [Allianz Home PDS, page 45]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe claim involves water damage caused by a burst washing machine hose. Per Allianz's Home PDS, the \"Sudden escape of liquid\" insured event explicitly excludes loss or damage caused by domestic appliances such as washing machines [Allianz Home PDS, page 27]. This directly conflicts with the claimed cause. There is a possible alternative avenue via optional \"Accidental Damage\" cover [Allianz Home PDS, page 45], but the retrieved policy text does not clarify whether the domestic appliance exclusion under \"Sudden escape of liquid\" would still apply to override or limit Accidental Damage cover, and recommends reviewing full exclusions on page 51, which were not available in the excerpt.\n\nBecause the claimed cause directly conflicts with an exclusion found in the policy text, and the applicability of a potential override (Accidental Damage cover) is ambiguous/contradictory based on the retrieved excerpts, this claim must be escalated to a human reviewer rather than approved or denied outright.\n\nCitations: [Allianz Home PDS, page 27], [Allianz Home PDS, page 45]",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 45
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 81
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 45
+    }
+  ],
+  "claim_id": "claim-001"
+}

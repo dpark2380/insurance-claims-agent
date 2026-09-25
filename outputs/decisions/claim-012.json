@@ -21,42 +21,47 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "theft burglary forced entry coverage, jewellery limits",
+        "query": "Theft or burglary of contents including jewellery - coverage and any sub-limits for jewellery/valuables",
         "insurer": "NRMA",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here's what I can confirm:\n\n**Theft/Burglary Coverage:**\n- Theft and Burglary is covered under the policy [NRMA Home KFS, page 1].\n- Coverage is provided as \"theft or attempted theft,\" but this is **not covered if the theft or attempted theft was by You, Your Family or anyone who normally lives in Your Home including a tenant** [NRMA Home KFS, page 1].\n- For Contents in storage, coverage includes \"theft following violent or forced entry\" [NRMA Home PDS, page 19].\n- Elsewhere, temporary accommodation-type theft coverage excludes loss \"from theft or attempted theft unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23], and also excludes \"lost or misplaced items\" [NRMA Home PDS, page 23].\n\n**Jewellery Limits:**\n- Jewellery and Watches are included as a category of General Contents, but \"limits apply to what We pay for these items as General Contents\" [NRMA Home PDS, page 11].\n- Jewellery and Watches is defined as \"watches, jewellery items and medals but not including a mobile device with a screen display or a smart watch,\" and this definition \"does not include any items excluded from the definition of 'Contents'\" [NRMA Home PDS, page 11].\n- For Contents in storage specifically, \"Jewellery and Watches\" are explicitly listed as **not covered** [NRMA Home PDS, page 19].\n\n**Gap in the excerpts:** The specific dollar limit for Jewellery and Watches under \"General Contents\" is referenced (\"limits apply\") but the actual dollar figure is **not provided** in these excerpts [NRMA Home PDS, page 11]. I cannot state the exact jewellery sub-limit amount without additional policy pages containing that specific figure.",
+        "answer": "Based on the provided excerpts, here's what can be answered:\n\n**Theft/Burglary Coverage:**\nTheft and attempted theft are covered under the policy, but coverage does *not* apply if the theft or attempted theft was committed by \"You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Home KFS, page 1].\n\n**Jewellery and Watches - General Contents Sub-limit:**\nIf Jewellery and Watches are covered as General Contents (without the optional benefit add-on), there is a limit of **$2,500 in total** [NRMA Home PDS, page 16].\n\n**Increasing Cover via Optional Benefits:**\nThe policy indicates an \"Option to increase cover\" is available for Jewellery and Watches (and other categories like Works of Art, Collections, and Money), suggesting an optional benefit can be added to increase this limit [NRMA Home PDS, page 16], though the specific dollar amount of the increase option is not shown in the excerpt.\n\nSeparately, excerpts reference a **\"Valuable Contents \u2013 inside Your Home\"** optional benefit, under which:\n- Up to **$10,000 for any individual item** of Valuable Contents is payable, unless the item is separately listed on the Certificate of Insurance with a specified Sum Insured, in which case that specified amount applies instead [NRMA Home PDS, page 26].\n- Valuable Contents under this optional benefit includes categories such as **Jewellery and Watches** (watches, jewellery items, and medals), **Works of Art**, and **Collections** [NRMA Home PDS, page 26].\n\n**Definitional Note:**\n\"Jewellery and Watches\" means watches, jewellery items, and medals, but explicitly **excludes** a mobile device with a screen display or a smart watch [NRMA Home PDS, page 11].\n\n**Gap in the excerpts:**\nThe excerpts do not clearly state whether the $2,500 General Contents limit and the $10,000 Valuable Contents optional benefit limit apply cumulatively, or whether the optional benefit fully replaces the General Contents sub-limit. The excerpts also do not specify the exact monetary amount of the \"Option to increase cover\" referenced on page 16, only that such an option exists. I cannot provide a definitive answer on how these limits interact without further excerpts.",
         "citations": [
           {
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 23
+            "page": 16
           },
           {
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 11
-          },
-          {
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 19
-          },
-          {
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 11
-          },
-          {
+            "doc_id": "nrma-home-kfs",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "KFS",
             "page": 1
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
           }
         ]
       }
@@ -75,55 +80,56 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "calculate_payout",
-      "input": {
-        "claim_amount": 9500,
-        "excess": 550,
-        "coverage_limit": 55000
-      },
-      "output": {
-        "payout": 8950
-      }
-    },
-    {
-      "turn": 3,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning:\n- **Claim details**: Theft on 12 Aug 2023 via forced entry (sliding door forced open) at the policyholder's home, NRMA policy HM2287451, estimated loss $9,500 (laptop, jewellery, PS5 + games).\n- **Coverage check**: NRMA's Home KFS confirms theft/burglary is a covered peril, and it is not excluded here since none of the exclusions apply (the theft was not committed by a family member/tenant, and this occurred at the main residence, not in storage or temporary accommodation, so the storage-specific exclusions on jewellery and the \"secure building\" rules for temporary accommodation don't apply). Forced entry into the home satisfies the general theft coverage described in the KFS [NRMA Home KFS, p.1].\n- **Jewellery sub-limit note**: The PDS indicates a monetary sub-limit applies specifically to jewellery/watches within General Contents, but the exact figure wasn't retrievable from the excerpts [NRMA Home PDS, p.11]. This is a detail that could reduce the jewellery portion of the payout below full replacement value, but it does not create a coverage conflict or block approval of the claim overall \u2014 it only affects the eventual settlement breakdown, which the insurer's claims team can apply against the itemized valuation once received. It is not a basis for escalation since there's no contradiction or exclusion conflict, only a missing sub-limit figure that doesn't prevent an approve decision.\n- **Financial calculation**: Using the policyholder's actual certificate figures (excess $550, coverage limit $55,000), and the claimed amount of $9,500, the calculated payout is **$8,950** (subject to final adjustment once an itemized quote/valuation is provided and any applicable jewellery sub-limit is applied).\n\nCitations: NRMA Home KFS p.1 (theft coverage); NRMA Home PDS p.11 (jewellery sub-limits apply, general contents); NRMA Home PDS p.19, p.23 (storage/temporary accommodation exclusions \u2014 not applicable to this claim since loss occurred at the insured home)."
+      "text": "DECISION: escalate\n\nReasoning: The claim is a straightforward burglary/theft loss (forced entry, items stolen while away) which is generally covered under the NRMA Home policy, with no indication the theft was committed by a family member or resident (which would trigger the named exclusion) [NRMA Home KFS, page 1]. However, the claimed items include jewellery (engagement ring and grandmother's necklace), and the policy text is materially ambiguous on how much of this loss is actually payable: General Contents cover caps Jewellery and Watches at a combined $2,500 limit unless an optional \"Valuable Contents\" benefit was purchased, in which case up to $10,000 per item may apply instead [NRMA Home PDS, page 16; NRMA Home PDS, page 26]. The retrieved policy text explicitly states it cannot determine whether these two limits apply cumulatively or whether the optional benefit replaces the general sub-limit, and the policy certificate lookup only returned the overall excess ($550) and overall coverage limit ($55,000) \u2014 it does not confirm whether this policyholder holds the Valuable Contents optional benefit or what sub-limit applies to jewellery specifically.\n\nBecause the payout is highly sensitive to this unresolved sub-limit question (jewellery could be capped at $2,500 vs. up to $10,000+ per item), and the estimated_amount itself is also a rough, unconfirmed guess (\"haven't had a chance to get a full quote yet\"), I cannot responsibly calculate a payout without guessing key figures. This matches the escalation criteria for ambiguous/contradictory coverage text and an unresolved estimated amount, so this claim should go to a human reviewer to confirm (1) whether the Valuable Contents optional benefit is on this policy, and (2) an itemized/quoted value for the jewellery vs. electronics.\n\nCitations: [NRMA Home KFS, page 1], [N"
     }
   ],
-  "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning:\n- **Claim details**: Theft on 12 Aug 2023 via forced entry (sliding door forced open) at the policyholder's home, NRMA policy HM2287451, estimated loss $9,500 (laptop, jewellery, PS5 + games).\n- **Coverage check**: NRMA's Home KFS confirms theft/burglary is a covered peril, and it is not excluded here since none of the exclusions apply (the theft was not committed by a family member/tenant, and this occurred at the main residence, not in storage or temporary accommodation, so the storage-specific exclusions on jewellery and the \"secure building\" rules for temporary accommodation don't apply). Forced entry into the home satisfies the general theft coverage described in the KFS [NRMA Home KFS, p.1].\n- **Jewellery sub-limit note**: The PDS indicates a monetary sub-limit applies specifically to jewellery/watches within General Contents, but the exact figure wasn't retrievable from the excerpts [NRMA Home PDS, p.11]. This is a detail that could reduce the jewellery portion of the payout below full replacement value, but it does not create a coverage conflict or block approval of the claim overall \u2014 it only affects the eventual settlement breakdown, which the insurer's claims team can apply against the itemized valuation once received. It is not a basis for escalation since there's no contradiction or exclusion conflict, only a missing sub-limit figure that doesn't prevent an approve decision.\n- **Financial calculation**: Using the policyholder's actual certificate figures (excess $550, coverage limit $55,000), and the claimed amount of $9,500, the calculated payout is **$8,950** (subject to final adjustment once an itemized quote/valuation is provided and any applicable jewellery sub-limit is applied).\n\nCitations: NRMA Home KFS p.1 (theft coverage); NRMA Home PDS p.11 (jewellery sub-limits apply, general contents); NRMA Home PDS p.19, p.23 (storage/temporary accommodation exclusions \u2014 not applicable to this claim since loss occurred at the insured home).",
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is a straightforward burglary/theft loss (forced entry, items stolen while away) which is generally covered under the NRMA Home policy, with no indication the theft was committed by a family member or resident (which would trigger the named exclusion) [NRMA Home KFS, page 1]. However, the claimed items include jewellery (engagement ring and grandmother's necklace), and the policy text is materially ambiguous on how much of this loss is actually payable: General Contents cover caps Jewellery and Watches at a combined $2,500 limit unless an optional \"Valuable Contents\" benefit was purchased, in which case up to $10,000 per item may apply instead [NRMA Home PDS, page 16; NRMA Home PDS, page 26]. The retrieved policy text explicitly states it cannot determine whether these two limits apply cumulatively or whether the optional benefit replaces the general sub-limit, and the policy certificate lookup only returned the overall excess ($550) and overall coverage limit ($55,000) \u2014 it does not confirm whether this policyholder holds the Valuable Contents optional benefit or what sub-limit applies to jewellery specifically.\n\nBecause the payout is highly sensitive to this unresolved sub-limit question (jewellery could be capped at $2,500 vs. up to $10,000+ per item), and the estimated_amount itself is also a rough, unconfirmed guess (\"haven't had a chance to get a full quote yet\"), I cannot responsibly calculate a payout without guessing key figures. This matches the escalation criteria for ambiguous/contradictory coverage text and an unresolved estimated amount, so this claim should go to a human reviewer to confirm (1) whether the Valuable Contents optional benefit is on this policy, and (2) an itemized/quoted value for the jewellery vs. electronics.\n\nCitations: [NRMA Home KFS, page 1], [N",
   "citations": [
     {
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 23
-    },
-    {
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 11
-    },
-    {
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 19
-    },
-    {
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 11
-    },
-    {
+      "doc_id": "nrma-home-kfs",
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "KFS",
       "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
     }
   ],
   "claim_id": "claim-012"

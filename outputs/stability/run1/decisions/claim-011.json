@@ -1,0 +1,136 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 16 February 2024 I noticed new cracks running through the brickwork and internal walls on the western side of my house. A builder has advised that the ground beneath that part of the house has subsided and the footings have moved. I have been quoted approximately $12,500 for the repairs."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-02-16",
+        "cause": "subsidence due to foundation movement",
+        "damaged_item": "brickwork and internal walls",
+        "estimated_amount": 12500.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is subsidence or ground movement causing footing and wall cracking covered or excluded?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, **soil movement \u2014 including erosion, landslide, mudslide or subsidence \u2014 is excluded**, unless it is directly caused by and occurs within 72 hours of an explosion, earthquake, tsunami, storm, cyclone, rainwater or flood or flood water, combined with run-off and/or rainwater [Allianz Home PDS, page 55].\n\nAdditionally, if the footing and wall cracking results from **wear and tear** \u2014 including \"cracks in walls or sagging floors due to the age of the property\" \u2014 this is also separately excluded [Allianz Home PDS, page 55].\n\nSo, subsidence-related cracking would only be covered if you can show it was a direct result of one of the specified insured events (explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood/flood water combined with run-off/rainwater) occurring within 72 hours of the soil movement. Otherwise, it is excluded [Allianz Home PDS, page 55].\n\nThe excerpts do not provide further detail on how \"directly caused by\" or the 72-hour window would be assessed in practice, so I cannot go beyond what is stated here.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim's cause is builder-diagnosed subsidence/footing movement, which the Allianz Home PDS explicitly excludes unless directly caused by (and within 72 hours of) a specified insured event such as explosion, earthquake, tsunami, storm, cyclone, rainwater or flood combined with run-off [Allianz Home PDS, page 55]. The narrative gives no indication of any such triggering event \u2014 it simply describes gradual ground subsidence noticed over time \u2014 which directly conflicts with this exclusion. There is also a separate wear-and-tear exclusion for age-related wall cracking that may apply [Allianz Home PDS, page 55]. Because the claimed cause directly conflicts with a clear policy exclusion, and determining whether any qualifying insured event occurred within the 72-hour window requires further factual investigation, this must be escalated to a human reviewer rather than decided automatically."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe claim's cause is builder-diagnosed subsidence/footing movement, which the Allianz Home PDS explicitly excludes unless directly caused by (and within 72 hours of) a specified insured event such as explosion, earthquake, tsunami, storm, cyclone, rainwater or flood combined with run-off [Allianz Home PDS, page 55]. The narrative gives no indication of any such triggering event \u2014 it simply describes gradual ground subsidence noticed over time \u2014 which directly conflicts with this exclusion. There is also a separate wear-and-tear exclusion for age-related wall cracking that may apply [Allianz Home PDS, page 55]. Because the claimed cause directly conflicts with a clear policy exclusion, and determining whether any qualifying insured event occurred within the 72-hour window requires further factual investigation, this must be escalated to a human reviewer rather than decided automatically.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "claim_id": "claim-011"
+}

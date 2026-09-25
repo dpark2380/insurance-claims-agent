@@ -1,0 +1,149 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 March 2024 the flexible hose under my kitchen sink burst while I was at work, and by the time I got home water had flooded the cabinetry and part of the timber flooring. I've had to pull out the swollen cabinet base and the floorboards are warped. My policy number is HM-2298471. I'm hoping to get quotes but think it will cost around $4,500 to fix. Insurer: RealInsurance home insurance."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2024-03-14",
+        "cause": "burst flexible hose under kitchen sink",
+        "damaged_item": "kitchen cabinets and timber flooring",
+        "estimated_amount": 4500.0,
+        "policy_number": "HM-2298471"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Water damage from burst flexible hose under sink - accidental escape of water coverage",
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is what can be determined:\n\n**Coverage trigger:** The policies cover \"loss or damage to your building or contents caused by escape of liquid that is sudden, unexpected, accidental and without warning that occurs at the site from any fixed pipe, fixed tank, waterbed, aquarium, household appliances or fixed item used to hold liquid\" [RealInsurance Contents PDS, page 17; RealInsurance Landlord PDS, page 17].\n\n**Key issue with a flexible hose:** The excerpts do not specifically define or mention \"flexible hose\" as a covered source. Coverage as described is tied to a \"fixed pipe\" or \"fixed item used to hold liquid.\" Whether a flexible supply hose under a sink qualifies as a \"fixed pipe\" or \"fixed item\" is **not clarified** in the excerpts provided, so I cannot confirm with certainty whether this specific scenario would fall under the insured event.\n\n**Exclusions that could still apply even if the source qualifies:**\n- Loss or damage caused by \"the gradual seepage of water or other liquids\" is excluded [RealInsurance Contents PDS, page 17].\n- Loss or damage caused by \"the escape of liquid occurring as a result of a gradual process of leaking, splashing, dripping or overflowing\" is excluded [RealInsurance Contents PDS, page 17].\n- \"The cost to repair or replace the item from which the water leaked or escaped\" is not covered \u2014 meaning the hose itself would not be paid for [RealInsurance Contents PDS, page 17].\n- \"The cost to replace any liquid that has escaped\" is also excluded [RealInsurance Contents PDS, page 17].\n- Damage caused by \"a lack of routine maintenance\" is excluded [RealInsur",
+        "citations": [
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 14
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 40000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Definition of fixed pipe or flexible hose - does flexible water supply hose count as fixed item for escape of liquid cover",
+        "insurer": "RealInsurance",
+        "product": "Building"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "The policy text is genuinely ambiguous on whether a flexible supply hose qualifies as a \"fixed pipe\" or \"fixed item used to hold liquid\" for the sudden escape-of-liquid cover, and this ambiguity is decisive here since it determines coverage entirely (the resulting cabinetry/flooring damage is otherwise consistent with a sudden, accidental escape, not gradual seepage). I cannot resolve this without guessing, so I'm escalating.\n\nDECISION: escalate\n\nReasoning: The claim describes a sudden, accidental burst of a flexible hose causing water damage to cabinetry and timber flooring, filed under RealInsurance policy HM-2298471 with an estimated cost of $4,500. The policy's escape-of-liquid cover is triggered by escape from a \"fixed pipe, fixed tank, waterbed, aquarium, household appliances or fixed item used to hold liquid\" [RealInsurance Contents PDS, page 17]. The excerpts do not clarify whether a flexible supply hose under a sink is considered a \"fixed pipe\" or \"fixed item,\" creating genuine ambiguity about whether this specific cause is covered at all. Additionally, exclusions for gradual seepage/leaking damage exist [RealInsurance Contents PDS, page 17], but the claim describes a sudden burst, not gradual leakage, so that exclusion likely doesn't apply -- however the core coverage-trigger ambiguity remains unresolved. Per policy, I must escalate rather than guess whether the flexible hose qualifies as a covered fixed source. I did not proceed to calculate_payout since the coverage determination itself is unresolved, even though the certificate figures (excess $500, coverage limit $40,000) were retrieved [see get_policy_certificate]."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "The policy text is genuinely ambiguous on whether a flexible supply hose qualifies as a \"fixed pipe\" or \"fixed item used to hold liquid\" for the sudden escape-of-liquid cover, and this ambiguity is decisive here since it determines coverage entirely (the resulting cabinetry/flooring damage is otherwise consistent with a sudden, accidental escape, not gradual seepage). I cannot resolve this without guessing, so I'm escalating.\n\nDECISION: escalate\n\nReasoning: The claim describes a sudden, accidental burst of a flexible hose causing water damage to cabinetry and timber flooring, filed under RealInsurance policy HM-2298471 with an estimated cost of $4,500. The policy's escape-of-liquid cover is triggered by escape from a \"fixed pipe, fixed tank, waterbed, aquarium, household appliances or fixed item used to hold liquid\" [RealInsurance Contents PDS, page 17]. The excerpts do not clarify whether a flexible supply hose under a sink is considered a \"fixed pipe\" or \"fixed item,\" creating genuine ambiguity about whether this specific cause is covered at all. Additionally, exclusions for gradual seepage/leaking damage exist [RealInsurance Contents PDS, page 17], but the claim describes a sudden burst, not gradual leakage, so that exclusion likely doesn't apply -- however the core coverage-trigger ambiguity remains unresolved. Per policy, I must escalate rather than guess whether the flexible hose qualifies as a covered fixed source. I did not proceed to calculate_payout since the coverage determination itself is unresolved, even though the certificate figures (excess $500, coverage limit $40,000) were retrieved [see get_policy_certificate].",
+  "citations": [
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 14
+    }
+  ],
+  "claim_id": "claim-014"
+}

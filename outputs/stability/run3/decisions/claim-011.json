@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 16 February 2024 I noticed new cracks running through the brickwork and internal walls on the western side of my house. A builder has advised that the ground beneath that part of the house has subsided and the footings have moved. I have been quoted approximately $12,500 for the repairs."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-02-16",
+        "cause": "subsidence due to foundation movement",
+        "damaged_item": "brickwork and internal walls",
+        "estimated_amount": 12500.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is subsidence or ground movement/footing movement covered or excluded?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, soil movement (which includes subsidence) is generally **excluded**, but with a specific exception:\n\n**General exclusion:** Loss, damage, injury or legal liability caused by \"Soil movement,\" including \"erosion, landslide, mudslide or subsidence\" is excluded [Allianz Home PDS, page 55].\n\n**Exception:** This exclusion does not apply \u2014 meaning subsidence **is covered** \u2014 if the soil movement is \"directly caused by and occurs within 72 hours of an explosion, earthquake, tsunami, storm, cyclone, rainwater or flood or flood water, combined with run-off and/or rainwater\" [Allianz Home PDS, page 55].\n\nThis is confirmed specifically for earthquake/tsunami events, where the policy states: \"Loss or damage caused by or arising from... subsidence, if it is caused directly by and occurs within 72 hours of an earthquake or tsunami\" is covered under Buildings and Contents Insurance [Allianz Home PDS, page 26].\n\n**Summary:** Subsidence is excluded as a standalone event, but is covered if it directly results from (and occurs within 72 hours of) specific triggering events \u2014 namely an explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood/flood water combined with run-off and/or rainwater [Allianz Home PDS, page 55; page 26].\n\nThe excerpts do not provide information specifically addressing \"footing movement\" as a distinct term, so I cannot confirm whether that phrase is treated identically to \"subsidence\" under this policy.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 83
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim is for subsidence/footing movement causing cracked brickwork and internal walls. Per Allianz's Home PDS, subsidence and soil movement generally are excluded, *unless* directly caused by and occurring within 72 hours of a triggering event such as explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood [Allianz Home PDS, page 55; Allianz Home PDS, page 26]. The claim narrative gives no indication of any such triggering event \u2014 it only states a builder found subsidence and footing movement, with no cause identified. This means the claimed cause directly conflicts with a policy exclusion (standalone subsidence is excluded) while the facts needed to confirm whether an exception applies are missing/ambiguous. Per policy, I cannot guess whether an exception event occurred, so this must be escalated to a human reviewer to obtain further facts (e.g., builder's report on cause of subsidence, any recent storm/flood/earthquake in the area within 72 hours of onset) before a coverage decision can be made.\n\nCitations: [Allianz Home PDS, page 55], [Allianz Home PDS, page 26]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe claim is for subsidence/footing movement causing cracked brickwork and internal walls. Per Allianz's Home PDS, subsidence and soil movement generally are excluded, *unless* directly caused by and occurring within 72 hours of a triggering event such as explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood [Allianz Home PDS, page 55; Allianz Home PDS, page 26]. The claim narrative gives no indication of any such triggering event \u2014 it only states a builder found subsidence and footing movement, with no cause identified. This means the claimed cause directly conflicts with a policy exclusion (standalone subsidence is excluded) while the facts needed to confirm whether an exception applies are missing/ambiguous. Per policy, I cannot guess whether an exception event occurred, so this must be escalated to a human reviewer to obtain further facts (e.g., builder's report on cause of subsidence, any recent storm/flood/earthquake in the area within 72 hours of onset) before a coverage decision can be made.\n\nCitations: [Allianz Home PDS, page 55], [Allianz Home PDS, page 26]",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 83
+    }
+  ],
+  "claim_id": "claim-011"
+}

@@ -1,0 +1,162 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 September 2023 I woke up to find my front fence and letterbox spray painted with some kind of symbol, and one of the timber palings had been kicked in. I'm not sure exactly when it happened overnight, and I didn't hear anything, but it definitely wasn't like that when I went to bed. My policy number is HM-773245 and I'd guess it'll cost around $850 to repaint and replace the paling."
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2023-09-03",
+        "cause": "unknown vandalism on front fence and letterbox",
+        "damaged_item": "front fence and timber palings",
+        "estimated_amount": 850.0,
+        "policy_number": "HM-773245"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is malicious damage or vandalism to fences covered?",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot fully answer this question.\n\nThe excerpts show that Malicious Damage, Intentional Damage or damage by vandals is a covered Insured Event under the RAA Contents PDS [RAA Contents PDS, page 47], subject to exclusions such as: superficial markings (chips, scratches, dents), wear and tear, damage caused by you, your Guest, an Occupier or Co-Insured (or someone they consented to entering the Home), and damage not reported to police [RAA Contents PDS, page 47].\n\nHowever, the excerpts do not specifically confirm whether fences are included as \"Insured Property\" under this Malicious Damage cover, nor do they explicitly exclude fences from this particular Insured Event. There is a separate exclusion noted for wind damage to fences that are not structurally sound or maintained [RAA Contents PDS, page 45], but this relates to a different Insured Event (storm/wind), not Malicious Damage.\n\nAdditionally, if the Home has been Unoccupied for more than 90 consecutive days, Malicious Damage cover does not apply until the Home is Occupied again [RAA Contents PDS, page 74].\n\nI do not have enough information in the excerpts provided to determine definitively whether fences specifically are covered under the Malicious Damage, Intentional Damage or Vandalism section. Please consult the full Insured Property definitions or the complete PDS section on Malicious Damage for a definitive answer.",
+        "citations": [
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 74
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is malicious damage or vandalism to fences covered, and is police report required?",
+        "insurer": "RAA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is malicious damage or vandalism to fences covered under Building insurance, and is a police report required?",
+        "insurer": "RAA",
+        "product": "Building"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 4,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "RAA policy text is ambiguous on two material points for this claim: (1) whether fences/letterboxes qualify as \"Insured Property\" under the Malicious Damage/Vandalism insured event (the PDS excerpt confirms vandalism is covered generally but does not confirm fences are included as insured property under that specific event), and (2) the PDS notes an exclusion where malicious damage is not reported to police, but the claim narrative does not state whether the policyholder filed a police report. Both facts are required to determine coverage and cannot be resolved from the retrieved policy text or claim narrative, so this needs human review rather than an automated approve/deny decision."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "RAA policy text is ambiguous on two material points for this claim: (1) whether fences/letterboxes qualify as \"Insured Property\" under the Malicious Damage/Vandalism insured event (the PDS excerpt confirms vandalism is covered generally but does not confirm fences are included as insured property under that specific event), and (2) the PDS notes an exclusion where malicious damage is not reported to police, but the claim narrative does not state whether the policyholder filed a police report. Both facts are required to determine coverage and cannot be resolved from the retrieved policy text or claim narrative, so this needs human review rather than an automated approve/deny decision."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "RAA policy text is ambiguous on two material points for this claim: (1) whether fences/letterboxes qualify as \"Insured Property\" under the Malicious Damage/Vandalism insured event (the PDS excerpt confirms vandalism is covered generally but does not confirm fences are included as insured property under that specific event), and (2) the PDS notes an exclusion where malicious damage is not reported to police, but the claim narrative does not state whether the policyholder filed a police report. Both facts are required to determine coverage and cannot be resolved from the retrieved policy text or claim narrative, so this needs human review rather than an automated approve/deny decision.",
+  "citations": [],
+  "retrieved_sources": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    }
+  ],
+  "claim_id": "claim-008"
+}

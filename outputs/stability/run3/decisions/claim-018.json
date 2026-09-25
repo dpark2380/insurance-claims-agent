@@ -1,0 +1,30 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Heavy rain caused the river behind our property to break its banks and flood our backyard shed, destroying tools and equipment worth about $8,000. Our policy documents were unclear on whether this counts as flood or storm cover when we called the insurer."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2023-04-15",
+        "cause": "river overflowed due to heavy rain",
+        "damaged_item": "backyard shed containing tools and equipment",
+        "estimated_amount": 8000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "No insurer is named in this claim, so I cannot look up a policy certificate (excess/coverage limit) \u2014 that alone requires escalation. Additionally, the claimant themselves states the coverage classification (flood vs. storm) is ambiguous, which is a second, independent trigger for escalation.\n\nDECISION: escalate\nReasoning: (1) The claim does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing excess/coverage-limit figures, which is prohibited. (2) The claimant explicitly states the insurer's own policy documents were unclear on whether this event is classified as \"flood\" or \"storm\" damage \u2014 this is a self-reported coverage ambiguity that must be resolved by a human reviewer rather than decided algorithmically. No policy text or certificate lookups were performed because the missing insurer name makes both unresolvable, and proceeding further would require guessing figures or a coverage classification, which is against policy."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "No insurer is named in this claim, so I cannot look up a policy certificate (excess/coverage limit) \u2014 that alone requires escalation. Additionally, the claimant themselves states the coverage classification (flood vs. storm) is ambiguous, which is a second, independent trigger for escalation.\n\nDECISION: escalate\nReasoning: (1) The claim does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing excess/coverage-limit figures, which is prohibited. (2) The claimant explicitly states the insurer's own policy documents were unclear on whether this event is classified as \"flood\" or \"storm\" damage \u2014 this is a self-reported coverage ambiguity that must be resolved by a human reviewer rather than decided algorithmically. No policy text or certificate lookups were performed because the missing insurer name makes both unresolvable, and proceeding further would require guessing figures or a coverage classification, which is against policy.",
+  "citations": [],
+  "retrieved_sources": [],
+  "claim_id": "claim-018"
+}

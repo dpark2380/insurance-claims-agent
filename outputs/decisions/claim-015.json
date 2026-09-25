@@ -12,13 +12,134 @@
       }
     },
     {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual corrosion, wear and tear, or gradual deterioration damage to pipes excluded from coverage?"
+      },
+      "output": {
+        "answer": "Yes, gradual corrosion, wear and tear, and gradual deterioration are excluded across multiple policies, though none specifically single out \"pipes\":\n\n- **GIO Contents PDS**: Excludes \"any part of the home or contents that has wear, tear, rust, fading, rising damp, corrosion, rot, action of light, atmospheric or climatic conditions or gradual deterioration\" [GIO Contents PDS, page 33].\n\n- **ING Home PDS**: \"You are not covered for loss or damage caused by rust, corrosion, rot, mould, rising damp, mildew, wear, tear, fading, or other gradual deterioration\" [ING Home PDS, page 62].\n\n- **BudgetDirect Home PDS**: Identical exclusion wording \u2014 \"You are not covered for loss or damage caused by rust, corrosion, rot, mould, rising damp, mildew, wear, tear, fading, or other gradual deterioration\" [BudgetDirect Home PDS, page 62].\n\n- **RealInsurance Landlord PDS** and **RealInsurance Contents PDS**: Both exclude \"gradual deterioration, including wear and tear, rust, corrosion, depreciation, fading or deterioration from exposure to light\" [RealInsurance Landlord PDS, page 31; RealInsurance Contents PDS, page 39].\n\n**Note on pipes specifically**: The excerpts do not explicitly reference \"pipes\" in relation to gradual corrosion or deterioration exclusions. The GIO excerpt does mention exclusions for water damage \"from agricultural pipes or overflow pipes\" [GIO Contents PDS, page 33], but this relates to the source of water escape, not gradual corrosion of the pipes themselves. None of the excerpts provided contain specific language addressing gradual deterioration or corrosion *of pipes* as a distinct category \u2014 the general gradual deterioration/wear and tear exclusions above would apply broadly to \"the home or contents\" (which may include pipes) but this is not explicitly stated for pipes in the excerpts given.\n\nIf you need a definitive answer specifically about pipe corrosion, additional policy sections addressing \"escape of liquid\" or plumbing-specific exclusions may be needed, as they are not fully included in these excerpts.",
+        "citations": [
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 31
+          },
+          {
+            "doc_id": "ing-home-pds",
+            "insurer": "ING",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 62
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 62
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 39
+          }
+        ]
+      }
+    },
+    {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: \n1. The `extract_fields` tool failed to parse this claim narrative (both extraction methods errored out), so I cannot obtain a reliable estimated_amount, claim_type, or policy_number from it.\n2. The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and I would have to guess an excess/coverage limit to run `calculate_payout` \u2014 which I must not do.\n3. Substantively, the narrative describes gradual corrosion of pipes over \"years\" and explicitly states \"not a sudden event,\" which strongly suggests this falls under a typical wear-and-tear/gradual deterioration exclusion common in Australian home policies. This is a direct conflict with likely exclusion language, compounding the need for human review rather than an automated decision.\n\nGiven the failed field extraction, missing insurer identification, and the apparent gradual-damage exclusion conflict, this claim must be escalated to a human reviewer for manual assessment of policy wording and cause of loss."
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be resolved automatically for two independent reasons:\n\n1. **No insurer specified** \u2013 The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved to obtain the customer-specific excess/coverage limit, and `calculate_payout` would require guessing those figures, which is against policy.\n\n2. **extract_fields failure and likely exclusion conflict** \u2013 `extract_fields` was unable to produce a valid structured extraction (including estimated_amount) from this narrative, and separately, the claimed cause (\"corroded from years of use,\" explicitly described as gradual, not sudden) directly matches gradual deterioration/wear-and-tear/corrosion exclusions found across multiple insurers' policies, e.g.:\n   - [GIO Contents PDS, page 33]\n   - [ING Home PDS, page 62]\n   - [BudgetDirect Home PDS, page 62]\n   - [RealInsurance Landlord PDS, page 31]\n   - [RealInsurance Contents PDS, page 39]\n\nSince the claim self-describes the damage as gradual corrosion/deterioration (a near-universal exclusion), and no insurer is named to confirm specific policy wording or obtain excess/coverage-limit figures, this requires human review rather than an automated approve/deny decision."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: \n1. The `extract_fields` tool failed to parse this claim narrative (both extraction methods errored out), so I cannot obtain a reliable estimated_amount, claim_type, or policy_number from it.\n2. The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and I would have to guess an excess/coverage limit to run `calculate_payout` \u2014 which I must not do.\n3. Substantively, the narrative describes gradual corrosion of pipes over \"years\" and explicitly states \"not a sudden event,\" which strongly suggests this falls under a typical wear-and-tear/gradual deterioration exclusion common in Australian home policies. This is a direct conflict with likely exclusion language, compounding the need for human review rather than an automated decision.\n\nGiven the failed field extraction, missing insurer identification, and the apparent gradual-damage exclusion conflict, this claim must be escalated to a human reviewer for manual assessment of policy wording and cause of loss.",
-  "citations": [],
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be resolved automatically for two independent reasons:\n\n1. **No insurer specified** \u2013 The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved to obtain the customer-specific excess/coverage limit, and `calculate_payout` would require guessing those figures, which is against policy.\n\n2. **extract_fields failure and likely exclusion conflict** \u2013 `extract_fields` was unable to produce a valid structured extraction (including estimated_amount) from this narrative, and separately, the claimed cause (\"corroded from years of use,\" explicitly described as gradual, not sudden) directly matches gradual deterioration/wear-and-tear/corrosion exclusions found across multiple insurers' policies, e.g.:\n   - [GIO Contents PDS, page 33]\n   - [ING Home PDS, page 62]\n   - [BudgetDirect Home PDS, page 62]\n   - [RealInsurance Landlord PDS, page 31]\n   - [RealInsurance Contents PDS, page 39]\n\nSince the claim self-describes the damage as gradual corrosion/deterioration (a near-universal exclusion), and no insurer is named to confirm specific policy wording or obtain excess/coverage-limit figures, this requires human review rather than an automated approve/deny decision.",
+  "citations": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 39
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 39
+    }
+  ],
   "claim_id": "claim-015"
 }

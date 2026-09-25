@@ -1,0 +1,37 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Something happened to our house last month and there is some damage we noticed. We are not sure of the cause or how much it will cost to fix."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2023-10-15",
+        "cause": "unknown",
+        "damaged_item": "entire backyard garden",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage.",
+  "citations": [],
+  "retrieved_sources": [],
+  "claim_id": "claim-016"
+}

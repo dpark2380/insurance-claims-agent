@@ -17,13 +17,127 @@
       }
     },
     {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Flood damage to shed/outbuilding from river breaking its banks - flood vs storm cover"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what I can determine about flood damage to sheds/outbuildings from a river breaking its banks:\n\n**Flood coverage generally applies (if purchased/not removed):**\n\n- **AAMI Building PDS**: Flood is covered, but flood cover can be \"removed\" (an optional feature), in which case \"your certificate of insurance will show this limitation in your cover\" [AAMI Building PDS, page 39]. The excerpt doesn't specifically address sheds/outbuildings, but does list specific flood exclusions (retaining walls, sea walls, garden borders, free-standing outdoor walls, sealed paths/roads/driveways unless washed away, sporting surfaces, boat jetties/pontoons) [AAMI Building PDS, page 39].\n\n- **AAMI Contents KFS**: Flood is listed as \"Optional\" cover, with the note that there's \"No cover for the cost of cleaning your contents\" [AAMI Contents KFS, page 1]. This doesn't address structures like sheds directly.\n\n- **Suncorp Landlord PDS**: Similarly covers flood loss/damage, with exclusions for retaining walls, revetments, sea walls, garden borders, free-standing outdoor walls, sealed paths/roads/driveways (unless washed away), sporting surfaces, boat jetties/pontoons, and external paintwork if that's the only damage [Suncorp Landlord PDS, page 47]. No specific mention of sheds/outbuildings in this excerpt.\n\n- **BudgetDirect Home PDS**: Defines flood as \"the covering of normally dry land by water that has escaped or released from the normal confines of a lake, river, creek, or other natural watercourse\" \u2014 this directly matches a river breaking its banks scenario [BudgetDirect Home PDS, page 52]. Exclusions listed are for fences/gates not in good condition, retaining walls, swimming pool liners, garden borders/driveways/paths/pavers/gardens, tennis court surfaces, jetties/wharves/pontoons, and pool/spa water [BudgetDirect Home PDS, page 52]. Sheds/outbuildings are **not listed as excluded** in this excerpt.\n\n**Key gap in the excerpts:**\nNone of the provided policy excerpts explicitly state whether a \"shed\" or \"outbuilding\" is included or excluded under flood cover. The exclusion lists",
+        "citations": [
+          {
+            "doc_id": "aami-contents-kfs",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 39
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          }
+        ]
+      }
+    },
+    {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: This claim cannot be safely triaged for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer. Without that, `get_policy_certificate` cannot be looked up for the real excess/coverage limit, and `calculate_payout` would require guessing those figures, which is prohibited.\n\n2. **Ambiguous coverage classification** \u2013 The policyholder states that even the insurer's own call center could not clarify whether this event (river flooding caused by heavy rain) falls under \"flood\" cover or \"storm\" cover. This is a classic ambiguous peril-classification issue (flood vs. storm definitions vary significantly between policies and often carry different excess/exclusion terms), which directly matches the escalation criterion for contradictory/ambiguous coverage determination.\n\nGiven both the missing insurer identification and the inherent ambiguity in peril classification, this claim requires human review rather than an automated decision."
+      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer (the customer says the documents were unclear whether this is flood or storm cover, but no insurer is identified), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. Additionally, the coverage question itself is ambiguous: policy language varies by insurer regarding whether flood cover (as opposed to storm cover) applies, and whether sheds/outbuildings are included or excluded is not clearly addressed in any retrieved excerpt [AAMI Building PDS, page 39] [AAMI Contents KFS, page 1] [Suncorp Landlord PDS, page 47] [BudgetDirect Home PDS, page 52]. Given both the missing insurer identification and the genuine ambiguity in coverage classification (flood vs. storm) and shed treatment, this claim must be escalated to a human reviewer rather than decided or a payout calculated."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be safely triaged for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer. Without that, `get_policy_certificate` cannot be looked up for the real excess/coverage limit, and `calculate_payout` would require guessing those figures, which is prohibited.\n\n2. **Ambiguous coverage classification** \u2013 The policyholder states that even the insurer's own call center could not clarify whether this event (river flooding caused by heavy rain) falls under \"flood\" cover or \"storm\" cover. This is a classic ambiguous peril-classification issue (flood vs. storm definitions vary significantly between policies and often carry different excess/exclusion terms), which directly matches the escalation criterion for contradictory/ambiguous coverage determination.\n\nGiven both the missing insurer identification and the inherent ambiguity in peril classification, this claim requires human review rather than an automated decision.",
-  "citations": [],
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer (the customer says the documents were unclear whether this is flood or storm cover, but no insurer is identified), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. Additionally, the coverage question itself is ambiguous: policy language varies by insurer regarding whether flood cover (as opposed to storm cover) applies, and whether sheds/outbuildings are included or excluded is not clearly addressed in any retrieved excerpt [AAMI Building PDS, page 39] [AAMI Contents KFS, page 1] [Suncorp Landlord PDS, page 47] [BudgetDirect Home PDS, page 52]. Given both the missing insurer identification and the genuine ambiguity in coverage classification (flood vs. storm) and shed treatment, this claim must be escalated to a human reviewer rather than decided or a payout calculated.",
+  "citations": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 39
+    },
+    {
+      "doc_id": "aami-contents-kfs",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "aami-contents-kfs",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 39
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
   "claim_id": "claim-018"
 }

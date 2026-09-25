@@ -1,0 +1,136 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "1970-01-01",
+        "cause": "corroded hot water pipes leaking gradually under the house over several years",
+        "damaged_item": "bearers under the house",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "gradual deterioration corrosion wear and tear exclusion pipes leaking damage"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is what applies to gradual deterioration, corrosion, wear and tear, and pipe leak exclusions:\n\n**General wear, tear, and gradual deterioration exclusions:**\n\n- GIO Contents PDS excludes \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48].\n\n- Similarly, GIO excludes damage to \"any part of the home or contents that has wear, tear, rust, fading, rising damp, corrosion, rot, action of light, atmospheric or climatic conditions or gradual deterioration,\" specifically listing examples such as \"tiles and their adhesive or grouting breaking down,\" \"weathering of roof tiles or roof ridge capping,\" and \"gradual weathering and breakdown of bricks, mortar or concrete\" [GIO Contents PDS, page 33].\n\n- Allianz (both Landlord and Home PDS) defines \"Wear and tear\" as **including** \"depreciation, gradual deterioration, or lack of maintenance including but not limited to: wall and floor tiles and their adhesive or grouting breaking down or deteriorating, deterioration of roof tiles or roof ridge capping... due to continued exposure to weather over time, gradual deterioration and breakdown of bricks, mortar or concrete, or cracks in walls or sagging floors due to the age of the property\" [Allianz Landlord PDS, page 52; Allianz Home PDS, page 55].\n\n**Regarding pipes specifically (leaking damage):**\n\n- GIO Contents PDS notes an exception carve-back: broken, worn, or aged tiles or grouting in bathrooms, kitchens, or laundries are excluded, **\"unless the damage is caused by liquid leaking from pipes in walls or floors (not forming part of a shower cubicle wall, floor or base)\"** [GIO Contents PDS, page 48]. This implies that if pipe leakage (not shower-related) causes tile/grout damage, it may be covered despite the general wear-and-tear exclusion \u2014 though the excerpt does not confirm whether pipe corrosion itself is covered or excluded.\n\n- GIO Contents PDS also excludes water damage travelling \"from agricultural pipes or overflow pipes\" [GIO Contents PDS, page 33], though this appears under a list of water-ent",
+        "citations": [
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or run calculate_payout without guessing figures, which is against policy. Additionally, the estimated_amount extracted from the claim is null and cannot be resolved from the text. Finally, the described cause \u2014 gradual corrosion of pipes over several years causing rot \u2014 squarely matches gradual deterioration/wear-and-tear/corrosion/rot exclusions found in insurer policy text (e.g., \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48]; wear and tear defined to include \"gradual deterioration, or lack of maintenance\" [Allianz Home PDS, page 55], [Allianz Landlord PDS, page 52]). This is a direct conflict between the claimed cause and a standard exclusion, and since no insurer is named, I cannot confirm which specific policy applies or whether any carve-back exception might apply. All three escalation triggers (no named insurer, unresolved null estimated_amount, and cause conflicting with an exclusion) are present, so this claim must be handed to a human reviewer rather than decided automatically."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or run calculate_payout without guessing figures, which is against policy. Additionally, the estimated_amount extracted from the claim is null and cannot be resolved from the text. Finally, the described cause \u2014 gradual corrosion of pipes over several years causing rot \u2014 squarely matches gradual deterioration/wear-and-tear/corrosion/rot exclusions found in insurer policy text (e.g., \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48]; wear and tear defined to include \"gradual deterioration, or lack of maintenance\" [Allianz Home PDS, page 55], [Allianz Landlord PDS, page 52]). This is a direct conflict between the claimed cause and a standard exclusion, and since no insurer is named, I cannot confirm which specific policy applies or whether any carve-back exception might apply. All three escalation triggers (no named insurer, unresolved null estimated_amount, and cause conflicting with an exclusion) are present, so this claim must be handed to a human reviewer rather than decided automatically.",
+  "citations": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    }
+  ],
+  "claim_id": "claim-015"
+}

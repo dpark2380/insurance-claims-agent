@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $9,000."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2023-10-15",
+        "cause": "king tide and storm surge",
+        "damaged_item": "ground floor flooring and skirting boards",
+        "estimated_amount": 9000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is damage caused by storm surge, king tide, or sea water inundation covered or excluded?"
+      },
+      "output": {
+        "answer": "Damage caused by storm surge, king tide, or other actions of the sea is **excluded** under all four policies referenced:\n\n- **BudgetDirect Home PDS**: \"You are not covered for loss or damage caused by: high tide, king tide, tidal wave, storm surge, or any other action of the sea\" [BudgetDirect Home PDS, page 60]\n\n- **ING Home PDS**: Identical exclusion language \u2014 \"You are not covered for loss or damage caused by: high tide, king tide, tidal wave, storm surge, or any other action of the sea\" [ING Home PDS, page 60]\n\n- **Allianz Landlord PDS**: \"Excluded... Actions of the sea Including: storm surge, or a rise in the level of the ocean or sea caused by a high tide, a king tide or any other movement of the sea\" [Allianz Landlord PDS, page 49]\n\n- **Allianz Home PDS**: Same exclusion \u2014 \"Excluded... Actions of the sea Including: storm surge, or a rise in the level of the ocean or sea caused by a high tide, a king tide or any other movement of the sea\" [Allianz Home PDS, page 52]\n\nNote: For the Allianz Landlord policy, the definition of \"actions of the sea\" specifically clarifies that **tsunami is not included** in this exclusion [Allianz Landlord PDS, page 75], meaning tsunami-related damage may be treated differently (though this excerpt does not confirm whether tsunami is separately covered).\n\nRegarding **general \"sea water inundation\"** beyond the specific terms listed (storm surge, king tide, high tide, tidal wave), the excerpts do not provide a broader definition, so I cannot confirm coverage or exclusion status for inundation events not explicitly named in these clauses.\n\n**Flood** is treated separately: under the BudgetDirect and ING policies, flood damage is excluded \"unless you have selected and we have agreed to provide this optional cover and it's stated on your Insurance Certificate\" [BudgetDirect Home PDS, page 60; ING Home PDS, page 60]. The Allianz excerpts provided do not mention flood cover status.",
+        "citations": [
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 60
+          },
+          {
+            "doc_id": "ing-home-pds",
+            "insurer": "ING",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 60
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 49
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 75
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved for excess/coverage-limit figures, and `calculate_payout` would require guessing those numbers \u2014 this alone requires escalation per policy.\n\nAdditionally, the claimed cause (\"king tide combined with storm surge\" pushing sea water onto the property) directly matches an exclusion found in every policy checked: storm surge, king tide, and other \"actions of the sea\" are explicitly excluded perils under BudgetDirect, ING, and Allianz home/landlord policies [BudgetDirect Home PDS, page 60], [ING Home PDS, page 60], [Allianz Landlord PDS, page 49], [Allianz Home PDS, page 52]. This is a direct conflict between the claimed cause and standard policy exclusions, which is itself a mandatory escalation trigger.\n\nGiven both the missing insurer identification and the apparent exclusion conflict, this claim must be handed to a human reviewer rather than decided automatically \u2014 a human should confirm the actual insurer/policy wording (in case it differs from the general market text retrieved) before any denial is finalized."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved for excess/coverage-limit figures, and `calculate_payout` would require guessing those numbers \u2014 this alone requires escalation per policy.\n\nAdditionally, the claimed cause (\"king tide combined with storm surge\" pushing sea water onto the property) directly matches an exclusion found in every policy checked: storm surge, king tide, and other \"actions of the sea\" are explicitly excluded perils under BudgetDirect, ING, and Allianz home/landlord policies [BudgetDirect Home PDS, page 60], [ING Home PDS, page 60], [Allianz Landlord PDS, page 49], [Allianz Home PDS, page 52]. This is a direct conflict between the claimed cause and standard policy exclusions, which is itself a mandatory escalation trigger.\n\nGiven both the missing insurer identification and the apparent exclusion conflict, this claim must be handed to a human reviewer rather than decided automatically \u2014 a human should confirm the actual insurer/policy wording (in case it differs from the general market text retrieved) before any denial is finalized.",
+  "citations": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 60
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 60
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 49
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 60
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 60
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 49
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 75
+    }
+  ],
+  "claim_id": "claim-017"
+}

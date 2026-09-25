@@ -1,0 +1,149 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 11 November 2024 I noticed the mortar joints around my brick chimney had deteriorated badly and several bricks had become loose. The mason said the mortar has gradually broken down with age and needs to be repointed and repaired. I have not been given a final price yet."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-11-11",
+        "cause": "mortar deterioration due to age",
+        "damaged_item": "brick chimney mortar joints",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "AAMI"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual deterioration, wear and tear, or age-related mortar/brick damage covered or excluded?",
+        "insurer": "AAMI",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "wear and tear gradual deterioration exclusion",
+        "insurer": "AAMI"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, AAMI policies exclude coverage for wear, tear, and deterioration under both Building and Contents PDS documents. Here are the details:\n\n**Building policy:**\nAAMI does not cover loss or damage, or legal liability for loss or damage, caused by, connected with, or arising from wear, tear, and deterioration of the building resulting from:\n- its ordinary use, or\n- the ordinary effects of natural forces such as weather, action of light, atmospheric or climatic conditions, and rising damp [AAMI Building PDS, page 35]\n\nExamples given include tiles and their adhesive or grouting breaking down, weathering of roof tiles or roof ridge capping, and weathering and breakdown of bricks, mortar, or concrete [AAMI Building PDS, page 35].\n\n**Contents policy:**\nSimilarly, AAMI does not cover loss or damage, or legal liability for loss or damage, caused by, connected with, or arising from wear, tear, and deterioration of the building, unit, or contents from:\n- their ordinary use, or\n- the ordinary effects of natural forces such as weather, action of light, atmospheric or climatic conditions, and rising damp [AAMI Contents PDS, page 41]\n\nExamples given include wear, tear, or fading of carpets, furniture, and furnishings (including curtains and drapes), and weathering of pot plants and their pots [AAMI Contents PDS, page 41].\n\n**Additional note on Accidental Damage cover:**\nUnder the Accidental Damage at the Home optional cover, wear, tear, and deterioration is also explicitly excluded [AAMI Contents PDS, page 71].\n\n**Related context:**\nThe excerpts also reference that damage from \"wear and tear, use of excessive force, lack of due care or action, poor housekeeping, or neglect\" is discussed in a definitions context, though the specific coverage implications of this particular passage are not fully detailed in the excerpt provided [AAMI Contents PDS, page 103].\n\nIf you need information on how this exclusion interacts with other specific perils (e.g., fire, water damage) or whether any exceptions apply, the provided excerpts do not contain sufficient detail to address that further.",
+        "citations": [
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 41
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 103
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 71
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "This claim directly conflicts with a clear policy exclusion: AAMI's Building PDS explicitly excludes \"weathering and breakdown of bricks, mortar, or concrete\" as an example of wear, tear, and deterioration exclusion [AAMI Building PDS, page 35]. The claim narrative explicitly states the mason attributed the damage to mortar that has \"gradually broken down with age\" \u2014 this matches the excluded cause precisely, not an accidental or sudden insured peril.\n\nDECISION: deny\n\nReasoning: The claim describes gradual, age-related deterioration of mortar joints and loose bricks around a chimney, which the policyholder's own mason attributes to gradual breakdown with age \u2014 not a sudden or accidental event. AAMI's Building PDS explicitly excludes loss or damage from \"wear, tear, and deterioration\" of the building arising from \"ordinary use\" or \"ordinary effects of natural forces,\" and specifically lists \"weathering and breakdown of bricks, mortar, or concrete\" as an example of this exclusion [AAMI Building PDS, page 35]. Since the claimed cause matches this exclusion exactly and there is no ambiguity in the policy text on this point, the claim is not covered. No payout calculation is warranted since coverage is excluded at the cause level, regardless of the (currently unknown) claimed amount."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This claim directly conflicts with a clear policy exclusion: AAMI's Building PDS explicitly excludes \"weathering and breakdown of bricks, mortar, or concrete\" as an example of wear, tear, and deterioration exclusion [AAMI Building PDS, page 35]. The claim narrative explicitly states the mason attributed the damage to mortar that has \"gradually broken down with age\" \u2014 this matches the excluded cause precisely, not an accidental or sudden insured peril.\n\nDECISION: deny\n\nReasoning: The claim describes gradual, age-related deterioration of mortar joints and loose bricks around a chimney, which the policyholder's own mason attributes to gradual breakdown with age \u2014 not a sudden or accidental event. AAMI's Building PDS explicitly excludes loss or damage from \"wear, tear, and deterioration\" of the building arising from \"ordinary use\" or \"ordinary effects of natural forces,\" and specifically lists \"weathering and breakdown of bricks, mortar, or concrete\" as an example of this exclusion [AAMI Building PDS, page 35]. Since the claimed cause matches this exclusion exactly and there is no ambiguity in the policy text on this point, the claim is not covered. No payout calculation is warranted since coverage is excluded at the cause level, regardless of the (currently unknown) claimed amount.",
+  "citations": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 35
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 41
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 103
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 71
+    }
+  ],
+  "claim_id": "claim-010"
+}

@@ -1,0 +1,162 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 August 2023 we had an electrical fault in the laundry that started a small fire, and it spread faster than I expected before I could put it out. The washing machine, dryer, and the wall cabinetry all got badly burnt, and the ceiling and part of the hallway carpet were damaged by smoke and heat. My policy number is HM-559213. I haven't gotten quotes yet but I'd guess it's around $14,000 to fix everything."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2023-08-03",
+        "cause": "electrical fault in laundry starting fire",
+        "damaged_item": "washing machine, dryer, wall cabinetry, ceiling, and hallway carpet",
+        "estimated_amount": 14000.0,
+        "policy_number": "HM-559213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is fire damage caused by electrical fault covered? Any exclusion for electrical fault fires?",
+        "insurer": "AAMI",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "AAMI"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "fire damage coverage house building",
+        "insurer": "AAMI"
+      },
+      "output": {
+        "answer": "Based on the AAMI Building PDS, fire damage coverage for a house building includes:\n\n**What's covered:**\n- Loss or damage caused by fire (including bushfire) [AAMI Building PDS, page 43]\n- Heat, ash, soot, and smoke that's the direct result of a fire within 100 metres of the insured address [AAMI Building PDS, page 43]\n\n**Extra costs cover in the event of bushfire:**\nIf there's a bushfire in your area during the period of insurance, AAMI also covers the following costs even if there's no actual physical loss or damage to the building:\n- The cost of replacing water in any tank, container, pool, spa, and any other storage vessel where the water has either been used to limit the spread of bushfire in your area, or become contaminated due to the use of fire retardant at the insured address\n- The cost of cleaning fire retardant off the building [AAMI Building PDS, page 43]\n\nIf a claim is for these extra costs only, no excess applies. The most payable under this extra costs cover is **$1,000 for any one incident** [AAMI Building PDS, page 43].\n\n**What's NOT covered:**\n- Anything listed in section 3 'General exclusions' (pages 23 to 36) [AAMI Building PDS, page 43]\n- Arcing, scorching, melting, or cigarette burns \u2014 unless a fire spreads from the initial burn spot (e.g., cigarette burns to carpet where no fire has spread) [AAMI Building PDS, page 43]\n- Pollution or vapour from a home heater or cooking appliance \u2014 unless a fire spreads from the heater or cooking appliance [AAMI Building PDS, page 43]\n- Gradual exposure to fire, heat, ash, soot, and smoke due to recurring incidents of fire or bushfire [AAMI Building PDS, page 43]\n\nNote: I don't have the full list of \"General exclusions\" from pages 23\u201336 in the provided excerpts, so I can't detail what specific exclusions may also apply beyond what's stated above.",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 34
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 43
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 43
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 14000,
+        "excess": 500,
+        "coverage_limit": 50000
+      },
+      "output": {
+        "payout": 13500
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim involves an electrical fault that caused an actual fire, which spread and caused smoke/heat damage to the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Per AAMI's Building PDS, fire damage is covered, including heat, ash, soot, and smoke that is the direct result of a fire, and the exclusion for \"arcing, scorching, melting\" only applies when no fire spreads from the initial burn spot \u2014 here the fire did spread, so that exclusion does not apply [AAMI Building PDS, page 43].\n\nPolicy certificate for AAMI: excess $500, coverage limit $50,000. Applying these to the estimated claim amount of $14,000:\n\nPayout = $14,000 \u2212 $500 excess = **$13,500**\n\nThis is well within the $50,000 coverage limit, so the claim is approved for a payout of $13,500, subject to confirmation via formal repair quotes once obtained (currently an estimate)."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves an electrical fault that caused an actual fire, which spread and caused smoke/heat damage to the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Per AAMI's Building PDS, fire damage is covered, including heat, ash, soot, and smoke that is the direct result of a fire, and the exclusion for \"arcing, scorching, melting\" only applies when no fire spreads from the initial burn spot \u2014 here the fire did spread, so that exclusion does not apply [AAMI Building PDS, page 43].\n\nPolicy certificate for AAMI: excess $500, coverage limit $50,000. Applying these to the estimated claim amount of $14,000:\n\nPayout = $14,000 \u2212 $500 excess = **$13,500**\n\nThis is well within the $50,000 coverage limit, so the claim is approved for a payout of $13,500, subject to confirmation via formal repair quotes once obtained (currently an estimate).",
+  "citations": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    }
+  ],
+  "claim_id": "claim-005"
+}

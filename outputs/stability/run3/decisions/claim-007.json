@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2024-02-03",
+        "cause": "candle tip over and catch curtains on fire",
+        "damaged_item": "wall and carpet near lounge room shelf",
+        "estimated_amount": null,
+        "policy_number": "HC-882913"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is accidental fire damage caused by an unattended candle covered?",
+        "insurer": "NRMA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot fully answer this question.\n\nThe policy excerpts confirm that fire is a covered event: \"We cover loss or damage caused by fire or bushfire\" [NRMA Home PDS, page 14], and the Key Facts Sheet notes that \"Fire and Explosion\" are \"Covered as separate events\" [NRMA Home KFS, page 1].\n\nHowever, the excerpts specify certain exclusions for fire, namely:\n- \"any fire that was started with the intention to cause damage by: You; Your Family; anyone who normally lives in Your Home including a tenant\" [NRMA Home PDS, page 14]\n- Under the KFS, fire is \"not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1]\n\nThere is no specific mention in these excerpts of an \"unattended candle\" scenario, nor any clause addressing negligence or accidental (non-intentional) causes of fire in general. Since the exclusions listed relate only to *intentional* fire-starting, an accidental fire caused by an unattended candle would not appear to fall under the stated exclusions \u2014 but the excerpts do not explicitly confirm coverage for this specific scenario either.\n\n**In summary:** The excerpts do not contain enough information to definitively state whether accidental fire damage from an unattended candle is covered. They show fire is a covered event and that only *intentional* fires by specified persons are excluded, but no explicit statement addresses unattended candles or general negligence-caused fires.",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 13
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: This claim has two independent triggers for escalation:\n\n1. **Null estimated amount that cannot be resolved another way** \u2014 `extract_fields` returned `estimated_amount: null`, and the policyholder explicitly states no assessor/tradesperson has inspected the damage yet, so there is no other source in the claim to derive a reliable claimed amount. Without this figure, `calculate_payout` cannot be run meaningfully even though the excess ($550) and coverage limit ($55,000) are known from the NRMA certificate.\n\n2. **Ambiguous coverage text** \u2014 `retrieve_policy` could not confirm whether this specific scenario (accidental fire from an unattended candle causing flame damage that spread to curtains, wall, and carpet) is covered. Fire is a covered peril in principle [NRMA Home PDS, page 14] and is listed as a separately covered event [NRMA Home KFS, page 1], and the only fire exclusion identified relates to *intentionally* started fires by the policyholder/family/tenants [NRMA Home PDS, page 14], which does not apply here since this was accidental. However, the KFS also notes fire is \"not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1] \u2014 and since the claimant describes both open flame damage (curtains catching fire) and \"scorching\" of the wall, it's unclear whether the scorched wall/carpet portion falls inside or outside this carve-out. The retrieval tool itself stated it could not definitively confirm coverage for this scenario.\n\nGiven the combination of an unresolved claim amount and genuinely ambiguous exclusionary language around \"scorching,\" this claim should be handed to a human reviewer rather than approved or denied outright.\n\nCitations relied upon: [NRMA Home PDS, page 14], [NRMA Home KFS, page 1]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim has two independent triggers for escalation:\n\n1. **Null estimated amount that cannot be resolved another way** \u2014 `extract_fields` returned `estimated_amount: null`, and the policyholder explicitly states no assessor/tradesperson has inspected the damage yet, so there is no other source in the claim to derive a reliable claimed amount. Without this figure, `calculate_payout` cannot be run meaningfully even though the excess ($550) and coverage limit ($55,000) are known from the NRMA certificate.\n\n2. **Ambiguous coverage text** \u2014 `retrieve_policy` could not confirm whether this specific scenario (accidental fire from an unattended candle causing flame damage that spread to curtains, wall, and carpet) is covered. Fire is a covered peril in principle [NRMA Home PDS, page 14] and is listed as a separately covered event [NRMA Home KFS, page 1], and the only fire exclusion identified relates to *intentionally* started fires by the policyholder/family/tenants [NRMA Home PDS, page 14], which does not apply here since this was accidental. However, the KFS also notes fire is \"not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1] \u2014 and since the claimant describes both open flame damage (curtains catching fire) and \"scorching\" of the wall, it's unclear whether the scorched wall/carpet portion falls inside or outside this carve-out. The retrieval tool itself stated it could not definitively confirm coverage for this scenario.\n\nGiven the combination of an unresolved claim amount and genuinely ambiguous exclusionary language around \"scorching,\" this claim should be handed to a human reviewer rather than approved or denied outright.\n\nCitations relied upon: [NRMA Home PDS, page 14], [NRMA Home KFS, page 1]",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    }
+  ],
+  "claim_id": "claim-007"
+}

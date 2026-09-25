@@ -1,0 +1,149 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 9 February 2024 I woke up to find someone had spray-painted graffiti all over our front fence and garage door overnight. It looks like it happened while we were asleep since there was nothing there when we went to bed. I haven't had anyone come out to quote on repainting or replacing the panels yet, so I don't have a cost figure at this stage. Insurer: NRMA"
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2024-02-09",
+        "cause": "graffiti sprayed on front fence and garage door during sleep",
+        "damaged_item": "front fence and garage door",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is vandalism or graffiti damage to fences and garage doors covered?",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what I can determine:\n\n**Vandalism/deliberate acts:** Both the NRMA Landlord PDS and NRMA Home PDS cover loss or damage caused by \"a deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Landlord PDS, page 12]; [NRMA Home PDS, page 13]. For the Landlord policy specifically, this extends to \"Damage by occupant,\" covering loss or damage caused by a Tenant, someone entering with the Tenant's consent, or an approved Pet, including \"vandalism or a malicious act\" and \"intentional and deliberate act\" [NRMA Landlord PDS, page 12].\n\n**Fences specifically:** The excerpts do not directly confirm coverage for vandalism to fences under the \"Deliberate or intentional act\" or \"Damage by occupant\" listed events. However, one excerpt does mention fences in a different context \u2014 under the \"Riot or civil commotion\" Listed Event, where coverage excludes \"loss or damage to... gates, fences or free-standing walls if the loss or damage was caused because they are not structurally sound\" [NRMA Landlord PDS, page 14]. This suggests fences may be covered under certain Listed Events, subject to structural soundness exclusions, but this excerpt relates to riot/civil commotion, not vandalism specifically.\n\n**Garage doors:** None of the provided excerpts mention garage doors specifically.\n\n**Conclusion:** The excerpts do not contain enough information to definitively confirm whether vandalism or graffiti damage specifically to fences and garage doors is covered. While general vandalism/deliberate act cover exists [NRMA Landlord PDS, page 12]; [NRMA Home PDS, page 13], there is no explicit statement including or excluding fences or garage doors under this particular Listed Event, and no mention of \"graffiti\" as a covered peril at all in these excerpts. I cannot guess beyond what is stated \u2014 please consult the full PDS or insurer for confirmation on fences and garage doors under the vandalism/deliberate act cover.",
+        "citations": [
+          {
+            "doc_id": "nrma-landlord-pds",
+            "insurer": "NRMA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 12
+          },
+          {
+            "doc_id": "nrma-landlord-pds",
+            "insurer": "NRMA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 12
+          },
+          {
+            "doc_id": "nrma-landlord-pds",
+            "insurer": "NRMA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 13
+          },
+          {
+            "doc_id": "nrma-landlord-pds",
+            "insurer": "NRMA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 12
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: Two independent escalation triggers apply here.\n\n1. **Missing estimated amount that cannot be resolved another way.** `extract_fields` returned `estimated_amount: null` because the policyholder has not yet obtained a repair/replacement quote. There is no other source in the claim narrative to derive a dollar figure, so `calculate_payout` cannot be run meaningfully.\n\n2. **Ambiguous coverage determination.** `retrieve_policy` confirms NRMA's Home PDS covers loss/damage from a \"deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Home PDS, page 13], which would generally support a graffiti/vandalism claim. However, the excerpts found do not explicitly confirm whether fences or garage doors are included or excluded under this specific listed event \u2014 the only fence-related exclusion language found relates to a different peril (riot/civil commotion) and structural soundness, not vandalism [NRMA Landlord PDS, page 14]. This leaves genuine ambiguity as to whether the damaged items (fence, garage door) are treated the same as other covered structures under the vandalism peril.\n\nGiven both the unresolved claim amount and the ambiguous applicability of coverage to the specific damaged items, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should obtain a repair quote from the policyholder and confirm with the full PDS (or NRMA directly) that fences/garage doors fall under the \"deliberate or intentional act\" listed event before applying the excess ($550) and coverage limit ($55,000) already on file.\n\nCitations: [NRMA Home PDS, page 13], [NRMA Landlord PDS, page 12], [NRMA Landlord PDS, page 14]"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: Two independent escalation triggers apply here.\n\n1. **Missing estimated amount that cannot be resolved another way.** `extract_fields` returned `estimated_amount: null` because the policyholder has not yet obtained a repair/replacement quote. There is no other source in the claim narrative to derive a dollar figure, so `calculate_payout` cannot be run meaningfully.\n\n2. **Ambiguous coverage determination.** `retrieve_policy` confirms NRMA's Home PDS covers loss/damage from a \"deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Home PDS, page 13], which would generally support a graffiti/vandalism claim. However, the excerpts found do not explicitly confirm whether fences or garage doors are included or excluded under this specific listed event \u2014 the only fence-related exclusion language found relates to a different peril (riot/civil commotion) and structural soundness, not vandalism [NRMA Landlord PDS, page 14]. This leaves genuine ambiguity as to whether the damaged items (fence, garage door) are treated the same as other covered structures under the vandalism peril.\n\nGiven both the unresolved claim amount and the ambiguous applicability of coverage to the specific damaged items, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should obtain a repair quote from the policyholder and confirm with the full PDS (or NRMA directly) that fences/garage doors fall under the \"deliberate or intentional act\" listed event before applying the excess ($550) and coverage limit ($55,000) already on file.\n\nCitations: [NRMA Home PDS, page 13], [NRMA Landlord PDS, page 12], [NRMA Landlord PDS, page 14]",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    },
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 12
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 12
+    },
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 12
+    },
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    },
+    {
+      "doc_id": "nrma-landlord-pds",
+      "insurer": "NRMA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 12
+    }
+  ],
+  "claim_id": "claim-002"
+}

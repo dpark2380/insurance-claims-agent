@@ -21,90 +21,110 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is accidental fire damage caused by a candle covered under home insurance?",
-        "insurer": "NRMA"
+        "query": "Is accidental fire damage caused by a candle covered?",
+        "insurer": "NRMA",
+        "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, I cannot give a definitive answer to this specific scenario.\n\nWhat the excerpts do establish is that fire and explosion is a covered event under both Building and Contents cover [NRMA Home PDS, page 3], and that fire cover is available as a separate event from explosion [NRMA Home KFS, page 1] [NRMA Contents KFS, page 1].\n\nThe excerpts note specific limitations on fire cover:\n- Fire is \"not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1] [NRMA Contents KFS, page 1]\n- The only exclusion for fire damage explicitly mentioned relates to fires \"started with the intention to cause damage\" by the insured, their family, or others living in the home [NRMA Home PDS, page 14]\n\nHowever, the excerpts do not specifically address whether an accidental fire caused by a candle (as opposed to a deliberate/intentional act) would be covered. Since the exclusion referenced in [NRMA Home PDS, page 14] relates only to intentional fires, and there is no explicit exclusion mentioned for accidental candle fires, this suggests such damage may fall under general fire cover \u2014 but the excerpts do not explicitly confirm this scenario, so I cannot state with certainty that it is covered.\n\nI'd recommend consulting the full PDS section on Fire cover and any relevant exclusions list for a definitive answer, as these excerpts are not exhaustive (as noted in [NRMA Contents KFS, page 1]: \"This sheet does not provide a complete statement of the cover offered, exclusions, conditions and limits that apply under the policy\").",
+        "answer": "The excerpts provided do not contain enough information to answer this question. They describe general Fire cover (loss or damage caused by fire or bushfire) and exclusions related to intentional fires, scorching/melting without flame, and certain tree-related damage [NRMA Home PDS, page 14; NRMA Home KFS, page 1], but there is no specific mention of candle-caused fires or whether such an incident would be classified as accidental fire damage under the policy.",
         "citations": [
           {
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
             "page": 14
           },
           {
+            "doc_id": "nrma-home-kfs",
             "insurer": "NRMA",
-            "product": "Contents",
+            "product": "Home",
             "doc_type": "KFS",
             "page": 1
           },
           {
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
             "page": 3
           },
           {
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
+            "doc_type": "PDS",
+            "page": 14
           },
           {
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
-            "product": "Contents",
-            "doc_type": "KFS",
-            "page": 1
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 18
           }
         ]
       }
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "escalate_to_human",
-      "input": {
-        "reason": "Claim has no estimated repair/damage amount (policyholder has not yet obtained an assessment, and extract_fields returned null for estimated_amount), so calculate_payout cannot be run. Additionally, while NRMA policy text confirms fire is a covered peril and only intentional fires are excluded, the retrieved policy excerpts are not fully definitive on whether this specific accidental candle-fire scenario is covered (retrieve_policy explicitly stated it could not confirm with certainty). Recommend human review with a full damage estimate/quote and closer reading of the complete PDS fire-cover section before deciding."
-      },
-      "output": {
-        "status": "escalated",
-        "reason": "Claim has no estimated repair/damage amount (policyholder has not yet obtained an assessment, and extract_fields returned null for estimated_amount), so calculate_payout cannot be run. Additionally, while NRMA policy text confirms fire is a covered peril and only intentional fires are excluded, the retrieved policy excerpts are not fully definitive on whether this specific accidental candle-fire scenario is covered (retrieve_policy explicitly stated it could not confirm with certainty). Recommend human review with a full damage estimate/quote and closer reading of the complete PDS fire-cover section before deciding."
-      }
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim involves fire damage from a candle, which appears to fall under general Fire cover in the NRMA Home policy [NRMA Home PDS, page 14][NRMA Home KFS, page 1]. However, two issues prevent a confident automated decision:\n\n1. **Missing estimated amount**: extract_fields returned a null estimated_amount because no assessor has yet inspected the damage, and there is no other way to resolve a claimed dollar figure. Per policy, this alone requires escalation to a human reviewer rather than guessing a cost.\n\n2. **Ambiguous coverage classification**: The retrieved policy text confirms general fire cover but does not clearly address whether a self-inflicted, accidental candle fire (as opposed to bushfire or third-party fire) is treated the same, and separately flags an exclusion for \"scorching/melting without flame\" [NRMA Home PDS, page 14] which could be relevant to the scorched wall/carpet portion of the claim. This creates potential ambiguity as to whether all the damage described is fully covered.\n\nGiven the unresolved estimated amount and the ambiguous scope of coverage relative to a specific exclusion, this claim should be handed to a human reviewer for assessment and correct application of policy terms, rather than approved or denied automatically."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim has no estimated repair/damage amount (policyholder has not yet obtained an assessment, and extract_fields returned null for estimated_amount), so calculate_payout cannot be run. Additionally, while NRMA policy text confirms fire is a covered peril and only intentional fires are excluded, the retrieved policy excerpts are not fully definitive on whether this specific accidental candle-fire scenario is covered (retrieve_policy explicitly stated it could not confirm with certainty). Recommend human review with a full damage estimate/quote and closer reading of the complete PDS fire-cover section before deciding.",
+  "reasoning": "DECISION: escalate\n\nThe claim involves fire damage from a candle, which appears to fall under general Fire cover in the NRMA Home policy [NRMA Home PDS, page 14][NRMA Home KFS, page 1]. However, two issues prevent a confident automated decision:\n\n1. **Missing estimated amount**: extract_fields returned a null estimated_amount because no assessor has yet inspected the damage, and there is no other way to resolve a claimed dollar figure. Per policy, this alone requires escalation to a human reviewer rather than guessing a cost.\n\n2. **Ambiguous coverage classification**: The retrieved policy text confirms general fire cover but does not clearly address whether a self-inflicted, accidental candle fire (as opposed to bushfire or third-party fire) is treated the same, and separately flags an exclusion for \"scorching/melting without flame\" [NRMA Home PDS, page 14] which could be relevant to the scorched wall/carpet portion of the claim. This creates potential ambiguity as to whether all the damage described is fully covered.\n\nGiven the unresolved estimated amount and the ambiguous scope of coverage relative to a specific exclusion, this claim should be handed to a human reviewer for assessment and correct application of policy terms, rather than approved or denied automatically.",
   "citations": [
     {
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
       "page": 14
     },
     {
+      "doc_id": "nrma-home-kfs",
       "insurer": "NRMA",
-      "product": "Contents",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
       "doc_type": "KFS",
       "page": 1
     },
     {
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
       "page": 3
     },
     {
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
+      "doc_type": "PDS",
+      "page": 14
     },
     {
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 18
     }
   ],
   "claim_id": "claim-007"

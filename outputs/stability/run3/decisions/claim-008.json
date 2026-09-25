@@ -1,0 +1,156 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 September 2023 I woke up to find my front fence and letterbox spray painted with some kind of symbol, and one of the timber palings had been kicked in. I'm not sure exactly when it happened overnight, and I didn't hear anything, but it definitely wasn't like that when I went to bed. My policy number is HM-773245 and I'd guess it'll cost around $850 to repaint and replace the paling."
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2023-09-03",
+        "cause": "unknown vandalism on front fence and letterbox",
+        "damaged_item": "front fence and timber palings",
+        "estimated_amount": 850.0,
+        "policy_number": "HM-773245"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is vandalism or malicious damage to fences covered?",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, the **Malicious Damage, Intentional Damage or damage by vandals** insured event states that RAA will cover \"loss or damage to the Insured Property\" caused by Malicious Damage, Intentional Damage, or vandalism [RAA Contents PDS, page 47]. The excerpts do not single out fences as excluded from this particular insured event.\n\nHowever, this cover does **not** apply in the following circumstances [RAA Contents PDS, page 47]:\n- chips, scratches, dents or any superficial markings to the Insured Property;\n- wear and tear, or damage caused over a period of time;\n- loss or damage caused by you, your Guest, an Occupier or any Co-Insured;\n- loss or damage caused by a person who entered your Home with the consent (implied or otherwise) of you, your Guest, an Occupier or any Co-Insured; or\n- loss or damage that has not been reported to the police.\n\nSeparately, the excerpts show that **wind damage** to gates or fences is excluded if the fence \"was not structurally sound or was not maintained in a reasonable manner prior to the loss or damage occurring\" [RAA Contents PDS, page 45] \u2014 but this exclusion appears under a different insured event (relating to storm/wind), not the Malicious Damage event.\n\nI do not have an excerpt that explicitly confirms whether fences are included within, or excluded from, the definition of \"Insured Property\" for the Malicious Damage insured event spec",
+        "citations": [
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 74
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 45
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim involves malicious/vandalism damage to a front fence and letterbox, which RAA's Contents PDS insures under \"Malicious Damage, Intentional Damage or damage by vandals\" [RAA Contents PDS, page 47]. However, the retrieved policy text itself states there is no excerpt confirming whether fences fall within the definition of \"Insured Property\" for this specific insured event, creating genuine ambiguity about whether the fence/letterbox damage is covered [RAA Contents PDS, page 47][RAA Contents PDS, page 74][RAA Contents PDS, page 45][RAA Contents PDS, page 70]. Additionally, the policy excludes cover for \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative does not confirm whether a police report was filed \u2014 a condition that materially affects coverage and cannot be resolved from the information given.\n\nBecause the coverage text is ambiguous regarding whether the fence is included as \"Insured Property\" under this peril, and there is an unresolved condition (police report) that could trigger an exclusion, this claim should be escalated to a human reviewer rather than decided automatically. (Note: excess $500 / coverage limit $45,000 were retrieved from RAA's certificate but payout calculation was not performed pending resolution of coverage ambiguity.)"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves malicious/vandalism damage to a front fence and letterbox, which RAA's Contents PDS insures under \"Malicious Damage, Intentional Damage or damage by vandals\" [RAA Contents PDS, page 47]. However, the retrieved policy text itself states there is no excerpt confirming whether fences fall within the definition of \"Insured Property\" for this specific insured event, creating genuine ambiguity about whether the fence/letterbox damage is covered [RAA Contents PDS, page 47][RAA Contents PDS, page 74][RAA Contents PDS, page 45][RAA Contents PDS, page 70]. Additionally, the policy excludes cover for \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative does not confirm whether a police report was filed \u2014 a condition that materially affects coverage and cannot be resolved from the information given.\n\nBecause the coverage text is ambiguous regarding whether the fence is included as \"Insured Property\" under this peril, and there is an unresolved condition (police report) that could trigger an exclusion, this claim should be escalated to a human reviewer rather than decided automatically. (Note: excess $500 / coverage limit $45,000 were retrieved from RAA's certificate but payout calculation was not performed pending resolution of coverage ambiguity.)",
+  "citations": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    }
+  ],
+  "claim_id": "claim-008"
+}

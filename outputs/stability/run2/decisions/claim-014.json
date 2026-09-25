@@ -1,0 +1,148 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 March 2024 the flexible hose under my kitchen sink burst while I was at work, and by the time I got home water had flooded the cabinetry and part of the timber flooring. I've had to pull out the swollen cabinet base and the floorboards are warped. My policy number is HM-2298471. I'm hoping to get quotes but think it will cost around $4,500 to fix. Insurer: RealInsurance home insurance."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2024-03-14",
+        "cause": "burst flexible hose under kitchen sink",
+        "damaged_item": "kitchen cabinets and timber flooring",
+        "estimated_amount": 4500.0,
+        "policy_number": "HM-2298471"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Water damage from burst flexible hose/pipe under sink - accidental escape of water coverage",
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here's what can be said about coverage for a burst pipe/hose under a sink:\n\n**General coverage rule:** The policies cover \"loss or damage to your building or contents (as applicable) caused by [an] escape of liquid that is sudden, unexpected, accidental and without warning that occurs at the site from any fixed pipe, fixed tank, waterbed, aquarium, household appliances or fixed item used to hold liquid\" [RealInsurance Contents PDS, page 17]; [RealInsurance Landlord PDS, page 17].\n\nIf a hose or pipe under the sink bursts suddenly and without warning, and this falls within the definition of a \"fixed pipe\" or \"household appliance,\" the resulting escape of liquid would appear to be an insured event under this clause.\n\n**Important caveats and exclusions from the excerpts:**\n\n1. **Reporting requirement:** \"You must report an escape of liquid to us as soon as you become aware of it. Any additional damage due to a failure to report the event may not be covered\" [RealInsurance Contents PDS, page 17].\n\n2. **Immediate action required:** \"If you do suffer loss or damage to your building or contents, you must take immediate action to prevent any further loss or damage\" [RealInsurance Contents PDS, page 17].\n\n3. **Exclusions that would NOT apply if the escape was sudden/accidental** (these apply to gradual issues instead): gradual seepage, wear and tear, gradual leaking/dripping/overflowing processes, and lack of routine maintenance [RealInsurance Contents PDS, page 17].\n\n4. **Cost of the item itself excluded:** \"We",
+        "citations": [
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 14
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 40000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 4500,
+        "excess": 500,
+        "coverage_limit": 40000
+      },
+      "output": {
+        "payout": 4000
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: approve\n\nThe claim involves a sudden, accidental escape of liquid from a burst flexible hose under the kitchen sink, damaging cabinetry and timber flooring. This matches the insuring clause for escape of liquid from a fixed pipe/household appliance under RealInsurance's policy, and none of the gradual-damage exclusions (wear and tear, gradual seepage, lack of maintenance) apply since the hose burst suddenly [RealInsurance Contents PDS, page 17].\n\nPolicy certificate for RealInsurance shows an excess of $500 and coverage limit of $40,000. Applying these to the estimated repair cost of $4,500 yields a payout of $4,000.\n\nNote: the policyholder should still comply with the policy's requirement to report the event promptly and mitigate further damage [RealInsurance Contents PDS, page 17], but this does not affect the current approval based on facts provided.\n\nPayout approved: $4,000 (subject to final quotes confirming the $4,500 estimate)."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nThe claim involves a sudden, accidental escape of liquid from a burst flexible hose under the kitchen sink, damaging cabinetry and timber flooring. This matches the insuring clause for escape of liquid from a fixed pipe/household appliance under RealInsurance's policy, and none of the gradual-damage exclusions (wear and tear, gradual seepage, lack of maintenance) apply since the hose burst suddenly [RealInsurance Contents PDS, page 17].\n\nPolicy certificate for RealInsurance shows an excess of $500 and coverage limit of $40,000. Applying these to the estimated repair cost of $4,500 yields a payout of $4,000.\n\nNote: the policyholder should still comply with the policy's requirement to report the event promptly and mitigate further damage [RealInsurance Contents PDS, page 17], but this does not affect the current approval based on facts provided.\n\nPayout approved: $4,000 (subject to final quotes confirming the $4,500 estimate).",
+  "citations": [
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 14
+    }
+  ],
+  "claim_id": "claim-014"
+}

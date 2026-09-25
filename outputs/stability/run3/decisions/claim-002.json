@@ -1,0 +1,149 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 9 February 2024 I woke up to find someone had spray-painted graffiti all over our front fence and garage door overnight. It looks like it happened while we were asleep since there was nothing there when we went to bed. I haven't had anyone come out to quote on repainting or replacing the panels yet, so I don't have a cost figure at this stage. (Policyholder with NRMA home insurance.)"
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2024-02-09",
+        "cause": "graffiti sprayed on front fence and garage door during sleep",
+        "damaged_item": "front fence and garage door",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is vandalism or malicious damage such as graffiti covered under home insurance?",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Yes. Under the NRMA Home policy, loss or damage caused by a \"deliberate or intentional act (including vandalism and a malicious act)\" is covered \u2014 graffiti would fall within this category as a form of malicious/vandalism damage [NRMA Home KFS, page 1]; [NRMA Home PDS, page 13].\n\nHowever, this cover is subject to important exclusions and conditions:\n\n- **Who commits the act matters**: The policy will **not** cover damage caused by a deliberate or intentional act (including vandalism/malicious acts) committed by:\n  - You;\n  - Your Family;\n  - anyone who normally lives in Your Home, including a tenant; or\n  - anyone who enters Your Home or the Site with the consent of You, Your Family, or anyone who normally lives in Your Home [NRMA Home PDS, page 13]; [NRMA Home PDS, page 28].\n\n- **Cover depends on policy type held**: Building damage is covered only if you have \"Building\" insurance (Building Plus or Building Standard), and General Contents damage is covered only if you have \"Contents\" insurance (Contents Plus or Contents Standard), and only while contents are inside Your Home [NRMA Home PDS, page 13].\n\n- **Reporting requirement**: You must report the deliberate or intentional act (vandalism/malicious act) to the police and provide NRMA with the report number and details of when and where the report was made [NRMA Home PDS, page 13]; [NRMA Home PDS, page 28].\n\nThe excerpts do not specifically mention \"graffiti\" by name, but graffiti would reasonably fall under \"vandalism\" or a \"malicious act\" as described in these provisions.",
+        "citations": [
+          {
+            "doc_id": "nrma-contents-kfs",
+            "insurer": "NRMA",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 13
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 28
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 13
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "The claim is missing an estimated repair cost (no quote obtained yet), and this figure cannot be resolved from any other source \u2014 it's not something policy text or the certificate can supply. Per policy, a null estimated_amount that cannot be resolved another way requires escalation rather than a guessed calculation.\n\nDECISION: escalate\n\nReasoning: The claim narrative confirms graffiti/vandalism is a covered peril under the NRMA Home policy (deliberate/intentional act including vandalism/malicious act), provided the police reporting requirement is met and the damaged items are covered under the policyholder's Building/Contents cover [NRMA Home PDS, page 13][NRMA Home PDS, page 28][NRMA Home KFS, page 1]. However, the policyholder has not yet obtained a repair/replacement quote, so extract_fields returned a null estimated_amount that cannot be resolved from policy text or the certificate. Per escalation policy, this requires human review rather than approving or denying with a guessed dollar figure. Once a repair quote is obtained, the claim can be recalculated using the confirmed excess ($550) and coverage limit ($55,000) from the NRMA certificate, subject to confirmation that police were notified and the damaged property (fence/garage door) is covered under the policyholder's specific Building policy."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "The claim is missing an estimated repair cost (no quote obtained yet), and this figure cannot be resolved from any other source \u2014 it's not something policy text or the certificate can supply. Per policy, a null estimated_amount that cannot be resolved another way requires escalation rather than a guessed calculation.\n\nDECISION: escalate\n\nReasoning: The claim narrative confirms graffiti/vandalism is a covered peril under the NRMA Home policy (deliberate/intentional act including vandalism/malicious act), provided the police reporting requirement is met and the damaged items are covered under the policyholder's Building/Contents cover [NRMA Home PDS, page 13][NRMA Home PDS, page 28][NRMA Home KFS, page 1]. However, the policyholder has not yet obtained a repair/replacement quote, so extract_fields returned a null estimated_amount that cannot be resolved from policy text or the certificate. Per escalation policy, this requires human review rather than approving or denying with a guessed dollar figure. Once a repair quote is obtained, the claim can be recalculated using the confirmed excess ($550) and coverage limit ($55,000) from the NRMA certificate, subject to confirmation that police were notified and the damaged property (fence/garage door) is covered under the policyholder's specific Building policy.",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 28
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-contents-kfs",
+      "insurer": "NRMA",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 28
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 13
+    }
+  ],
+  "claim_id": "claim-002"
+}

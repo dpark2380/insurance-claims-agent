@@ -1,0 +1,30 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Something happened to our house last month and there is some damage we noticed. We are not sure of the cause or how much it will cost to fix."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2023-10-15",
+        "cause": "unknown",
+        "damaged_item": "entire backyard garden",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThis claim lacks essential information needed for triage: the cause of damage is unknown, the estimated repair amount is null, and no insurer is named in the claim narrative. Per escalation policy, a null estimated_amount that cannot be resolved (there's no other detail in the narrative to infer cost from), combined with the absence of a named insurer (making get_policy_certificate and calculate_payout impossible without guessing), requires human review rather than an automated decision. I have not fabricated any coverage, excess, or limit figures, and have not cited any policy documents since none were retrieved due to lack of a named insurer/product."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThis claim lacks essential information needed for triage: the cause of damage is unknown, the estimated repair amount is null, and no insurer is named in the claim narrative. Per escalation policy, a null estimated_amount that cannot be resolved (there's no other detail in the narrative to infer cost from), combined with the absence of a named insurer (making get_policy_certificate and calculate_payout impossible without guessing), requires human review rather than an automated decision. I have not fabricated any coverage, excess, or limit figures, and have not cited any policy documents since none were retrieved due to lack of a named insurer/product.",
+  "citations": [],
+  "retrieved_sources": [],
+  "claim_id": "claim-016"
+}

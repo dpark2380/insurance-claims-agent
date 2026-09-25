@@ -1,0 +1,162 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 August 2023 our washing machine hose burst overnight and flooded the laundry, spreading water into the hallway and adjoining bedroom. By morning the laundry vinyl flooring was lifting, the hallway carpet was soaked through, and the bedroom skirting boards had started swelling. My policy number is HC-4489213 and I think the repairs could run to around $6,500. Insurer: Allianz."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2023-08-14",
+        "cause": "washing machine hose burst during night",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, and bedroom skirting boards",
+        "estimated_amount": 6500.0,
+        "policy_number": "HC-4489213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Water damage from burst washing machine hose - is sudden escape of water covered?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "error": "No text block in response (stop_reason='max_tokens') -- likely a refusal or truncation before any text was generated."
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Sudden escape of water burst pipe or hose damage coverage",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here is what is covered regarding sudden escape of liquid from burst pipes or hoses:\n\n**What's covered:**\n- Loss or damage resulting **directly from bursting, leaking, discharging or overflowing** of:\n  - Fixed pipes, gutters or drainpipes, sinks, baths, basins or water carrying apparatus [Allianz Home PDS, page 27]\n  - Domestic appliances (e.g., dishwasher or washing machine) [Allianz Home PDS, page 27]\n  - Fixed rainwater or hot water tanks [Allianz Home PDS, page 27]\n  - Radiators and oil heaters [Allianz Home PDS, page 27]\n\n- **For Buildings Insurance only**: If a claim for sudden escape of liquid to your buildings is agreed, Allianz will also pay certain associated costs \u2014 though the excerpt is cut off before detailing what these costs specifically cover [Allianz Home PDS, page 27].\n\n- This benefit is listed as a covered event for Buildings Insurance in the policy snapshot, with more detail found on page 27 [Allianz Home PDS, page 4].\n\n**What's NOT covered:**\n- Loss or damage from **gradual escape of water or liquid over time**, particularly where you could reasonably have been expected to be aware of it \u2014 for example, where there is visible damage such as staining on ceilings/walls, mould/mildew, or deterioration of tile grouting/adhesive [Allianz Home PDS, page 27]\n- Loss or damage from a **shower base, shower recess, shower alcove, or the walls surrounding the shower** [Allianz Home PDS, page 27]\n- Loss or damage from **sinks, baths, or basins overflowing due to a tap being left running** [Allianz Home PDS, page 27]\n- Loss or damage from **waterbeds** or **aquariums** [Allianz Home PDS, page 27]\n\n**Important timing exclusion:**\n- A **72-hour exclusion period** may apply to certain insured events when a policy is first taken out or when cover is increased; however, this specific exclusion is stated to apply to loss/damage caused by **cyclone, flood, flood water combined with run-off and/or rainwater, grassfires, and bushfires** \u2014 the excerpts do not explicitly state whether sudden escape of liquid/burst pipe damage is included in this 72-hour excl",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 27
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 4
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 6500,
+        "excess": 600,
+        "coverage_limit": 60000
+      },
+      "output": {
+        "payout": 5900
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: approve\n\nThe claim describes a sudden burst of the washing machine hose overnight, causing immediate flooding damage to laundry flooring, hallway carpet, and bedroom skirting boards. This matches Allianz's covered peril of \"bursting, leaking, discharging or overflowing\" of domestic appliances such as washing machines [Allianz Home PDS, page 27]. There is no indication of gradual, long-term leakage (which would trigger the gradual-escape exclusion), nor does it involve a shower, tap-left-running, waterbed, or aquarium exclusion [Allianz Home PDS, page 27].\n\nPolicy certificate for this policyholder: excess = $600, coverage limit = $60,000.\n\nPayout calculation: $6,500 claimed \u2212 $600 excess = $5,900 payout, well within the $60,000 coverage limit.\n\nFinal payout: $5,900, approved under policy HC-4489213."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nThe claim describes a sudden burst of the washing machine hose overnight, causing immediate flooding damage to laundry flooring, hallway carpet, and bedroom skirting boards. This matches Allianz's covered peril of \"bursting, leaking, discharging or overflowing\" of domestic appliances such as washing machines [Allianz Home PDS, page 27]. There is no indication of gradual, long-term leakage (which would trigger the gradual-escape exclusion), nor does it involve a shower, tap-left-running, waterbed, or aquarium exclusion [Allianz Home PDS, page 27].\n\nPolicy certificate for this policyholder: excess = $600, coverage limit = $60,000.\n\nPayout calculation: $6,500 claimed \u2212 $600 excess = $5,900 payout, well within the $60,000 coverage limit.\n\nFinal payout: $5,900, approved under policy HC-4489213.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 4
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    }
+  ],
+  "claim_id": "claim-001"
+}
