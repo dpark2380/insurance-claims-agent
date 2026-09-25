@@ -1,9 +1,12 @@
 """Phase 4, Step 4.1 -- cost/latency instrumentation for the full agent loop.
 
 Wraps every `client.messages.create` call site (agent/loop.py's decision
-loop, rag/generate.py's generate_answer, called via the retrieve_policy
-tool) to record token usage and latency per call, tagged with whichever
-claim is currently being processed, then aggregates per-claim.
+loop, rag/generate.py's generate_answer via the retrieve_policy tool, and
+extract/zero_shot.py's extraction fallback) to record token usage and
+latency per call, tagged with whichever claim is currently being processed,
+then aggregates per-claim. run_batch.py adds each claim's wall-clock time,
+which also covers what API timing can't see: local LoRA inference,
+retrieval, and tool execution.
 
 Same $/MTok pricing already used and measured in extract/zero_shot.py.
 """
@@ -71,11 +74,19 @@ def instrument_call(call_site: str):
         RECORDS.append(rec)
 
 
-def aggregate_report(records: list[dict]) -> dict:
+def _mean_p95(values: list[float]) -> tuple[float, float]:
+    if not values:
+        return 0.0, 0.0
+    p95 = statistics.quantiles(values, n=20)[18] if len(values) >= 2 else values[0]
+    return statistics.mean(values), p95
+
+
+def aggregate_report(records: list[dict], wall_times: dict[str, float] | None = None) -> dict:
     """Per-claim totals (sum of every instrumented call tagged to that
     claim), then mean/p95 across claims. Records with no claim_id (e.g. a
     stray Phase 1 CLI call made outside a batch run) are excluded from the
-    per-claim breakdown -- there's no claim to attribute them to."""
+    per-claim breakdown -- there's no claim to attribute them to.
+    `wall_times` (claim_id -> seconds) adds end-to-end latency stats."""
     by_claim: dict[str, list[dict]] = {}
     for r in records:
         if r["claim_id"] is None:
@@ -92,30 +103,43 @@ def aggregate_report(records: list[dict]) -> dict:
             "total_output_tokens": sum(c["output_tokens"] for c in calls),
         }
 
-    latencies = [v["total_latency_s"] for v in per_claim.values()]
     costs = [v["total_cost_usd"] for v in per_claim.values()]
+    mean_api, p95_api = _mean_p95([v["total_latency_s"] for v in per_claim.values()])
+    wall = list((wall_times or {}).values())
+    mean_wall, p95_wall = _mean_p95(wall)
+    tagged = [r for r in records if r["claim_id"] is not None]
 
     return {
         "n_claims": len(per_claim),
         "per_claim": per_claim,
-        "mean_latency_s": statistics.mean(latencies) if latencies else 0.0,
-        "p95_latency_s": statistics.quantiles(latencies, n=20)[18] if len(latencies) >= 2 else (latencies[0] if latencies else 0.0),
+        "mean_latency_s": mean_api,
+        "p95_latency_s": p95_api,
+        "n_wall_claims": len(wall),
+        "mean_wall_s": mean_wall,
+        "p95_wall_s": p95_wall,
         "mean_cost_usd": statistics.mean(costs) if costs else 0.0,
         "total_cost_usd": sum(costs),
+        "n_fallback_calls": sum(1 for r in tagged if r["call_site"] == "extract_fallback"),
+        "fallback_cost_usd": sum(r["cost_usd"] for r in tagged if r["call_site"] == "extract_fallback"),
     }
 
 
-def write_report(records: list[dict], out_path) -> None:
-    agg = aggregate_report(records)
+def write_report(records: list[dict], out_path, wall_times: dict[str, float] | None = None, startup_s: float | None = None) -> None:
+    agg = aggregate_report(records, wall_times)
     lines = [
         "# Phase 4 cost/latency report",
         "",
         f"n claims: {agg['n_claims']}",
-        f"mean latency/claim: {agg['mean_latency_s']:.2f}s",
-        f"p95 latency/claim: {agg['p95_latency_s']:.2f}s",
-        f"mean cost/claim: ${agg['mean_cost_usd']:.4f}",
+        f"mean wall-clock latency/claim (end to end): {agg['mean_wall_s']:.2f}s",
+        f"p95 wall-clock latency/claim (end to end): {agg['p95_wall_s']:.2f}s",
+        f"mean API latency/claim: {agg['mean_latency_s']:.2f}s",
+        f"p95 API latency/claim: {agg['p95_latency_s']:.2f}s",
+        f"mean cost/claim (incl. extraction fallback): ${agg['mean_cost_usd']:.4f}",
         f"total cost: ${agg['total_cost_usd']:.4f}",
+        f"extraction fallback calls: {agg['n_fallback_calls']} (${agg['fallback_cost_usd']:.4f})",
     ]
+    if startup_s is not None:
+        lines.append(f"one-time startup (LoRA load + index build, excluded above): {startup_s:.2f}s")
     with open(out_path, "w") as f:
         f.write("\n".join(lines) + "\n")
 
@@ -132,10 +156,13 @@ if __name__ == "__main__":
         {"claim_id": "c2", "call_site": "loop", "input_tokens": 1000, "output_tokens": 100, "cost_usd": compute_cost({"input_tokens": 1000, "output_tokens": 100}), "latency_s": 1.5},
         {"claim_id": None, "call_site": "cli", "input_tokens": 200, "output_tokens": 20, "cost_usd": compute_cost({"input_tokens": 200, "output_tokens": 20}), "latency_s": 0.5},
     ]
-    agg = aggregate_report(fake_records)
+    fake_records.append({"claim_id": "c2", "call_site": "extract_fallback", "input_tokens": 100, "output_tokens": 10, "cost_usd": 0.5, "latency_s": 0.1})
+    agg = aggregate_report(fake_records, {"c1": 4.0, "c2": 2.0})
     assert agg["n_claims"] == 2, agg
+    assert agg["n_fallback_calls"] == 1 and agg["fallback_cost_usd"] == 0.5, agg
+    assert agg["mean_wall_s"] == 3.0, agg
     assert abs(agg["per_claim"]["c1"]["total_latency_s"] - 3.0) < 1e-9
-    assert abs(agg["per_claim"]["c2"]["total_latency_s"] - 1.5) < 1e-9
+    assert abs(agg["per_claim"]["c2"]["total_latency_s"] - 1.6) < 1e-9
     print(f"cost smoke test: {cost}")
     print(f"aggregate smoke test: {agg}")
     print("\nsmoke tests passed")

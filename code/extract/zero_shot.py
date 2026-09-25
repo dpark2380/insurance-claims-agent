@@ -20,6 +20,7 @@ load_dotenv(ROOT / ".env")
 from extract.eval import score  # noqa: E402
 from extract.schema import ClaimExtraction  # noqa: E402
 from rag.generate import MODEL, _client  # noqa: E402
+from eval.instrumentation import instrument_call  # noqa: E402
 
 TEST_PATH = ROOT / "data" / "claims" / "test.jsonl"
 AFCA_TEST_PATH = ROOT / "data" / "claims" / "afca_test.jsonl"
@@ -61,13 +62,17 @@ def _strip_fences(text: str) -> str:
 def extract_one(narrative: str) -> tuple[dict | None, dict]:
     """Returns (gold-shaped prediction dict, or None on parse/validation failure; usage/timing info)."""
     start = time.monotonic()
-    response = _client().messages.create(
-        model=MODEL,
-        max_tokens=400,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": narrative}],
-        output_config={"effort": "low"},
-    )
+    # Also the agent's LoRA-failure fallback path, so it's instrumented like
+    # every other Claude call site -- otherwise per-claim cost undercounts it.
+    with instrument_call("extract_fallback") as rec:
+        response = _client().messages.create(
+            model=MODEL,
+            max_tokens=400,
+            system=SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": narrative}],
+            output_config={"effort": "low"},
+        )
+        rec["response"] = response
     elapsed = time.monotonic() - start
     usage = {
         "input_tokens": response.usage.input_tokens,
