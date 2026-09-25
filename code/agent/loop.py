@@ -7,6 +7,7 @@ Phase 4/5 instrumentation call this, not the internals.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from rag.generate import MODEL, _client
@@ -49,8 +50,30 @@ SYSTEM_PROMPT = (
     "returned. When you are done, "
     "reply with a final message (no more tool calls) starting with exactly "
     "one of 'DECISION: approve', 'DECISION: deny', or 'DECISION: escalate', "
-    "followed by your reasoning and any citations you relied on."
+    "followed by your reasoning. Cite every policy source you relied on "
+    "in exactly the form [Insurer Product DocType, page N] (e.g. "
+    "[AAMI Building PDS, page 17]), one tag per page, copied from the "
+    "retrieve_policy results."
 )
+
+# Matches the citation tag the system prompt asks for, e.g. "[AAMI Building PDS, page 17]".
+_CITE_TAG = re.compile(r"\[([^\[\]]+?),\s*page\s+(\d+)\]", re.IGNORECASE)
+
+
+def _cited_sources(text: str, retrieved: list[dict]) -> list[dict]:
+    """Keep only the retrieved chunks the final reasoning actually cites.
+
+    A retrieved chunk counts as cited when the text contains its exact
+    "[Insurer Product DocType, page N]" tag. Tags naming a page that was never
+    retrieved are ignored -- a citation must point at text the agent saw.
+    Deduplicated, in first-cited order.
+    """
+    tags = [(label.strip().lower(), int(page)) for label, page in _CITE_TAG.findall(text)]
+    by_key = {
+        (f"{c['insurer']} {c['product']} {c['doc_type']}".lower(), c["page"]): c
+        for c in retrieved
+    }
+    return [by_key[key] for key in dict.fromkeys(tags) if key in by_key]
 
 _chunks = None
 _indexes = None
@@ -131,12 +154,22 @@ def run_claim(claim_text: str) -> dict:
 
     Returns a dict with `turns` (full trace), `final_decision`
     (approve/deny/escalate), `reasoning` (the model's stated reasoning, or
-    the escalation reason), and `citations` (accumulated from every
-    `retrieve_policy` call, regardless of which turn made them).
+    the escalation reason), `citations` (only the retrieved chunks the
+    reasoning explicitly cites, see `_cited_sources`), and `retrieved_sources`
+    (every chunk any `retrieve_policy` call put in context, for auditing).
     """
     messages = [{"role": "user", "content": f"Triage this claim:\n\n{claim_text}"}]
     turns = []
-    citations: list[dict] = []
+    retrieved: list[dict] = []
+
+    def result(decision: str, reasoning: str) -> dict:
+        return {
+            "turns": turns,
+            "final_decision": decision,
+            "reasoning": reasoning,
+            "citations": _cited_sources(reasoning, retrieved),
+            "retrieved_sources": retrieved,
+        }
 
     for turn_count in range(1, MAX_TURNS + 1):
         with instrument_call("loop") as rec:
@@ -154,12 +187,7 @@ def run_claim(claim_text: str) -> dict:
         if response.stop_reason != "tool_use":
             text = next((b.text for b in response.content if b.type == "text"), "")
             turns.append({"turn": turn_count, "type": "final", "text": text})
-            return {
-                "turns": turns,
-                "final_decision": _parse_decision(text),
-                "reasoning": text,
-                "citations": citations,
-            }
+            return result(_parse_decision(text), text)
 
         # Otherwise execute every tool call this turn requested and report
         # results back in the same order, keyed by tool_use_id (required by
@@ -170,48 +198,38 @@ def run_claim(claim_text: str) -> dict:
             if block.type != "tool_use":
                 continue
             try:
-                result = _dispatch(block.name, block.input)
+                output = _dispatch(block.name, block.input)
             except Exception as e:
                 # A malformed tool call (e.g. a required arg the model
                 # forgot) becomes a visible error the model can react to,
                 # instead of crashing the whole claim.
-                result = {"error": str(e)}
+                output = {"error": str(e)}
 
-            turns.append({"turn": turn_count, "type": "tool_call", "tool": block.name, "input": block.input, "output": result})
+            turns.append({"turn": turn_count, "type": "tool_call", "tool": block.name, "input": block.input, "output": output})
 
-            if block.name == "retrieve_policy" and "citations" in result:
-                citations.extend(result["citations"])
+            if block.name == "retrieve_policy" and "citations" in output:
+                retrieved.extend(output["citations"])
             if block.name == "escalate_to_human":
                 # Captured here, at the source, rather than re-scanning
                 # `turns` after the loop -- also avoids a KeyError if the
-                # dispatch above failed and `result` has no "reason" key.
-                escalate_reason = result.get("reason") or result.get("error") or "escalated (no reason given)"
+                # dispatch above failed and `output` has no "reason" key.
+                escalate_reason = output.get("reason") or output.get("error") or "escalated (no reason given)"
 
             tool_results.append({
                 "type": "tool_result",
                 "tool_use_id": block.id,
-                "content": json.dumps(result),
+                "content": json.dumps(output),
             })
 
         messages.append({"role": "user", "content": tool_results})
 
         if escalate_reason is not None:
-            return {
-                "turns": turns,
-                "final_decision": "escalate",
-                "reasoning": escalate_reason,
-                "citations": citations,
-            }
+            return result("escalate", escalate_reason)
 
     # Hit MAX_TURNS without a decision or an explicit escalation -- force
     # one rather than returning an unfinished/ambiguous state.
     turns.append({"turn": MAX_TURNS, "type": "forced_escalation", "reason": "max turns exceeded"})
-    return {
-        "turns": turns,
-        "final_decision": "escalate",
-        "reasoning": "max turns exceeded",
-        "citations": citations,
-    }
+    return result("escalate", "max turns exceeded")
 
 
 if __name__ == "__main__":
@@ -230,3 +248,14 @@ if __name__ == "__main__":
         got = _parse_decision(text)
         assert got == expected, f"_parse_decision({text!r}) = {got!r}, expected {expected!r}"
     print(f"{len(cases)}/{len(cases)} _parse_decision smoke tests passed")
+
+    # _cited_sources: exact tag match only, deduped, unretrieved pages ignored.
+    retrieved = [
+        {"doc_id": "raa-contents-pds", "insurer": "RAA", "product": "Contents", "doc_type": "PDS", "page": 50},
+        {"doc_id": "raa-contents-pds", "insurer": "RAA", "product": "Contents", "doc_type": "PDS", "page": 87},
+    ]
+    text = "Covered [RAA Contents PDS, page 50] and again [raa contents pds, Page 50]; not [RAA Contents PDS, page 99]."
+    got = _cited_sources(text, retrieved)
+    assert [c["page"] for c in got] == [50], got
+    assert _cited_sources("no tags here", retrieved) == []
+    print("_cited_sources smoke tests passed")

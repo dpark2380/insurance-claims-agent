@@ -1,6 +1,6 @@
 """Tool schemas + implementations for the Phase 3 claims-triage agent.
 
-Four tools, each a thin wrapper over an existing Phase 1/2 function -- no new
+Five tools, each a thin wrapper over an existing Phase 1/2 function -- no new
 extraction or retrieval logic lives here, only the glue an LLM tool-use loop
 needs (JSON-serializable in/out, hand-written schemas the model reads to
 decide when to call each one).
@@ -139,7 +139,7 @@ def run_retrieve_policy(query: str, chunks: list[dict], indexes: dict, insurer: 
     # used -- callers see everything that was in context, not just what got
     # cited in the generated text.
     citations = [
-        {"insurer": c["insurer"], "product": c["product"], "doc_type": c["doc_type"], "page": c["page"]}
+        {"doc_id": c["doc_id"], "insurer": c["insurer"], "product": c["product"], "doc_type": c["doc_type"], "page": c["page"]}
         for c in retrieved
     ]
     return {"answer": answer, "citations": citations}
