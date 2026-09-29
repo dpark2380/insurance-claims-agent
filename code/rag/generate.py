@@ -15,7 +15,8 @@ SYSTEM_PROMPT = (
     "policy excerpts below. Every factual claim must cite its source as "
     "[Insurer Product DocType, page N]. If the excerpts do not contain enough "
     "information to answer, say so explicitly -- never guess or use outside "
-    "knowledge of insurance policies."
+    "knowledge of insurance policies. An SPDS amends that insurer's PDS: "
+    "where they conflict, the SPDS wording applies."
 )
 
 
