@@ -12,5 +12,9 @@
   "Woolworths": {"excess": 500, "coverage_limit": 45000},
   "RACV": {"excess": 550, "coverage_limit": 55000},
   "RACQ": {"excess": 550, "coverage_limit": 55000},
-  "ING": {"excess": 500, "coverage_limit": 50000}
+  "ING": {"excess": 500, "coverage_limit": 50000},
+  "Shannons": {"excess": 500, "coverage_limit": 50000},
+  "RACWA": {"excess": 550, "coverage_limit": 55000},
+  "Westpac": {"excess": 500, "coverage_limit": 50000},
+  "CommBank": {"excess": 500, "coverage_limit": 45000}
 }
