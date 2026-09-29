@@ -66,6 +66,13 @@ def main():
     # entry for a source that's since been removed from sources.json can't
     # silently linger and keep feeding a stale PDF into the RAG corpus.
     manifest: dict[str, dict] = {}
+    # ...but read once to know which URL each file on disk came from, so a
+    # source whose URL changed (new PDS edition, same doc_id/filename) is
+    # re-fetched instead of silently reusing the old edition's PDF.
+    prev_urls = (
+        {k: v["url"] for k, v in json.loads(MANIFEST_PATH.read_text()).items()}
+        if MANIFEST_PATH.exists() else {}
+    )
 
     ok, failed = 0, 0
     for entry in sources:
@@ -79,10 +86,9 @@ def main():
         dest = insurer_dir / filename
 
         print(f"[{doc_id}] {url}")
-        if dest.exists():
-            # Already downloaded -- reuse the file on disk instead of re-fetching
-            # over the network (these are static policy documents that don't
-            # change mid-session; pass --force-redownload to override).
+        if dest.exists() and prev_urls.get(doc_id) == url:
+            # Already downloaded from this same URL -- reuse the file on disk
+            # instead of re-fetching (delete the file to force a re-download).
             content = dest.read_bytes()
             print(f"  skipped (already on disk, {len(content):,} bytes) -> {dest.relative_to(ROOT)}")
         else:

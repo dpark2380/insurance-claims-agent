@@ -109,6 +109,16 @@
     "sha256": "4d63cd810980935210c13e9f86787027879a31f34af2cd8c7c50a3e6ff52f13c",
     "num_bytes": 1053719
   },
+  "budgetdirect-home-spds": {
+    "insurer": "BudgetDirect",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "filename": "budgetdirect-home-spds.pdf",
+    "path": "data/raw_pdfs/BudgetDirect/budgetdirect-home-spds.pdf",
+    "url": "https://www.autogeneral.com.au/prd/aagwebsite/agca/web/branding/resources/BUDD/legal/home/20230504_SPDSBUDD.pdf",
+    "sha256": "e81a9e760eb5c23e4543bb3402165c0012f0bfe75eaf4304ecea99b1cdd57b0e",
+    "num_bytes": 65565
+  },
   "cgu-building-kfs": {
     "insurer": "CGU",
     "product": "Building",
@@ -139,6 +149,16 @@
     "sha256": "370adf270f8794829a7b61f9c03a04ea25382bda15edd8063b17dce5c2751e7e",
     "num_bytes": 381178
   },
+  "cgu-home-spds": {
+    "insurer": "CGU",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "filename": "cgu-home-spds.pdf",
+    "path": "data/raw_pdfs/CGU/cgu-home-spds.pdf",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-accidental-damage-home-spds-spds479-a4-rev0-0625.pdf",
+    "sha256": "67615db834eeb53d1fa5306983d287ea0e438a6cf0359a617922ac1fb8d57c8c",
+    "num_bytes": 417360
+  },
   "cgu-landlord-pds": {
     "insurer": "CGU",
     "product": "Landlord",
@@ -148,6 +168,56 @@
     "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf",
     "sha256": "e6e2655ec04b28dd2d9bd041c7dca8ac410039d634da95f5a01b9f4e417de6fc",
     "num_bytes": 351257
+  },
+  "cgu-landlord-spds": {
+    "insurer": "CGU",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "filename": "cgu-landlord-spds.pdf",
+    "path": "data/raw_pdfs/CGU/cgu-landlord-spds.pdf",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-spds-spds484-a4-rev0-0625.pdf",
+    "sha256": "a22e49006dcd2b12272c1e411a1006f6bf33aedda227c06c59081991ce59359d",
+    "num_bytes": 417266
+  },
+  "commbank-building-kfs": {
+    "insurer": "CommBank",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "commbank-building-kfs.pdf",
+    "path": "data/raw_pdfs/CommBank/commbank-building-kfs.pdf",
+    "url": "https://www.hollard.com.au/media/st0pxwxz/cba-home-building-kfs.pdf",
+    "sha256": "0b36edb558cad72732b701ab44e02b6ba3926fa1309753d0d835eb01b9273de2",
+    "num_bytes": 223803
+  },
+  "commbank-contents-kfs": {
+    "insurer": "CommBank",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "commbank-contents-kfs.pdf",
+    "path": "data/raw_pdfs/CommBank/commbank-contents-kfs.pdf",
+    "url": "https://www.hollard.com.au/media/5xhd1hne/cba-home-contents-kfs.pdf",
+    "sha256": "e1c1501eb013b457d2558e39e483b951417d646e882222bff0caa1a1615ea081",
+    "num_bytes": 190126
+  },
+  "commbank-home-pds": {
+    "insurer": "CommBank",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "commbank-home-pds.pdf",
+    "path": "data/raw_pdfs/CommBank/commbank-home-pds.pdf",
+    "url": "https://www.hollard.com.au/media/a14fa00k/cba-home-pds.pdf",
+    "sha256": "0423a8cef799b0dd8daf9f577c2a6f3cfc8d7e3384752a9e48b1cc0721d54966",
+    "num_bytes": 5657171
+  },
+  "commbank-landlord-pds": {
+    "insurer": "CommBank",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "filename": "commbank-landlord-pds.pdf",
+    "path": "data/raw_pdfs/CommBank/commbank-landlord-pds.pdf",
+    "url": "https://www.hollard.com.au/media/hklfdqcn/cba-landlord-pds.pdf",
+    "sha256": "5d7eebab9f6546674aface448618e85d127101f4b994e9797e44cdc5bd684154",
+    "num_bytes": 4740402
   },
   "gio-building-kfs": {
     "insurer": "GIO",
@@ -175,9 +245,19 @@
     "doc_type": "PDS",
     "filename": "gio-contents-pds.pdf",
     "path": "data/raw_pdfs/GIO/gio-contents-pds.pdf",
-    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-contents-product-disclosure-statement-220321.pdf",
-    "sha256": "a596832f6d1aada24c0a347b3fddf21844ad09254bdb4ff69273d06617a7454b",
-    "num_bytes": 1754554
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf",
+    "sha256": "a213aed2378c48e66287f9bb53ff01326a7b6af0b40b97c3e2954bd87c7126ac",
+    "num_bytes": 1594209
+  },
+  "gio-contents-spds": {
+    "insurer": "GIO",
+    "product": "Contents",
+    "doc_type": "SPDS",
+    "filename": "gio-contents-spds.pdf",
+    "path": "data/raw_pdfs/GIO/gio-contents-spds.pdf",
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-content-spds-041126.pdf",
+    "sha256": "7d6f4fcf785ea307cd4a748236ae742dbbf6aa45bf6aa6fd9eb582eac6e007ff",
+    "num_bytes": 27472
   },
   "ing-building-kfs": {
     "insurer": "ING",
@@ -205,9 +285,19 @@
     "doc_type": "PDS",
     "filename": "ing-home-pds.pdf",
     "path": "data/raw_pdfs/ING/ing-home-pds.pdf",
-    "url": "https://www.ing.com.au/pdf/insurance/Home-2021-pds.pdf",
-    "sha256": "e109b50af056da50255a4ae43958342645c84d9a65cc120de6e0483a5309d469",
-    "num_bytes": 1689228
+    "url": "https://ing.disconline.com.au/branding/resources/EXIG/legal/home/HPDSEXIG.pdf",
+    "sha256": "e74a9aadd9a406ac511c84ce1525264de9ae73d04ef8c5d9f179b278f505d434",
+    "num_bytes": 1277040
+  },
+  "ing-home-spds": {
+    "insurer": "ING",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "filename": "ing-home-spds.pdf",
+    "path": "data/raw_pdfs/ING/ing-home-spds.pdf",
+    "url": "https://ing.disconline.com.au/branding/resources/EXIG/legal/home/SPDSEXIG.pdf",
+    "sha256": "46430d94f78f27c7f25f7ff5e77b69cf263998b953fde601f03da5d0046e3a91",
+    "num_bytes": 80109
   },
   "nrma-contents-kfs": {
     "insurer": "NRMA",
@@ -239,6 +329,16 @@
     "sha256": "91a0d6fdab8496768fc5f387abfcbb1aeb6d61bdfaf4f8ba9d404332abd61ad4",
     "num_bytes": 528963
   },
+  "nrma-home-spds": {
+    "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "filename": "nrma-home-spds.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-home-spds.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev2-1125.pdf",
+    "sha256": "3eab569ae1004572b61a4f718b1a05fa630711e3434e91849cac1afe40445b0f",
+    "num_bytes": 43605
+  },
   "nrma-landlord-pds": {
     "insurer": "NRMA",
     "product": "Landlord",
@@ -248,6 +348,16 @@
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf",
     "sha256": "a269a29e43bf4fda25e86718774de5d7526b31d116952d6bbe9835c6c5e24c4f",
     "num_bytes": 386163
+  },
+  "nrma-landlord-spds": {
+    "insurer": "NRMA",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "filename": "nrma-landlord-spds.pdf",
+    "path": "data/raw_pdfs/NRMA/nrma-landlord-spds.pdf",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-spds-nrmalanspds-rev0-0524.pdf",
+    "sha256": "8e1f35b40d27323e3fae47b336d2f41bc439225484eef7a93d1062bf415bf826",
+    "num_bytes": 31065
   },
   "raa-contents-pds": {
     "insurer": "RAA",
@@ -319,6 +429,46 @@
     "sha256": "0d6cbaac3bcbcd2dcc0ec37ff2f2d846c4508cdfc6f1d263925e490235f2880d",
     "num_bytes": 465469
   },
+  "racwa-home-pds": {
+    "insurer": "RACWA",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "racwa-home-pds.pdf",
+    "path": "data/raw_pdfs/RACWA/racwa-home-pds.pdf",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf?modified=20231109025231",
+    "sha256": "2389186b9ffad10b3bbe118f8cfcdc972f53972131b4d9f4fe016edd7b4a8280",
+    "num_bytes": 962295
+  },
+  "racwa-home-spds": {
+    "insurer": "RACWA",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "filename": "racwa-home-spds.pdf",
+    "path": "data/raw_pdfs/RACWA/racwa-home-spds.pdf",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/products/insurance/19401-insurance_spds-guide-templates_building_ebook.pdf?modified=20231030024116",
+    "sha256": "badc1d7d4611d8e6ae9a5ddb7e20633a7a91d1812b272919ec292b33de725d3b",
+    "num_bytes": 439917
+  },
+  "racwa-landlord-pds": {
+    "insurer": "RACWA",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "filename": "racwa-landlord-pds.pdf",
+    "path": "data/raw_pdfs/RACWA/racwa-landlord-pds.pdf",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/landlords-pds-25022021.pdf?modified=20231109041330",
+    "sha256": "6eddcd52e7729c9bf486e649b8cd7679fbfeb4bba23d710b89c409130fe9ea14",
+    "num_bytes": 885511
+  },
+  "racwa-landlord-spds": {
+    "insurer": "RACWA",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "filename": "racwa-landlord-spds.pdf",
+    "path": "data/raw_pdfs/RACWA/racwa-landlord-spds.pdf",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/products/insurance/19401-insurance_spds-guide-templates_landlord_ebook.pdf?modified=20231030024114",
+    "sha256": "90aa6fc4d51237a27ee6770dd5ce6d0c4e14ac9dbfb60084a622fcb68e96228e",
+    "num_bytes": 439455
+  },
   "realinsurance-contents-kfs": {
     "insurer": "RealInsurance",
     "product": "Contents",
@@ -359,6 +509,36 @@
     "sha256": "2bb9c0f05109d87c1368d6afebb2d2fbdd5e6b62bfa61fc246057dea20cc42a8",
     "num_bytes": 1059888
   },
+  "shannons-building-kfs": {
+    "insurer": "Shannons",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "shannons-building-kfs.pdf",
+    "path": "data/raw_pdfs/Shannons/shannons-building-kfs.pdf",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-building-kfs-sh03202a-210625a.pdf",
+    "sha256": "d95f6ed7bc887fa6a203d34ca2937fc8b1c98a4ca1c7554cf2403db2e9c739a3",
+    "num_bytes": 101235
+  },
+  "shannons-contents-kfs": {
+    "insurer": "Shannons",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "shannons-contents-kfs.pdf",
+    "path": "data/raw_pdfs/Shannons/shannons-contents-kfs.pdf",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-contents-kfs-sh03203a-210625a.pdf",
+    "sha256": "ee3e4e4cdd3bbf67a83d9ee80dda10d92daa006bce073ed678380d7dda55b377",
+    "num_bytes": 101740
+  },
+  "shannons-contents-pds": {
+    "insurer": "Shannons",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "filename": "shannons-contents-pds.pdf",
+    "path": "data/raw_pdfs/Shannons/shannons-contents-pds.pdf",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-contents-pds-sh02906-210625a.pdf",
+    "sha256": "f348096050a4ad7305ca7852ecda096967cbc88739a5e8ecb076f6419a841719",
+    "num_bytes": 2400794
+  },
   "suncorp-building-kfs": {
     "insurer": "Suncorp",
     "product": "Building",
@@ -389,6 +569,16 @@
     "sha256": "d0138c6610cd3bce7c25b83b7ceaa87adea87a4eaa182a73b57e732bc8ecd97d",
     "num_bytes": 1063304
   },
+  "suncorp-contents-spds": {
+    "insurer": "Suncorp",
+    "product": "Contents",
+    "doc_type": "SPDS",
+    "filename": "suncorp-contents-spds.pdf",
+    "path": "data/raw_pdfs/Suncorp/suncorp-contents-spds.pdf",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-contents-spds-32462-18-08-26-a.pdf",
+    "sha256": "da398bea0f90f3493e78684edd9716fba401c1e67ff8959cb8cba0d024e19d92",
+    "num_bytes": 21799
+  },
   "suncorp-landlord-pds": {
     "insurer": "Suncorp",
     "product": "Landlord",
@@ -398,6 +588,46 @@
     "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf",
     "sha256": "63fa76fc467c19a2bfe0ace19a69bb1fce8430a4166924fc4ba9355aa91bb724",
     "num_bytes": 912435
+  },
+  "suncorp-landlord-spds": {
+    "insurer": "Suncorp",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "filename": "suncorp-landlord-spds.pdf",
+    "path": "data/raw_pdfs/Suncorp/suncorp-landlord-spds.pdf",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-spds-32463-18-08-26-a.pdf",
+    "sha256": "b96b718a1aa6576674dd923082d3805caab837ba9c9d260e962623c53d6bee22",
+    "num_bytes": 20478
+  },
+  "westpac-building-kfs": {
+    "insurer": "Westpac",
+    "product": "Building",
+    "doc_type": "KFS",
+    "filename": "westpac-building-kfs.pdf",
+    "path": "data/raw_pdfs/Westpac/westpac-building-kfs.pdf",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/insurance/wbc-home-building-kfs.pdf",
+    "sha256": "e96cf1106d0ad173f381586236c588d7525f4287f4491ad60e8b8f130590adeb",
+    "num_bytes": 91794
+  },
+  "westpac-contents-kfs": {
+    "insurer": "Westpac",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "filename": "westpac-contents-kfs.pdf",
+    "path": "data/raw_pdfs/Westpac/westpac-contents-kfs.pdf",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/insurance/wbc-home-contents-kfs.pdf",
+    "sha256": "17dde09b219400aaaf55a24702a7dbe5b11484f431c07a35de55cc2c9edeba52",
+    "num_bytes": 93507
+  },
+  "westpac-home-pds": {
+    "insurer": "Westpac",
+    "product": "Home",
+    "doc_type": "PDS",
+    "filename": "westpac-home-pds.pdf",
+    "path": "data/raw_pdfs/Westpac/westpac-home-pds.pdf",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/FSR_HomeContentInsPDS.pdf",
+    "sha256": "c4faa0bfa5b8732a755a26e8e05d06a684082348d0c0fad924b431635880c296",
+    "num_bytes": 1057976
   },
   "woolworths-building-kfs": {
     "insurer": "Woolworths",

@@ -36,7 +36,7 @@
     "product": "Building",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPB00112241224/$FILE/KFSDIHomeITMPB0011224.pdf?open",
-    "text": "",
+    "text": "pinned",
     "date_key": ""
   },
   {
@@ -44,7 +44,7 @@
     "product": "Contents",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDIHomeITMPC00112241224/$FILE/KFSDIHomeITMPC0011224.pdf?open",
-    "text": "",
+    "text": "pinned",
     "date_key": ""
   },
   {
@@ -52,7 +52,7 @@
     "product": "Home",
     "doc_type": "PDS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open",
-    "text": "",
+    "text": "pinned",
     "date_key": ""
   },
   {
@@ -60,7 +60,7 @@
     "product": "Landlord",
     "doc_type": "KFS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/KFSDILandlordITMPB00112241224/$FILE/KFSDILandlordITMPB0011224.pdf?open",
-    "text": "",
+    "text": "pinned",
     "date_key": ""
   },
   {
@@ -68,7 +68,7 @@
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open",
-    "text": "",
+    "text": "pinned",
     "date_key": ""
   },
   {
@@ -86,6 +86,14 @@
     "url": "https://www.autogeneral.com.au/prd/aagwebsite/agca/web/branding/resources/BUDD/legal/home/20210302_HPDSBUDD.pdf",
     "text": "Download",
     "date_key": "20210302"
+  },
+  {
+    "insurer": "BudgetDirect",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "url": "https://www.autogeneral.com.au/prd/aagwebsite/agca/web/branding/resources/BUDD/legal/home/20230504_SPDSBUDD.pdf",
+    "text": "pinned",
+    "date_key": ""
   },
   {
     "insurer": "CGU",
@@ -113,11 +121,59 @@
   },
   {
     "insurer": "CGU",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-accidental-damage-home-spds-spds479-a4-rev0-0625.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "CGU",
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf",
     "text": "Landlord PDS July 2023",
     "date_key": "2023"
+  },
+  {
+    "insurer": "CGU",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "url": "https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-spds-spds484-a4-rev0-0625.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "CommBank",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.hollard.com.au/media/st0pxwxz/cba-home-building-kfs.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "CommBank",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.hollard.com.au/media/5xhd1hne/cba-home-contents-kfs.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "CommBank",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.hollard.com.au/media/a14fa00k/cba-home-pds.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "CommBank",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://www.hollard.com.au/media/hklfdqcn/cba-landlord-pds.pdf",
+    "text": "Landlord Insurance Product Disclosure Statement",
+    "date_key": ""
   },
   {
     "insurer": "GIO",
@@ -139,9 +195,17 @@
     "insurer": "GIO",
     "product": "Contents",
     "doc_type": "PDS",
-    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-contents-product-disclosure-statement-220321.pdf",
-    "text": "Home & Contents PDS",
-    "date_key": "2032"
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "GIO",
+    "product": "Contents",
+    "doc_type": "SPDS",
+    "url": "https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-content-spds-041126.pdf",
+    "text": "pinned",
+    "date_key": ""
   },
   {
     "insurer": "ING",
@@ -163,9 +227,17 @@
     "insurer": "ING",
     "product": "Home",
     "doc_type": "PDS",
-    "url": "https://www.ing.com.au/pdf/insurance/Home-2021-pds.pdf",
-    "text": "Product Disclosure Statement (PDS)",
-    "date_key": "2021"
+    "url": "https://ing.disconline.com.au/branding/resources/EXIG/legal/home/HPDSEXIG.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "ING",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "url": "https://ing.disconline.com.au/branding/resources/EXIG/legal/home/SPDSEXIG.pdf",
+    "text": "pinned",
+    "date_key": ""
   },
   {
     "insurer": "NRMA",
@@ -193,11 +265,27 @@
   },
   {
     "insurer": "NRMA",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev2-1125.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "NRMA",
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf",
     "text": "Landlord Insurance PDS April 2024",
     "date_key": "2024"
+  },
+  {
+    "insurer": "NRMA",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "url": "https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-spds-nrmalanspds-rev0-0524.pdf",
+    "text": "pinned",
+    "date_key": ""
   },
   {
     "insurer": "RAA",
@@ -256,6 +344,38 @@
     "date_key": "2023"
   },
   {
+    "insurer": "RACWA",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf?modified=20231109025231",
+    "text": "PDS & FSG  (PDF 810 KB)",
+    "date_key": "2021"
+  },
+  {
+    "insurer": "RACWA",
+    "product": "Home",
+    "doc_type": "SPDS",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/products/insurance/19401-insurance_spds-guide-templates_building_ebook.pdf?modified=20231030024116",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "RACWA",
+    "product": "Landlord",
+    "doc_type": "PDS",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/landlords-pds-25022021.pdf?modified=20231109041330",
+    "text": "PDS & FSG  (PDF 886 KB)",
+    "date_key": "2021"
+  },
+  {
+    "insurer": "RACWA",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "url": "https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/products/insurance/19401-insurance_spds-guide-templates_landlord_ebook.pdf?modified=20231030024114",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
     "insurer": "RealInsurance",
     "product": "Contents",
     "doc_type": "KFS",
@@ -288,6 +408,30 @@
     "date_key": "2026"
   },
   {
+    "insurer": "Shannons",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-building-kfs-sh03202a-210625a.pdf",
+    "text": "Key Fact Sheet - Home Building",
+    "date_key": ""
+  },
+  {
+    "insurer": "Shannons",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-contents-kfs-sh03203a-210625a.pdf",
+    "text": "Key Fact Sheet - Home Contents",
+    "date_key": ""
+  },
+  {
+    "insurer": "Shannons",
+    "product": "Contents",
+    "doc_type": "PDS",
+    "url": "https://www.shannons.com.au/content/dam/suncorp/insurance/shannons/documents/policy-documents/home/shannons-home-contents-pds-sh02906-210625a.pdf",
+    "text": "Download PDS",
+    "date_key": ""
+  },
+  {
     "insurer": "Suncorp",
     "product": "Building",
     "doc_type": "KFS",
@@ -313,10 +457,50 @@
   },
   {
     "insurer": "Suncorp",
+    "product": "Contents",
+    "doc_type": "SPDS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-contents-spds-32462-18-08-26-a.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
     "product": "Landlord",
     "doc_type": "PDS",
     "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf",
     "text": "Landlord Product Disclosure Statement PDS",
+    "date_key": ""
+  },
+  {
+    "insurer": "Suncorp",
+    "product": "Landlord",
+    "doc_type": "SPDS",
+    "url": "https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-spds-32463-18-08-26-a.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "Westpac",
+    "product": "Building",
+    "doc_type": "KFS",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/insurance/wbc-home-building-kfs.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "Westpac",
+    "product": "Contents",
+    "doc_type": "KFS",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/insurance/wbc-home-contents-kfs.pdf",
+    "text": "pinned",
+    "date_key": ""
+  },
+  {
+    "insurer": "Westpac",
+    "product": "Home",
+    "doc_type": "PDS",
+    "url": "https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/pb/FSR_HomeContentInsPDS.pdf",
+    "text": "Product Disclosure Statement (PDS) (PDF 1MB)",
     "date_key": ""
   },
   {
