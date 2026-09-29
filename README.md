@@ -18,19 +18,19 @@ The three LoRA ranks are statistically indistinguishable from each other. Zero-s
 
 | Run | Wall-clock latency/claim, mean (p95) | API latency/claim, mean | Cost/claim, mean |
 |---|---|---|---|
-| [outputs/](outputs/phase4_report.md) | 25.07s (45.29s) | 20.76s | $0.0342 |
-| [run1](outputs/stability/run1/phase4_report.md) | 24.42s (40.00s) | 20.40s | $0.0392 |
-| [run2](outputs/stability/run2/phase4_report.md) | 22.55s (41.38s) | 18.57s | $0.0348 |
-| [run3](outputs/stability/run3/phase4_report.md) | 27.78s (81.02s) | 23.26s | $0.0366 |
-| **Mean of 4 runs** | **24.96s** | **20.75s** | **$0.0362** |
+| [outputs/](outputs/phase4_report.md) | 24.51s (33.49s) | 19.21s | $0.0364 |
+| [run1](outputs/stability/run1/phase4_report.md) | 25.74s (43.21s) | 20.81s | $0.0411 |
+| [run2](outputs/stability/run2/phase4_report.md) | 25.55s (38.15s) | 20.52s | $0.0400 |
+| [run3](outputs/stability/run3/phase4_report.md) | 26.42s (45.18s) | 21.53s | $0.0414 |
+| **Mean of 4 runs** | **25.56s** | **20.52s** | **$0.0397** |
 
 Wall-clock latency is end to end per claim: local LoRA extraction, retrieval, tool execution, and every Claude call. API latency is the Claude calls alone. One-time startup (loading the LoRA model, building the index, about 9s) is reported separately, not charged to any claim. Cost includes every Claude call, including the extraction fallback, which fired once per run (claim-015, where both extractors fail). Measured with per-call token and latency instrumentation ([code/eval/instrumentation.py](code/eval/instrumentation.py)), not estimated. Pricing: `claude-sonnet-5` at $2/$10 per million input/output tokens.
 
-This is the cost of the full agent, not a single model call: extraction, one or more `retrieve_policy` calls (each of which makes its own Claude call to generate a grounded answer), and the reasoning turns in between. At $0.036 per claim, 10,000 claims a month would cost roughly $360 (a simple multiplication of the measured mean, not a separately measured figure), most of it coming from the number of tool-calling turns a claim takes rather than from the underlying model's per-token price.
+This is the cost of the full agent, not a single model call: extraction, one or more `retrieve_policy` calls (each of which makes its own Claude call to generate a grounded answer), and the reasoning turns in between. At $0.040 per claim, 10,000 claims a month would cost roughly $400 (a simple multiplication of the measured mean, not a separately measured figure), most of it coming from the number of tool-calling turns a claim takes rather than from the underlying model's per-token price.
 
 **Decision stability (same 20 claims, same code, 4 runs)**
 
-12 of 20 claims got the same decision in all 4 runs; 8 flipped at least once. Escalations per run: 16, 12, 14, 16 of 20 (72.5% pooled). Decision accuracy against human labels has not been measured yet: blind gold labels go in [data/claims/batch20_gold.csv](data/claims/batch20_gold.csv), scored by [code/eval/decision_agreement.py](code/eval/decision_agreement.py).
+Measured on the 67-document corpus. 15 of 20 claims got the same decision in all 4 runs; 5 flipped at least once, all between approve and escalate. Escalations per run: 17, 14, 13, 15 of 20 (73.75% pooled). On the earlier 44-document corpus it was 12 of 20 unanimous, with escalations of 16, 12, 14 and 16. batch20 only names AAMI, Allianz, NRMA and RAA (8 claims name no insurer), and no run retrieved an SPDS, so the change is run-to-run noise, not a corpus effect. Decision accuracy against human labels has not been measured yet: blind gold labels go in [data/claims/batch20_gold.csv](data/claims/batch20_gold.csv), scored by [code/eval/decision_agreement.py](code/eval/decision_agreement.py).
 
 **Retrieval quality (hit-rate@5 and MRR@5, n=8)**
 
@@ -41,7 +41,7 @@ This is the cost of the full agent, not a single model call: extraction, one or 
 
 Hit-rate@5 of 1.000 means the correct policy chunk was somewhere in the top 5 results for every one of the 8 questions. MRR@5 of 0.613 means it usually wasn't ranked first: an MRR of 1.0 would mean every correct chunk was the top result, and 0.613 corresponds to several questions where the right chunk placed 4th or 5th rather than 1st. In practice this means the generation step, which reads all 5 retrieved chunks rather than just the top one, is doing real work to find the right answer among plausible-looking distractors, not just passing through whatever ranked first.
 
-This only covers 8 hand-written questions against the original 5 insurers (AAMI, Allianz, NRMA, RAA, RealInsurance). The corpus has since grown to 13 insurers and no ground truth exists yet for the other 8, so this number says nothing about retrieval quality on most of the current corpus. See [Limitations](#limitations-and-next-steps).
+This only covers 8 hand-written questions against the original 5 insurers (AAMI, Allianz, NRMA, RAA, RealInsurance). The corpus has since grown to 17 insurers and no ground truth exists yet for the other 12, so this number says nothing about retrieval quality on most of the current corpus. See [Limitations](#limitations-and-next-steps).
 
 ## Architecture
 
@@ -126,11 +126,13 @@ Structured `citations` in the decision log, resolved from those tags: `raa-conte
 ## Limitations and next steps
 
 - **The extraction test set is synthetic (n=54).** Both the training and test narratives were generated by Claude and, for the zero-shot comparison, partly graded by Claude. A separate real-world set of 11 claims, sourced from published AFCA (Australian Financial Complaints Authority) determinations, exists in `data/claims/afca_test.jsonl` and shows the "zero-shot beats LoRA" gap does not clearly hold at that sample size. Next step: grow that set past 11 before treating the synthetic result as production-representative.
-- **Retrieval ground truth only covers 5 of 13 insurers.** The corpus grew from 18 to 44 documents this project, but the hand-verified hit-rate/MRR ground truth was never extended to the 8 newer insurers. Next step: write ground truth questions for the new insurers the same way the original 8 were built, by hand-checking citations against the source PDF.
+- **Retrieval ground truth only covers 5 of 17 insurers.** The corpus grew from 18 to 67 documents this project (including 11 SPDSs), but the hand-verified hit-rate/MRR ground truth was never extended to the 12 newer insurers. Next step: write ground truth questions for the new insurers the same way the original 8 were built, by hand-checking citations against the source PDF.
 - **Citations are document and page level, not quote level.** A citation says which PDS and page a claim came from, not the exact sentence. Only one citation has been manually verified against the source PDF text; there is no systematic audit across the corpus. Next step: sample a batch of citations across many claims and check each against the source text, then report a groundedness rate.
+- **Only one SPDS per product is ingested.** Each SPDS in `PINNED` (`code/ingest/discover_sources.py`) was hand-matched to the PDS edition it amends. RAC WA has earlier SPDSs (2021) that may still apply alongside the 2023 one, and they are not ingested. Pins must be re-checked whenever an insurer publishes a new PDS.
+- **Lexical retrieval misses some coverage sections.** For "is storm damage to my roof covered?" against CommBank, the PDS's "Storm, rainwater and flood" page ranks outside the top 15 because pages about roof tiles outscore it on "roof". The CLI then correctly says it can't answer. Next step: a dense or reranking stage.
 - **A known retrieval gap exists for insurers with combined Building and Contents documents** (NRMA, Suncorp, Allianz). Filtering by `product="Contents"` for these insurers misses their combined PDS, which is tagged `product="Home"`. Next step: either multi-label combined documents or fall back to an unfiltered search when a strict product filter returns thin results.
-- **Agent decisions are not deterministic between runs, and it matters.** `claude-sonnet-5` accepts no `temperature`, `top_p`, or `seed` parameter, so there is no sampling control. Measured over 4 runs of batch20: 8 of 20 claims changed decision at least once, mostly between approve and escalate (claim-010 alternated between deny and escalate). Next step: tighten the escalation rules in the system prompt, or take a majority vote over several runs at proportionally higher cost.
-- **Escalation is high and its correctness is unmeasured.** 12 to 16 of 20 claims escalate per run, including routine-looking ones (burst hoses, graffiti), not just the 5 claims written to be unresolvable (015 to 019). Next step: fill in the blind gold labels and run `python -m eval.decision_agreement` to get agreement and escalation precision/recall.
+- **Agent decisions are not deterministic between runs, and it matters.** `claude-sonnet-5` accepts no `temperature`, `top_p`, or `seed` parameter, so there is no sampling control. Measured over 4 runs of batch20: 5 of 20 claims changed decision at least once, all between approve and escalate (8 of 20 on the previous corpus's 4 runs). Next step: tighten the escalation rules in the system prompt, or take a majority vote over several runs at proportionally higher cost.
+- **Escalation is high and its correctness is unmeasured.** 13 to 17 of 20 claims escalate per run, including routine-looking ones (burst hoses, graffiti), not just the 5 claims written to be unresolvable (015 to 019). Next step: fill in the blind gold labels and run `python -m eval.decision_agreement` to get agreement and escalation precision/recall.
 - **Prompt-injection and fairness red-teaming are stubbed, not implemented** (`code/redteam/injection_suite.py`, `code/redteam/fairness_pairs.py`). Function signatures and TODOs exist; no test cases or logic have been written yet.
 - **The free-text field gap (`cause`, `damaged_item`) between zero-shot and LoRA is unexplained.** It is not a training-data-volume problem (more data did not close it) and not a model-capacity problem (higher LoRA rank did not close it either). The actual cause has not been identified.
 
@@ -217,7 +219,7 @@ The ingest pipeline downloads from insurer disclosure pages whose URLs may chang
 
 ```
 code/
-  ingest/      discover, download, and extract text from insurer PDS/KFS PDFs
+  ingest/      discover, download, and extract text from insurer PDS/KFS/SPDS PDFs
   rag/         chunking, hybrid BM25+TF-IDF indexing, grounded generation with citations
   extract/     schema, synthetic data generation, zero-shot baseline, LoRA training and inference
   agent/       tool definitions, decision loop, batch runner
