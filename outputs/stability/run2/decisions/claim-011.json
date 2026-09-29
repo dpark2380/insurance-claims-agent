@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is subsidence or ground movement causing footing damage covered or excluded?",
         "insurer": "Allianz",
-        "product": "Home"
+        "product": "Home",
+        "query": "Is subsidence or ground movement / footing movement covered or excluded?"
       },
       "output": {
-        "answer": "Based on the excerpts provided, **subsidence and soil movement are generally excluded**, but there is a specific exception for earthquake- or tsunami-related events.\n\n**General exclusion:**\nSoil movement \u2014 including erosion, landslide, mudslide or subsidence \u2014 is excluded *unless it is directly caused by and occurs within 72 hours of* an explosion, earthquake, tsunami, storm, cyclone, rainwater or flood or flood water, combined with run-off and/or rainwater [Allianz Home PDS, page 55].\n\n**Specific exception for earthquake/tsunami:**\nLoss or damage caused by or arising from soil movement (including erosion, landslide, mudslide, or subsidence) **is covered** under Buildings and Contents Insurance if it is caused directly by, and occurs within 72 hours of, an earthquake or tsunami [Allianz Home PDS, page 26].\n\n**Summary:**\n- If footing damage from subsidence/ground movement occurs **within 72 hours** of a triggering event such as an earthquake, tsunami, explosion, storm, cyclone, rainwater, or flood, it **would be covered** [Allianz Home PDS, page 26; page 55].\n- If the subsidence or ground movement occurs **independently** of these triggering events (e.g., gradual ground settlement unrelated to a listed peril), it is **excluded** [Allianz Home PDS, page 55].\n\nThe excerpts do not provide further detail on how \"footing damage\" specifically is assessed beyond this general soil movement exclusion/exception framework, so I cannot confirm coverage beyond what is stated here.",
+        "answer": "Based on the excerpts provided:\n\n**General exclusion:** Soil movement \u2014 including erosion, landslide, mudslide or subsidence \u2014 is excluded, **unless** it is directly caused by and occurs within 72 hours of an explosion, earthquake, tsunami, storm, cyclone, rainwater or flood or flood water, combined with run-off and/or rainwater [Allianz Home PDS, page 55].\n\n**Specific exception for earthquake/tsunami:** Loss or damage caused by or arising from soil movement (including erosion, landslide, mudslide, or subsidence) **is covered** if it is caused directly by and occurs within 72 hours of an earthquake or tsunami [Allianz Home PDS, page 26]. Note that an additional $250 excess applies to each earthquake and/or tsunami event (including a series occurring within a consecutive 48-hour period) [Allianz Home PDS, page 26].\n\n**Summary:** Subsidence (a form of soil movement) is generally excluded, but coverage is restored if it occurs within 72 hours of and is directly caused by one of the listed triggering events (explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood/flood water combined with run-off and/or rainwater) [Allianz Home PDS, page 55; Allianz Home PDS, page 26].\n\nThe provided excerpts do not specifically address \"footing movement\" as a distinct term, so I cannot confirm how that specific phrase is treated \u2014 only \"soil movement\" and \"subsidence\" are addressed in these excerpts.",
         "citations": [
           {
             "doc_id": "allianz-home-pds",
@@ -47,21 +47,21 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 26
-          },
-          {
-            "doc_id": "allianz-home-pds",
-            "insurer": "Allianz",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 54
-          },
-          {
-            "doc_id": "allianz-home-pds",
-            "insurer": "Allianz",
-            "product": "Home",
-            "doc_type": "PDS",
             "page": 79
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 84
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
           }
         ]
       }
@@ -81,12 +81,27 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "The claim describes gradual subsidence (\"noticed new cracks... builder advised ground has subsided and footings have moved\") with no mention of a triggering event such as earthquake, tsunami, explosion, storm, cyclone, or flood within 72 hours. The Allianz Home PDS excludes soil movement/subsidence damage unless directly caused by and occurring within 72 hours of such an event \u2014 this claim's cause directly conflicts with that exclusion, as there's no evidence of a qualifying trigger.\n\nDECISION: escalate\n\nReasoning: The claimed cause (subsidence/footing movement from ground beneath the house) directly conflicts with the Allianz Home PDS exclusion for soil movement/subsidence, which only permits coverage if the subsidence occurred within 72 hours of a specific triggering peril (earthquake, tsunami, explosion, storm, cyclone, rainwater or flood) [Allianz Home PDS, page 55; Allianz Home PDS, page 26]. The narrative gives no indication of such a triggering event \u2014 it reads as gradual, standalone ground subsidence \u2014 which per policy is excluded. Per escalation policy, a claimed cause that directly conflicts with a found exclusion must be escalated to a human reviewer rather than decided automatically, since a human would need to confirm with the policyholder/builder whether any qualifying peril (e.g., recent storm or flood) occurred in the 72 hours preceding the cracking to determine if the exception applies."
+      "text": "The claim describes subsidence/footing movement with no mention of a triggering event (explosion, earthquake, tsunami, storm, cyclone, or rainwater/flood combined with run-off) within the required 72-hour window. Per policy, subsidence is excluded unless directly caused by one of those specific perils \u2014 the builder's report cites only ground subsidence causing footing movement, with no qualifying trigger identified.\n\nThis is a direct conflict between the claimed cause and a clear policy exclusion, so I must escalate rather than deny outright \u2014 it's possible there was a triggering weather event (e.g., recent heavy rain) not mentioned in the narrative that could restore coverage, and that needs human confirmation with the policyholder/builder report rather than an assumption.\n\nDECISION: escalate\n\nReasoning: The claimed cause (subsidence/footing movement) falls squarely within Allianz's general exclusion for soil movement [Allianz Home PDS, page 55], which is only overridden if directly caused by and occurring within 72 hours of specific perils such as earthquake/tsunami [Allianz Home PDS, page 26], storm, cyclone, explosion, or rainwater/flood combined with run-off. The claim narrative does not state whether any such triggering event occurred, so I cannot confirm whether the exclusion applies or is overridden. This is a direct conflict between the claimed cause and a policy exclusion that requires human review to determine if a qualifying trigger event occurred, per escalation policy."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "The claim describes gradual subsidence (\"noticed new cracks... builder advised ground has subsided and footings have moved\") with no mention of a triggering event such as earthquake, tsunami, explosion, storm, cyclone, or flood within 72 hours. The Allianz Home PDS excludes soil movement/subsidence damage unless directly caused by and occurring within 72 hours of such an event \u2014 this claim's cause directly conflicts with that exclusion, as there's no evidence of a qualifying trigger.\n\nDECISION: escalate\n\nReasoning: The claimed cause (subsidence/footing movement from ground beneath the house) directly conflicts with the Allianz Home PDS exclusion for soil movement/subsidence, which only permits coverage if the subsidence occurred within 72 hours of a specific triggering peril (earthquake, tsunami, explosion, storm, cyclone, rainwater or flood) [Allianz Home PDS, page 55; Allianz Home PDS, page 26]. The narrative gives no indication of such a triggering event \u2014 it reads as gradual, standalone ground subsidence \u2014 which per policy is excluded. Per escalation policy, a claimed cause that directly conflicts with a found exclusion must be escalated to a human reviewer rather than decided automatically, since a human would need to confirm with the policyholder/builder whether any qualifying peril (e.g., recent storm or flood) occurred in the 72 hours preceding the cracking to determine if the exception applies.",
-  "citations": [],
+  "reasoning": "The claim describes subsidence/footing movement with no mention of a triggering event (explosion, earthquake, tsunami, storm, cyclone, or rainwater/flood combined with run-off) within the required 72-hour window. Per policy, subsidence is excluded unless directly caused by one of those specific perils \u2014 the builder's report cites only ground subsidence causing footing movement, with no qualifying trigger identified.\n\nThis is a direct conflict between the claimed cause and a clear policy exclusion, so I must escalate rather than deny outright \u2014 it's possible there was a triggering weather event (e.g., recent heavy rain) not mentioned in the narrative that could restore coverage, and that needs human confirmation with the policyholder/builder report rather than an assumption.\n\nDECISION: escalate\n\nReasoning: The claimed cause (subsidence/footing movement) falls squarely within Allianz's general exclusion for soil movement [Allianz Home PDS, page 55], which is only overridden if directly caused by and occurring within 72 hours of specific perils such as earthquake/tsunami [Allianz Home PDS, page 26], storm, cyclone, explosion, or rainwater/flood combined with run-off. The claim narrative does not state whether any such triggering event occurred, so I cannot confirm whether the exclusion applies or is overridden. This is a direct conflict between the claimed cause and a policy exclusion that requires human review to determine if a qualifying trigger event occurred, per escalation policy.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    }
+  ],
   "retrieved_sources": [
     {
       "doc_id": "allianz-home-pds",
@@ -107,21 +122,21 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 26
-    },
-    {
-      "doc_id": "allianz-home-pds",
-      "insurer": "Allianz",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 54
-    },
-    {
-      "doc_id": "allianz-home-pds",
-      "insurer": "Allianz",
-      "product": "Home",
-      "doc_type": "PDS",
       "page": 79
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 84
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
     }
   ],
   "claim_id": "claim-011"

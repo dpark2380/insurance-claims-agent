@@ -8,128 +8,137 @@
         "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
       },
       "output": {
-        "claim_type": "other",
-        "date_of_loss": "1970-01-01",
-        "cause": "corroded hot water pipes leaking gradually under the house over several years",
-        "damaged_item": "bearers under the house",
-        "estimated_amount": null,
-        "policy_number": null
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
       }
     },
     {
-      "turn": 2,
+      "turn": 1,
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "gradual deterioration corrosion wear and tear exclusion pipes leaking damage"
+        "query": "Is gradual corrosion or wear and tear damage to pipes and resulting rot covered, or is it excluded?"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here is what applies to gradual deterioration, corrosion, wear and tear, and pipe leak exclusions:\n\n**General wear, tear, and gradual deterioration exclusions:**\n\n- GIO Contents PDS excludes \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48].\n\n- Similarly, GIO excludes damage to \"any part of the home or contents that has wear, tear, rust, fading, rising damp, corrosion, rot, action of light, atmospheric or climatic conditions or gradual deterioration,\" specifically listing examples such as \"tiles and their adhesive or grouting breaking down,\" \"weathering of roof tiles or roof ridge capping,\" and \"gradual weathering and breakdown of bricks, mortar or concrete\" [GIO Contents PDS, page 33].\n\n- Allianz (both Landlord and Home PDS) defines \"Wear and tear\" as **including** \"depreciation, gradual deterioration, or lack of maintenance including but not limited to: wall and floor tiles and their adhesive or grouting breaking down or deteriorating, deterioration of roof tiles or roof ridge capping... due to continued exposure to weather over time, gradual deterioration and breakdown of bricks, mortar or concrete, or cracks in walls or sagging floors due to the age of the property\" [Allianz Landlord PDS, page 52; Allianz Home PDS, page 55].\n\n**Regarding pipes specifically (leaking damage):**\n\n- GIO Contents PDS notes an exception carve-back: broken, worn, or aged tiles or grouting in bathrooms, kitchens, or laundries are excluded, **\"unless the damage is caused by liquid leaking from pipes in walls or floors (not forming part of a shower cubicle wall, floor or base)\"** [GIO Contents PDS, page 48]. This implies that if pipe leakage (not shower-related) causes tile/grout damage, it may be covered despite the general wear-and-tear exclusion \u2014 though the excerpt does not confirm whether pipe corrosion itself is covered or excluded.\n\n- GIO Contents PDS also excludes water damage travelling \"from agricultural pipes or overflow pipes\" [GIO Contents PDS, page 33], though this appears under a list of water-ent",
+        "answer": "Based on the provided excerpts, **gradual corrosion, wear and tear, and resulting rot are excluded** across all the policies referenced:\n\n- **CommBank Home PDS**: Excludes loss or damage caused by \"wear and tear or gradual deterioration\" and \"the gradual seepage of water or other liquids\" [CommBank Home PDS, page 19]. It also excludes \"the cost to repair or replace the item from which the water leaked or escaped\" [CommBank Home PDS, page 19].\n\n- **Suncorp Landlord PDS**: Explicitly excludes loss or damage caused by \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [Suncorp Landlord PDS, page 79]. It also excludes \"the cost of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [Suncorp Landlord PDS, page 79].\n\n- **AAMI Contents PDS**: Same exclusion \u2014 \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [AAMI Contents PDS, page 70].\n\n- **Shannons Contents PDS**: Same exclusion \u2014 \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [Shannons Contents PDS, page 89].\n\n- **AAMI Building PDS**: Same exclusion \u2014 \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [AAMI Building PDS, page 70]. It also separately excludes \"the cost of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [AAMI Building PDS, page 70].\n\n**Summary**: Across all five policy excerpts provided, damage to pipes (or tanks/containers) caused by gradual corrosion or wear and tear, and any resulting rot, is explicitly excluded from cover. None of the excerpts indicate an exception that would bring this type of gradual damage back into cover.",
         "citations": [
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 48
-          },
-          {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 33
-          },
-          {
-            "doc_id": "allianz-landlord-pds",
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 52
-          },
-          {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 33
-          },
-          {
-            "doc_id": "allianz-home-pds",
-            "insurer": "Allianz",
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 55
+            "page": 19
+          },
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 79
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
+          },
+          {
+            "doc_id": "shannons-contents-pds",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 89
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 70
           }
         ]
       }
     },
     {
-      "turn": 3,
+      "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or run calculate_payout without guessing figures, which is against policy. Additionally, the estimated_amount extracted from the claim is null and cannot be resolved from the text. Finally, the described cause \u2014 gradual corrosion of pipes over several years causing rot \u2014 squarely matches gradual deterioration/wear-and-tear/corrosion/rot exclusions found in insurer policy text (e.g., \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48]; wear and tear defined to include \"gradual deterioration, or lack of maintenance\" [Allianz Home PDS, page 55], [Allianz Landlord PDS, page 52]). This is a direct conflict between the claimed cause and a standard exclusion, and since no insurer is named, I cannot confirm which specific policy applies or whether any carve-back exception might apply. All three escalation triggers (no named insurer, unresolved null estimated_amount, and cause conflicting with an exclusion) are present, so this claim must be handed to a human reviewer rather than decided automatically."
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be safely auto-decided for two independent reasons:\n\n1. **No insurer named** \u2013 the claim narrative does not identify a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage-limit figure, which I must not do.\n\n2. **Field extraction failed** \u2013 `extract_fields` was unable to parse structured fields (claim type, estimated amount, policy number, etc.) from this narrative, leaving the estimated amount and policy number unresolved.\n\n3. **Direct exclusion conflict** \u2013 Even setting aside the above, the described cause (gradual corrosion of pipes over years, leading to rot) squarely matches the gradual-damage/wear-and-tear exclusions found across every policy checked: [CommBank Home PDS, page 19], [Suncorp Landlord PDS, page 79], [AAMI Contents PDS, page 70], [Shannons Contents PDS, page 89], [AAMI Building PDS, page 70]. All explicitly exclude wear, tear, deterioration, corrosion, and resulting rot, and some separately exclude the cost of repairing the leaking item itself.\n\nGiven the missing insurer identification, the failed field extraction, and the apparent direct conflict with standard exclusions, this claim should be routed to a human reviewer rather than denied or approved automatically \u2014 a human should confirm the actual insurer/policy wording (in case an SPDS amendment applies) before a final denial is issued."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or run calculate_payout without guessing figures, which is against policy. Additionally, the estimated_amount extracted from the claim is null and cannot be resolved from the text. Finally, the described cause \u2014 gradual corrosion of pipes over several years causing rot \u2014 squarely matches gradual deterioration/wear-and-tear/corrosion/rot exclusions found in insurer policy text (e.g., \"loss or damage caused by wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" [GIO Contents PDS, page 48]; wear and tear defined to include \"gradual deterioration, or lack of maintenance\" [Allianz Home PDS, page 55], [Allianz Landlord PDS, page 52]). This is a direct conflict between the claimed cause and a standard exclusion, and since no insurer is named, I cannot confirm which specific policy applies or whether any carve-back exception might apply. All three escalation triggers (no named insurer, unresolved null estimated_amount, and cause conflicting with an exclusion) are present, so this claim must be handed to a human reviewer rather than decided automatically.",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be safely auto-decided for two independent reasons:\n\n1. **No insurer named** \u2013 the claim narrative does not identify a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage-limit figure, which I must not do.\n\n2. **Field extraction failed** \u2013 `extract_fields` was unable to parse structured fields (claim type, estimated amount, policy number, etc.) from this narrative, leaving the estimated amount and policy number unresolved.\n\n3. **Direct exclusion conflict** \u2013 Even setting aside the above, the described cause (gradual corrosion of pipes over years, leading to rot) squarely matches the gradual-damage/wear-and-tear exclusions found across every policy checked: [CommBank Home PDS, page 19], [Suncorp Landlord PDS, page 79], [AAMI Contents PDS, page 70], [Shannons Contents PDS, page 89], [AAMI Building PDS, page 70]. All explicitly exclude wear, tear, deterioration, corrosion, and resulting rot, and some separately exclude the cost of repairing the leaking item itself.\n\nGiven the missing insurer identification, the failed field extraction, and the apparent direct conflict with standard exclusions, this claim should be routed to a human reviewer rather than denied or approved automatically \u2014 a human should confirm the actual insurer/policy wording (in case an SPDS amendment applies) before a final denial is issued.",
   "citations": [
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 48
-    },
-    {
-      "doc_id": "allianz-home-pds",
-      "insurer": "Allianz",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 55
+      "page": 19
     },
     {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 52
+      "page": 79
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 89
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 70
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 48
-    },
-    {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 33
-    },
-    {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 52
-    },
-    {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 33
-    },
-    {
-      "doc_id": "allianz-home-pds",
-      "insurer": "Allianz",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 55
+      "page": 19
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 89
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 70
     }
   ],
   "claim_id": "claim-015"

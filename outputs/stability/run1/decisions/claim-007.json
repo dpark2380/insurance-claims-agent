@@ -5,13 +5,13 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913. Policyholder with NRMA home insurance."
+        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913."
       },
       "output": {
         "claim_type": "fire",
         "date_of_loss": "2024-02-03",
         "cause": "candle tip over and catch curtains on fire",
-        "damaged_item": "wall and carpet in lounge room",
+        "damaged_item": "wall and carpet near lounge room shelf",
         "estimated_amount": null,
         "policy_number": "HC-882913"
       }
@@ -21,13 +21,26 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Accidental fire damage from candle coverage",
-        "insurer": "NRMA",
-        "product": "Home"
+        "query": "Is accidental fire damage caused by a candle covered under home building/contents insurance?",
+        "insurer": "NRMA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, accidental fire damage\u2014such as fire started by a candle\u2014would generally fall under the **Fire** listed event, which is covered under both Building and Contents insurance.\n\n**What is covered:**\n- \"We cover loss or damage caused by fire or bushfire.\" [NRMA Home PDS, page 14]\n\n**Key limitation on Fire cover:**\n- \"Fire - not covered for scorching or melting where there is no flame.\" [NRMA Home KFS, page 1] \u2014 this means if a candle caused scorching or melting damage *without* an actual flame/fire occurring, it would not be covered.\n\n**What is excluded regardless:**\n- Fire is not covered if \"any fire that was started with the intention to caused damage by: \u2013 You; \u2013 Your Family; \u2013 anyone who normally lives in Your Home including a tenant.\" [NRMA Home PDS, page 14]\n\n**Conclusion:** If a candle accidentally started a fire (with an actual flame) that was not intentionally set to cause damage, the resulting loss or damage would appear to be covered under the Fire listed event [NRMA Home PDS, page 14; NRMA Home KFS, page 1]. However, if the candle caused only scorching or melting without an actual flame, this would specifically be excluded [NRMA Home KFS, page 1].\n\nThe excerpts do not provide further detail on any additional conditions, sub-limits, or documentation requirements specific to candle-caused fires beyond what is stated above.",
+        "answer": "Based on the excerpts provided, accidental fire damage \u2014 including damage caused by an unintended candle fire \u2014 would generally be covered under the Fire section of the policy, subject to some conditions:\n\n- **Fire is covered** as a standard event under both Building and Contents cover [NRMA Home PDS, page 3]. The Key Facts Sheets for both Home and Contents confirm \"Fire and Explosion... Yes\" is covered [NRMA Home KFS, page 1][NRMA Contents KFS, page 1].\n\n- **Condition on the type of fire damage**: Fire cover does **not** apply to \"scorching or melting where there is no flame\" [NRMA Home KFS, page 1][NRMA Contents KFS, page 1]. This means if a candle caused scorching or melting without an actual flame/fire, it would not be covered. If the candle caused an actual fire, it would meet the requirement of flame.\n\n- **Exclusion for intentional fires**: The PDS specifically excludes \"any fire that was started with the intention to cause damage\" by the insured, their family, anyone who normally lives in the home (including a tenant) [NRMA Home PDS, page 14]. Since your question specifies the fire was *accidental*, this exclusion would not apply.\n\n**Conclusion**: Based on these excerpts, an accidental fire caused by a candle (i.e., one involving actual flame and not started with intent to cause damage) would appear to be covered under the Fire event. However, the excerpts do not provide the complete list of all fire exclusions or conditions \u2014 they note that the PDS and other policy documentation should be checked for further details [NR",
         "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "nrma-contents-kfs",
+            "insurer": "NRMA",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
@@ -43,38 +56,44 @@
             "page": 1
           },
           {
-            "doc_id": "nrma-home-pds",
+            "doc_id": "nrma-contents-kfs",
             "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 14
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 14
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 2
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
           }
         ]
       }
     },
     {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
       "turn": 2,
-      "type": "final",
-      "text": "DECISION: escalate\n\nThe claim narrative describes an actual flame fire (candle ignited curtains, which then spread to scorch the wall and carpet), which appears to fall within the covered \"Fire\" listed event under the NRMA Home policy, since it was accidental (not intentionally set) [NRMA Home PDS, page 14]. The policy does carve out an exclusion for \"scorching or melting where there is no flame\" [NRMA Home KFS, page 1], but that exclusion does not appear to apply here since an actual flame/fire was involved.\n\nHowever, the extracted fields show `estimated_amount: null` \u2014 the policyholder has not yet had anyone assess the damage and provided no cost estimate. This cannot be resolved through any other tool (calculate_payout requires a claim_amount, and I cannot guess one), so per escalation policy I must hand this off to a human reviewer rather than proceed with excess/coverage-limit lookup and payout calculation.\n\nRecommend: obtain a professional damage assessment/repair quote for the wall, carpet, and curtains before finalizing payout, then reprocess with the resulting estimated_amount."
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim HC-882913 (NRMA) describes an accidental candle fire that appears covered under the Fire peril per policy text, with no applicable exclusion (accidental, not intentional; involved actual flame, not mere scorching without flame). However, extract_fields returned a null estimated_amount, and the policyholder confirms no damage assessment/quote has been done yet, so there is no claimed amount to calculate a payout against. This must be escalated for a human to obtain a repair estimate before payout calculation."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim HC-882913 (NRMA) describes an accidental candle fire that appears covered under the Fire peril per policy text, with no applicable exclusion (accidental, not intentional; involved actual flame, not mere scorching without flame). However, extract_fields returned a null estimated_amount, and the policyholder confirms no damage assessment/quote has been done yet, so there is no claimed amount to calculate a payout against. This must be escalated for a human to obtain a repair estimate before payout calculation."
+      }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nThe claim narrative describes an actual flame fire (candle ignited curtains, which then spread to scorch the wall and carpet), which appears to fall within the covered \"Fire\" listed event under the NRMA Home policy, since it was accidental (not intentionally set) [NRMA Home PDS, page 14]. The policy does carve out an exclusion for \"scorching or melting where there is no flame\" [NRMA Home KFS, page 1], but that exclusion does not appear to apply here since an actual flame/fire was involved.\n\nHowever, the extracted fields show `estimated_amount: null` \u2014 the policyholder has not yet had anyone assess the damage and provided no cost estimate. This cannot be resolved through any other tool (calculate_payout requires a claim_amount, and I cannot guess one), so per escalation policy I must hand this off to a human reviewer rather than proceed with excess/coverage-limit lookup and payout calculation.\n\nRecommend: obtain a professional damage assessment/repair quote for the wall, carpet, and curtains before finalizing payout, then reprocess with the resulting estimated_amount.",
-  "citations": [
+  "reasoning": "Claim HC-882913 (NRMA) describes an accidental candle fire that appears covered under the Fire peril per policy text, with no applicable exclusion (accidental, not intentional; involved actual flame, not mere scorching without flame). However, extract_fields returned a null estimated_amount, and the policyholder confirms no damage assessment/quote has been done yet, so there is no claimed amount to calculate a payout against. This must be escalated for a human to obtain a repair estimate before payout calculation.",
+  "citations": [],
+  "retrieved_sources": [
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -83,14 +102,12 @@
       "page": 14
     },
     {
-      "doc_id": "nrma-home-kfs",
+      "doc_id": "nrma-contents-kfs",
       "insurer": "NRMA",
-      "product": "Home",
+      "product": "Contents",
       "doc_type": "KFS",
       "page": 1
-    }
-  ],
-  "retrieved_sources": [
+    },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -106,25 +123,11 @@
       "page": 1
     },
     {
-      "doc_id": "nrma-home-pds",
+      "doc_id": "nrma-contents-kfs",
       "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 14
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 14
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 2
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "claim_id": "claim-007"

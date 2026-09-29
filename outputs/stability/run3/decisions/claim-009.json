@@ -25,7 +25,7 @@
         "insurer": "RealInsurance"
       },
       "output": {
-        "answer": "Based on the provided excerpts, this appears to be covered, but with an important qualification.\n\nUnder the \"Accidental glass breakage\" insured event, coverage applies to breakage of glass generally, but is subject to a specific limitation: breakage is **excluded** unless \"the break extends through the entire thickness of the glass\" [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16]. This means that if a thrown ball caused a crack or chip that does not go all the way through the glass, it would not be covered, but if it breaks through the full thickness of the glass, it would fall within the covered event.\n\nAdditionally, the excerpts note that \"we also do not pay for damage caused by the broken item\" \u2014 meaning any resulting damage caused by the glass itself breaking (e.g., shards causing further damage) is excluded, unless Top cover has been taken out [RealInsurance Contents PDS, page 16].\n\nThe excerpts do not explicitly address the ball itself as the causing object, nor whether damage to the ball or other consequential circumstances would be covered \u2014 only the glass breakage event and its exclusions are detailed. There is no specific exclusion mentioned for breakage caused by external thrown objects, so based on the general terms provided, such breakage would be covered as \"Accidental Glass Breakage\" [RealInsurance Home KFS, page 1; RealInsurance Contents KFS, page 1], provided it breaks through the entire thickness of the glass and is not one of the excluded glass types (e.g., glasshouse, greenhouse, conservatory, stove top, cooking surface, heater, oven door, computer/TV screens) [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16].\n\n**Summary:** Yes, breakage of glass/windows from an external object like a thrown ball would generally be covered under \"Accidental Glass Breakage,\" provided the break goes through the full thickness of the glass and the glass is not one of the specifically excluded types [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16; RealInsurance Home KFS, page 1; RealInsurance Contents KFS, page 1]. The excerpts do not provide further detail on scenarios involving the causing object itself.",
+        "answer": "Based on the excerpts provided, **yes, accidental breakage of window glass caused by an external object (such as a thrown ball) is covered**, subject to certain conditions and exclusions.\n\n**Coverage details:**\n- Window glass and other fixed glass are explicitly listed as building-related items covered under \"Accidental glass breakage\" [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16].\n- The policy will also cover repairing or replacing the window frame if necessary to enable the glass to be replaced [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16].\n\n**Exclusions that could affect coverage:**\n- The break must extend through the entire thickness of the glass \u2014 partial breaks/chips are not covered [RealInsurance Landlord PDS, page 15; RealInsurance Contents PDS, page 16].\n- The policy states you are **not** covered for \"damage caused by the broken item\" itself [RealInsurance Landlord PDS, page 15;",
         "citations": [
           {
             "doc_id": "realinsurance-home-kfs",
@@ -66,20 +66,32 @@
       }
     },
     {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 40000
+      }
+    },
+    {
       "turn": 2,
       "type": "tool_call",
       "tool": "escalate_to_human",
       "input": {
-        "reason": "Extract_fields returned a null estimated_amount (no glazier quote obtained yet), which cannot be resolved from the claim narrative or policy documents. Cannot proceed to calculate_payout without a claimed/estimated repair amount, so this claim needs human follow-up to obtain a quote before payout can be determined."
+        "reason": "The claim has no estimated repair/replacement amount (the policyholder has not yet obtained a glazier's quote), and extract_fields returned a null estimated_amount that cannot be resolved from the narrative or any other source. calculate_payout cannot be run without a claim amount, so this claim needs human follow-up to obtain a quote before a payout decision can be made."
       },
       "output": {
         "status": "escalated",
-        "reason": "Extract_fields returned a null estimated_amount (no glazier quote obtained yet), which cannot be resolved from the claim narrative or policy documents. Cannot proceed to calculate_payout without a claimed/estimated repair amount, so this claim needs human follow-up to obtain a quote before payout can be determined."
+        "reason": "The claim has no estimated repair/replacement amount (the policyholder has not yet obtained a glazier's quote), and extract_fields returned a null estimated_amount that cannot be resolved from the narrative or any other source. calculate_payout cannot be run without a claim amount, so this claim needs human follow-up to obtain a quote before a payout decision can be made."
       }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Extract_fields returned a null estimated_amount (no glazier quote obtained yet), which cannot be resolved from the claim narrative or policy documents. Cannot proceed to calculate_payout without a claimed/estimated repair amount, so this claim needs human follow-up to obtain a quote before payout can be determined.",
+  "reasoning": "The claim has no estimated repair/replacement amount (the policyholder has not yet obtained a glazier's quote), and extract_fields returned a null estimated_amount that cannot be resolved from the narrative or any other source. calculate_payout cannot be run without a claim amount, so this claim needs human follow-up to obtain a quote before a payout decision can be made.",
   "citations": [],
   "retrieved_sources": [
     {

@@ -17,21 +17,134 @@
       }
     },
     {
-      "turn": 2,
+      "turn": 1,
       "type": "tool_call",
-      "tool": "escalate_to_human",
+      "tool": "retrieve_policy",
       "input": {
-        "reason": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination."
+        "query": "Is flood damage from river breaking its banks covered under flood or storm cover, and how is flood defined vs storm?"
       },
       "output": {
-        "status": "escalated",
-        "reason": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination."
+        "answer": "# Flood Damage from a River Breaking Its Banks\n\nBased on the provided excerpts, this scenario would fall under **flood cover**, not storm cover, in the insurers that define flood explicitly.\n\n## How Flood is Defined\n\n**BudgetDirect** defines flood specifically to include this scenario:\n> \"Flood is defined as the covering of normally dry land by water that has escaped or been released from the normal confines of: a lake, river, creek, or other natural watercourse (whether or not any of them have been altered or modified) \u2022 a reservoir, canal or dam.\" [BudgetDirect Home PDS, page 52]\n\nA river breaking its banks and covering normally dry land fits squarely within this definition.\n\n**RAA** does not provide a full positive definition of flood in the excerpt given, but confirms what is *excluded* from flood: actions of the sea (unless from storm surge occurring simultaneously with a storm, or tsunami), and mixtures of sea water with other water sources [RAA Contents PDS, page 88]. This implies river flooding (not involving sea water) would fall under their flood definition, though the excerpt does not state the positive definition explicitly.\n\n**AAMI** does not provide a definition of \"flood\" in the excerpt provided \u2014 it only states that flood is covered (subject to exclusions) and lists what is excluded (storm surge, sea actions, erosion-related movement, etc.) [AAMI Contents PDS, page 44]. The excerpt does not contain a definition distinguishing flood from storm.\n\n**Westpac** (Building and Contents KFS) similarly does not define \"flood\" in the excerpts provided. It only notes flood is a covered event (optional) but is not covered within 72 hours of first taking out or increasing cover, and separately notes storm surge is excluded from storm cover [Westpac Building KFS, page 1; Westpac Contents KFS, page 1].\n\n## Flood vs. Storm Distinction\n\nAcross the excerpts, the consistent distinction is:\n- **Flood** relates to water escaping the normal confines of watercourses (rivers, lakes, creeks, dams, reservoirs) \u2014 per the BudgetDirect definition [BudgetDirect Home PDS, page 52].\n- **Storm surge** (a rise in sea level caused by a storm) is treated separately and is **excluded** from both flood and storm cover in every policy referenced:\n  - BudgetDirect excludes \"loss or damage caused",
+        "citations": [
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 44
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "doc_id": "westpac-building-kfs",
+            "insurer": "Westpac",
+            "product": "Building",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          }
+        ]
       }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer (\"Our policy documents were unclear... when we called the insurer\" \u2014 no insurer is identified). Per policy, without a named insurer, get_policy_certificate cannot be resolved (excess/coverage_limit are policyholder-specific and cannot be guessed), so calculate_payout cannot be run. Additionally, the claimant explicitly states their own policy documents were ambiguous about whether river/rain-driven flooding falls under flood cover or storm cover \u2014 and the retrieved policy text confirms this varies materially by insurer (e.g., BudgetDirect has an explicit flood definition covering this scenario [BudgetDirect Home PDS, page 52], while AAMI, RAA, and Westpac excerpts do not provide a clear positive definition distinguishing flood from storm for this fact pattern [AAMI Contents PDS, page 44][RAA Contents PDS, page 88][Westpac Building KFS, page 1][Westpac Contents KFS, page 1]).\n\nBoth an unnamed insurer and genuine coverage ambiguity are present, so this must be escalated to a human reviewer for identification of the correct policy and manual coverage determination rather than guessing."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "The claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the cause is ambiguous between 'flood' (river overflow) and 'storm' peril definitions, which the policyholder states even the insurer's own call center could not clarify - this is a coverage ambiguity that requires human review rather than automated determination.",
-  "citations": [],
-  "retrieved_sources": [],
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer (\"Our policy documents were unclear... when we called the insurer\" \u2014 no insurer is identified). Per policy, without a named insurer, get_policy_certificate cannot be resolved (excess/coverage_limit are policyholder-specific and cannot be guessed), so calculate_payout cannot be run. Additionally, the claimant explicitly states their own policy documents were ambiguous about whether river/rain-driven flooding falls under flood cover or storm cover \u2014 and the retrieved policy text confirms this varies materially by insurer (e.g., BudgetDirect has an explicit flood definition covering this scenario [BudgetDirect Home PDS, page 52], while AAMI, RAA, and Westpac excerpts do not provide a clear positive definition distinguishing flood from storm for this fact pattern [AAMI Contents PDS, page 44][RAA Contents PDS, page 88][Westpac Building KFS, page 1][Westpac Contents KFS, page 1]).\n\nBoth an unnamed insurer and genuine coverage ambiguity are present, so this must be escalated to a human reviewer for identification of the correct policy and manual coverage determination rather than guessing.",
+  "citations": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 44
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "westpac-building-kfs",
+      "insurer": "Westpac",
+      "product": "Building",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 44
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "westpac-building-kfs",
+      "insurer": "Westpac",
+      "product": "Building",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
   "claim_id": "claim-018"
 }

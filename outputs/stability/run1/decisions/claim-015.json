@@ -16,45 +16,45 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is gradual corrosion or wear and tear causing pipe leaks and resulting damage covered, or excluded?"
+        "query": "Is gradual corrosion and wear and tear of pipes causing leaking and rot covered or excluded?"
       },
       "output": {
-        "answer": "Based on the excerpts provided, gradual corrosion or wear and tear causing pipe leaks and resulting damage is **excluded** from cover.\n\nSpecifically:\n\n- Under the \"Escape of liquid\" section, the policy explicitly excludes: \"wear, tear and gradual deterioration or loss or damage as a result of a gradual process of liquid leaking, splashing, dripping or overflowing\" [GIO Contents PDS, page 48].\n\n- This exclusion is reinforced elsewhere, where \"wear, tear and gradual deterioration, rust, fading, rising damp, mould, mildew, corrosion or rot\" is listed as not covered in relation to escape of liquid claims [GIO Contents PDS, page 48].\n\n- The general \"Wear, tear and gradual deterioration\" exclusion also confirms that damage to \"any part of the home or contents that has wear, tear, rust, fading, rising damp, corrosion, rot, action of light, atmospheric or climatic conditions or gradual deterioration\" is not covered [GIO Contents PDS, page 33].\n\n- Additionally, under \"Accidental damage at home\" (an optional cover), the policy also excludes \"wear, tear and gradual deterioration, or loss or damage as a result of a gradual process of liquid leaking, splashing, dripping or overflowing over a period of time\" [GIO Contents PDS, page 81].\n\n**Note:** The excerpts do indicate that the cost of repairing or replacing the item from which the liquid escaped (e.g., a cracked pipe) is also excluded [GIO Contents PDS, page 48], meaning both the pipe itself and damage caused gradually by wear/corrosion would not be covered.\n\nIf you have the optional \"Accidental damage at home\" cover, the excerpts note \"there may be cover for some items that are not covered above\" [GIO Contents PDS, page 48], but the specific details of what additional items might be covered are not included in the excerpts provided, so I cannot confirm whether this optional cover would change the outcome for gradual corrosion-related pipe leaks.",
+        "answer": "Based on the provided excerpts, **gradual corrosion and wear and tear of pipes causing leaking and rot are excluded** across all the policies referenced:\n\n- **CommBank Home PDS**: Excludes \"wear and tear or gradual deterioration\" and \"the gradual seepage of water or other liquids\" [CommBank Home PDS, page 19].\n\n- **CommBank Landlord PDS**: Excludes \"wear and tear, or gradual deterioration\" and \"the gradual seepage of water or other liquids\" [CommBank Landlord PDS, page 15].\n\n- **RealInsurance Contents PDS**: Excludes \"wear and tear, gradual deterioration\" and \"the gradual seepage of water or other liquids\" [RealInsurance Contents PDS, page 17].\n\n- **RealInsurance Landlord PDS**: Excludes \"wear and tear, gradual deterioration\" and \"the gradual seepage of water or other liquids\" [RealInsurance Landlord PDS, page 17].\n\n- **Suncorp Landlord PDS**: Explicitly excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" as well as \"the cost of repairing or replacing tanks or containers that burst or leak\" [Suncorp Landlord PDS, page 79].\n\nNone of the excerpts provide any coverage for gradual corrosion, wear and tear, or resulting leaking/rot of pipes \u2014 these are consistently listed as exclusions rather than insured events under all five policies referenced.",
         "citations": [
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
             "doc_type": "PDS",
-            "page": 33
+            "page": 19
           },
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 48
+            "page": 17
           },
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
             "doc_type": "PDS",
-            "page": 81
+            "page": 17
           },
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
             "doc_type": "PDS",
-            "page": 33
+            "page": 79
           },
           {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
+            "doc_id": "commbank-landlord-pds",
+            "insurer": "CommBank",
+            "product": "Landlord",
             "doc_type": "PDS",
-            "page": 48
+            "page": 15
           }
         ]
       }
@@ -62,69 +62,83 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate`/`calculate_payout` cannot be resolved without guessing figures \u2014 one automatic escalation trigger. Additionally, `extract_fields` failed to produce any structured extraction (including estimated_amount) from this narrative, and there is no way to resolve that gap independently \u2014 a second escalation trigger. Furthermore, the retrieved policy text I did check (from GIO's Contents PDS, the only insurer's data available in this lookup since none was specified) indicates gradual corrosion/wear-and-tear causing escape-of-liquid damage is explicitly excluded, which directly conflicts with the claimed cause (\"clearly been building up gradually over the last several years, not a sudden event\") \u2014 a third escalation trigger. Given these unresolved issues (no named insurer, failed field extraction, and a probable exclusion conflict that should be confirmed against the correct policy once the insurer is identified), this claim must go to a human reviewer rather than being auto-decided.\n\nCitations: [GIO Contents PDS, page 33] [GIO Contents PDS, page 48] [GIO Contents PDS, page 81]"
+      "text": "DECISION: escalate\n\nReasoning: This claim fails at the very first step \u2014 extract_fields could not parse the narrative into structured fields (claim_type, date_of_loss, cause, damaged_item, estimated_amount, policy_number all indeterminate), and there is no estimated_amount available to resolve. Additionally, the claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be run without guessing an excess and coverage limit, which I must not do.\n\nSeparately, on the substantive coverage question: the described cause \u2014 gradual corrosion of pipes over several years leading to leaking and rot \u2014 squarely matches the \"wear and tear / gradual deterioration\" and \"gradual seepage of water\" exclusions found in every policy checked: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Contents PDS, page 17], [RealInsurance Landlord PDS, page 17], [Suncorp Landlord PDS, page 79]. This is a direct conflict between the claimed cause and a policy exclusion, which is itself a mandatory escalation trigger, on top of the missing insurer and unresolvable estimated amount.\n\nGiven (1) unresolvable extraction/estimated amount, (2) no named insurer to fetch certificate figures, and (3) a claimed cause that directly conflicts with exclusions across all reviewed policies, this must be handed to a human reviewer rather than decided automatically."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate`/`calculate_payout` cannot be resolved without guessing figures \u2014 one automatic escalation trigger. Additionally, `extract_fields` failed to produce any structured extraction (including estimated_amount) from this narrative, and there is no way to resolve that gap independently \u2014 a second escalation trigger. Furthermore, the retrieved policy text I did check (from GIO's Contents PDS, the only insurer's data available in this lookup since none was specified) indicates gradual corrosion/wear-and-tear causing escape-of-liquid damage is explicitly excluded, which directly conflicts with the claimed cause (\"clearly been building up gradually over the last several years, not a sudden event\") \u2014 a third escalation trigger. Given these unresolved issues (no named insurer, failed field extraction, and a probable exclusion conflict that should be confirmed against the correct policy once the insurer is identified), this claim must go to a human reviewer rather than being auto-decided.\n\nCitations: [GIO Contents PDS, page 33] [GIO Contents PDS, page 48] [GIO Contents PDS, page 81]",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim fails at the very first step \u2014 extract_fields could not parse the narrative into structured fields (claim_type, date_of_loss, cause, damaged_item, estimated_amount, policy_number all indeterminate), and there is no estimated_amount available to resolve. Additionally, the claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be run without guessing an excess and coverage limit, which I must not do.\n\nSeparately, on the substantive coverage question: the described cause \u2014 gradual corrosion of pipes over several years leading to leaking and rot \u2014 squarely matches the \"wear and tear / gradual deterioration\" and \"gradual seepage of water\" exclusions found in every policy checked: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Contents PDS, page 17], [RealInsurance Landlord PDS, page 17], [Suncorp Landlord PDS, page 79]. This is a direct conflict between the claimed cause and a policy exclusion, which is itself a mandatory escalation trigger, on top of the missing insurer and unresolvable estimated amount.\n\nGiven (1) unresolvable extraction/estimated amount, (2) no named insurer to fetch certificate figures, and (3) a claimed cause that directly conflicts with exclusions across all reviewed policies, this must be handed to a human reviewer rather than decided automatically.",
   "citations": [
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
       "doc_type": "PDS",
-      "page": 33
+      "page": 19
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
+      "product": "Landlord",
       "doc_type": "PDS",
-      "page": 48
+      "page": 15
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 81
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
       "doc_type": "PDS",
-      "page": 33
+      "page": 19
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 48
+      "page": 17
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
       "doc_type": "PDS",
-      "page": 81
+      "page": 17
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
       "doc_type": "PDS",
-      "page": 33
+      "page": 79
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
+      "product": "Landlord",
       "doc_type": "PDS",
-      "page": 48
+      "page": 15
     }
   ],
   "claim_id": "claim-015"

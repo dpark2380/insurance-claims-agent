@@ -21,48 +21,13 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is flood damage from creek overflowing its banks covered or excluded?",
-        "insurer": "AAMI"
+        "query": "Is flood damage from a creek breaking its banks covered? Flood exclusion or definition.",
+        "insurer": "AAMI",
+        "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, **flood damage is covered**, but with specific conditions and exclusions.\n\nUnder the AAMI Contents PDS, \"Flood\" is listed as an insured event, and the policy states: \"We cover... Loss or damage caused by flood\" [AAMI Contents PDS, page 44]. A creek overflowing its banks would typically fall under the definition of flood, though the excerpts provided do not include the specific definition of \"flood\" used in this policy, so I cannot confirm with certainty how a creek overflow is technically classified.\n\nHowever, coverage for flood is subject to important exclusions [AAMI Contents PDS, page 44]:\n- It does **not** apply if you have removed flood cover from your policy (this would be noted on your certificate of insurance)\n- It does **not** cover loss/damage caused by actions or movements of the sea or storm surge\n- It does **not** cover loss/damage caused by erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or other earth movement \u2014 **except** that landslide or subsidence occurring within 72 hours of, and directly because of, flood (and not caused by erosion, structural fault, or design fault) **is** covered\n\n**In summary:** If your policy includes flood cover (i.e., you have not removed it), damage from a creek overflowing its banks would likely be covered as \"flood\" damage, subject to the exclusions above [AAMI Contents PDS, page 44]. I do not have access to the policy's formal definition of \"flood\" in these excerpts, so I cannot confirm with full certainty that a creek overflow meets that definition \u2014 I recommend checking the definitions section of the full PDS or your certificate of insurance to confirm flood cover is included and that a creek overflow qualifies as \"flood\" under the policy's specific wording.",
-        "citations": [
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 33
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 38
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 39
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 28
-          }
-        ]
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
       }
     },
     {
@@ -79,36 +44,78 @@
     },
     {
       "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "flood definition and coverage, water from creek river overflowing",
+        "insurer": "AAMI"
+      },
+      "output": {
+        "answer": "**Flood definition (AAMI Contents PDS):**\n\nFlood is defined as \"the covering of normally dry land by water that has escaped or been released from the normal confines of: \u2022 any lake, river, creek, or other natural watercourse (whether or not altered or modified) \u2022 any reservoir, canal, or dam\" [AAMI Contents PDS, page 100].\n\n**Coverage implications:**\n\nBased on the excerpt regarding liability for falling/moving objects, the policy explicitly states: \"We don't cover loss or damage caused by flood or storm surge\" [AAMI Contents PDS, page 49]. This exclusion appears in the context of a specific insured event (objects being carried by water, falling trees, etc.), so water from a creek or river overflowing its normal confines \u2014 meeting the definition of \"Flood\" above \u2014 would fall under this exclusion in that section.\n\n**Limitation of available information:**\n\nThe excerpts provided do not include the general \"Flood\" section of the PDS or any specific insured event listing that may separately address flood cover elsewhere in the policy (e.g., an optional flood cover section). The excerpts also do not show whether flood cover can be added, included by default, or opted into under this AAMI Contents policy. Therefore, I cannot confirm from these excerpts alone whether flood damage is covered elsewhere in the policy as a standalone insured event, or whether an SPDS variation might apply, as no SPDS excerpts were provided.\n\nIf you have access to the specific \"Flood\" insured event section of the PDS (likely elsewhere in the document) or any applicable SPDS, please provide those excerpts for a more complete answer.",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 38
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 28
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 49
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 31
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 100
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim involves flood damage to a garage (chest freezer and stored boxes) caused by a nearby creek overflowing its banks after heavy rain, with an AAMI Contents policy. The policy text retrieved states that flood is a covered event under the AAMI Contents PDS [AAMI Contents PDS, page 44], but explicitly notes two unresolved ambiguities: (1) whether flood cover has been removed from this specific policyholder's certificate of insurance (a possibility the PDS itself flags as an exclusion condition) [AAMI Contents PDS, page 44], and (2) whether a creek overflowing its banks meets the policy's formal technical definition of \"flood,\" which was not available in the retrieved excerpts [AAMI Contents PDS, page 44]. Because the retrieved policy text itself expresses uncertainty about whether the covered peril actually applies to this cause of loss, and whether flood cover exists on this certificate at all, this constitutes contradictory/ambiguous coverage text under our escalation policy. Rather than guess at flood cover status or the definition of \"flood,\" this claim should be handed to a human reviewer to confirm (a) that flood cover has not been removed from the policyholder's certificate, and (b) that a creek breaking its banks qualifies as \"flood\" (versus excluded perils like storm surge or earth movement) under the full PDS definitions section."
+      "text": "DECISION: escalate\n\nReasoning: The claim is clearly a \"flood\" event under AAMI's own definition \u2014 water escaping from a creek's normal confines flooding the garage [AAMI Contents PDS, page 100]. However, the retrieved policy text is contradictory/incomplete: one excerpt states \"We don't cover loss or damage caused by flood or storm surge\" [AAMI Contents PDS, page 49], but that exclusion appears in a specific sub-section (falling/moving objects) rather than the general insured-events list, and the tool itself notes it cannot confirm whether flood is separately covered elsewhere in the PDS (e.g., an optional flood cover add-on) or whether an SPDS varies this. Because the coverage determination is ambiguous and the claimed cause (flood) directly matches language that could either exclude or potentially be covered depending on unseen sections, this meets the escalation criteria: contradictory/ambiguous coverage text found by retrieve_policy, and a claimed cause that may conflict with a policy exclusion. I have not proceeded to calculate a payout since coverage itself is unresolved; a human reviewer should confirm the applicable flood clause in the full PDS/SPDS before any payout determination using the excess ($500) and coverage limit ($50,000) already on file."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves flood damage to a garage (chest freezer and stored boxes) caused by a nearby creek overflowing its banks after heavy rain, with an AAMI Contents policy. The policy text retrieved states that flood is a covered event under the AAMI Contents PDS [AAMI Contents PDS, page 44], but explicitly notes two unresolved ambiguities: (1) whether flood cover has been removed from this specific policyholder's certificate of insurance (a possibility the PDS itself flags as an exclusion condition) [AAMI Contents PDS, page 44], and (2) whether a creek overflowing its banks meets the policy's formal technical definition of \"flood,\" which was not available in the retrieved excerpts [AAMI Contents PDS, page 44]. Because the retrieved policy text itself expresses uncertainty about whether the covered peril actually applies to this cause of loss, and whether flood cover exists on this certificate at all, this constitutes contradictory/ambiguous coverage text under our escalation policy. Rather than guess at flood cover status or the definition of \"flood,\" this claim should be handed to a human reviewer to confirm (a) that flood cover has not been removed from the policyholder's certificate, and (b) that a creek breaking its banks qualifies as \"flood\" (versus excluded perils like storm surge or earth movement) under the full PDS definitions section.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is clearly a \"flood\" event under AAMI's own definition \u2014 water escaping from a creek's normal confines flooding the garage [AAMI Contents PDS, page 100]. However, the retrieved policy text is contradictory/incomplete: one excerpt states \"We don't cover loss or damage caused by flood or storm surge\" [AAMI Contents PDS, page 49], but that exclusion appears in a specific sub-section (falling/moving objects) rather than the general insured-events list, and the tool itself notes it cannot confirm whether flood is separately covered elsewhere in the PDS (e.g., an optional flood cover add-on) or whether an SPDS varies this. Because the coverage determination is ambiguous and the claimed cause (flood) directly matches language that could either exclude or potentially be covered depending on unseen sections, this meets the escalation criteria: contradictory/ambiguous coverage text found by retrieve_policy, and a claimed cause that may conflict with a policy exclusion. I have not proceeded to calculate a payout since coverage itself is unresolved; a human reviewer should confirm the applicable flood clause in the full PDS/SPDS before any payout determination using the excess ($500) and coverage limit ($50,000) already on file.",
   "citations": [
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 44
-    }
-  ],
-  "retrieved_sources": [
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 33
+      "page": 100
     },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 44
-    },
+      "page": 49
+    }
+  ],
+  "retrieved_sources": [
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
@@ -121,14 +128,28 @@
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 39
+      "page": 28
     },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 28
+      "page": 49
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 100
     }
   ],
   "claim_id": "claim-000"

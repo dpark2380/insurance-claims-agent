@@ -17,126 +17,119 @@
       }
     },
     {
-      "turn": 1,
+      "turn": 2,
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Flood damage to shed/outbuilding from river breaking its banks - flood vs storm cover"
+        "query": "flood caused by river overflow vs storm damage coverage for shed contents"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here's what I can determine about flood damage to sheds/outbuildings from a river breaking its banks:\n\n**Flood coverage generally applies (if purchased/not removed):**\n\n- **AAMI Building PDS**: Flood is covered, but flood cover can be \"removed\" (an optional feature), in which case \"your certificate of insurance will show this limitation in your cover\" [AAMI Building PDS, page 39]. The excerpt doesn't specifically address sheds/outbuildings, but does list specific flood exclusions (retaining walls, sea walls, garden borders, free-standing outdoor walls, sealed paths/roads/driveways unless washed away, sporting surfaces, boat jetties/pontoons) [AAMI Building PDS, page 39].\n\n- **AAMI Contents KFS**: Flood is listed as \"Optional\" cover, with the note that there's \"No cover for the cost of cleaning your contents\" [AAMI Contents KFS, page 1]. This doesn't address structures like sheds directly.\n\n- **Suncorp Landlord PDS**: Similarly covers flood loss/damage, with exclusions for retaining walls, revetments, sea walls, garden borders, free-standing outdoor walls, sealed paths/roads/driveways (unless washed away), sporting surfaces, boat jetties/pontoons, and external paintwork if that's the only damage [Suncorp Landlord PDS, page 47]. No specific mention of sheds/outbuildings in this excerpt.\n\n- **BudgetDirect Home PDS**: Defines flood as \"the covering of normally dry land by water that has escaped or released from the normal confines of a lake, river, creek, or other natural watercourse\" \u2014 this directly matches a river breaking its banks scenario [BudgetDirect Home PDS, page 52]. Exclusions listed are for fences/gates not in good condition, retaining walls, swimming pool liners, garden borders/driveways/paths/pavers/gardens, tennis court surfaces, jetties/wharves/pontoons, and pool/spa water [BudgetDirect Home PDS, page 52]. Sheds/outbuildings are **not listed as excluded** in this excerpt.\n\n**Key gap in the excerpts:**\nNone of the provided policy excerpts explicitly state whether a \"shed\" or \"outbuilding\" is included or excluded under flood cover. The exclusion lists",
+        "answer": "Based on the provided excerpts, here's what I can determine about flood vs. storm damage coverage:\n\n**Flood coverage (river overflow):**\n\n- **AAMI Contents PDS**: Covers loss or damage to contents caused by flood, unless flood cover has been removed (shown on the certificate of insurance). Excludes damage caused by actions/movements of the sea or storm surge, and excludes erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or other earth movement \u2014 *except* landslide or subsidence proven to occur within 72 hours of, and directly because of, flood [AAMI Contents PDS, page 44].\n\n- **RACV Home PDS**: Covers flood, defined as the covering of normally dry land by water escaping from a lake, river, creek, other natural watercourse, reservoir, canal, or dam \u2014 explicitly noting a river or creek overflowing from heavy/sustained rainfall qualifies. Also covers landslide or subsidence happening immediately as a direct result of flood. Excludes damage to retaining walls, certain gates/fences/free-standing walls (if not structurally sound), pontoons, jetties, bridges, gravel driveways, pool/spa covers over 5 years old, and damage caused by actions of the sea [RACV Home PDS, page 37].\n\n- **RACV Landlord PDS**: Same flood definition and coverage terms as above [RACV Landlord PDS, page 34].\n\n**Shed contents specifically:**\nNone of the excerpts provided specifically address \"shed contents\" as a distinct category, nor do they clarify whether contents kept in a shed are treated differently from contents in the main dwelling for flood or storm claims.\n\n**Storm damage:**\nThe excerpts do not contain policy wording specifically describing \"storm\" as an insured event (as opposed to flood or storm surge, which is excluded under AAMI). I cannot confirm storm damage coverage terms for contents, including shed contents, from the material provided.\n\n**Gap in the excerpts:**\nI don't have sufficient information here to state definitively how \"storm\" as a separate insured event is defined or covered, or whether shed contents are subject to different sub-limits or exclusions than general contents. To answer that fully, I would need the storm-specific insured event pages (referenced as pages 44\u201356 in the AAMI PDS, but not included here) and any shed/outbuilding contents provisions.\n\n",
         "citations": [
           {
-            "doc_id": "aami-contents-kfs",
+            "doc_id": "aami-contents-pds",
             "insurer": "AAMI",
             "product": "Contents",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
             "doc_type": "PDS",
-            "page": 39
+            "page": 44
           },
           {
-            "doc_id": "raa-contents-pds",
-            "insurer": "RAA",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 88
-          },
-          {
-            "doc_id": "suncorp-landlord-pds",
-            "insurer": "Suncorp",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 47
-          },
-          {
-            "doc_id": "budgetdirect-home-pds",
-            "insurer": "BudgetDirect",
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 52
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "racv-home-pds",
+            "insurer": "RACV",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 37
+          },
+          {
+            "doc_id": "racv-landlord-pds",
+            "insurer": "RACV",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 34
           }
         ]
       }
     },
     {
-      "turn": 2,
+      "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer (the customer says the documents were unclear whether this is flood or storm cover, but no insurer is identified), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. Additionally, the coverage question itself is ambiguous: policy language varies by insurer regarding whether flood cover (as opposed to storm cover) applies, and whether sheds/outbuildings are included or excluded is not clearly addressed in any retrieved excerpt [AAMI Building PDS, page 39] [AAMI Contents KFS, page 1] [Suncorp Landlord PDS, page 47] [BudgetDirect Home PDS, page 52]. Given both the missing insurer identification and the genuine ambiguity in coverage classification (flood vs. storm) and shed treatment, this claim must be escalated to a human reviewer rather than decided or a payout calculated."
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer (the customer says only that \"the insurer\" gave unclear guidance, without identifying which company). Without a named insurer, I cannot call get_policy_certificate to obtain the policyholder-specific excess and coverage limit, and calculate_payout would require guessing those figures, which I must not do.\n\nAdditionally, this is a case of genuine coverage ambiguity: different insurers treat river-overflow flooding very differently. For example, RACV's Home and Landlord PDS explicitly define \"flood\" to include a river/creek overflowing due to heavy/sustained rainfall and covers it [RACV Home PDS, page 37][RACV Landlord PDS, page 34], while AAMI's Contents PDS covers flood generally but carves out storm surge/sea-action exclusions and requires flood cover not to have been removed from the certificate of insurance [AAMI Contents PDS, page 44]. Since the specific insurer is unknown, I cannot determine which of these conflicting frameworks (or another insurer's terms entirely) applies, nor whether flood cover was opted out on this policyholder's certificate. The claimant's own account also confirms the insurer itself could not clarify flood vs. storm classification for this loss.\n\nPer escalation policy, both \"claim does not name a specific insurer\" and \"contradictory/ambiguous coverage text\" apply here. This claim must be escalated to a human reviewer to (1) identify the actual insurer/policy, and (2) resolve the flood-vs-storm classification and confirm flood cover was not removed from the certificate before any payout calculation can proceed."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer (the customer says the documents were unclear whether this is flood or storm cover, but no insurer is identified), so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted. Additionally, the coverage question itself is ambiguous: policy language varies by insurer regarding whether flood cover (as opposed to storm cover) applies, and whether sheds/outbuildings are included or excluded is not clearly addressed in any retrieved excerpt [AAMI Building PDS, page 39] [AAMI Contents KFS, page 1] [Suncorp Landlord PDS, page 47] [BudgetDirect Home PDS, page 52]. Given both the missing insurer identification and the genuine ambiguity in coverage classification (flood vs. storm) and shed treatment, this claim must be escalated to a human reviewer rather than decided or a payout calculated.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer (the customer says only that \"the insurer\" gave unclear guidance, without identifying which company). Without a named insurer, I cannot call get_policy_certificate to obtain the policyholder-specific excess and coverage limit, and calculate_payout would require guessing those figures, which I must not do.\n\nAdditionally, this is a case of genuine coverage ambiguity: different insurers treat river-overflow flooding very differently. For example, RACV's Home and Landlord PDS explicitly define \"flood\" to include a river/creek overflowing due to heavy/sustained rainfall and covers it [RACV Home PDS, page 37][RACV Landlord PDS, page 34], while AAMI's Contents PDS covers flood generally but carves out storm surge/sea-action exclusions and requires flood cover not to have been removed from the certificate of insurance [AAMI Contents PDS, page 44]. Since the specific insurer is unknown, I cannot determine which of these conflicting frameworks (or another insurer's terms entirely) applies, nor whether flood cover was opted out on this policyholder's certificate. The claimant's own account also confirms the insurer itself could not clarify flood vs. storm classification for this loss.\n\nPer escalation policy, both \"claim does not name a specific insurer\" and \"contradictory/ambiguous coverage text\" apply here. This claim must be escalated to a human reviewer to (1) identify the actual insurer/policy, and (2) resolve the flood-vs-storm classification and confirm flood cover was not removed from the certificate before any payout calculation can proceed.",
   "citations": [
     {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 39
-    },
-    {
-      "doc_id": "aami-contents-kfs",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "suncorp-landlord-pds",
-      "insurer": "Suncorp",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 47
-    },
-    {
-      "doc_id": "budgetdirect-home-pds",
-      "insurer": "BudgetDirect",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 52
+      "page": 37
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 44
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "aami-contents-kfs",
+      "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
       "doc_type": "PDS",
-      "page": 39
+      "page": 44
     },
     {
-      "doc_id": "raa-contents-pds",
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 88
-    },
-    {
-      "doc_id": "suncorp-landlord-pds",
-      "insurer": "Suncorp",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 47
-    },
-    {
-      "doc_id": "budgetdirect-home-pds",
-      "insurer": "BudgetDirect",
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 52
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 37
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 34
     }
   ],
   "claim_id": "claim-018"

@@ -5,15 +5,15 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 9 February 2024 I woke up to find someone had spray-painted graffiti all over our front fence and garage door overnight. It looks like it happened while we were asleep since there was nothing there when we went to bed. I haven't had anyone come out to quote on repainting or replacing the panels yet, so I don't have a cost figure at this stage. Policyholder with NRMA home insurance."
+        "claim_text": "On 9 February 2024 I woke up to find someone had spray-painted graffiti all over our front fence and garage door overnight. It looks like it happened while we were asleep since there was nothing there when we went to bed. I haven't had anyone come out to quote on repainting or replacing the panels yet, so I don't have a cost figure at this stage."
       },
       "output": {
         "claim_type": "malicious_damage",
         "date_of_loss": "2024-02-09",
-        "cause": "graffiti sprayed on front fence and garage door during sleep",
+        "cause": "unknown person spray-painted graffiti on front fence and garage door overnight",
         "damaged_item": "front fence and garage door",
         "estimated_amount": null,
-        "policy_number": "NRMA123456"
+        "policy_number": null
       }
     },
     {
@@ -21,33 +21,13 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is malicious damage / vandalism / graffiti to fences and garage doors covered?",
-        "insurer": "NRMA"
+        "query": "Is graffiti/malicious damage to fences and garage doors covered?",
+        "insurer": "NRMA",
+        "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, I can confirm coverage for malicious damage and vandalism, but with important limitations:\n\n**Malicious Damage/Vandalism - Covered:**\n- Under the NRMA Home KFS, malicious damage is covered \"as deliberate or intentional act (including vandalism and a malicious act) but not by You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Home KFS, page 1].\n- The NRMA Contents KFS states the same coverage terms: \"Covered as deliberate or intentional act (including vandalism and a malicious act) but not by You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Contents KFS, page 1].\n- The NRMA Home PDS confirms: \"We cover loss or damage by a deliberate or intentional act (including vandalism and a malicious act)\" [NRMA Home PDS, page 13], though it notes exclusions apply for certain parties (the excerpt is cut off before listing who is excluded).\n\n**Fences and Garage Doors Specifically:**\nThe excerpts provided do **not explicitly mention fences or garage doors** as items subject to this coverage. The excerpts reference specific items like glass panels, cooktops, oven doors, sanitary fixtures, mirrors, and picture frames in the context of \"impact\" and \"escape of liquid\" perils, but there is no specific mention of fences or garage doors in relation to malicious damage/vandalism coverage.\n\n**Graffiti:**\nNone of the provided excerpts specifically mention graffiti as a covered or excluded peril.\n\n**Conclusion:**\nI cannot definitively confirm whether fences and garage doors are covered for malicious damage/vandalism, or whether graffiti specifically is covered, based on the excerpts provided. The general \"deliberate or intentional act\" coverage appears to apply broadly to the home/contents, but these excerpts do not contain specific policy wording addressing fences, garage doors, or graffiti. To answer this fully, additional policy sections (such as full exclusion lists, definitions, or specific benefit schedules) would be needed.",
+        "answer": "Based on the provided excerpts, I cannot answer this question. The excerpts do not contain any information about graffiti or malicious damage cover, nor do they address fences or garage doors in that context. The pages provided cover topics such as accidental glass breakage, earthquake, flood/rainwater run-off, escape of water, lightning, storm surge/tsunami, riot/civil commotion, storm, and theft/attempted theft [NRMA Home PDS, pages 13-15], but none of these excerpts reference graffiti or malicious damage as an insured event.\n\nTo answer this question accurately, I would need excerpts from the policy specifically addressing \"Malicious damage\" or \"Graffiti\" cover.",
         "citations": [
-          {
-            "doc_id": "nrma-home-kfs",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "nrma-landlord-pds",
-            "insurer": "NRMA",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 12
-          },
-          {
-            "doc_id": "nrma-contents-kfs",
-            "insurer": "NRMA",
-            "product": "Contents",
-            "doc_type": "KFS",
-            "page": 1
-          },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
@@ -56,11 +36,32 @@
             "page": 13
           },
           {
-            "doc_id": "nrma-home-kfs",
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 15
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 15
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 15
           }
         ]
       }
@@ -68,19 +69,12 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: This claim has a null estimated_amount that cannot be resolved through any other means \u2014 the policyholder explicitly states they have not yet obtained a repair/replacement quote for the fence and garage door. Per escalation policy, a null estimated_amount that can't be resolved otherwise requires human review, since calculate_payout cannot be run without a claimed figure.\n\nAdditionally, coverage itself is not fully clear-cut: while NRMA's policy documents confirm malicious damage/vandalism (including deliberate acts) is generally covered [NRMA Home KFS, page 1] [NRMA Home PDS, page 13] [NRMA Contents KFS, page 1], the retrieved excerpts do not explicitly confirm that fences and garage doors (as opposed to items like glass panels or fixtures) are included, nor do they specifically address graffiti. This ambiguity compounds the need for human review rather than an automated approve/deny decision.\n\nI did not call get_policy_certificate or calculate_payout since the missing claim amount makes that computation impossible and inappropriate at this stage.\n\nPlease route to a human adjuster to (1) obtain a repair quote/estimated amount from the policyholder, and (2) confirm with full policy wording that fences/garage doors and graffiti specifically fall under the malicious damage benefit before finalizing."
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be processed automatically for two independent reasons, either of which triggers our escalation policy:\n\n1. **Missing estimated amount**: `extract_fields` returned a null `estimated_amount`, and the policyholder explicitly states no repair quote has been obtained yet. There is no other way to resolve this figure, so `calculate_payout` cannot be run responsibly.\n\n2. **Ambiguous coverage determination**: A search of the NRMA Home PDS for graffiti/malicious damage cover to fences and garage doors returned no relevant provisions \u2014 the retrieved excerpts only covered glass breakage, earthquake, flood, escape of water, lightning, storm surge, riot/civil commotion, storm, and theft, none of which clearly address graffiti/malicious damage as an insured event [NRMA Home PDS, page 13][NRMA Home PDS, page 14][NRMA Home PDS, page 15]. Without confirming whether malicious damage/graffiti is an insured peril (and whether any sub-limits or exclusions apply to fences), coverage cannot be determined.\n\nGiven both the unresolved cost figure and the ambiguous/incomplete coverage text, this claim should be handed to a human reviewer for a definitive coverage determination and to await a repair quote before any payout calculation is attempted."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: This claim has a null estimated_amount that cannot be resolved through any other means \u2014 the policyholder explicitly states they have not yet obtained a repair/replacement quote for the fence and garage door. Per escalation policy, a null estimated_amount that can't be resolved otherwise requires human review, since calculate_payout cannot be run without a claimed figure.\n\nAdditionally, coverage itself is not fully clear-cut: while NRMA's policy documents confirm malicious damage/vandalism (including deliberate acts) is generally covered [NRMA Home KFS, page 1] [NRMA Home PDS, page 13] [NRMA Contents KFS, page 1], the retrieved excerpts do not explicitly confirm that fences and garage doors (as opposed to items like glass panels or fixtures) are included, nor do they specifically address graffiti. This ambiguity compounds the need for human review rather than an automated approve/deny decision.\n\nI did not call get_policy_certificate or calculate_payout since the missing claim amount makes that computation impossible and inappropriate at this stage.\n\nPlease route to a human adjuster to (1) obtain a repair quote/estimated amount from the policyholder, and (2) confirm with full policy wording that fences/garage doors and graffiti specifically fall under the malicious damage benefit before finalizing.",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be processed automatically for two independent reasons, either of which triggers our escalation policy:\n\n1. **Missing estimated amount**: `extract_fields` returned a null `estimated_amount`, and the policyholder explicitly states no repair quote has been obtained yet. There is no other way to resolve this figure, so `calculate_payout` cannot be run responsibly.\n\n2. **Ambiguous coverage determination**: A search of the NRMA Home PDS for graffiti/malicious damage cover to fences and garage doors returned no relevant provisions \u2014 the retrieved excerpts only covered glass breakage, earthquake, flood, escape of water, lightning, storm surge, riot/civil commotion, storm, and theft, none of which clearly address graffiti/malicious damage as an insured event [NRMA Home PDS, page 13][NRMA Home PDS, page 14][NRMA Home PDS, page 15]. Without confirming whether malicious damage/graffiti is an insured peril (and whether any sub-limits or exclusions apply to fences), coverage cannot be determined.\n\nGiven both the unresolved cost figure and the ambiguous/incomplete coverage text, this claim should be handed to a human reviewer for a definitive coverage determination and to await a repair quote before any payout calculation is attempted.",
   "citations": [
-    {
-      "doc_id": "nrma-home-kfs",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -89,36 +83,22 @@
       "page": 13
     },
     {
-      "doc_id": "nrma-contents-kfs",
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 15
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "nrma-home-kfs",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "nrma-landlord-pds",
-      "insurer": "NRMA",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 12
-    },
-    {
-      "doc_id": "nrma-contents-kfs",
-      "insurer": "NRMA",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
@@ -126,11 +106,32 @@
       "page": 13
     },
     {
-      "doc_id": "nrma-home-kfs",
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 15
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 15
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 15
     }
   ],
   "claim_id": "claim-002"

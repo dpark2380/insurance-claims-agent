@@ -21,12 +21,19 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is theft/burglary of contents due to forced entry covered? Any limits on jewellery items?",
+        "query": "Theft/burglary cover forced entry stolen contents jewellery",
         "insurer": "NRMA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here is what can be confirmed:\n\n**Theft/burglary of contents due to forced entry:**\n\n- In the context of the \"Contents in storage\" benefit, theft is covered specifically when it follows \"violent or forced entry\" [NRMA Home PDS, page 19].\n- In the context of the \"Storage costs / Temporary accommodation\" additional benefit, the policy excludes \"loss or damage from theft or attempted theft **unless** the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23]. This implies that, for this particular benefit, theft following forced and violent entry into a secure building/room **is** covered.\n\nThe excerpts provided do not include the general \"Contents\" section's theft/burglary cover terms (i.e., the main insuring clause for theft of contents at the home outside of the storage or storage-costs contexts), so I cannot confirm the full scope of coverage for ordinary in-home contents theft from these excerpts alone.\n\n**Limits on jewellery items:**\n\n- Jewellery and Watches are included within \"General Contents,\" but the policy states that \"limits apply to what We pay for these items as General Contents\" [NRMA Home PDS, page 11].\n- The excerpts do not specify the dollar limit or percentage cap that applies to Jewellery and Watches under General Contents \u2014 only that a limit exists.\n- Separately, under the optional \"Portable Contents\" benefit, Jewellery and Watches (defined as \"watches, jewellery items and medals but not including a mobile device with a screen display or a smart watch\") can be specifically insured with a Sum Insured shown on the Certificate of Insur",
+        "answer": "Based on the excerpts provided, here's what applies to theft/burglary cover for stolen contents and jewellery:\n\n## General Theft Cover Requirements\n\nFor **Contents in transit/storage** cover, theft is only covered if it follows **violent or forced entry** [NRMA Home PDS, page 19].\n\nSimilarly, for the storage costs/temporary accommodation benefit context, the policy states theft or attempted theft is **not** covered \"unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23].\n\n## Jewellery and Watches - Specific Definition\n\n**Jewellery and Watches** means watches, jewellery items and medals, but **excludes** a mobile device with a screen display or a smart watch [NRMA Home PDS, page 11; NRMA Home PDS, page 25]. Note that limits apply to what is paid for these items as General Contents [NRMA Home PDS, page 11].\n\n## Optional Portable Contents/Valuable Contents Benefit (Jewellery and Watches)\n\nIf you have specifically insured \"Jewellery and Watches\" as a group of Portable Contents (with a Sum Insured shown on your Certificate of Insurance), the policy will cover items that are **Accidentally lost, stolen or damaged** during the Period of Insurance, **anywhere in the world** [NRMA Home PDS, page 25].\n\nPayment limits under this optional benefit are:\n- Up to **$10,000** for any individual item, unless separately listed with its own Sum Insured (in which case up to that specified Sum Insured), if lost, stolen or damaged **within Australia or New Zealand** [NRMA Home PDS, page 26]\n- Up to the **Sum Insured for the group** of Portable Contents (including separately listed items) if lost, stolen or damaged within Australia or New Zealand [NRMA Home PDS, page 26]\n- Up to **$10,000 in total for all items** [NRMA Home PDS, page 26] \u2014 though the excerpt is cut off here, so I cannot confirm the exact context/conditions attached to this final limit.\n\n## What's Not Covered\n\nFor the **Contents in transit** benefit specifically, Jewellery and Watches are explicitly **excluded** from that benefit's coverage [NRMA Home PDS, page 19] \u2014 this appears to be a separate benefit from the Portable Cont",
         "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
+          },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
@@ -39,14 +46,7 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 11
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 11
+            "page": 26
           },
           {
             "doc_id": "nrma-home-pds",
@@ -60,7 +60,7 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 25
+            "page": 11
           }
         ]
       }
@@ -79,63 +79,21 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "General contents theft cover - main insuring clause for theft of contents at the home, and specific jewellery/watches sub-limit dollar amount under General Contents",
-        "insurer": "NRMA"
-      },
-      "output": {
-        "answer": "**Main insuring clause for theft of contents at the home:**\nUnder 'Contents' insurance, cover extends to theft or attempted theft by: the policyholder (\"You\"); \"Your Family\"; anyone who normally lives in the Home including a tenant; or anyone who enters the Home or Site with the consent of You, Your Family, or anyone who normally lives in the Home. The policyholder must report any theft or attempted theft to the police and provide the report number and details of when and where the report was made [NRMA Home PDS, page 15].\n\n**Jewellery and Watches sub-limit under General Contents:**\nThe limit for General Contents \u2013 Jewellery and Watches is **$2,500 in total** [NRMA Home PDS, page 16].",
-        "citations": [
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 16
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 16
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 15
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 3
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 34
-          }
-        ]
-      }
-    },
-    {
-      "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning"
+      "text": ""
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning",
+  "reasoning": "",
   "citations": [],
   "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -148,14 +106,7 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 11
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 11
+      "page": 26
     },
     {
       "doc_id": "nrma-home-pds",
@@ -169,42 +120,7 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 25
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 16
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 16
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 15
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 3
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 34
+      "page": 11
     }
   ],
   "claim_id": "claim-012"

@@ -5,7 +5,7 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 14 February 2024, someone broke into our shed and stole my husband's mountain bike. We noticed it missing when he went to get it for his ride the next morning and found the shed padlock cut. The bike was worth around $2,200. Our policy number is HOM-4471203. Insurer: RealInsurance."
+        "claim_text": "On 14 February 2024, someone broke into our shed and stole my husband's mountain bike. We noticed it missing when he went to get it for his ride the next morning and found the shed padlock cut. The bike was worth around $2,200. Our policy number is HOM-4471203."
       },
       "output": {
         "claim_type": "theft",
@@ -21,26 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Theft of contents from shed / outbuilding, forced entry, coverage and exclusions",
+        "query": "theft of bicycle from locked shed, forced entry, outbuilding contents cover",
         "insurer": "RealInsurance"
       },
       "output": {
-        "answer": "Based on the provided policy excerpts, I do not have specific information addressing theft of contents from a shed or outbuilding located on the insured property itself. None of the excerpts define \"outbuilding,\" \"shed,\" or address on-premises structures separate from the main home.\n\nThe closest relevant provision I can cite relates to contents that are **temporarily removed** to a *different* building (not a shed on the same property):\n\n- Contents temporarily removed from your home to another building in Australia (e.g., another home, hotel, motel) are covered for loss or damage caused by theft, storm, flood, rainwater, or impact \u2014 but **only if you are temporarily residing in that building** and the contents are in your possession and under direct control [RealInsurance Contents PDS, page 28].\n- For theft specifically under this benefit, cover **only applies if part of the building you were residing in was damaged as a result of violent and forcible entry** [RealInsurance Contents PDS, page 28].\n- This benefit is limited to 20% of your contents sum insured under both Essential and Top levels of cover [RealInsurance Contents PDS, page 28].\n\nThis provision does not appear to apply to a shed or outbuilding situated at your own insured property, since it specifically concerns contents moved to **another building** while you are **residing** there \u2014 not a structure on your home's premises.\n\n**I cannot find any excerpt specifically covering theft from a shed/outbuilding on the insured premises, whether or not forced entry occurred.** To answer this question accurately, I would need additional policy excerpts addressing \"outbuildings,\" \"garden sheds,\" or theft occurring on the insured property but outside the main dwelling. Please provide those sections if available.",
+        "answer": "I don't have enough information in the provided excerpts to answer this question.\n\nThe excerpts cover contents temporarily removed from your home to another building (e.g., hotel, motel while temporarily residing) [RealInsurance Contents PDS, page 28], theft/burglary exclusions related to multi-residency common areas [RealInsurance Contents KFS, page 1], and landlord-related malicious acts/theft by tenants [RealInsurance Landlord PDS, page 24]. None of these excerpts address theft of a bicycle from a locked shed or outbuilding at the insured's own property, nor do they contain specific terms defining \"outbuilding contents cover\" or forced entry requirements for that scenario.\n\nTo answer this accurately, I would need excerpts specifically addressing cover for contents kept in sheds, garages, or other outbuildings on the insured premises.",
         "citations": [
-          {
-            "doc_id": "realinsurance-contents-pds",
-            "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 7
-          },
-          {
-            "doc_id": "realinsurance-contents-pds",
-            "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 49
-          },
           {
             "doc_id": "realinsurance-contents-pds",
             "insurer": "RealInsurance",
@@ -49,18 +35,32 @@
             "page": 28
           },
           {
-            "doc_id": "realinsurance-landlord-pds",
+            "doc_id": "realinsurance-contents-kfs",
             "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 42
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
           },
           {
             "doc_id": "realinsurance-contents-pds",
             "insurer": "RealInsurance",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 39
+            "page": 13
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 24
+          },
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
           }
         ]
       }
@@ -82,12 +82,20 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Cover for outbuildings, garages, sheds on the insured premises and theft of contents kept in them",
-        "insurer": "RealInsurance"
+        "query": "theft of contents from garage, shed, or other structure on the insured premises; forced entry required for theft claims",
+        "insurer": "RealInsurance",
+        "product": "Contents"
       },
       "output": {
-        "answer": "Based on the provided excerpts, I cannot fully answer this question.\n\nThe excerpts do not contain specific information about cover for outbuildings, garages, or sheds on the insured premises under the RealInsurance Contents policy, nor do they detail theft cover for contents kept in such structures at a homeowner's insured address.\n\nWhat the excerpts do address is a related but distinct scenario \u2014 **contents kept outside a building at a landlord's site** (not an owner-occupied home). Under the RealInsurance Landlord PDS, there is cover for contents kept \"in the open air\" at the site, described as places \"not fully enclosed by walls and a roof and is not able to be secured, such as a carport, a pergola or similar\" \u2014 this is limited to $500 per claim and excludes theft of items such as photographic equipment, mobile phones, computers, cash/cards, tickets, and tools of trade [RealInsurance Landlord PDS, page 26]. This suggests that fully enclosed and secured structures (which could include some garages or sheds) may be treated differently, but the excerpts do not confirm the specific terms that would apply to such enclosed outbuildings.\n\nSeparately, the excerpts note that theft cover under the Contents KFS excludes theft \"from a multi-residency site where the theft occurred from any common property, common or public area or unenclosed individual car park or car space\" [RealInsurance Contents KFS, page 1], but this does not directly address single-residence outbuildings, garages, or sheds either.\n\nTo answer your question accurately, I would need additional policy excerpts specifically covering outbuildings/garages/sheds at an insured contents (homeowner) address and any associated theft conditions or limits.",
+        "answer": "Based on the provided excerpts, I cannot fully answer this question as it relates specifically to theft from a garage, shed, or other structure **on the insured premises**.\n\nWhat the excerpts do establish:\n\n1. **General theft cover exclusions** (not tied to forced entry) \u2014 Theft is an insured event, but you are **not** covered for theft:\n   - by someone who lives in your home, or is at the site with the consent of you or someone who lives in your home;\n   - that occurred when your home was not sufficiently furnished for normal living purposes; or\n   - from a multi-residency site where the theft occurred from common property, a common/public area, or an unenclosed individual car park or car space [RealInsurance Contents PDS, page 15; RealInsurance Contents KFS, page 1].\n\n   None of these exclusions impose a general requirement of forced/violent entry for theft occurring at the insured address itself.\n\n2. **Forced entry requirement \u2014 but only for contents temporarily removed from your home**: If contents are temporarily removed to another building (e.g., another home, hotel, or motel) while you are staying there, theft cover is limited to 20% of your contents sum insured, and you are **not** covered for theft \"unless a part of the building in which you were residing was damaged as a result of violent and forcible entry\" [RealInsurance Contents PDS, page 28]. This forced-entry condition applies to that specific temporary-removal scenario, not to a garage, shed, or other structure on your insured premises.\n\nThe excerpts do not contain a specific provision addressing theft from a garage, shed, or other on-site structure at the insured address, n",
         "citations": [
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
           {
             "doc_id": "realinsurance-contents-kfs",
             "insurer": "RealInsurance",
@@ -107,21 +115,14 @@
             "insurer": "RealInsurance",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 13
-          },
-          {
-            "doc_id": "realinsurance-landlord-pds",
-            "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 26
+            "page": 42
           },
           {
             "doc_id": "realinsurance-contents-pds",
             "insurer": "RealInsurance",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 11
+            "page": 15
           }
         ]
       }
@@ -129,46 +130,18 @@
     {
       "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: I extracted the claim details (theft of a mountain bike valued at ~$2,200 from a locked shed on 14 Feb 2024, insurer RealInsurance, policy HOM-4471203) and retrieved the RealInsurance certificate figures (excess $500, coverage limit $40,000). However, when checking whether this cause of loss is actually covered, retrieve_policy could not locate any clear provision addressing theft from a shed/outbuilding on the insured's own premises \u2014 the closest matches concerned contents temporarily removed to another residence, or landlord-site open-air/common-area exclusions, none of which squarely apply to a homeowner's own shed. The tool explicitly stated the excerpts were insufficient/ambiguous to confirm coverage terms for this exact scenario [RealInsurance Contents PDS, page 28] [RealInsurance Contents PDS, page 7] [RealInsurance Contents PDS, page 49] [RealInsurance Contents PDS, page 39] [RealInsurance Landlord PDS, page 42] [RealInsurance Contents KFS, page 1] [RealInsurance Contents PDS, page 13] [RealInsurance Landlord PDS, page 26] [RealInsurance Contents PDS, page 11].\n\nPer escalation policy, ambiguous/contradictory coverage text from retrieve_policy requires human review rather than a guessed coverage determination. I have not calculated a payout since coverage itself is unresolved. This claim should be reviewed by a human underwriter to confirm whether shed contents theft (with forced entry via cut padlock) is covered under the applicable outbuilding/theft clauses not surfaced in these excerpts."
+      "text": "Based on the two retrieve_policy searches, I was unable to find clear policy language confirming or denying coverage for theft from a shed/outbuilding at the insured's own premises. This is genuinely ambiguous \u2014 the exclusions found relate to different scenarios (multi-residency common areas, temporarily removed contents), not theft from an on-site shed with forced entry (cut padlock).\n\nDECISION: escalate\nReasoning: The claim involves theft of a mountain bike ($2,200) from a locked shed at the policyholder's own premises, with evidence of forced entry (cut padlock), under a RealInsurance Contents policy (HOM-4471203). I extracted the claim fields successfully (claim_type: theft, cause: break-in at shed, estimated_amount: $2,200) and obtained the policyholder's certificate figures (excess: $500, coverage_limit: $40,000). However, two separate retrieve_policy queries returned ambiguous/inconclusive results: the available PDS/KFS excerpts address theft exclusions for multi-residency common areas [RealInsurance Contents PDS, page 15] [RealInsurance Contents KFS, page 1] and for contents temporarily removed to another building with a forced-entry requirement [RealInsurance Contents PDS, page 28], but none specifically address theft from a shed or outbuilding on the insured's own property. Per policy, this is not a scenario the excerpts clearly cover or exclude, so I cannot determine whether the shed/bike theft falls within or outside coverage without guessing. Per the escalation policy, ambiguous/contradictory coverage text requires human review rather than a guessed coverage determination \u2014 I have not run calculate_payout since the coverage determination itself is unresolved."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: I extracted the claim details (theft of a mountain bike valued at ~$2,200 from a locked shed on 14 Feb 2024, insurer RealInsurance, policy HOM-4471203) and retrieved the RealInsurance certificate figures (excess $500, coverage limit $40,000). However, when checking whether this cause of loss is actually covered, retrieve_policy could not locate any clear provision addressing theft from a shed/outbuilding on the insured's own premises \u2014 the closest matches concerned contents temporarily removed to another residence, or landlord-site open-air/common-area exclusions, none of which squarely apply to a homeowner's own shed. The tool explicitly stated the excerpts were insufficient/ambiguous to confirm coverage terms for this exact scenario [RealInsurance Contents PDS, page 28] [RealInsurance Contents PDS, page 7] [RealInsurance Contents PDS, page 49] [RealInsurance Contents PDS, page 39] [RealInsurance Landlord PDS, page 42] [RealInsurance Contents KFS, page 1] [RealInsurance Contents PDS, page 13] [RealInsurance Landlord PDS, page 26] [RealInsurance Contents PDS, page 11].\n\nPer escalation policy, ambiguous/contradictory coverage text from retrieve_policy requires human review rather than a guessed coverage determination. I have not calculated a payout since coverage itself is unresolved. This claim should be reviewed by a human underwriter to confirm whether shed contents theft (with forced entry via cut padlock) is covered under the applicable outbuilding/theft clauses not surfaced in these excerpts.",
+  "reasoning": "Based on the two retrieve_policy searches, I was unable to find clear policy language confirming or denying coverage for theft from a shed/outbuilding at the insured's own premises. This is genuinely ambiguous \u2014 the exclusions found relate to different scenarios (multi-residency common areas, temporarily removed contents), not theft from an on-site shed with forced entry (cut padlock).\n\nDECISION: escalate\nReasoning: The claim involves theft of a mountain bike ($2,200) from a locked shed at the policyholder's own premises, with evidence of forced entry (cut padlock), under a RealInsurance Contents policy (HOM-4471203). I extracted the claim fields successfully (claim_type: theft, cause: break-in at shed, estimated_amount: $2,200) and obtained the policyholder's certificate figures (excess: $500, coverage_limit: $40,000). However, two separate retrieve_policy queries returned ambiguous/inconclusive results: the available PDS/KFS excerpts address theft exclusions for multi-residency common areas [RealInsurance Contents PDS, page 15] [RealInsurance Contents KFS, page 1] and for contents temporarily removed to another building with a forced-entry requirement [RealInsurance Contents PDS, page 28], but none specifically address theft from a shed or outbuilding on the insured's own property. Per policy, this is not a scenario the excerpts clearly cover or exclude, so I cannot determine whether the shed/bike theft falls within or outside coverage without guessing. Per the escalation policy, ambiguous/contradictory coverage text requires human review rather than a guessed coverage determination \u2014 I have not run calculate_payout since the coverage determination itself is unresolved.",
   "citations": [
     {
       "doc_id": "realinsurance-contents-pds",
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 28
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 7
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 49
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 39
-    },
-    {
-      "doc_id": "realinsurance-landlord-pds",
-      "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 42
+      "page": 15
     },
     {
       "doc_id": "realinsurance-contents-kfs",
@@ -182,21 +155,7 @@
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 13
-    },
-    {
-      "doc_id": "realinsurance-landlord-pds",
-      "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 26
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 11
+      "page": 28
     }
   ],
   "retrieved_sources": [
@@ -205,35 +164,42 @@
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 7
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 49
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
       "page": 28
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 13
     },
     {
       "doc_id": "realinsurance-landlord-pds",
       "insurer": "RealInsurance",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 42
+      "page": 24
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-contents-kfs",
       "insurer": "RealInsurance",
       "product": "Contents",
-      "doc_type": "PDS",
-      "page": 39
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
       "doc_id": "realinsurance-contents-kfs",
@@ -254,21 +220,14 @@
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 13
-    },
-    {
-      "doc_id": "realinsurance-landlord-pds",
-      "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 26
+      "page": 42
     },
     {
       "doc_id": "realinsurance-contents-pds",
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 11
+      "page": 15
     }
   ],
   "claim_id": "claim-004"

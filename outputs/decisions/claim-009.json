@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is accidental breakage of glass/windows caused by an external object (cricket ball) covered?",
+        "query": "Accidental breakage of glass/windows caused by external object (cricket ball) - is it covered?",
         "insurer": "RealInsurance",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, **yes, accidental glass breakage from an external object such as a cricket ball would generally be covered**, subject to the specific terms below.\n\nThe policy includes \"Accidental breakage\" as a covered event, which is described as follows: \"This cover is defined as 'Accidental Glass Breakage' and covers glass breakage only. Excludes breakage of glass in a glasshouse, greenhouse or conservatory. We cover 'Accidental damage' as an Insured event on the Top cover policy.\" [RealInsurance Home KFS, page 1]\n\nThere is no exclusion listed in these excerpts for glass breakage caused by an external object like a cricket ball, so a cricket ball breaking a window would appear to fall within this \"Accidental Glass Breakage\" cover \u2014 as long as the glass is not part of a glasshouse, greenhouse, or conservatory (which are excluded) [RealInsurance Home KFS, page 1].\n\n**Important caveats from the source material:**\n- This Key Facts Sheet is explicitly stated to be \"a guide only,\" noting that \"the examples provided are only some of many conditions, exclusions and limits in this policy\" [RealInsurance Home KFS, page 1].\n- The document states you \"must read the PDS and policy documentation for all information about this policy\" [RealInsurance Home KFS, page 1], and this sheet \"does not provide a complete statement of the cover offered, exclusions, conditions and limits that apply under the policy\" [RealInsurance Home KFS, page 1].\n- Excesses may apply to claims, and a specific excess amount for glass breakage claims is not stated in these excerpts [RealInsurance Home KFS, page 2].\n\nSince the excerpts do not provide the full PDS wording on this cover, I cannot confirm with certainty all conditions or exclusions that might apply to a cricket-ball scenario specifically. You should consult the full PDS for complete details.",
+        "answer": "Based on the excerpts provided, glass breakage caused by an external object (such as a cricket ball) would likely fall under \"Accidental breakage,\" which is covered (\"Yes\"), defined as 'Accidental Glass Breakage' and covering glass breakage only. However, it excludes breakage of glass in a glasshouse, greenhouse, or conservatory [RealInsurance Home KFS, page 1].\n\nThe excerpts do not specifically address whether damage caused by an external object like a cricket ball would be classified under this event or potentially under \"Impacts,\" which is also covered (\"Yes\") but excludes loss or damage caused by tree felling or tree lopping on the site [RealInsurance Home KFS, page 1].\n\nThe Key Facts Sheet explicitly states it is \"a guide only\" and that \"the examples provided are only some of many conditions, exclusions and limits in this policy\" [RealInsurance Home KFS, page 1]. It does not provide enough detail to confirm definitively whether a cricket ball impact would be covered under Accidental Breakage, Impacts, or excluded for another reason not listed here. You would need to consult the full PDS and policy documentation for a complete answer, as recommended in the excerpts themselves [RealInsurance Home KFS, page 1].",
         "citations": [
           {
             "doc_id": "realinsurance-home-kfs",
@@ -40,21 +40,21 @@
             "insurer": "RealInsurance",
             "product": "Home",
             "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "realinsurance-home-kfs",
-            "insurer": "RealInsurance",
-            "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "realinsurance-home-kfs",
-            "insurer": "RealInsurance",
-            "product": "Home",
-            "doc_type": "KFS",
             "page": 2
+          },
+          {
+            "doc_id": "realinsurance-home-kfs",
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "realinsurance-home-kfs",
+            "insurer": "RealInsurance",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           },
           {
             "doc_id": "realinsurance-home-kfs",
@@ -67,34 +67,21 @@
       }
     },
     {
-      "turn": 1,
+      "turn": 2,
       "type": "tool_call",
-      "tool": "get_policy_certificate",
+      "tool": "escalate_to_human",
       "input": {
-        "insurer": "RealInsurance"
+        "reason": "Claim has no estimated repair/replacement amount (policyholder has not yet obtained a glazier's quote), and this cannot be resolved from the claim narrative or any other source. Per policy, a null estimated_amount that cannot otherwise be resolved requires human review before payout calculation can proceed."
       },
       "output": {
-        "excess": 500,
-        "coverage_limit": 40000
+        "status": "escalated",
+        "reason": "Claim has no estimated repair/replacement amount (policyholder has not yet obtained a glazier's quote), and this cannot be resolved from the claim narrative or any other source. Per policy, a null estimated_amount that cannot otherwise be resolved requires human review before payout calculation can proceed."
       }
-    },
-    {
-      "turn": 2,
-      "type": "final",
-      "text": "The estimated_amount is null, and there's no glazier quote yet, so I cannot resolve a claimed amount to run through calculate_payout.\n\nDECISION: escalate\n\nReasoning: The claim is a plausible covered event \u2014 RealInsurance's Home KFS confirms \"Accidental Glass Breakage\" is a covered insured event with no exclusion for damage caused by external objects like a cricket ball, aside from glasshouse/greenhouse/conservatory glass [RealInsurance Home KFS, page 1]. Excess ($500) and coverage limit ($40,000) were retrieved from the policyholder's certificate. However, extract_fields returned a null estimated_amount because the policyholder has not yet obtained a glazier quote for the window replacement. Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review \u2014 calculate_payout cannot be run without a genuine claimed/estimated amount, and guessing a replacement cost would be inappropriate. This claim should be escalated to obtain a repair quote before a payout decision can be calculated."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "The estimated_amount is null, and there's no glazier quote yet, so I cannot resolve a claimed amount to run through calculate_payout.\n\nDECISION: escalate\n\nReasoning: The claim is a plausible covered event \u2014 RealInsurance's Home KFS confirms \"Accidental Glass Breakage\" is a covered insured event with no exclusion for damage caused by external objects like a cricket ball, aside from glasshouse/greenhouse/conservatory glass [RealInsurance Home KFS, page 1]. Excess ($500) and coverage limit ($40,000) were retrieved from the policyholder's certificate. However, extract_fields returned a null estimated_amount because the policyholder has not yet obtained a glazier quote for the window replacement. Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review \u2014 calculate_payout cannot be run without a genuine claimed/estimated amount, and guessing a replacement cost would be inappropriate. This claim should be escalated to obtain a repair quote before a payout decision can be calculated.",
-  "citations": [
-    {
-      "doc_id": "realinsurance-home-kfs",
-      "insurer": "RealInsurance",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    }
-  ],
+  "reasoning": "Claim has no estimated repair/replacement amount (policyholder has not yet obtained a glazier's quote), and this cannot be resolved from the claim narrative or any other source. Per policy, a null estimated_amount that cannot otherwise be resolved requires human review before payout calculation can proceed.",
+  "citations": [],
   "retrieved_sources": [
     {
       "doc_id": "realinsurance-home-kfs",
@@ -108,21 +95,21 @@
       "insurer": "RealInsurance",
       "product": "Home",
       "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "realinsurance-home-kfs",
-      "insurer": "RealInsurance",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "realinsurance-home-kfs",
-      "insurer": "RealInsurance",
-      "product": "Home",
-      "doc_type": "KFS",
       "page": 2
+    },
+    {
+      "doc_id": "realinsurance-home-kfs",
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-home-kfs",
+      "insurer": "RealInsurance",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
       "doc_id": "realinsurance-home-kfs",

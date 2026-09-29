@@ -16,45 +16,45 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is gradual damage from corrosion of pipes and resulting rot covered or excluded?"
+        "query": "Is gradual corrosion of pipes and resulting rot/damage covered, or excluded as wear and tear / gradual deterioration?"
       },
       "output": {
-        "answer": "Based on the excerpts provided, gradual damage from corrosion of pipes and resulting rot is **excluded**.\n\nSpecifically:\n- Under the AAMI Contents PDS, loss or damage caused by \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" is explicitly not covered [AAMI Contents PDS, page 70].\n- The AAMI Building PDS contains identical exclusionary language, listing \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" as not covered [AAMI Building PDS, page 70].\n- The Suncorp Landlord PDS similarly excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [Suncorp Landlord PDS, page 79].\n\nAdditionally, general damage that occurs gradually is excluded under these policies, except where covered under a specific insured event like \"Escape of liquid\" [AAMI Contents PDS, page 70]. However, the excerpts do not indicate that corrosion or resulting rot would fall under an \"Escape of liquid\" exception or any other exception that would restore coverage.\n\nThe Suncorp Contents PDS excerpt also excludes rust or corrosion damage, though it notes an exception if the \"rust or corrosion wasn't easily visible to a reasonable person in the circumstances\" [Suncorp Contents PDS, page 47]. This suggests that under this specific policy, corrosion-related damage may be covered only if it was not reasonably visible \u2014 but the excerpt does not extend this exception to rot resulting from the corrosion.\n\n**Summary:** Across the AAMI Building/Contents PDS and Suncorp Landlord PDS excerpts, gradual corrosion and resulting rot are excluded outright. The Suncorp Contents PDS offers a narrow exception for corrosion that wasn't reasonably visible, but the excerpts do not provide enough detail to confirm whether resulting rot would also fall under that exception.",
+        "answer": "Based on the provided excerpts, gradual corrosion of pipes and any resulting rot/damage would be **excluded**, falling under \"wear and tear or gradual deterioration\" provisions found across multiple insurers' policies:\n\n- **CommBank Home PDS**: Excludes loss or damage caused by or resulting from \"wear and tear or gradual deterioration\" [CommBank Home PDS, page 19]. It also separately excludes \"the gradual seepage of water or other liquids\" and \"the escape of liquid occurring as a result of a gradual process of leaking, splashing, dripping or overflowing\" [CommBank Home PDS, page 19] \u2014 corrosion-driven pipe failure leading to a gradual leak would likely fall under these exclusions as well.\n\n- **CommBank Landlord PDS**: Contains identical exclusions for \"wear and tear, or gradual deterioration\" and gradual liquid escape processes [CommBank Landlord PDS, page 15].\n\n- **RealInsurance Landlord PDS** and **RealInsurance Contents PDS**: Both state that liquid escape cover applies only if it is \"sudden, unexpected, accidental and without warning\" [RealInsurance Landlord PDS, page 17; RealInsurance Contents PDS, page 17]. Both also exclude \"wear and tear, gradual deterioration\" and \"the gradual seepage of water or other liquids\" [RealInsurance Landlord PDS, page 17; RealInsurance Contents PDS, page 17]. This implies that gradual corrosion-related leaks, not being sudden/unexpected, would not meet the insured event definition and would fall under the exclusion.\n\n- **Allianz Landlord PDS**: Defines \"Wear and tear\" expansively to include \"depreciation, gradual deterioration, or lack of maintenance,\" with examples such as \"gradual deterioration and breakdown of bricks, mortar or concrete\" [Allianz Landlord PDS, page 52]. While pipe corrosion specifically is not listed as an example, the general definition of wear and tear as gradual deterioration would likely extend to gradual pipe corrosion under this policy's framework.\n\n**Caveat**: None of the excerpts explicitly use the word \"corrosion\" or specifically address pipe corrosion as a named peril or exclusion. The conclusion above is inferred from the general \"wear and tear / gradual deterioration\" exclusions and the \"grad",
         "citations": [
           {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
             "doc_type": "PDS",
-            "page": 70
+            "page": 19
           },
           {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 70
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 70
-          },
-          {
-            "doc_id": "suncorp-landlord-pds",
-            "insurer": "Suncorp",
+            "doc_id": "commbank-landlord-pds",
+            "insurer": "CommBank",
             "product": "Landlord",
             "doc_type": "PDS",
-            "page": 79
+            "page": 15
           },
           {
-            "doc_id": "suncorp-contents-pds",
-            "insurer": "Suncorp",
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 47
+            "page": 17
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 52
           }
         ]
       }
@@ -62,76 +62,83 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: Two independent triggers for escalation apply here:\n\n1. **No insurer named** \u2014 the claim does not identify a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit, which is not permitted.\n2. **Field extraction failure** \u2014 `extract_fields` could not produce a valid structured extraction (including estimated_amount) from this narrative, and it cannot be resolved another way without the missing insurer context.\n3. **Exclusion conflict** \u2014 the claimed cause (gradual corrosion leading to rot) directly conflicts with standard exclusions found across insurers: AAMI Building/Contents PDS exclude \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [AAMI Contents PDS, page 70] [AAMI Building PDS, page 70], as does Suncorp Landlord PDS [Suncorp Landlord PDS, page 79]. Suncorp Contents PDS has a narrow exception for corrosion \"not easily visible,\" but it's unclear if that extends to the resulting rot [Suncorp Contents PDS, page 47] \u2014 an ambiguity that itself warrants human review.\n\nGiven the missing insurer identification, failed field extraction, and a direct conflict with a gradual-damage/corrosion exclusion (with some ambiguity in one insurer's policy about a visibility exception), this claim should be handed to a human reviewer rather than approved or denied automatically."
+      "text": "DECISION: escalate\n\nReasoning: This claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which I must not do. Additionally, `extract_fields` failed to produce a structured extraction (including a resolvable estimated_amount) from the narrative.\n\nOn the coverage question itself, the policy text I reviewed strongly suggests this claim would be excluded as gradual deterioration/wear and tear rather than a sudden accidental event: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Landlord PDS, page 17], [RealInsurance Contents PDS, page 17], [Allianz Landlord PDS, page 52]. However, since no insurer is identified in the claim, I cannot confirm which policy wording actually applies, cannot pull the correct excess/coverage limit, and the claimed cause (gradual corrosion) directly conflicts with wear-and-tear/gradual-deterioration exclusions found across multiple insurers. Per policy, this combination of missing insurer identification, unresolvable estimated amount, and direct conflict with an exclusion requires human review rather than an automated approve/deny decision."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: Two independent triggers for escalation apply here:\n\n1. **No insurer named** \u2014 the claim does not identify a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit, which is not permitted.\n2. **Field extraction failure** \u2014 `extract_fields` could not produce a valid structured extraction (including estimated_amount) from this narrative, and it cannot be resolved another way without the missing insurer context.\n3. **Exclusion conflict** \u2014 the claimed cause (gradual corrosion leading to rot) directly conflicts with standard exclusions found across insurers: AAMI Building/Contents PDS exclude \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [AAMI Contents PDS, page 70] [AAMI Building PDS, page 70], as does Suncorp Landlord PDS [Suncorp Landlord PDS, page 79]. Suncorp Contents PDS has a narrow exception for corrosion \"not easily visible,\" but it's unclear if that extends to the resulting rot [Suncorp Contents PDS, page 47] \u2014 an ambiguity that itself warrants human review.\n\nGiven the missing insurer identification, failed field extraction, and a direct conflict with a gradual-damage/corrosion exclusion (with some ambiguity in one insurer's policy about a visibility exception), this claim should be handed to a human reviewer rather than approved or denied automatically.",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which I must not do. Additionally, `extract_fields` failed to produce a structured extraction (including a resolvable estimated_amount) from the narrative.\n\nOn the coverage question itself, the policy text I reviewed strongly suggests this claim would be excluded as gradual deterioration/wear and tear rather than a sudden accidental event: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Landlord PDS, page 17], [RealInsurance Contents PDS, page 17], [Allianz Landlord PDS, page 52]. However, since no insurer is identified in the claim, I cannot confirm which policy wording actually applies, cannot pull the correct excess/coverage limit, and the claimed cause (gradual corrosion) directly conflicts with wear-and-tear/gradual-deterioration exclusions found across multiple insurers. Per policy, this combination of missing insurer identification, unresolvable estimated amount, and direct conflict with an exclusion requires human review rather than an automated approve/deny decision.",
   "citations": [
     {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
       "doc_type": "PDS",
-      "page": 70
+      "page": 19
     },
     {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 70
-    },
-    {
-      "doc_id": "suncorp-landlord-pds",
-      "insurer": "Suncorp",
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 79
+      "page": 15
     },
     {
-      "doc_id": "suncorp-contents-pds",
-      "insurer": "Suncorp",
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 47
+      "page": 17
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
       "doc_type": "PDS",
-      "page": 70
+      "page": 19
     },
     {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 70
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 70
-    },
-    {
-      "doc_id": "suncorp-landlord-pds",
-      "insurer": "Suncorp",
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 79
+      "page": 15
     },
     {
-      "doc_id": "suncorp-contents-pds",
-      "insurer": "Suncorp",
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 47
+      "page": 17
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
     }
   ],
   "claim_id": "claim-015"

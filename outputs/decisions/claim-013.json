@@ -5,7 +5,7 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 8 February 2024 my son was kicking a soccer ball in the backyard and it smashed straight through our sliding glass door. The whole pane shattered and we've had to board it up until it can be replaced. I think it'll cost around $650 to fix. (Policyholder with RAA home insurance.)"
+        "claim_text": "On 8 February 2024 my son was kicking a soccer ball in the backyard and it smashed straight through our sliding glass door. The whole pane shattered and we've had to board it up until it can be replaced. I think it'll cost around $650 to fix."
       },
       "output": {
         "claim_type": "glass_breakage",
@@ -13,7 +13,7 @@
         "cause": "soccer ball kicked into sliding glass door",
         "damaged_item": "sliding glass door",
         "estimated_amount": 650.0,
-        "policy_number": "RAA12345"
+        "policy_number": null
       }
     },
     {
@@ -21,11 +21,37 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Accidental breakage of glass sliding door coverage",
+        "query": "Is accidental breakage of glass (sliding glass door) covered?",
+        "insurer": "RAA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, the **Accidental Breakage of Glass and Sanitary Fixtures** Additional Benefit states that, if **Home** is shown on your Certificate of Insurance, RAA will cover the cost of repairing or replacing \"any part of any: fixed glass forming part of the Insured Property including windows\" if accidentally broken [RAA Contents PDS, page 52].\n\nA glass sliding door, being a fixed glass component of the home, would generally fall under this description of \"fixed glass forming part of the Insured Property\" \u2014 however, the excerpts do not explicitly name \"sliding doors\" as an example (only \"windows\" is specifically mentioned) [RAA Contents PDS, page 52].\n\nNote the following exclusions apply to this benefit, none of which specifically reference sliding doors, but are worth noting:\n- Repairing scratches where the break does not extend through the entire thickness of the item\n- Glass in a glasshouse or greenhouse\n- Repair or replacement of tiles, tiled fixtures, or splashbacks (tiled or glass)\n- Toilet seats\n- Glass forming part of a stove, heater, oven, or cooktop damaged by direct heat\n- Picture tubes/screens of televisions or visual display units\n- Glass in radios, clocks, vases, ornaments, lamps, or photo frames\n[RAA Contents PDS, page 52]\n\nThis benefit is also subject to the General Exclusions and other policy terms and conditions, and the applicable limit is the **Sum Insured** [RAA Contents PDS, page 35].\n\n**I cannot confirm with certainty from these excerpts whether a glass sliding door is explicitly included**, since the excerpt only lists \"windows\" as an example of \"fixed glass.\" If you need",
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "accidental breakage of glass windows doors coverage",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the RAA Contents PDS, coverage for accidental breakage of glass depends on what type of Insured Property is shown on your Certificate of Insurance:\n\n**If Home is shown on your Certificate of Insurance:**\nYou are covered for the cost of repairing or replacing any part of any fixed glass forming part of the Insured Property, **including windows**, if accidentally broken. This also extends to fixed sinks or basins, shower bases (not tiled bases), baths, or toilets forming part of the Insured Property [RAA Contents PDS, page 52].\n\n**If Contents is shown on your Certificate of Insurance:**\nCoverage is limited to glass in furniture, pictures/paintings/prints/mirrors designed to be hung or freestanding, or glass forming part of aquariums, if accidentally broken [RAA Contents PDS, page 52]. This does not extend to fixed windows or doors of the Home itself \u2014 that coverage falls under the \"Home\" category above.\n\n**Exclusions that apply regardless of category:**\nThis cover does **not** apply to:\n- Repairing scratches (where the break does not extend through the entire thickness of the item)\n- Glass in a glasshouse or greenhouse\n- Repair or replacement of any tiles or tiled fixture or splashback (whether tiled or glass) forming part of the Home\n- Toilet seats\n- Glass forming part of a stove, heater, oven, or cook top as a result of the direct application of heat\n- A picture tube or screen of a television or visual display unit\n- Glass forming part of a radio or clock, vase, ornament, lamp, or photo frame\n[RAA Contents PDS, page 52]\n\n**Note on doors:** The excerpts specifically mention \"windows\" as an example of fixed glass covered under Home, but do not explicitly list \"doors\" or glass forming part of doors. I cannot confirm from the provided excerpts whether glass in doors is included, though it may fall under \"fixed glass forming part of the Insured Property\" if doors are considered part of the Insured Property structure. The excerpts do not provide enough detail to confirm this definitively \u2014 you may need to check additional PDS pages or your Certificate of Insurance for clarification.\n\nThis coverage is also subject to the General Exclusions found on pages 53\u201360, which are not fully detailed in the excerpts provided [RAA Contents PDS, page 52].",
         "citations": [
           {
             "doc_id": "raa-contents-pds",
@@ -60,31 +86,26 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 91
+            "page": 45
           }
         ]
       }
     },
     {
-      "turn": 1,
+      "turn": 3,
       "type": "tool_call",
-      "tool": "get_policy_certificate",
+      "tool": "escalate_to_human",
       "input": {
-        "insurer": "RAA"
+        "reason": "Claim is for a shattered sliding glass door (accidental breakage, $650). RAA Contents PDS [RAA Contents PDS, page 52] confirms accidental glass breakage cover under the 'Home' category extends to 'fixed glass forming part of the Insured Property, including windows,' but does not explicitly state whether doors/sliding glass doors are included in this definition. The policy text itself notes this ambiguity ('may fall under... if doors are considered part of the Insured Property structure... not enough detail to confirm this definitively'). This is a genuine coverage ambiguity that requires human review before a payout decision (which would use excess $500, coverage_limit $45,000) can be made."
       },
       "output": {
-        "excess": 500,
-        "coverage_limit": 45000
+        "status": "escalated",
+        "reason": "Claim is for a shattered sliding glass door (accidental breakage, $650). RAA Contents PDS [RAA Contents PDS, page 52] confirms accidental glass breakage cover under the 'Home' category extends to 'fixed glass forming part of the Insured Property, including windows,' but does not explicitly state whether doors/sliding glass doors are included in this definition. The policy text itself notes this ambiguity ('may fall under... if doors are considered part of the Insured Property structure... not enough detail to confirm this definitively'). This is a genuine coverage ambiguity that requires human review before a payout decision (which would use excess $500, coverage_limit $45,000) can be made."
       }
-    },
-    {
-      "turn": 2,
-      "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim is glass breakage to a sliding glass door caused by a soccer ball impact, estimated at $650, under an RAA home policy (certificate confirms excess $500, coverage limit $45,000). However, retrieve_policy could not confirm with certainty whether a \"glass sliding door\" falls under the \"Accidental Breakage of Glass and Sanitary Fixtures\" benefit, which explicitly names \"windows\" as an example of \"fixed glass forming part of the Insured Property\" but does not explicitly list sliding doors [RAA Contents PDS, page 52]. This is ambiguous coverage text that meets the escalation criterion of ambiguous coverage determination, so I am escalating rather than guessing whether this cause is covered."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim is glass breakage to a sliding glass door caused by a soccer ball impact, estimated at $650, under an RAA home policy (certificate confirms excess $500, coverage limit $45,000). However, retrieve_policy could not confirm with certainty whether a \"glass sliding door\" falls under the \"Accidental Breakage of Glass and Sanitary Fixtures\" benefit, which explicitly names \"windows\" as an example of \"fixed glass forming part of the Insured Property\" but does not explicitly list sliding doors [RAA Contents PDS, page 52]. This is ambiguous coverage text that meets the escalation criterion of ambiguous coverage determination, so I am escalating rather than guessing whether this cause is covered.",
+  "reasoning": "Claim is for a shattered sliding glass door (accidental breakage, $650). RAA Contents PDS [RAA Contents PDS, page 52] confirms accidental glass breakage cover under the 'Home' category extends to 'fixed glass forming part of the Insured Property, including windows,' but does not explicitly state whether doors/sliding glass doors are included in this definition. The policy text itself notes this ambiguity ('may fall under... if doors are considered part of the Insured Property structure... not enough detail to confirm this definitively'). This is a genuine coverage ambiguity that requires human review before a payout decision (which would use excess $500, coverage_limit $45,000) can be made.",
   "citations": [
     {
       "doc_id": "raa-contents-pds",
@@ -128,7 +149,7 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 91
+      "page": 45
     }
   ],
   "claim_id": "claim-013"

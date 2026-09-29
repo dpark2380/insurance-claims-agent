@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "subsidence and settling of the land, foundations, footings coverage or exclusion",
+        "query": "subsidence footing movement cracking coverage exclusion",
         "insurer": "Allianz",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the provided excerpts, subsidence is addressed only in the context of storm, cyclone, or rainwater cover:\n\n- **Covered:** Loss or damage caused by or arising from soil movement (including erosion), landslide, mudslide, or **subsidence**, *if* it is caused directly by and occurs within 72 hours of a storm, cyclone, or rainwater event [Allianz Home PDS, page 24].\n\nThe excerpt is cut off (\"but...\") immediately after this, so there may be additional conditions or exclusions to this subsidence cover that are not included in the provided material [Allianz Home PDS, page 24].\n\nNo other excerpt provided addresses subsidence or settling of foundations/footings outside of this storm/cyclone/rainwater context (e.g., general exclusions for subsidence unrelated to a storm event, or subsidence due to other causes such as ground water changes, tree roots, or drainage). Therefore, I cannot confirm from these excerpts whether subsidence or settling caused by other factors (not tied to a storm, cyclone, or rainwater event) is covered or excluded \u2014 the policy document would need to be checked further (e.g., the general exclusions section referenced on page 51, which is not included here) [Allianz Home PDS, page 23].\n\n**Summary:** Subsidence is covered under Buildings and Contents Insurance only when it directly results from and occurs within 72 hours of a storm, cyclone, or rainwater event [Allianz Home PDS, page 24]. The excerpts do not provide enough information to state whether subsidence or settling from other causes (e.g., soil conditions unrelated to storm/rainwater) is covered or excluded.",
+        "answer": "Based on the provided excerpts, here is what the policy says about subsidence and soil movement:\n\n**General Exclusion (Soil movement):**\nLoss or damage caused by soil movement \u2014 including erosion, landslide, mudslide or subsidence \u2014 is excluded **unless** it is directly caused by, and occurs within 72 hours of, an explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood/flood water combined with run-off and/or rainwater [Allianz Home PDS, page 55].\n\n**Buildings/Contents cover exception:**\nUnder the Storm, cyclone or rainwater section, loss or damage caused by or arising from soil movement (including erosion, landslide, mudslide, or subsidence) **is covered** if it is caused directly by, and occurs within 72 hours of, a storm, cyclone or rainwater event [Allianz Home PDS, page 24].\n\n**What the excerpts do NOT address:**\nThe provided excerpts do not contain any specific reference to \"footing movement\" or \"cracking\" as separate terms \u2014 only \"subsidence\" is mentioned as part of the broader \"soil movement\" category. I cannot confirm whether footing movement or cracking (e.g., from soil reactivity, tree roots, or drought) are separately covered or excluded, as this information is not present in the supplied excerpts. If you need clarification on footing/cracking specifically, please provide additional policy pages covering that topic.",
         "citations": [
           {
             "doc_id": "allianz-home-pds",
@@ -47,7 +47,7 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 42
+            "page": 55
           },
           {
             "doc_id": "allianz-home-pds",
@@ -81,25 +81,25 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim is for subsidence/footing movement (builder-confirmed ground subsidence causing brickwork cracking), with an estimated repair cost of $12,500. Per the Allianz Home PDS, subsidence is explicitly covered only when it is caused directly by and occurs within 72 hours of a storm, cyclone, or rainwater event [Allianz Home PDS, page 24]. The claim narrative gives no indication of a preceding storm, cyclone, or rainwater event \u2014 it describes gradual ground subsidence noticed over time, which suggests this may fall outside that narrow covered scenario and could be excluded under general exclusions for subsidence/settling (referenced but not fully available) [Allianz Home PDS, page 23]. The retrieved policy text itself is incomplete/cut off (\"but...\") and states there is insufficient information to confirm whether subsidence from causes other than storm/rainwater is covered or excluded [Allianz Home PDS, page 24].\n\nBecause the coverage determination is ambiguous \u2014 the cause as described doesn't clearly meet the storm/cyclone/rainwater trigger required for the covered peril, and the exclusion text is incomplete \u2014 this meets the escalation criteria for \"contradictory or ambiguous coverage text\" and a claimed cause that may directly conflict with a policy exclusion. I am not calculating a payout, as approving or denying would require guessing on the coverage determination."
+      "text": "The claim describes subsidence/footing movement with no mention of a triggering storm, cyclone, rainwater, explosion, earthquake, tsunami, or flood event within 72 hours \u2014 in fact, the builder attributes it to ground subsidence generally, with no proximate covered peril identified. This directly matches the general exclusion for soil movement/subsidence, and there's no evidence the narrow exception (storm/cyclone/rainwater within 72 hours) applies.\n\nDECISION: deny\n\nThe claimed cause \u2014 subsidence and footing movement causing brickwork/internal wall cracking \u2014 falls under Allianz's general exclusion for soil movement (including subsidence), which is only covered if directly caused by and occurring within 72 hours of an explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood event [Allianz Home PDS, page 55][Allianz Home PDS, page 24]. The claim narrative gives no indication of any such triggering event \u2014 it describes gradual ground subsidence noticed over time, consistent with normal excluded subsidence rather than a sudden, weather-triggered event. Since the claimed cause directly conflicts with this policy exclusion and there is no evidence the narrow exception applies, this is not payable under the policy as described. No payout calculation is warranted given the exclusion applies squarely to the facts presented."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for subsidence/footing movement (builder-confirmed ground subsidence causing brickwork cracking), with an estimated repair cost of $12,500. Per the Allianz Home PDS, subsidence is explicitly covered only when it is caused directly by and occurs within 72 hours of a storm, cyclone, or rainwater event [Allianz Home PDS, page 24]. The claim narrative gives no indication of a preceding storm, cyclone, or rainwater event \u2014 it describes gradual ground subsidence noticed over time, which suggests this may fall outside that narrow covered scenario and could be excluded under general exclusions for subsidence/settling (referenced but not fully available) [Allianz Home PDS, page 23]. The retrieved policy text itself is incomplete/cut off (\"but...\") and states there is insufficient information to confirm whether subsidence from causes other than storm/rainwater is covered or excluded [Allianz Home PDS, page 24].\n\nBecause the coverage determination is ambiguous \u2014 the cause as described doesn't clearly meet the storm/cyclone/rainwater trigger required for the covered peril, and the exclusion text is incomplete \u2014 this meets the escalation criteria for \"contradictory or ambiguous coverage text\" and a claimed cause that may directly conflict with a policy exclusion. I am not calculating a payout, as approving or denying would require guessing on the coverage determination.",
+  "reasoning": "The claim describes subsidence/footing movement with no mention of a triggering storm, cyclone, rainwater, explosion, earthquake, tsunami, or flood event within 72 hours \u2014 in fact, the builder attributes it to ground subsidence generally, with no proximate covered peril identified. This directly matches the general exclusion for soil movement/subsidence, and there's no evidence the narrow exception (storm/cyclone/rainwater within 72 hours) applies.\n\nDECISION: deny\n\nThe claimed cause \u2014 subsidence and footing movement causing brickwork/internal wall cracking \u2014 falls under Allianz's general exclusion for soil movement (including subsidence), which is only covered if directly caused by and occurring within 72 hours of an explosion, earthquake, tsunami, storm, cyclone, rainwater, or flood event [Allianz Home PDS, page 55][Allianz Home PDS, page 24]. The claim narrative gives no indication of any such triggering event \u2014 it describes gradual ground subsidence noticed over time, consistent with normal excluded subsidence rather than a sudden, weather-triggered event. Since the claimed cause directly conflicts with this policy exclusion and there is no evidence the narrow exception applies, this is not payable under the policy as described. No payout calculation is warranted given the exclusion applies squarely to the facts presented.",
   "citations": [
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 24
+      "page": 55
     },
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 23
+      "page": 24
     }
   ],
   "retrieved_sources": [
@@ -122,7 +122,7 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 42
+      "page": 55
     },
     {
       "doc_id": "allianz-home-pds",

@@ -18,19 +18,12 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "escalate_to_human",
-      "input": {
-        "reason": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout."
-      },
-      "output": {
-        "status": "escalated",
-        "reason": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout."
-      }
+      "type": "final",
+      "text": "This claim lacks critical information: no named insurer, unknown cause, and no estimated amount.\n\nDECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing an excess/coverage limit, which is against policy. Additionally, extract_fields returned a null estimated_amount that cannot be resolved from the narrative, and the cause of damage is unknown, making it impossible to check coverage/exclusions via retrieve_policy with any confidence. Per escalation policy, this combination of missing insurer, null amount, and unknown cause requires human review rather than a guessed decision."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim narrative provides no named insurer (cannot look up policy certificate for excess/coverage limit), no identifiable cause of loss (cannot check coverage/exclusions), and no estimated amount (null, unresolvable from the text). Insufficient information to determine coverage or calculate payout.",
+  "reasoning": "This claim lacks critical information: no named insurer, unknown cause, and no estimated amount.\n\nDECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing an excess/coverage limit, which is against policy. Additionally, extract_fields returned a null estimated_amount that cannot be resolved from the narrative, and the cause of damage is unknown, making it impossible to check coverage/exclusions via retrieve_policy with any confidence. Per escalation policy, this combination of missing insurer, null amount, and unknown cause requires human review rather than a guessed decision.",
   "citations": [],
   "retrieved_sources": [],
   "claim_id": "claim-016"

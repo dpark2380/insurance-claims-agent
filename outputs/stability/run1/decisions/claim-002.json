@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "vandalism graffiti damage to fence and garage door coverage",
+        "query": "Is graffiti/vandalism damage to fence and garage door covered?",
         "insurer": "NRMA",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here is what can be confirmed:\n\n**Coverage for vandalism/deliberate or intentional acts:**\nThe policy covers loss or damage caused by a deliberate or intentional act, which includes vandalism and malicious acts [NRMA Home PDS, page 13]. This coverage applies to:\n- Your Home, if You have 'Building' insurance; and\n- Your General Contents while in Your Home, if You have 'Contents' insurance [NRMA Home PDS, page 13]\n\n**Exclusions to this coverage:**\nThe policy will **not** cover a deliberate or intentional act committed by:\n- You;\n- Your Family;\n- anyone who normally lives in Your Home, including a tenant; or\n- anyone who enters Your Home or the Site with the consent of You, Your Family, or anyone who normally lives in Your Home [NRMA Home PDS, page 13]\n\n**Reporting requirement:**\nYou must report any deliberate or intentional act to the police and provide the insurer with the report number and details of when and where the report was made [NRMA Home PDS, page 13; page 28].\n\n**Regarding fences and garage doors specifically:**\nThe excerpts provided do not explicitly mention \"fence\" or \"garage door\" as specific items under this Deliberate or Intentional Act section, nor do they clarify whether these structures fall under \"Your Home\" (Building) coverage. **I cannot confirm from these excerpts alone** whether a fence or garage door is defined as part of \"Your Home\" for Building insurance purposes, as that definition is not included in the excerpts provided.\n\n**Recommendation:**\nTo fully answer whether graffiti/vandalism damage to a fence and garage door is covered, I would need additional excerpts that:\n1. Define what is included in \"Your Home\" or \"the Building\" (to confirm fences/garage doors are included structures), and\n2. Confirm the type of policy held ('Building Plus', 'Building Standard', 'Contents Plus', or 'Contents Standard').\n\nIf you can provide the policy's definition of \"Home\" or \"Building,\" I can give a more complete answer.",
+        "answer": "The provided excerpts do not contain information about coverage for graffiti or vandalism damage to a fence or garage door. I cannot answer this question based on the policy excerpts given.",
         "citations": [
           {
             "doc_id": "nrma-home-pds",
@@ -40,13 +40,6 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 13
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
             "page": 22
           },
           {
@@ -54,14 +47,21 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 13
+            "page": 14
           },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 28
+            "page": 21
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 30
           }
         ]
       }
@@ -69,19 +69,12 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim narrative provides no estimated repair/replacement cost (\"estimated_amount\": null) since no quote has been obtained yet, and there is no way to resolve this figure from the narrative or any other tool. Per policy, a null estimated_amount that cannot be resolved is a mandatory escalation trigger, so I did not proceed to pull the NRMA certificate or compute a payout.\n\nAdditionally, the coverage picture itself is not fully clear from the retrieved policy text: while deliberate/intentional acts (including vandalism/malicious damage) are covered for \"Your Home\" and \"General Contents\" [NRMA Home PDS, page 13], the excerpts do not confirm whether a front fence or garage door fall within the definition of \"Your Home\"/Building for this policyholder's cover type [NRMA Home PDS, page 22]. This ambiguity, combined with the missing cost estimate, means a confident approve/deny determination cannot be made.\n\nA human reviewer should obtain a repair/replacement quote from the policyholder, confirm the fence/garage door are insured structures under the applicable Building definition, confirm a police report has been lodged as required [NRMA Home PDS, page 28], and then proceed with excess/coverage-limit lookup and payout calculation."
+      "text": "Given the two escalation triggers already present, I won't pursue further tool calls (excess/limit lookups would be moot without a resolved coverage answer and amount).\n\nDECISION: escalate\n\nReasoning: Two independent escalation criteria are met here:\n\n1. **Null estimated_amount that cannot be resolved another way** \u2014 the policyholder explicitly has not obtained a repair/replacement quote, so there is no claimed dollar figure to run through calculate_payout, and nothing else in the narrative allows me to infer one.\n\n2. **Ambiguous coverage text** \u2014 retrieve_policy against the NRMA Home PDS returned no clear answer on whether malicious damage/graffiti/vandalism to a fence and garage door is covered, explicitly stating \"I cannot answer this question based on the policy excerpts given\" [NRMA Home PDS, page 22] [NRMA Home PDS, page 14] [NRMA Home PDS, page 21] [NRMA Home PDS, page 30].\n\nBecause the coverage determination is unclear and there is no cost figure to evaluate, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should confirm malicious-damage/vandalism coverage terms in the full policy wording and request a repair quote from the policyholder before making a payout decision."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative provides no estimated repair/replacement cost (\"estimated_amount\": null) since no quote has been obtained yet, and there is no way to resolve this figure from the narrative or any other tool. Per policy, a null estimated_amount that cannot be resolved is a mandatory escalation trigger, so I did not proceed to pull the NRMA certificate or compute a payout.\n\nAdditionally, the coverage picture itself is not fully clear from the retrieved policy text: while deliberate/intentional acts (including vandalism/malicious damage) are covered for \"Your Home\" and \"General Contents\" [NRMA Home PDS, page 13], the excerpts do not confirm whether a front fence or garage door fall within the definition of \"Your Home\"/Building for this policyholder's cover type [NRMA Home PDS, page 22]. This ambiguity, combined with the missing cost estimate, means a confident approve/deny determination cannot be made.\n\nA human reviewer should obtain a repair/replacement quote from the policyholder, confirm the fence/garage door are insured structures under the applicable Building definition, confirm a police report has been lodged as required [NRMA Home PDS, page 28], and then proceed with excess/coverage-limit lookup and payout calculation.",
+  "reasoning": "Given the two escalation triggers already present, I won't pursue further tool calls (excess/limit lookups would be moot without a resolved coverage answer and amount).\n\nDECISION: escalate\n\nReasoning: Two independent escalation criteria are met here:\n\n1. **Null estimated_amount that cannot be resolved another way** \u2014 the policyholder explicitly has not obtained a repair/replacement quote, so there is no claimed dollar figure to run through calculate_payout, and nothing else in the narrative allows me to infer one.\n\n2. **Ambiguous coverage text** \u2014 retrieve_policy against the NRMA Home PDS returned no clear answer on whether malicious damage/graffiti/vandalism to a fence and garage door is covered, explicitly stating \"I cannot answer this question based on the policy excerpts given\" [NRMA Home PDS, page 22] [NRMA Home PDS, page 14] [NRMA Home PDS, page 21] [NRMA Home PDS, page 30].\n\nBecause the coverage determination is unclear and there is no cost figure to evaluate, this claim should be handed to a human reviewer rather than approved or denied automatically. A reviewer should confirm malicious-damage/vandalism coverage terms in the full policy wording and request a repair quote from the policyholder before making a payout decision.",
   "citations": [
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 13
-    },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -94,7 +87,21 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 28
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 21
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 30
     }
   ],
   "retrieved_sources": [
@@ -110,13 +117,6 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 13
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
       "page": 22
     },
     {
@@ -124,14 +124,21 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 13
+      "page": 14
     },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 28
+      "page": 21
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 30
     }
   ],
   "claim_id": "claim-002"

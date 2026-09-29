@@ -21,19 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "theft burglary forced entry coverage contents jewellery",
+        "query": "Coverage for theft/burglary of contents including jewellery following forced entry",
         "insurer": "NRMA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here's what I can determine about theft/burglary coverage related to contents and jewellery:\n\n**General Theft/Burglary Coverage:**\n- Theft and Burglary is covered under the policy, defined as \"theft or attempted theft\" [NRMA Contents KFS, page 1]\n- However, coverage does **not** apply if \"the theft or attempted theft was by You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Contents KFS, page 1]\n\n**Jewellery and Watches Definition:**\n- \"Jewellery and Watches means watches, jewellery items and medals but not including a mobile device with a screen display or a smart watch\" [NRMA Home PDS, page 11]\n- \"Jewellery and Watches does not include any items excluded from the definition of 'Contents'\" [NRMA Home PDS, page 11]\n- Under \"General Contents,\" it's noted that \"limits apply to what We pay for these items as General Contents\" for Jewellery and Watches [NRMA Home PDS, page 11]\n\n**Forced Entry Requirement for Specific Scenarios:**\n- For \"Contents in transit\" storage coverage, theft is covered only \"following violent or forced entry\" [NRMA Home PDS, page 19]\n- Separately, for temporary accommodation-related coverage (Family Member's temporary residence), the policy states it will **not** cover \"loss or damage from theft or attempted theft unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23]\n- Additionally, in that same context, \"lost or misplaced items\" and \"Money\" are excluded [NRMA Home PDS, page 23]\n\n**Gaps in the Excerpts:**\nThe provided excerpts do not specify the exact dollar sub-limits that apply to Jewellery and Watches under General Contents coverage, nor do they detail whether forced entry is a general requirement for theft claims on Jewellery and Watches kept at the insured Home itself (as opposed to the specific transit/storage and temporary accommodation scenarios cited above). I cannot provide those details without additional excerpts.",
+        "answer": "Based on the excerpts provided:\n\n**Contents in storage/transit** \u2013 Under the 'Contents in storage'/'Contents in transit' benefit, cover applies to 'Contents Plus' or a specified 'Contents in storage' Sum Insured, and covers loss or damage from \"theft following violent or forced entry\" [NRMA Home PDS, page 19]. However, this specific storage/transit benefit explicitly excludes Jewellery and Watches from cover [NRMA Home PDS, page 19].\n\n**Jewellery and Watches as General Contents** \u2013 Jewellery and Watches are included within the definition of General Contents, though \"limits apply to what We pay for these items as General Contents\" [NRMA Home PDS, page 11]. The excerpts do not specify the exact dollar sub-limit for Jewellery and Watches as General Contents under standard home contents cover.\n\n**Optional 'Portable Contents' benefit** \u2013 If you have this optional benefit (available with 'Plus' cover, or with 'Standard' cover if specifically chosen and paid for), Jewellery and Watches can be insured as a group of Portable Contents, covering loss, theft, or damage anywhere in the world during the Period of Insurance [NRMA Home PDS, page 25]. Under this benefit, NRMA will pay up to $10,000 for any individual item of Portable Contents (unless separately listed with its own Sum Insured), or up to the Sum Insured for the group, if lost, stolen or damaged within Australia or New Zealand [NRMA Home PDS, page 26].\n\n**Temporary accommodation/storage costs benefit** \u2013 A separate excerpt (page 23) refers to a benefit that excludes cover for \"loss or damage from theft or attempted theft unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23]. However, this exclusion appears in the context of the \"Temporary accommodation\" and \"Storage costs\" additional benefits, not general contents/burglary cover, so it is unclear from these excerpts whether this forced-entry condition applies to general contents theft cover more broadly.\n\n**Gap in the excerpts:** The provided material does not include the specific \"Contents Standard\" or \"Contents Plus\" base cover wording describing standard burglary/theft cover for general contents (with or without a forced-entry requirement), nor the specific dollar sub",
         "citations": [
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 23
-          },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
@@ -49,18 +42,25 @@
             "page": 11
           },
           {
-            "doc_id": "nrma-contents-kfs",
+            "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
-            "product": "Contents",
-            "doc_type": "KFS",
-            "page": 1
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
           },
           {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 3
+            "page": 23
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
           }
         ]
       }
@@ -79,49 +79,13 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "calculate_payout",
-      "input": {
-        "claim_amount": 9500,
-        "excess": 550,
-        "coverage_limit": 55000
-      },
-      "output": {
-        "payout": 8950
-      }
-    },
-    {
-      "turn": 3,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning: The claim is theft via forced entry (sliding door) into the policyholder's own home, resulting in loss of a laptop, jewellery, and a PlayStation 5. This is squarely within NRMA's theft/burglary coverage: \"Theft and Burglary is covered... theft or attempted theft\" [NRMA Contents KFS, page 1], with the only exclusion being theft committed by the policyholder, family, or a co-resident/tenant [NRMA Contents KFS, page 1] \u2014 which does not apply here, as this was an external break-in. The stricter \"forced and violent entry\" requirement cited in the PDS applies only to contents-in-transit or temporary-accommodation scenarios [NRMA Home PDS, pages 19, 23], not to theft from the insured home itself, and in any event this claim clearly involved forced entry, so it would satisfy that standard too. Jewellery and watches are confirmed as covered contents, subject to unspecified sub-limits [NRMA Home PDS, page 11] \u2014 no contradictory or exclusionary language was found, so this does not meet the bar for escalation.\n\nPolicy certificate for NRMA: excess $550, coverage limit $55,000. Applying these to the estimated claim amount of $9,500 gives a payout of $8,950.\n\nNote: the policyholder has not yet obtained a formal quote; the $9,500 figure is an estimate. Final payout should be confirmed once itemized values/receipts are provided, but based on current information the claim is approved for processing at an estimated payout of $8,950, subject to standard proof-of-loss and any applicable per-item jewellery sub-limits."
+      "text": "DECISION: escalate\n\nReasoning: The claim involves a straightforward burglary/theft of general contents (laptop, PlayStation 5, jewellery) following forced entry, but the policy search could not surface NRMA's core \"Contents\" burglary/theft clause. What it did return is ambiguous and partially contradictory:\n\n- The \"Contents in storage/transit\" benefit explicitly covers \"theft following violent or forced entry\" but excludes Jewellery and Watches from that specific benefit [NRMA Home PDS, page 19].\n- Jewellery and Watches are included in the definition of General Contents, but with unspecified sub-limits that could materially cap the ~$9,500 estimate (which includes an engagement ring and a family heirloom necklace) [NRMA Home PDS, page 11].\n- A forced-entry theft exclusion clause was found, but only in the context of Temporary Accommodation/Storage Costs benefits, not general contents cover, and it's unclear if it applies more broadly [NRMA Home PDS, page 23].\n- An optional \"Portable Contents\" benefit for jewellery exists with its own $10,000 per-item cap, but it's unclear whether the policyholder holds this optional cover [NRMA Home PDS, pages 25-26].\n\nThe retrieval itself flagged a \"gap in the excerpts\" \u2014 the base Contents Standard/Plus burglary clause and the specific jewellery sub-limit were not found. This is exactly the kind of contradictory/ambiguous coverage determination the escalation policy requires me to hand off rather than guess, particularly since the jewellery sub-limit could significantly reduce the payout below the naive calculation, and I cannot confirm whether the household holds the optional Portable Contents benefit. I have not run calculate_payout because the coverage determination itself is unresolved \u2014 computing a number now would risk presenting a false level of confidence.\n\nRecommend a human reviewer confirm: (1) which Contents cover tier (Standard vs Plus) and whether Portable Contents/jewellery optional cover applies, (2) the applicable jewellery sub-limit under General Contents, and (3) whether the general theft/burglary clause (not the storage/transit"
     }
   ],
-  "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning: The claim is theft via forced entry (sliding door) into the policyholder's own home, resulting in loss of a laptop, jewellery, and a PlayStation 5. This is squarely within NRMA's theft/burglary coverage: \"Theft and Burglary is covered... theft or attempted theft\" [NRMA Contents KFS, page 1], with the only exclusion being theft committed by the policyholder, family, or a co-resident/tenant [NRMA Contents KFS, page 1] \u2014 which does not apply here, as this was an external break-in. The stricter \"forced and violent entry\" requirement cited in the PDS applies only to contents-in-transit or temporary-accommodation scenarios [NRMA Home PDS, pages 19, 23], not to theft from the insured home itself, and in any event this claim clearly involved forced entry, so it would satisfy that standard too. Jewellery and watches are confirmed as covered contents, subject to unspecified sub-limits [NRMA Home PDS, page 11] \u2014 no contradictory or exclusionary language was found, so this does not meet the bar for escalation.\n\nPolicy certificate for NRMA: excess $550, coverage limit $55,000. Applying these to the estimated claim amount of $9,500 gives a payout of $8,950.\n\nNote: the policyholder has not yet obtained a formal quote; the $9,500 figure is an estimate. Final payout should be confirmed once itemized values/receipts are provided, but based on current information the claim is approved for processing at an estimated payout of $8,950, subject to standard proof-of-loss and any applicable per-item jewellery sub-limits.",
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves a straightforward burglary/theft of general contents (laptop, PlayStation 5, jewellery) following forced entry, but the policy search could not surface NRMA's core \"Contents\" burglary/theft clause. What it did return is ambiguous and partially contradictory:\n\n- The \"Contents in storage/transit\" benefit explicitly covers \"theft following violent or forced entry\" but excludes Jewellery and Watches from that specific benefit [NRMA Home PDS, page 19].\n- Jewellery and Watches are included in the definition of General Contents, but with unspecified sub-limits that could materially cap the ~$9,500 estimate (which includes an engagement ring and a family heirloom necklace) [NRMA Home PDS, page 11].\n- A forced-entry theft exclusion clause was found, but only in the context of Temporary Accommodation/Storage Costs benefits, not general contents cover, and it's unclear if it applies more broadly [NRMA Home PDS, page 23].\n- An optional \"Portable Contents\" benefit for jewellery exists with its own $10,000 per-item cap, but it's unclear whether the policyholder holds this optional cover [NRMA Home PDS, pages 25-26].\n\nThe retrieval itself flagged a \"gap in the excerpts\" \u2014 the base Contents Standard/Plus burglary clause and the specific jewellery sub-limit were not found. This is exactly the kind of contradictory/ambiguous coverage determination the escalation policy requires me to hand off rather than guess, particularly since the jewellery sub-limit could significantly reduce the payout below the naive calculation, and I cannot confirm whether the household holds the optional Portable Contents benefit. I have not run calculate_payout because the coverage determination itself is unresolved \u2014 computing a number now would risk presenting a false level of confidence.\n\nRecommend a human reviewer confirm: (1) which Contents cover tier (Standard vs Plus) and whether Portable Contents/jewellery optional cover applies, (2) the applicable jewellery sub-limit under General Contents, and (3) whether the general theft/burglary clause (not the storage/transit",
   "citations": [
-    {
-      "doc_id": "nrma-contents-kfs",
-      "insurer": "NRMA",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 11
-    }
-  ],
-  "retrieved_sources": [
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 23
-    },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
@@ -137,18 +101,48 @@
       "page": 11
     },
     {
-      "doc_id": "nrma-contents-kfs",
+      "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
     },
     {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 3
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
     }
   ],
   "claim_id": "claim-012"

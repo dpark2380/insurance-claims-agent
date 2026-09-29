@@ -5,27 +5,41 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $9,000."
+        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $30,000."
       },
       "output": {
         "claim_type": "flood",
         "date_of_loss": "2023-10-15",
         "cause": "king tide and storm surge",
         "damaged_item": "ground floor flooring and skirting boards",
-        "estimated_amount": 9000.0,
+        "estimated_amount": 30000.0,
         "policy_number": null
       }
     },
     {
-      "turn": 2,
+      "turn": 1,
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is damage caused by king tide or storm surge (sea water flooding) covered under home insurance flood or storm peril, or excluded as tidal/wave action?"
+        "query": "Is damage from storm surge or sea water flooding / king tide covered or excluded?"
       },
       "output": {
-        "answer": "Based on the excerpts, this depends on which insurer/policy and which specific peril:\n\n**Storm surge is generally covered (as a distinct peril), while king tide/actions of the sea are excluded:**\n\n- **RACV Home PDS**: Storm surge is a covered peril \u2014 \"loss or damage is caused by storm surge... the wind from a cyclone causes sea levels to rise higher than normal and the water enters your home\" is covered, along with landslide/subsidence that happens immediately as a direct result of storm surge [RACV Home PDS, page 41]. However, RACV's general exclusions explicitly exclude \"actions of the sea,\" which include \"high tides or king tides, sea waves, normal movement or changes in ocean levels\" \u2014 but the policy clarifies that \"actions of the sea does not include storm surge\" [RACV Home PDS, page 74]. So storm surge is covered, but king tide flooding is excluded under RACV.\n\n- **RACV Landlord PDS**: Similarly, storm surge is covered, including resulting landslide/subsidence, but \"loss or damage caused by actions of the sea\" is not covered [RACV Landlord PDS, page 39].\n\n- **Allianz Landlord PDS**: Storm surge is explicitly **excluded** under \"Actions of the sea,\" which includes \"storm surge\" and \"a rise in the level of the ocean or sea caused by a high tide, a king tide or any other movement of the sea\" [Allianz Landlord PDS, page 49]. This differs from RACV's treatment \u2014 Allianz groups storm surge together with king tide as excluded.\n\n- **GIO Contents PDS**: Storm surge is referenced alongside bushfires, storms, floods and tsunamis as perils excluded only within the \"first 72 hours of cover\" [GIO Contents PDS, page 29]. The excerpt does not state GIO's general position on storm surge or king tide coverage beyond this waiting-period exclusion, so I cannot confirm from this excerpt whether storm surge is otherwise covered under GIO.\n\n**Summary**: There is no single answer \u2014 it varies by insurer. RACV policies cover storm surge but exclude king tide/actions of the sea. Allianz excludes both storm surge and king tide under \"actions of the sea.\" The GIO excerpt only addresses a 72-hour exclusion window and does not clarify general coverage. I don't have sufficient information from the provided excerpts to state GIO's general st",
+        "answer": "Based on the excerpts, this depends on which of the two is involved:\n\n**Storm surge \u2014 covered**\nStorm surge (defined as \"an increase in sea level that occurs because of an intense storm or cyclone\") is covered under both the RACV Home PDS [RACV Home PDS, page 41] and RACV Landlord PDS [RACV Landlord PDS, page 39]. This also includes landslide or subsidence that happens immediately as a direct result of storm surge [RACV Home PDS, page 41; RACV Landlord PDS, page 39]. The RACV Building KFS confirms storm surge is covered, unless the policyholder has removed cover for flood, rainwater run-off and storm surge [RACV Building KFS, page 1].\n\n**Actions of the sea, including king tides \u2014 excluded**\n\"Actions of the sea\" is explicitly excluded under the general exclusions in both the RACV Home PDS and RACV Landlord PDS. This exclusion specifically includes \"high tides or king tides,\" \"sea waves,\" and \"normal movement or changes in ocean levels\" \u2014 but the exclusion does **not** include storm surge [RACV Home PDS, page 74; RACV Landlord PDS, page 57]. This is reinforced in the storm surge cover sections themselves, which state \"loss or damage caused by actions of the sea\" is not covered [RACV Home PDS, page 41; RACV Landlord PDS, page 39], and in the Building KFS, which confirms \"actions of the sea including waves and normal movement or changes in sea levels (including high tides and king tides)\" are not covered, while tsunami and storm surge are covered [RACV Building KFS, page 1].\n\n**Summary**\n- Storm surge (sudden sea level rise from a storm/cyclone) \u2192 **Covered** (unless the policyholder has opted out of flood/storm surge/rainwater run-off cover).\n- King tides, high tides, sea waves, and normal sea level changes (\"actions of the sea\") \u2192 **Excluded**.\n\nThe excerpts do not directly define \"sea water flooding\" as a separate category, so I cannot confirm how that specific term would be treated beyond the storm surge and actions-of-the-sea distinctions above.",
         "citations": [
+          {
+            "doc_id": "racv-home-pds",
+            "insurer": "RACV",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 74
+          },
+          {
+            "doc_id": "racv-landlord-pds",
+            "insurer": "RACV",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 57
+          },
           {
             "doc_id": "racv-home-pds",
             "insurer": "RACV",
@@ -34,52 +48,31 @@
             "page": 41
           },
           {
+            "doc_id": "racv-building-kfs",
+            "insurer": "RACV",
+            "product": "Building",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
             "doc_id": "racv-landlord-pds",
             "insurer": "RACV",
             "product": "Landlord",
             "doc_type": "PDS",
             "page": 39
-          },
-          {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 29
-          },
-          {
-            "doc_id": "allianz-landlord-pds",
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 49
-          },
-          {
-            "doc_id": "racv-home-pds",
-            "insurer": "RACV",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 74
           }
         ]
       }
     },
     {
-      "turn": 3,
+      "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which I must not do. Additionally, coverage for this cause is highly insurer-dependent and ambiguous without knowing the policy: RACV treats storm surge as covered but excludes king tide/\"actions of the sea\" [RACV Home PDS, page 41][RACV Home PDS, page 74], while Allianz excludes both storm surge and king tide together under \"actions of the sea\" [Allianz Landlord PDS, page 49], and GIO's excerpt only addresses a 72-hour waiting period exclusion without clarifying general coverage [GIO Contents PDS, page 29]. Since the loss here is described as a combined \"king tide and storm surge,\" the outcome could be approve or deny depending entirely on which insurer/policy applies, and that information is missing. This meets two escalation triggers: no insurer named (cannot look up excess/coverage limit) and contradictory/ambiguous coverage text across insurers for the stated cause. Escalating for human review to obtain the insurer/policy details before a coverage determination can be made."
+      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or confirm which insurer's wording applies \u2014 I must not guess these figures. More importantly, the claimed cause is a combination of \"king tide\" (explicitly excluded as \"actions of the sea\") and \"storm surge\" (covered, per the policy text found). This is a direct conflict between the stated cause and a policy exclusion: the loss narrative attributes the flooding to both a king tide and storm surge acting together, and the policy language distinguishes sharply between the two, with king tide/high tide/sea wave contributions excluded even where storm surge is covered. Determining causation/apportionment here requires human judgment rather than an automated decision.\n\nCitations: [RACV Home PDS, page 74], [RACV Landlord PDS, page 57], [RACV Home PDS, page 41], [RACV Building KFS, page 1], [RACV Landlord PDS, page 39]\n\nThis claim should be escalated to a human reviewer to (1) confirm the actual insurer involved so the correct policy certificate and excess/coverage limit can be obtained, and (2) make a factual/causation determination on how much of the damage is attributable to covered storm surge versus excluded king tide/actions of the sea."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which I must not do. Additionally, coverage for this cause is highly insurer-dependent and ambiguous without knowing the policy: RACV treats storm surge as covered but excludes king tide/\"actions of the sea\" [RACV Home PDS, page 41][RACV Home PDS, page 74], while Allianz excludes both storm surge and king tide together under \"actions of the sea\" [Allianz Landlord PDS, page 49], and GIO's excerpt only addresses a 72-hour waiting period exclusion without clarifying general coverage [GIO Contents PDS, page 29]. Since the loss here is described as a combined \"king tide and storm surge,\" the outcome could be approve or deny depending entirely on which insurer/policy applies, and that information is missing. This meets two escalation triggers: no insurer named (cannot look up excess/coverage limit) and contradictory/ambiguous coverage text across insurers for the stated cause. Escalating for human review to obtain the insurer/policy details before a coverage determination can be made.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or confirm which insurer's wording applies \u2014 I must not guess these figures. More importantly, the claimed cause is a combination of \"king tide\" (explicitly excluded as \"actions of the sea\") and \"storm surge\" (covered, per the policy text found). This is a direct conflict between the stated cause and a policy exclusion: the loss narrative attributes the flooding to both a king tide and storm surge acting together, and the policy language distinguishes sharply between the two, with king tide/high tide/sea wave contributions excluded even where storm surge is covered. Determining causation/apportionment here requires human judgment rather than an automated decision.\n\nCitations: [RACV Home PDS, page 74], [RACV Landlord PDS, page 57], [RACV Home PDS, page 41], [RACV Building KFS, page 1], [RACV Landlord PDS, page 39]\n\nThis claim should be escalated to a human reviewer to (1) confirm the actual insurer involved so the correct policy certificate and excess/coverage limit can be obtained, and (2) make a factual/causation determination on how much of the damage is attributable to covered storm surge versus excluded king tide/actions of the sea.",
   "citations": [
-    {
-      "doc_id": "racv-home-pds",
-      "insurer": "RACV",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 41
-    },
     {
       "doc_id": "racv-home-pds",
       "insurer": "RACV",
@@ -88,18 +81,32 @@
       "page": 74
     },
     {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 49
+      "page": 57
     },
     {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
+      "product": "Home",
       "doc_type": "PDS",
-      "page": 29
+      "page": 41
+    },
+    {
+      "doc_id": "racv-building-kfs",
+      "insurer": "RACV",
+      "product": "Building",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 39
     }
   ],
   "retrieved_sources": [
@@ -108,7 +115,28 @@
       "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 57
+    },
+    {
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
+      "product": "Home",
+      "doc_type": "PDS",
       "page": 41
+    },
+    {
+      "doc_id": "racv-building-kfs",
+      "insurer": "RACV",
+      "product": "Building",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
       "doc_id": "racv-landlord-pds",
@@ -116,27 +144,6 @@
       "product": "Landlord",
       "doc_type": "PDS",
       "page": 39
-    },
-    {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 29
-    },
-    {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 49
-    },
-    {
-      "doc_id": "racv-home-pds",
-      "insurer": "RACV",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 74
     }
   ],
   "claim_id": "claim-017"

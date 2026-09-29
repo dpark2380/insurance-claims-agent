@@ -21,32 +21,18 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "flood cover creek overflow water damage",
-        "insurer": "RAA",
-        "product": "Home"
-      },
-      "output": {
-        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
-        "citations": []
-      }
-    },
-    {
-      "turn": 2,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "flood definition riverine flood exclusion",
+        "query": "Is flood/creek overflow water damage covered?",
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here is what the policy states regarding Flood coverage and exclusions:\n\n**Flood Coverage:**\nThe policy covers loss or damage to Insured Property as a result of Flood [RAA Contents PDS, page 50].\n\n**Flood Definition (partial):**\nThe excerpts do not contain a complete standalone definition of \"Flood\" (e.g., specifying it as the escape of water from rivers, creeks, lakes, or dams \u2014 the typical \"riverine flood\" definition). However, page 88 clarifies what Flood **excludes**: it excludes water from **Actions of the Sea**, except when caused by a Storm Surge occurring at the same time as Storm damage, or by a Tsunami. Flood also excludes any mixture of water from Actions of the Sea and water from other sources [RAA Contents PDS, page 88].\n\n**Flood Exclusions (Section 12):**\nThe policy explicitly excludes the following from Flood cover:\n- Loss or damage to any part of the Home that is not fully built\n- Tennis courts\n- A wharf, jetty, pontoon or sea wall\n- Water in a tank, swimming pool or spa (including cleaning costs)\n- Swimming pools or spas and their covers/liners (except permanently attached hard lid pool covers)\n- Paint damage, unless there is structural damage caused by Flood to other parts of the Home\n- Damage caused by underground (hydrostatic) water\n- A glasshouse or greenhouse\n- Unsealed paths or driveways (e.g., gravel or loose materials)\n- Flood arising from deliberate or Malicious Damage to, or destruction of, a reservoir or dam\n- Paths or driveways that were not structurally sound or not reasonably maintained prior to the loss (the excerpt is cut off here, listing \"a path\" and \"a driveway\" before ending)\n[RAA Contents PDS, page 50]\n\n**Gap in the Excerpts:**\nThere is no explicit mention in these excerpts of a specific \"riverine flood\" exclusion or a definition distinguishing riverine flood from other types of flood (such as flash flooding or overland flow). If you need the precise definition of \"Flood\" as used in this policy (which is typically found in the Glossary section, referenced on page 72 of the table of contents), that definition has not been provided in the excerpts above, and I cannot confirm its wording without that source material [RAA Contents PDS, page ",
+        "answer": "Based on the excerpts provided, I can offer partial information, but not a complete answer to your question.\n\n**What the excerpts confirm:**\n- \"Flood\" is a defined, covered event under the policy \u2014 it is referenced as item 12 in the contents listing [RAA Contents PDS, page 14], indicating there is dedicated Flood cover in the PDS.\n- The excerpts specify what Flood *excludes*: water from Actions of the Sea (unless caused by a Storm Surge occurring at the same time as Storm damage, or a Tsunami), and a mixture of water from Actions of the Sea with water from any other source [RAA Contents PDS, page 88].\n\n**What is missing:**\n- The excerpts do not include the actual definition of \"Flood\" itself, so I cannot confirm whether overflow from a creek falls within that definition.\n- The excerpts do not include the operative wording for the \"12. Flood\" section (page 36 per the contents list) that would set out what is and isn't covered under that benefit.\n- The \"Storm and Rainwater Runoff\" section excerpt [RAA Contents PDS, page 46] deals with paths, driveways, gardens, etc., not creek overflow specifically, and does not address flood/creek water.\n\n**Conclusion:** I cannot definitively confirm whether flood or creek overflow water damage is covered, because the excerpts provided do not include the core Flood definition or the operative Flood cover wording (found on page 36, which is not in the excerpts supplied). To answer accurately, I would need the text of the \"12. Flood\" section and the Glossary definition of \"Flood\" from the RAA Contents PDS.",
         "citations": [
           {
             "doc_id": "raa-contents-pds",
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 50
+            "page": 70
           },
           {
             "doc_id": "raa-contents-pds",
@@ -60,14 +46,14 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 67
+            "page": 46
           },
           {
             "doc_id": "raa-contents-pds",
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 25
+            "page": 46
           },
           {
             "doc_id": "raa-contents-pds",
@@ -84,10 +70,11 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is flood damage from rising water covered under home building insurance"
+        "query": "Flood definition - rising water from creek, river, watercourse overflow",
+        "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, flood damage from rising water is generally covered under home building insurance, but with important conditions and exclusions:\n\n**General Coverage:**\n- The Allianz Building KFS confirms Flood is a covered event (\"Yes\") [Allianz Building KFS, page 1], as does the Allianz Landlord KFS [Allianz Landlord KFS, page 1].\n- NRMA Home PDS confirms cover for loss or damage caused by \"Flood or Rainwater Run-off\" [NRMA Home PDS, page 14].\n\n**Key Exclusions and Limitations:**\n\n1. **Waiting period:** Both Allianz policies exclude flood damage occurring within the first 72 hours after you first take out or increase the cover [Allianz Building KFS, page 1; Allianz Landlord KFS, page 1]. GIO Contents PDS similarly excludes flood (among other perils) in the first 72 hours of cover [GIO Contents PDS, page 29].\n\n2. **Specific property exclusions:** Allianz policies exclude flood damage to retaining walls, pontoons, jetties or bridges [Allianz Building KFS, page 1; Allianz Landlord KFS, page 1]. NRMA excludes damage to retaining walls under its flood section as well [NRMA Home PDS, page 14].\n\n3. **Actions of the Sea distinction:** Under the RAA Contents PDS, \"Flood\" specifically excludes water from Actions of the Sea, unless it's a Storm Surge occurring at the same time as Storm damage, or a Tsunami. It also excludes any mixture of Actions of the Sea water with water from other sources [RAA Contents PDS, page 88]. This suggests rising water from the sea (as opposed to inland/rainwater flooding) may be treated differently or excluded unless these specific conditions are met.\n\n4. **Under-construction properties:** GIO Contents PDS excludes flood damage to parts of the home under construction, extension, alteration, or renovation, including damage from flood water entering through openings during construction [GIO Contents PDS, page 29].\n\n**Conclusion:** Coverage for flood/rising water damage exists in these policies but is subject to the source of the water (rainwater/river flooding vs. sea-related flooding), timing (",
+        "answer": "Based on the RAA Contents PDS, **Flood** is defined as:\n\n\"the covering of normally dry land by water that has escaped or been released from the normal confines of:\n\u2022 any lake, or any river, creek or other natural watercourse, whether or not altered or modified; or\n\u2022 any reservoir, canal or dam.\" [RAA Contents PDS, page 87]\n\n**Exclusions from the Flood definition:**\nFlood excludes water from Actions of the Sea, except where caused by:\n\u2022 a Storm Surge if it occurs at the same time your Insured Property is damaged by a Storm; or\n\u2022 a Tsunami.\n\nFlood also excludes a mixture of water from Actions of the Sea and water from any other source. [RAA Contents PDS, page 88]\n\n**Additional exclusions applying to Flood cover (Section 12):**\nEven where the above definition of Flood is met, cover does not apply to loss or damage:\n\u2022 to any part of the Home that is not fully built;\n\u2022 to tennis courts;\n\u2022 to a wharf, jetty, pontoon or sea wall;\n\u2022 to water in a tank, swimming pool or spa, including cleaning costs of mud/debris from these;\n\u2022 to swimming pools or spas and their covers or liners (except permanently attached hard lid style pool covers);\n\u2022 to paint where there is no structural damage caused by Flood to other parts of the Home;\n\u2022 caused by underground (hydrostatic) water;\n\u2022 to a glasshouse or greenhouse;\n\u2022 to unsealed paths or driveways (e.g., gravel or loose materials);\n\u2022 caused by Flood arising from deliberate or Malicious Damage to, or destruction of, a reservoir or dam; and/or\n\u2022 to paths, driveways (and other items listed) if they were not structurally sound or reasonably maintained prior to the loss [RAA Contents PDS, page 50]\n\nThe excerpt cuts off mid-list on page 50, so there may be additional items beyond \"a path\" and \"a driveway\" in that final exclusion bullet \u2014 the available excerpts do not show the complete list.",
         "citations": [
           {
             "doc_id": "raa-contents-pds",
@@ -97,32 +84,32 @@
             "page": 88
           },
           {
-            "doc_id": "allianz-building-kfs",
-            "insurer": "Allianz",
-            "product": "Building",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "gio-contents-pds",
-            "insurer": "GIO",
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 29
+            "page": 87
           },
           {
-            "doc_id": "allianz-landlord-kfs",
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "KFS",
-            "page": 1
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 50
           },
           {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
             "doc_type": "PDS",
             "page": 14
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
           }
         ]
       }
@@ -155,12 +142,19 @@
     {
       "turn": 5,
       "type": "final",
-      "text": "DECISION: approve\n\nThe claim describes flood damage (creek overflow due to heavy rain) to carpets and plasterboard walls, dated 3 Feb 2023, estimated at $9,000, under an RAA home policy.\n\n- RAA's policy confirms Flood is a covered peril for Insured Property [RAA Contents PDS, page 50].\n- The Flood exclusions listed (unbuilt structures, tennis courts, wharves/jetties/pontoons/sea walls, tank/pool/spa water, paint-only damage without structural loss, hydrostatic groundwater, glasshouses, unsealed paths/driveways, dam sabotage) do not apply to this claim \u2014 the damage is to carpet and plasterboard walls from creek floodwater entering the home [RAA Contents PDS, page 50].\n- The \"Actions of the Sea\" exclusion does not apply since this is inland creek/rainwater flooding, not sea-related [RAA Contents PDS, page 88].\n\nPolicy certificate for RAA: excess $500, coverage limit $45,000.\n\nPayout calculation: $9,000 claim \u2212 $500 excess = $8,500, well within the $45,000 coverage limit.\n\nFinal payout: $8,500 approved."
+      "text": "DECISION: approve\n\nThe claimed cause \u2014 a creek behind the property overflowing due to heavy rain and inundating the home \u2014 squarely meets RAA's Contents PDS definition of \"Flood\": \"the covering of normally dry land by water that has escaped or been released from the normal confines of any lake, or any river, creek or other natural watercourse...\" [RAA Contents PDS, page 87]. None of the specific Flood exclusions apply to this claim \u2014 the damage is to living-room carpet and plasterboard walls, not to unfinished structures, tennis courts, wharves, pools/spas, paint absent structural damage, underground water, greenhouses, unsealed paths/driveways, or damage from deliberate dam destruction [RAA Contents PDS, page 50]. Actions-of-the-sea exclusions also don't apply, as this is inland creek flooding, not sea action [RAA Contents PDS, page 88].\n\nUsing the policyholder's actual certificate figures \u2014 excess $500, coverage limit $45,000 [RAA Contents PDS, page 14] \u2014 and the estimated repair cost of $9,000, the calculated payout is:\n\n**$9,000 \u2212 $500 excess = $8,500 payable**\n\nThis is well within the $45,000 coverage limit, so the claim is approved for a payout of $8,500."
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nThe claim describes flood damage (creek overflow due to heavy rain) to carpets and plasterboard walls, dated 3 Feb 2023, estimated at $9,000, under an RAA home policy.\n\n- RAA's policy confirms Flood is a covered peril for Insured Property [RAA Contents PDS, page 50].\n- The Flood exclusions listed (unbuilt structures, tennis courts, wharves/jetties/pontoons/sea walls, tank/pool/spa water, paint-only damage without structural loss, hydrostatic groundwater, glasshouses, unsealed paths/driveways, dam sabotage) do not apply to this claim \u2014 the damage is to carpet and plasterboard walls from creek floodwater entering the home [RAA Contents PDS, page 50].\n- The \"Actions of the Sea\" exclusion does not apply since this is inland creek/rainwater flooding, not sea-related [RAA Contents PDS, page 88].\n\nPolicy certificate for RAA: excess $500, coverage limit $45,000.\n\nPayout calculation: $9,000 claim \u2212 $500 excess = $8,500, well within the $45,000 coverage limit.\n\nFinal payout: $8,500 approved.",
+  "reasoning": "DECISION: approve\n\nThe claimed cause \u2014 a creek behind the property overflowing due to heavy rain and inundating the home \u2014 squarely meets RAA's Contents PDS definition of \"Flood\": \"the covering of normally dry land by water that has escaped or been released from the normal confines of any lake, or any river, creek or other natural watercourse...\" [RAA Contents PDS, page 87]. None of the specific Flood exclusions apply to this claim \u2014 the damage is to living-room carpet and plasterboard walls, not to unfinished structures, tennis courts, wharves, pools/spas, paint absent structural damage, underground water, greenhouses, unsealed paths/driveways, or damage from deliberate dam destruction [RAA Contents PDS, page 50]. Actions-of-the-sea exclusions also don't apply, as this is inland creek flooding, not sea action [RAA Contents PDS, page 88].\n\nUsing the policyholder's actual certificate figures \u2014 excess $500, coverage limit $45,000 [RAA Contents PDS, page 14] \u2014 and the estimated repair cost of $9,000, the calculated payout is:\n\n**$9,000 \u2212 $500 excess = $8,500 payable**\n\nThis is well within the $45,000 coverage limit, so the claim is approved for a payout of $8,500.",
   "citations": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 87
+    },
     {
       "doc_id": "raa-contents-pds",
       "insurer": "RAA",
@@ -174,6 +168,13 @@
       "product": "Contents",
       "doc_type": "PDS",
       "page": 88
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 14
     }
   ],
   "retrieved_sources": [
@@ -182,6 +183,55 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 46
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 46
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 87
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
       "page": 50
     },
     {
@@ -189,27 +239,6 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 88
-    },
-    {
-      "doc_id": "raa-contents-pds",
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 67
-    },
-    {
-      "doc_id": "raa-contents-pds",
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 25
-    },
-    {
-      "doc_id": "raa-contents-pds",
-      "insurer": "RAA",
-      "product": "Contents",
-      "doc_type": "PDS",
       "page": 14
     },
     {
@@ -217,35 +246,7 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 88
-    },
-    {
-      "doc_id": "allianz-building-kfs",
-      "insurer": "Allianz",
-      "product": "Building",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "gio-contents-pds",
-      "insurer": "GIO",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 29
-    },
-    {
-      "doc_id": "allianz-landlord-kfs",
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 14
+      "page": 70
     }
   ],
   "claim_id": "claim-003"

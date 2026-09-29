@@ -5,7 +5,7 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 14 March 2024 the flexible hose under my kitchen sink burst while I was at work, and by the time I got home water had flooded the cabinetry and part of the timber flooring. I've had to pull out the swollen cabinet base and the floorboards are warped. My policy number is HM-2298471. I'm hoping to get quotes but think it will cost around $4,500 to fix. Insurer: RealInsurance home insurance."
+        "claim_text": "On 14 March 2024 the flexible hose under my kitchen sink burst while I was at work, and by the time I got home water had flooded the cabinetry and part of the timber flooring. I've had to pull out the swollen cabinet base and the floorboards are warped. My policy number is HM-2298471. I'm hoping to get quotes but think it will cost around $4,500 to fix."
       },
       "output": {
         "claim_type": "escape_of_liquid",
@@ -21,46 +21,47 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Water damage from burst flexible hose/pipe under sink - accidental escape of water coverage",
-        "insurer": "RealInsurance"
+        "query": "Water damage from burst flexible hose under sink - is sudden escape of water covered?",
+        "insurer": "RealInsurance",
+        "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, here's what can be said about coverage for a burst pipe/hose under a sink:\n\n**General coverage rule:** The policies cover \"loss or damage to your building or contents (as applicable) caused by [an] escape of liquid that is sudden, unexpected, accidental and without warning that occurs at the site from any fixed pipe, fixed tank, waterbed, aquarium, household appliances or fixed item used to hold liquid\" [RealInsurance Contents PDS, page 17]; [RealInsurance Landlord PDS, page 17].\n\nIf a hose or pipe under the sink bursts suddenly and without warning, and this falls within the definition of a \"fixed pipe\" or \"household appliance,\" the resulting escape of liquid would appear to be an insured event under this clause.\n\n**Important caveats and exclusions from the excerpts:**\n\n1. **Reporting requirement:** \"You must report an escape of liquid to us as soon as you become aware of it. Any additional damage due to a failure to report the event may not be covered\" [RealInsurance Contents PDS, page 17].\n\n2. **Immediate action required:** \"If you do suffer loss or damage to your building or contents, you must take immediate action to prevent any further loss or damage\" [RealInsurance Contents PDS, page 17].\n\n3. **Exclusions that would NOT apply if the escape was sudden/accidental** (these apply to gradual issues instead): gradual seepage, wear and tear, gradual leaking/dripping/overflowing processes, and lack of routine maintenance [RealInsurance Contents PDS, page 17].\n\n4. **Cost of the item itself excluded:** \"We",
+        "answer": "Based on the excerpts provided, **Escape of liquids is a covered event (\"Yes\")**, but with a specific exclusion that is directly relevant to your scenario: the policy **excludes the cost to repair the item from which the water leaked or escaped** [RealInsurance Home KFS, page 1].\n\nThis means:\n- Damage caused by the water escaping (e.g., to flooring, cabinetry, or other property) may be covered under the \"Escape of liquids\" event.\n- However, the cost to repair or replace the burst flexible hose itself would be excluded, as it is \"the item from which the water leaked or escaped\" [RealInsurance Home KFS, page 1].\n\nThe excerpts do not provide further detail on specific conditions, sub-limits, or excess amounts that may apply to an \"Escape of liquids\" claim beyond this exclusion. The Key Facts Sheet itself notes that it \"does not provide a complete statement of the cover offered, exclusions, conditions and limits that apply under the policy\" and directs readers to the full PDS and policy documentation for complete details [RealInsurance Home KFS, page 1]. I cannot confirm additional specifics (such as applicable excess for this event) from the excerpts given.",
         "citations": [
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 17
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           },
           {
-            "doc_id": "realinsurance-landlord-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 17
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           },
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 17
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
           },
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 17
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
           },
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 14
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           }
         ]
       }
@@ -93,55 +94,55 @@
     {
       "turn": 3,
       "type": "final",
-      "text": "DECISION: approve\n\nThe claim involves a sudden, accidental escape of liquid from a burst flexible hose under the kitchen sink, damaging cabinetry and timber flooring. This matches the insuring clause for escape of liquid from a fixed pipe/household appliance under RealInsurance's policy, and none of the gradual-damage exclusions (wear and tear, gradual seepage, lack of maintenance) apply since the hose burst suddenly [RealInsurance Contents PDS, page 17].\n\nPolicy certificate for RealInsurance shows an excess of $500 and coverage limit of $40,000. Applying these to the estimated repair cost of $4,500 yields a payout of $4,000.\n\nNote: the policyholder should still comply with the policy's requirement to report the event promptly and mitigate further damage [RealInsurance Contents PDS, page 17], but this does not affect the current approval based on facts provided.\n\nPayout approved: $4,000 (subject to final quotes confirming the $4,500 estimate)."
+      "text": "DECISION: approve\n\nThe claim involves an escape of liquid (burst flexible hose under the kitchen sink) causing consequential damage to cabinetry and timber flooring. RealInsurance's Home KFS confirms escape of liquids is a covered event, and while the cost to repair the hose itself (the item that leaked) is excluded, the claim here is only for the resulting damage to cabinetry and flooring \u2014 not the hose \u2014 so no exclusion applies [RealInsurance Home KFS, page 1].\n\nPolicy certificate for policy HM-2298471: excess $500, coverage limit $40,000. Applying these to the estimated repair cost of $4,500 gives a payout of $4,000 (claim amount less excess), which is well within the coverage limit.\n\nNote: the policyholder mentioned the $4,500 figure is an estimate pending final quotes \u2014 final payout should be confirmed once formal quotes/invoices are submitted, but based on current information the claim is approved for a payout of $4,000, subject to adjustment if final costs differ."
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nThe claim involves a sudden, accidental escape of liquid from a burst flexible hose under the kitchen sink, damaging cabinetry and timber flooring. This matches the insuring clause for escape of liquid from a fixed pipe/household appliance under RealInsurance's policy, and none of the gradual-damage exclusions (wear and tear, gradual seepage, lack of maintenance) apply since the hose burst suddenly [RealInsurance Contents PDS, page 17].\n\nPolicy certificate for RealInsurance shows an excess of $500 and coverage limit of $40,000. Applying these to the estimated repair cost of $4,500 yields a payout of $4,000.\n\nNote: the policyholder should still comply with the policy's requirement to report the event promptly and mitigate further damage [RealInsurance Contents PDS, page 17], but this does not affect the current approval based on facts provided.\n\nPayout approved: $4,000 (subject to final quotes confirming the $4,500 estimate).",
+  "reasoning": "DECISION: approve\n\nThe claim involves an escape of liquid (burst flexible hose under the kitchen sink) causing consequential damage to cabinetry and timber flooring. RealInsurance's Home KFS confirms escape of liquids is a covered event, and while the cost to repair the hose itself (the item that leaked) is excluded, the claim here is only for the resulting damage to cabinetry and flooring \u2014 not the hose \u2014 so no exclusion applies [RealInsurance Home KFS, page 1].\n\nPolicy certificate for policy HM-2298471: excess $500, coverage limit $40,000. Applying these to the estimated repair cost of $4,500 gives a payout of $4,000 (claim amount less excess), which is well within the coverage limit.\n\nNote: the policyholder mentioned the $4,500 figure is an estimate pending final quotes \u2014 final payout should be confirmed once formal quotes/invoices are submitted, but based on current information the claim is approved for a payout of $4,000, subject to adjustment if final costs differ.",
   "citations": [
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 17
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 17
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
-      "doc_id": "realinsurance-landlord-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 17
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 17
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 17
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 14
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "claim_id": "claim-014"

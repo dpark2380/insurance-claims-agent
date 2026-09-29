@@ -5,33 +5,146 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $15,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
+        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $12,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
       },
       "output": {
         "claim_type": "theft",
         "date_of_loss": "2025-07-10",
         "cause": "break-in by unknown person",
         "damaged_item": "jewellery and electronics",
-        "estimated_amount": 15000.0,
+        "estimated_amount": 12000.0,
         "policy_number": null
       }
     },
     {
-      "turn": 2,
+      "turn": 1,
       "type": "tool_call",
-      "tool": "escalate_to_human",
+      "tool": "retrieve_policy",
       "input": {
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application."
+        "query": "Theft of jewellery and electronics during break-in, sub-limits for unspecified valuables without receipts"
       },
       "output": {
-        "status": "escalated",
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application."
+        "answer": "Based on the provided excerpts, here is what I can address regarding coverage for theft of jewellery and electronics during a break-in, and sub-limits for unspecified valuables:\n\n**Geographic/worn coverage for jewellery and watches:**\n- Suncorp: Jewellery and watches are covered anywhere in the world for up to 30 consecutive days, but only while being worn by you or while in a secure safe [Suncorp Contents PDS, page 26].\n- GIO: Same 30-day worldwide provision applies, only while worn or in a secure safe [GIO Contents PDS, page 25; GIO Contents PDS, page 83].\n\n**Sub-limits for unspecified items:**\n- Suncorp: For \"Personal valuables \u2013 unspecified items,\" there is a **$1,000 limit per item, pair, set, or collection**, with the overall maximum being the sum insured shown on your certificate of insurance [Suncorp Contents PDS, page 26].\n- GIO: The excerpts confirm \"Portable valuables \u2013 unspecified items\" is a distinct cover type and describe reinstatement of the sum insured after a claim [GIO Contents PDS, page 101], but **no specific dollar sub-limit per item is stated in the provided GIO excerpts**.\n- RACWA: The excerpts list categories of items covered as unspecified personal valuables (including jewellery/watches and portable electronic devices) [RACWA Home PDS, page 23], but **no specific sub-limit figures are included in the provided excerpts**.\n\n**Break-in/theft specifically:**\nNone of the provided excerpts explicitly discuss \"theft during a break-in\" as a distinct scenario, nor do they mention any special conditions, exclusions, or reduced sub-limits applying specifically when items are unreceipted or when a claim arises from burglary/break-in.\n\n**Receipts requirement:**\nNone of the provided excerpts mention a requirement for receipts to substantiate unspecified valuables claims, nor any sub-limit that specifically applies \"without receipts.\"\n\n**Gaps in the excerpts:** I cannot confirm from the provided material:\n- Whether GIO or RACWA impose a specific per-item dollar sub-limit for unspecified valuables (only Suncorp's $1,000 figure is given).\n- Any policy provisions distinguishing claims with vs. without proof of purchase/receipts.\n- Whether portable electronic devices are excluded",
+        "citations": [
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "racwa-home-pds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 101
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 83
+          }
+        ]
       }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so we cannot determine which policy's certificate (excess/coverage limit and unspecified-valuables sub-limit) applies. The policy search returned coverage details from three different insurers (Suncorp, GIO, RACWA) with materially different terms \u2014 e.g., Suncorp caps unspecified valuables at $1,000 per item [Suncorp Contents PDS, page 26], while GIO and RACWA provisions do not specify a dollar sub-limit in the retrieved excerpts [GIO Contents PDS, page 25], [GIO Contents PDS, page 83], [GIO Contents PDS, page 101], [RACWA Home PDS, page 23]. Without knowing the actual insurer, get_policy_certificate cannot be resolved and calculate_payout would require guessing an excess/coverage limit and sub-limit, which is not permitted. Additionally, the claim lacks receipts and the estimated loss ($12,000) is claimed to exceed unspecified-valuables sub-limits, which is a coverage-limiting issue that needs human verification of the actual policy terms once the insurer is identified.\n\nThis claim should be escalated to a human reviewer to (1) confirm the specific insurer/policy, and (2) verify how the lack of receipts and the stated sub-limit issue affects the payout calculation."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate (excess/coverage_limit) cannot be resolved and calculate_payout would require guessed figures. Additionally, the claimant explicitly flags the loss ($15,000 in jewellery/electronics, no receipts) as likely exceeding unspecified-valuables sub-limits, which needs policy-specific verification. Human review required to identify insurer/policy and confirm sub-limit application.",
-  "citations": [],
-  "retrieved_sources": [],
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so we cannot determine which policy's certificate (excess/coverage limit and unspecified-valuables sub-limit) applies. The policy search returned coverage details from three different insurers (Suncorp, GIO, RACWA) with materially different terms \u2014 e.g., Suncorp caps unspecified valuables at $1,000 per item [Suncorp Contents PDS, page 26], while GIO and RACWA provisions do not specify a dollar sub-limit in the retrieved excerpts [GIO Contents PDS, page 25], [GIO Contents PDS, page 83], [GIO Contents PDS, page 101], [RACWA Home PDS, page 23]. Without knowing the actual insurer, get_policy_certificate cannot be resolved and calculate_payout would require guessing an excess/coverage limit and sub-limit, which is not permitted. Additionally, the claim lacks receipts and the estimated loss ($12,000) is claimed to exceed unspecified-valuables sub-limits, which is a coverage-limiting issue that needs human verification of the actual policy terms once the insurer is identified.\n\nThis claim should be escalated to a human reviewer to (1) confirm the specific insurer/policy, and (2) verify how the lack of receipts and the stated sub-limit issue affects the payout calculation.",
+  "citations": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 83
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 101
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 101
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 83
+    }
+  ],
   "claim_id": "claim-019"
 }

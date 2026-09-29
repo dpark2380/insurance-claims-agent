@@ -18,12 +18,19 @@
     },
     {
       "turn": 2,
-      "type": "final",
-      "text": "DECISION: escalate\n\nThis claim lacks essential information needed for automated triage: the cause of damage is unknown, the estimated amount is null, and no insurer is named. Per policy:\n- The estimated_amount is null and cannot be resolved from the narrative (no cost estimate given at all).\n- No insurer is named, so get_policy_certificate cannot be resolved and calculate_payout would require guessed excess/coverage figures.\n- The cause is \"unknown,\" making it impossible to check coverage/exclusions via retrieve_policy meaningfully.\n\nThis claim requires a human to gather more details (cause, cost estimate, insurer/policy number) before it can be processed."
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim narrative is too vague to process: no insurer is named (so no policy certificate or excess/coverage_limit can be retrieved), the cause of damage is unknown/unconfirmed (cannot verify against policy exclusions), and estimated_amount is null with no way to derive it from the narrative. Requires human follow-up with the policyholder to gather basic facts (insurer, cause, cost estimate) before any coverage or payout determination can be made."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim narrative is too vague to process: no insurer is named (so no policy certificate or excess/coverage_limit can be retrieved), the cause of damage is unknown/unconfirmed (cannot verify against policy exclusions), and estimated_amount is null with no way to derive it from the narrative. Requires human follow-up with the policyholder to gather basic facts (insurer, cause, cost estimate) before any coverage or payout determination can be made."
+      }
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nThis claim lacks essential information needed for automated triage: the cause of damage is unknown, the estimated amount is null, and no insurer is named. Per policy:\n- The estimated_amount is null and cannot be resolved from the narrative (no cost estimate given at all).\n- No insurer is named, so get_policy_certificate cannot be resolved and calculate_payout would require guessed excess/coverage figures.\n- The cause is \"unknown,\" making it impossible to check coverage/exclusions via retrieve_policy meaningfully.\n\nThis claim requires a human to gather more details (cause, cost estimate, insurer/policy number) before it can be processed.",
+  "reasoning": "Claim narrative is too vague to process: no insurer is named (so no policy certificate or excess/coverage_limit can be retrieved), the cause of damage is unknown/unconfirmed (cannot verify against policy exclusions), and estimated_amount is null with no way to derive it from the narrative. Requires human follow-up with the policyholder to gather basic facts (insurer, cause, cost estimate) before any coverage or payout determination can be made.",
   "citations": [],
   "retrieved_sources": [],
   "claim_id": "claim-016"

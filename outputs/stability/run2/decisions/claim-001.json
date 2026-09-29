@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Water damage from burst washing machine hose - sudden escape of water coverage",
+        "query": "Water damage from burst washing machine hose - is sudden escape of water covered?",
         "insurer": "Allianz",
         "product": "Home"
       },
       "output": {
-        "answer": "Based on the excerpts provided, here's what applies to a burst washing machine hose scenario:\n\n**Coverage exclusion:** Loss or damage from domestic appliances \u2014 for example, a dishwasher or washing machine \u2014 is explicitly listed as **not covered** under the \"Sudden escape of liquid\" insured event, for both Buildings Insurance and Contents Insurance [Allianz Home PDS, page 27].\n\n**What this means:** Even though \"sudden escape of liquid\" is generally a covered event (with a \u2713 for both Buildings and Contents Insurance) [Allianz Home PDS, page 27], the excerpt specifically carves out domestic appliances like washing machines as an exception under \"What's not covered\" [Allianz Home PDS, page 27].\n\n**Gradual damage exclusion (separate issue):** The excerpts also note that damage is not covered if it results from a gradual escape of liquid over time where you could reasonably have been expected to be aware of it (e.g., visible staining, mould, mildew, or deterioration) [Allianz Home PDS, page 27]. This would not apply to a genuinely sudden hose burst, but is noted for completeness.\n\n**Conclusion:** Based solely on these excerpts, water damage caused by a burst washing machine hose appears to fall under the specific exclusion for \"domestic appliances \u2013 for example a dishwasher or washing machine\" [Allianz Home PDS, page 27], meaning it would not be covered under the Sudden escape of liquid insured event.\n\nI don't have excerpts covering whether a separate insured event (such as a specific \"Water damage\" category apart from \"Sudden escape of liquid\") might apply, nor do I have information on the 72-hour exclusion period's relevance here, policy excesses, or any endorsements that might override this exclusion. If you have additional policy sections addressing appliance-related water damage specifically, I'd need those to give a complete answer.",
+        "answer": "**Yes \u2014 sudden escape of water from a burst washing machine hose is covered**, subject to some conditions.\n\nThe Allianz Home PDS lists as covered: \"Loss or damage resulting directly from bursting, leaking, discharging or overflowing of any: domestic appliances \u2013 for example a dishwasher or washing machine... fixed pipes... sinks, baths, basins or water carrying apparatus\" [Allianz Home PDS, page 27]. This applies to both Buildings and Contents insurance, so damage to your buildings and/or contents caused by the sudden burst would be covered.\n\nHowever, note the exclusions that still apply:\n- Loss or damage **as a result of gradual escape of water or liquid over time**, particularly \"where you could reasonably be expected to have been aware of this \u2013 for example, where there is visible damage or changes to the property... staining on ceilings or walls, evidence of mould or mildew, deterioration of tile or grouting or adhesive\" is **not covered** [Allianz Home PDS, page 27].\n- Other general exclusions on page 51 may also apply, though the specific wording of those exclusions is not included in the excerpts provided, so I cannot confirm their content here.\n\nIn summary: a sudden burst of the",
         "citations": [
           {
             "doc_id": "allianz-home-pds",
@@ -40,28 +40,28 @@
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 11
+            "page": 24
           },
           {
             "doc_id": "allianz-home-pds",
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 11
+            "page": 45
           },
           {
             "doc_id": "allianz-home-pds",
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 81
+            "page": 25
           },
           {
             "doc_id": "allianz-home-pds",
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 52
+            "page": 14
           }
         ]
       }
@@ -80,12 +80,25 @@
     },
     {
       "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 6500,
+        "excess": 600,
+        "coverage_limit": 60000
+      },
+      "output": {
+        "payout": 5900
+      }
+    },
+    {
+      "turn": 3,
       "type": "final",
-      "text": "This claim's cause \u2014 a burst washing machine hose \u2014 directly conflicts with a specific exclusion in the Allianz Home PDS: while \"Sudden escape of liquid\" is generally a covered insured event, damage arising from domestic appliances (explicitly including washing machines) is carved out as **not covered** [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause and a policy exclusion, which per policy requires escalation rather than an automatic deny \u2014 there may be nuance (e.g., whether the exclusion applies to the appliance itself vs. resulting water damage to flooring/structure) that a human underwriter should confirm rather than a fully automated deny.\n\nDECISION: escalate\n\nReasoning: extract_fields confirms the cause as a burst washing machine hose causing escape-of-liquid damage to laundry flooring, hallway carpet, and bedroom skirting boards, estimated at $6,500, under Allianz policy HC-4489213. retrieve_policy found that while \"Sudden escape of liquid\" is a covered insured event under the Allianz Home PDS, there is an explicit exclusion for loss/damage arising from domestic appliances such as washing machines [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause (washing machine hose burst) and a named policy exclusion. Per escalation policy, any claim where the claimed cause directly conflicts with a found policy exclusion must be escalated to a human reviewer rather than decided automatically, since there is ambiguity about whether the exclusion bars the whole claim or only appliance-specific damage (as opposed to consequential damage to flooring/structure). I have not proceeded to calculate a payout because coverage itself is in dispute.\n\nCitations: [Allianz Home PDS, page 27]"
+      "text": "DECISION: approve\n\nThe claim describes a sudden, overnight burst of a washing machine hose causing water damage to laundry flooring, hallway carpet, and bedroom skirting boards \u2014 this matches the Allianz Home PDS coverage for \"loss or damage resulting directly from bursting, leaking, discharging or overflowing of any domestic appliance... water carrying apparatus\" [Allianz Home PDS, page 27]. There is no evidence of gradual/long-term seepage (e.g., no prior visible staining, mould, or slow deterioration mentioned), so the gradual-damage exclusion on the same page does not apply [Allianz Home PDS, page 27].\n\nPolicy certificate for Allianz (policy HC-4489213): excess $600, coverage limit $60,000.\n\nPayout calculation: $6,500 claimed \u2212 $600 excess = **$5,900**, well within the $60,000 coverage limit.\n\nRecommendation: Approve the claim for a payout of $5,900."
     }
   ],
-  "final_decision": "escalate",
-  "reasoning": "This claim's cause \u2014 a burst washing machine hose \u2014 directly conflicts with a specific exclusion in the Allianz Home PDS: while \"Sudden escape of liquid\" is generally a covered insured event, damage arising from domestic appliances (explicitly including washing machines) is carved out as **not covered** [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause and a policy exclusion, which per policy requires escalation rather than an automatic deny \u2014 there may be nuance (e.g., whether the exclusion applies to the appliance itself vs. resulting water damage to flooring/structure) that a human underwriter should confirm rather than a fully automated deny.\n\nDECISION: escalate\n\nReasoning: extract_fields confirms the cause as a burst washing machine hose causing escape-of-liquid damage to laundry flooring, hallway carpet, and bedroom skirting boards, estimated at $6,500, under Allianz policy HC-4489213. retrieve_policy found that while \"Sudden escape of liquid\" is a covered insured event under the Allianz Home PDS, there is an explicit exclusion for loss/damage arising from domestic appliances such as washing machines [Allianz Home PDS, page 27]. This is a direct conflict between the claimed cause (washing machine hose burst) and a named policy exclusion. Per escalation policy, any claim where the claimed cause directly conflicts with a found policy exclusion must be escalated to a human reviewer rather than decided automatically, since there is ambiguity about whether the exclusion bars the whole claim or only appliance-specific damage (as opposed to consequential damage to flooring/structure). I have not proceeded to calculate a payout because coverage itself is in dispute.\n\nCitations: [Allianz Home PDS, page 27]",
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nThe claim describes a sudden, overnight burst of a washing machine hose causing water damage to laundry flooring, hallway carpet, and bedroom skirting boards \u2014 this matches the Allianz Home PDS coverage for \"loss or damage resulting directly from bursting, leaking, discharging or overflowing of any domestic appliance... water carrying apparatus\" [Allianz Home PDS, page 27]. There is no evidence of gradual/long-term seepage (e.g., no prior visible staining, mould, or slow deterioration mentioned), so the gradual-damage exclusion on the same page does not apply [Allianz Home PDS, page 27].\n\nPolicy certificate for Allianz (policy HC-4489213): excess $600, coverage limit $60,000.\n\nPayout calculation: $6,500 claimed \u2212 $600 excess = **$5,900**, well within the $60,000 coverage limit.\n\nRecommendation: Approve the claim for a payout of $5,900.",
   "citations": [
     {
       "doc_id": "allianz-home-pds",
@@ -108,28 +121,28 @@
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 11
+      "page": 24
     },
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 11
+      "page": 45
     },
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 81
+      "page": 25
     },
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 52
+      "page": 14
     }
   ],
   "claim_id": "claim-001"

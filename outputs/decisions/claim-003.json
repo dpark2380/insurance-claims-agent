@@ -21,25 +21,25 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Flood cover creek overflow flash flooding damage",
+        "query": "Is flood/creek overflow water damage covered or excluded?",
         "insurer": "RAA"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here is what applies to your question about Flood cover for creek overflow/flash flooding damage:\n\n**Definition of Flood includes creek overflow:**\nFlood is defined as \"the covering of normally dry land by water that has escaped or been released from the normal confines of: \u2022 any lake, or any river, creek or other natural watercourse, whether or not altered or modified; or \u2022 any reservoir, canal or dam\" [RAA Contents PDS, page 87]. This means water escaping from a creek would fall under the Flood definition.\n\n**What is covered:**\nThe policy covers \"loss or damage to the Insured Property provided as a result of Flood\" [RAA Contents PDS, page 50].\n\n**Key exclusions that may apply to Flood/flash flooding damage:**\n- Loss or damage to any part of the Home that is not fully built\n- Tennis courts\n- Wharfs, jetties, pontoons or sea walls\n- Water in a tank, swimming pool or spa (including cleaning costs)\n- Swimming pools/spas and their covers or liners (except permanently attached hard lid style pool covers)\n- Paint damage where there is no structural damage caused by Flood to other parts of the Home\n- Damage caused by underground (hydrostatic) water\n- Glasshouses or greenhouses\n- Unsealed paths or driveways (e.g., gravel or loose materials)\n- Flood arising from deliberate or Malicious Damage to a reservoir or dam\n- Paths, driveways, or similar items if they were not structurally sound or well-maintained prior to the loss [RAA Contents PDS, page 50]\n\n**Additional note on water source mixing:**\n\"Flood also excludes a mixture of water from Actions of the Sea and water from any other source\" [RAA Contents PDS, page 88]. This clause distinguishes Flood from sea-related water damage, but does not exclude creek-sourced flash flooding on its own.\n\n**Gap in the excerpts:** The provided material does not include a specific definition or discussion of \"flash flooding\" as a distinct term, nor does it clarify whether rapid-onset flooding from a creek is treated differently from standard Flood cover. If your question relates to a specific claim scenario (e.g., damage to a shed, timing of the flood event, or whether the affected structure was \"fully built\"), I would need additional excerpts to confirm coverage specifics.",
+        "answer": "Based on the excerpts provided, I cannot fully answer this question.\n\nThe excerpts define \"Flood\" only in the context of what it excludes: it excludes water from Actions of the Sea (with exceptions for Storm Surge occurring alongside Storm damage, or Tsunami), and excludes any mixture of Actions of the Sea water with water from other sources [RAA Contents PDS, page 88]. This implies \"Flood\" is a defined term used elsewhere as a covered peril, but none of the provided excerpts contain the actual insuring clause listing Flood as an Insured Event, its specific definition (e.g., whether it includes creek/river overflow), or any associated exclusions/waiting periods for Flood cover.\n\nSeparately, the excerpts do show that \"Storm and Rainwater Runoff\" is a listed Insured Event [RAA Contents PDS, page 45], with a 48-hour waiting period and a specific sub-limit (10% of the Sum Insured) for paths, driveways, gardens, paving, and freestanding/retaining walls [RAA Contents PDS, page 46]. This category excludes damage from pre-existing defects, wear and tear, water entering through open windows/doors/skylights, and underground (hydrostatic) water [RAA Contents PDS, page 45]. However, this \"Storm and Rainwater Runoff\" definition as excerpted does not explicitly state whether it includes water overflowing from a creek.\n\nI do not have enough information in these excerpts to state definitively whether creek overflow specifically falls under \"Flood,\" \"Rainwater Runoff,\" or is treated separately, nor do I have the full definition of \"Flood\" or confirmation that Flood is an Insured Event under this policy. Please provide the excerpt containing the Flood insuring clause/definition (referenced but not included here) for a complete answer.",
         "citations": [
           {
             "doc_id": "raa-contents-pds",
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 87
+            "page": 70
           },
           {
             "doc_id": "raa-contents-pds",
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 50
+            "page": 67
           },
           {
             "doc_id": "raa-contents-pds",
@@ -53,14 +53,14 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 14
+            "page": 46
           },
           {
             "doc_id": "raa-contents-pds",
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 70
+            "page": 45
           }
         ]
       }
@@ -68,43 +68,67 @@
     {
       "turn": 2,
       "type": "tool_call",
-      "tool": "get_policy_certificate",
+      "tool": "retrieve_policy",
       "input": {
+        "query": "Definition of Flood insured event - does it include water from a creek, river or lake overflowing its banks?",
         "insurer": "RAA"
       },
       "output": {
-        "excess": 500,
-        "coverage_limit": 45000
+        "answer": "Based on the provided excerpts, I cannot fully answer this question. The excerpts include the exclusions and partial \"Good Condition\" definitions related to Flood [RAA Contents PDS, page 88; page 50], but they do not contain the actual definition of \"Flood\" itself (i.e., the specific wording that would confirm whether it covers water from a creek, river or lake overflowing its banks). \n\nWhat is shown is that Flood cover excludes water from \"Actions of the Sea\" (with limited exceptions for Storm Surge and Tsunami) [RAA Contents PDS, page 88], and lists various exclusions to the Flood Insured Event such as damage to unfinished buildings, tennis courts, wharves, tanks/pools, paint without structural damage, hydrostatic water, glasshouses, unsealed paths/driveways, and damage from deliberate destruction of a reservoir or dam [RAA Contents PDS, page 50]. None of these excerpts explicitly state whether overflow from a creek, river or lake is included in the definition of Flood.\n\nTo answer this question definitively, I would need the excerpt containing the actual definition of \"Flood\" from the policy's Definitions section, which is not included above.",
+        "citations": [
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 50
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 46
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 24
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 33
+          }
+        ]
       }
     },
     {
       "turn": 3,
-      "type": "tool_call",
-      "tool": "calculate_payout",
-      "input": {
-        "claim_amount": 9000,
-        "excess": 500,
-        "coverage_limit": 45000
-      },
-      "output": {
-        "payout": 8500
-      }
-    },
-    {
-      "turn": 4,
       "type": "final",
-      "text": "DECISION: approve\n\nThe claim describes flood damage caused by a nearby creek overflowing after heavy rain, which inundated the home and damaged carpets and the base of plasterboard walls. Under RAA's policy, \"Flood\" is explicitly defined to include water escaping the normal confines of a creek [RAA Contents PDS, page 87], and loss or damage resulting from Flood is covered [RAA Contents PDS, page 50]. None of the listed exclusions (unfinished structures, tennis courts, wharfs/jetties, pool/tank water, paint-only damage, hydrostatic/underground water, glasshouses, unsealed paths/driveways, malicious dam damage) apply to this scenario \u2014 the damage is structural/material (carpet and plasterboard) from surface floodwater entering the home [RAA Contents PDS, page 50]. The mixed-water-source exclusion for Actions of the Sea also does not apply here since this is a pure creek-flood event [RAA Contents PDS, page 88].\n\nUsing the policyholder's certificate figures (excess: $500, coverage limit: $45,000), and the claimed amount of $9,000, the calculated payout is:\n\n**$8,500** (i.e., $9,000 claim \u2212 $500 excess), well within the $45,000 coverage limit.\n\nCitations: [RAA Contents PDS, page 87], [RAA Contents PDS, page 50], [RAA Contents PDS, page 88]"
+      "text": "The retrieved policy text is insufficient and ambiguous \u2014 it cannot confirm whether \"Flood\" as an insured event includes creek overflow, nor rule it out, despite multiple targeted queries. This is exactly the ambiguous-coverage scenario requiring escalation.\n\nDECISION: escalate\n\nReasoning: The claim involves water ingress from a creek overflowing its banks after heavy rain, damaging carpets and plasterboard walls (estimated $9,000). I extracted the claim fields successfully (cause: creek overflow due to heavy rain; amount: $9,000) and queried the RAA Contents PDS multiple times to determine whether this cause is covered under \"Flood\" or \"Storm and Rainwater Runoff\" insured events. The retrieved excerpts only contain exclusions and peripheral definitions (e.g., exclusion of \"Actions of the Sea\" water, exclusions for unfinished buildings, hydrostatic water, sub-limits for Storm and Rainwater Runoff) but never the core insuring clause/definition of \"Flood\" that would confirm whether creek/river overflow is a covered peril [RAA Contents PDS, page 88], [RAA Contents PDS, page 50], [RAA Contents PDS, page 46], [RAA Contents PDS, page 45], [RAA Contents PDS, page 70], [RAA Contents PDS, page 67], [RAA Contents PDS, page 24], [RAA Contents PDS, page 33].\n\nBecause the coverage determination is ambiguous \u2014 the policy text neither clearly confirms nor excludes creek-overflow flooding as a covered \"Flood\" event \u2014 per policy I must escalate rather than guess. I have not proceeded to pull the certificate or calculate payout, since the coverage question must be resolved by a human reviewer first."
     }
   ],
-  "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nThe claim describes flood damage caused by a nearby creek overflowing after heavy rain, which inundated the home and damaged carpets and the base of plasterboard walls. Under RAA's policy, \"Flood\" is explicitly defined to include water escaping the normal confines of a creek [RAA Contents PDS, page 87], and loss or damage resulting from Flood is covered [RAA Contents PDS, page 50]. None of the listed exclusions (unfinished structures, tennis courts, wharfs/jetties, pool/tank water, paint-only damage, hydrostatic/underground water, glasshouses, unsealed paths/driveways, malicious dam damage) apply to this scenario \u2014 the damage is structural/material (carpet and plasterboard) from surface floodwater entering the home [RAA Contents PDS, page 50]. The mixed-water-source exclusion for Actions of the Sea also does not apply here since this is a pure creek-flood event [RAA Contents PDS, page 88].\n\nUsing the policyholder's certificate figures (excess: $500, coverage limit: $45,000), and the claimed amount of $9,000, the calculated payout is:\n\n**$8,500** (i.e., $9,000 claim \u2212 $500 excess), well within the $45,000 coverage limit.\n\nCitations: [RAA Contents PDS, page 87], [RAA Contents PDS, page 50], [RAA Contents PDS, page 88]",
+  "final_decision": "escalate",
+  "reasoning": "The retrieved policy text is insufficient and ambiguous \u2014 it cannot confirm whether \"Flood\" as an insured event includes creek overflow, nor rule it out, despite multiple targeted queries. This is exactly the ambiguous-coverage scenario requiring escalation.\n\nDECISION: escalate\n\nReasoning: The claim involves water ingress from a creek overflowing its banks after heavy rain, damaging carpets and plasterboard walls (estimated $9,000). I extracted the claim fields successfully (cause: creek overflow due to heavy rain; amount: $9,000) and queried the RAA Contents PDS multiple times to determine whether this cause is covered under \"Flood\" or \"Storm and Rainwater Runoff\" insured events. The retrieved excerpts only contain exclusions and peripheral definitions (e.g., exclusion of \"Actions of the Sea\" water, exclusions for unfinished buildings, hydrostatic water, sub-limits for Storm and Rainwater Runoff) but never the core insuring clause/definition of \"Flood\" that would confirm whether creek/river overflow is a covered peril [RAA Contents PDS, page 88], [RAA Contents PDS, page 50], [RAA Contents PDS, page 46], [RAA Contents PDS, page 45], [RAA Contents PDS, page 70], [RAA Contents PDS, page 67], [RAA Contents PDS, page 24], [RAA Contents PDS, page 33].\n\nBecause the coverage determination is ambiguous \u2014 the policy text neither clearly confirms nor excludes creek-overflow flooding as a covered \"Flood\" event \u2014 per policy I must escalate rather than guess. I have not proceeded to pull the certificate or calculate payout, since the coverage question must be resolved by a human reviewer first.",
   "citations": [
     {
       "doc_id": "raa-contents-pds",
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 87
+      "page": 88
     },
     {
       "doc_id": "raa-contents-pds",
@@ -118,7 +142,42 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 88
+      "page": 46
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 67
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
     }
   ],
   "retrieved_sources": [
@@ -127,14 +186,14 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 87
+      "page": 70
     },
     {
       "doc_id": "raa-contents-pds",
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 50
+      "page": 67
     },
     {
       "doc_id": "raa-contents-pds",
@@ -148,14 +207,49 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 14
+      "page": 46
     },
     {
       "doc_id": "raa-contents-pds",
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 70
+      "page": 45
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 50
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 46
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 33
     }
   ],
   "claim_id": "claim-003"

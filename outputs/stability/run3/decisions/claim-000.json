@@ -5,15 +5,15 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 3 February 2024 there was heavy rain and the creek near our house broke its banks, flooding our backyard and getting into the garage. The garage floor was under about 20cm of water and it ruined a chest freezer and a bunch of boxes we had stored on the floor. We think it'll cost around $2,500 to replace the freezer and the stuff that got wet."
+        "claim_text": "On 3 February 2024 there was heavy rain and the creek near our house broke its banks, flooding our backyard and getting into the garage. The garage floor was under about 20cm of water and it ruined a chest freezer and a bunch of boxes we had stored on the floor. We think it'll cost around $2,500 to replace the freezer and the stuff that got wet. Policyholder with AAMI home insurance."
       },
       "output": {
         "claim_type": "flood",
         "date_of_loss": "2024-02-03",
         "cause": "creek overflowed due to heavy rain breaking its banks",
-        "damaged_item": "garage floor and contents",
+        "damaged_item": "garage floor and contents including chest freezer and storage boxes",
         "estimated_amount": 2500.0,
-        "policy_number": null
+        "policy_number": "A123456789"
       }
     },
     {
@@ -21,13 +21,48 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is flood damage from creek/river overflow covered, and is there a flood exclusion?",
         "insurer": "AAMI",
-        "product": "Home"
+        "query": "Is flood damage from creek/river overflow covered under home and contents policy?"
       },
       "output": {
-        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
-        "citations": []
+        "answer": "Based on the excerpts provided:\n\n**Contents cover:** AAMI Contents Insurance includes **Flood** as an insured event \u2014 \"Loss or damage caused by flood\" is covered [AAMI Contents PDS, page 44]. This cover applies unless you have removed flood cover from your policy (in which case your certificate of insurance will show this limitation) [AAMI Contents PDS, page 44].\n\n**Exclusions relevant to flood cover:**\n- Loss or damage caused by actions or movements of the sea or storm surge is **not** covered [AAMI Contents PDS, page 44].\n- Loss or damage from erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or other earth movement is **not** covered \u2014 except that landslide or subsidence proven to have occurred within 72 hours of, and directly because of, flood (and not caused by erosion, structural fault, or design fault) **is** covered [AAMI Contents PDS, page 44].\n\n",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 44
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
+          },
+          {
+            "doc_id": "aami-contents-kfs",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 6
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 70
+          }
+        ]
       }
     },
     {
@@ -45,104 +80,6 @@
     {
       "turn": 2,
       "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "flood definition storm water damage coverage home insurance",
-        "insurer": "AAMI"
-      },
-      "output": {
-        "answer": "Based on the excerpts provided, here's what I can share regarding flood definition and related coverage:\n\n**Definition of Flood:**\nThe policy defines flood as \"the covering of normally dry land by water that has escaped or been released from the normal confines of: any lake, river, creek, or other natural watercourse (whether or not altered or modified) [or] any reservoir, canal, or dam\" [AAMI Contents PDS, page 100].\n\n**Flood Coverage:**\n- Flood loss or damage to contents is covered as an insured event [AAMI Contents PDS, page 44], and flood damage to buildings is similarly covered [AAMI Building PDS, page 39].\n- However, coverage does **not** apply if flood cover has been removed from the policy (this would be noted on the certificate of insurance) [AAMI Contents PDS, page 44; AAMI Building PDS, page 39].\n- Flood cover excludes: damage caused by actions/movements of the sea or storm surge, and damage caused by erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or other earth movement \u2014 **except** where landslide or subsidence is proved to have occurred within 72 hours of, and directly because of, flood (and not caused by erosion, structural fault, or design fault) [AAMI Contents PDS, page 44; AAMI Building PDS, page 39].\n- For buildings specifically, additional exclusions apply to retaining walls, sea walls, revetments, garden borders, free-standing outdoor walls, cracking to sealed paths/roads/driveways (unless washed away), sporting surfaces/courts, and boat jetties/pontoons/mooring poles [AAMI Building PDS, page 39].\n\n**Regarding \"Storm Water\" specifically:**\nThe excerpts provided do not contain a specific definition of \"storm water damage\" as distinct from flood or storm. I can see there is a separate \"Storm\" insured event referenced in the summary of cover [AAMI Contents PDS, page 8], and a \"Storm surge\" event which is explicitly excluded from flood cover [AAMI Contents PDS, page 44], but the detailed definitions and terms for \"Storm\" (page 45) or \"Storm surge\" (page 46) are not included in the excerpts provided to me.\n\n**I cannot provide further detail on storm-specific coverage or a precise legal distinction between storm water and flood damage, as this information is not cont",
-        "citations": [
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 39
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 49
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 100
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 8
-          }
-        ]
-      }
-    },
-    {
-      "turn": 2,
-      "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "flood cover opt in riverine flood exclusion contents garage",
-        "insurer": "AAMI"
-      },
-      "output": {
-        "answer": "Based on the provided excerpts, here is what I can determine:\n\n**Flood cover is opt-out, not opt-in (for contents):** The AAMI Contents PDS indicates that flood cover is included by default, but can be removed \u2014 \"loss or damage caused by flood if you have removed flood cover. Your certificate of insurance will show this limitation in your cover\" [AAMI Contents PDS, page 44]. This implies that unless flood cover has been actively *removed* (noted on the certificate of insurance), it applies. There is no mention in these excerpts of a separate \"opt-in\" mechanism.\n\n**Riverine flood specifically:** None of the excerpts define \"flood\" or distinguish \"riverine flood\" from other types of flood. The term \"flood\" is used generally without further breakdown, so I cannot confirm from these excerpts whether riverine flood is treated differently or specifically excluded.\n\n**Garage:** None of the provided excerpts specifically mention a garage or contents/structures located in a garage in relation to flood cover.\n\n**What the excerpts do exclude under flood cover (Contents):**\n- Loss or damage caused by actions or movements of the sea or storm surge\n- Loss or damage caused by erosion, vibration, subsidence, landslip, landslide, mudslide, collapse, shrinkage, or other earth movement \u2014 *except* landslide or subsidence proven to occur within 72 hours of, and directly because of, flood (and not caused by erosion, structural fault, or design fault)\n- The cost of cleaning undamaged contents\n[AAMI Contents PDS, page 44]\n\n**Insufficient information:** The excerpts do not contain enough information to confirm:\n- Whether \"riverine flood\" is separately defined or excluded from the general flood definition\n- Any specific provisions relating to a garage or contents stored in a garage\n- The exact opt-in/opt-out process or timing for flood cover selection\n\nIf you need clarification on these points, please provide additional excerpts covering the policy's definitions section (where \"flood\" is likely defined) and any specific garage-related provisions.",
-        "citations": [
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 39
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 39
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 58
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          }
-        ]
-      }
-    },
-    {
-      "turn": 3,
-      "type": "tool_call",
       "tool": "calculate_payout",
       "input": {
         "claim_amount": 2500,
@@ -154,45 +91,24 @@
       }
     },
     {
-      "turn": 4,
+      "turn": 3,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning:\n- Cause: Creek broke its banks after heavy rain, flooding the backyard and garage (20cm of water), damaging a chest freezer and stored boxes. This matches AAMI's policy definition of \"flood\" \u2014 water escaping the normal confines of a river/creek/natural watercourse [AAMI Contents PDS, page 100].\n- Coverage: Flood is an insured event under both the AAMI Contents PDS [AAMI Contents PDS, page 44] and Building PDS [AAMI Building PDS, page 39]. Coverage would only be excluded if the policyholder had specifically removed flood cover (noted on their certificate of insurance) \u2014 no such removal was indicated, and the standard exclusions (storm surge, sea action, earth movement/subsidence not tied to the flood) do not apply here, since the damage was straightforward inundation of the garage floor.\n- Policyholder certificate (AAMI): excess = $500, coverage limit = $50,000.\n- Payout calculation: $2,500 claimed \u2212 $500 excess = $2,000 payout, well within the $50,000 coverage limit.\n\nCitations: [AAMI Contents PDS, page 44], [AAMI Building PDS, page 39], [AAMI Contents PDS, page 100]\n\nFinal: Approve payout of $2,000 (claimed $2,500 less $500 excess), subject to standard claims verification (receipts/proof of value for freezer and stored items)."
+      "text": "DECISION: approve\n\nReasoning: The claim involves flood damage (creek overflow due to heavy rain) to contents stored in the garage (chest freezer and boxes). AAMI Contents PDS explicitly includes flood as an insured event, and none of the listed exclusions (sea/storm surge action, erosion/subsidence/landslide, etc.) apply to this creek-overflow flood scenario [AAMI Contents PDS, page 44]. There is no indication on the policyholder's certificate that flood cover was removed.\n\nUsing the policyholder's AAMI certificate figures (excess: $500, coverage limit: $50,000) against the claimed amount of $2,500, the calculated payout is $2,000.\n\nPayout: $2,000 (claim amount $2,500 minus $500 excess), well within the $50,000 coverage limit."
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning:\n- Cause: Creek broke its banks after heavy rain, flooding the backyard and garage (20cm of water), damaging a chest freezer and stored boxes. This matches AAMI's policy definition of \"flood\" \u2014 water escaping the normal confines of a river/creek/natural watercourse [AAMI Contents PDS, page 100].\n- Coverage: Flood is an insured event under both the AAMI Contents PDS [AAMI Contents PDS, page 44] and Building PDS [AAMI Building PDS, page 39]. Coverage would only be excluded if the policyholder had specifically removed flood cover (noted on their certificate of insurance) \u2014 no such removal was indicated, and the standard exclusions (storm surge, sea action, earth movement/subsidence not tied to the flood) do not apply here, since the damage was straightforward inundation of the garage floor.\n- Policyholder certificate (AAMI): excess = $500, coverage limit = $50,000.\n- Payout calculation: $2,500 claimed \u2212 $500 excess = $2,000 payout, well within the $50,000 coverage limit.\n\nCitations: [AAMI Contents PDS, page 44], [AAMI Building PDS, page 39], [AAMI Contents PDS, page 100]\n\nFinal: Approve payout of $2,000 (claimed $2,500 less $500 excess), subject to standard claims verification (receipts/proof of value for freezer and stored items).",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves flood damage (creek overflow due to heavy rain) to contents stored in the garage (chest freezer and boxes). AAMI Contents PDS explicitly includes flood as an insured event, and none of the listed exclusions (sea/storm surge action, erosion/subsidence/landslide, etc.) apply to this creek-overflow flood scenario [AAMI Contents PDS, page 44]. There is no indication on the policyholder's certificate that flood cover was removed.\n\nUsing the policyholder's AAMI certificate figures (excess: $500, coverage limit: $50,000) against the claimed amount of $2,500, the calculated payout is $2,000.\n\nPayout: $2,000 (claim amount $2,500 minus $500 excess), well within the $50,000 coverage limit.",
   "citations": [
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 100
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
       "page": 44
-    },
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 39
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 39
-    },
-    {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
@@ -204,56 +120,28 @@
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 49
+      "page": 70
+    },
+    {
+      "doc_id": "aami-contents-kfs",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 100
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 8
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 44
+      "page": 6
     },
     {
       "doc_id": "aami-building-pds",
       "insurer": "AAMI",
       "product": "Building",
       "doc_type": "PDS",
-      "page": 39
-    },
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 39
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 58
-    },
-    {
-      "doc_id": "aami-contents-pds",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 44
+      "page": 70
     }
   ],
   "claim_id": "claim-000"

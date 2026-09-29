@@ -5,15 +5,15 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "On 3 February 2024 a cricket ball hit by kids playing in the street smashed one of our large front windows. Glass shattered onto the living room floor but thankfully no one was hurt. I've boarded it up for now but haven't had a glazier come out to quote the replacement yet."
+        "claim_text": "On 3 February 2024 a cricket ball hit by kids playing in the street smashed one of our large front windows. Glass shattered onto the living room floor but thankfully no one was hurt. I've boarded it up for now but haven't had a glazier come out to quote the replacement yet. Policyholder with RealInsurance home insurance."
       },
       "output": {
         "claim_type": "glass_breakage",
         "date_of_loss": "2024-02-03",
-        "cause": "cricket ball struck window during play",
-        "damaged_item": "front window",
+        "cause": "cricket ball hit window while children were playing outside",
+        "damaged_item": "front window glass",
         "estimated_amount": null,
-        "policy_number": null
+        "policy_number": "R123456789"
       }
     },
     {
@@ -21,11 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is accidental breakage of glass/windows caused by external impact (e.g. thrown ball) covered?",
-        "insurer": "RealInsurance"
+        "query": "Is accidental breakage of glass/windows caused by external impact (e.g. thrown object) covered?",
+        "insurer": "RealInsurance",
+        "product": "Home"
       },
       "output": {
-        "answer": "Based on the provided excerpts, accidental glass breakage is a covered event under both the Home and Contents policies, but the specific circumstances of \"external impact\" causing the breakage (such as a thrown ball) are not explicitly addressed.\n\nWhat the excerpts confirm:\n\n- **Accidental Glass Breakage is a covered event (Yes)** under both the Home and Contents KFS policies [RealInsurance Home KFS, page 1] [RealInsurance Contents KFS, page 1].\n- This cover is defined as covering **\"glass breakage only\"** [RealInsurance Home KFS, page 1] [RealInsurance Contents KFS, page 1].\n- The Contents PDS confirms this covers \"window glass and other fixed glass\" for buildings, and applicable contents items like mirrors and fixed glass in furniture [RealInsurance Contents PDS, page 16].\n\nKey condition on coverage:\n- Coverage requires that **\"the break extends through the entire thickness of the glass\"** \u2014 breakage that does not go all the way through is excluded [RealInsurance Contents PDS, page 16] [RealInsurance Landlord PDS, page 15].\n\nWhat is excluded (per the excerpts):\n- Glass in a glasshouse, greenhouse, or conservatory [RealInsurance Home KFS, page 1] [RealInsurance Contents KFS, page 1].\n- Screens of computers, televisions, or other visual display units [RealInsurance Contents KFS, page 1] [RealInsurance Contents PDS, page 16].\n- Glass forming part of a stove top, cooking surface, heater, or oven door [RealInsurance Contents PDS, page 16].\n- Damage caused by the broken item itself (though this may be covered if Top cover/Accidental damage has been taken out) [RealInsurance Contents PDS, page 16].\n\n**Gap in the excerpts:** None of the provided documents specifically mention \"external impact\" or objects like a \"thrown ball\" as a cause of breakage, nor do they list any exclusion specifically tied to the *cause* of the breakage (e.g., distinguishing accidental impact from other causes). The policy language appears to focus on *what type of glass* is covered/excluded and whether the break goes through the full thickness, rather than *how* the glass was broken.\n\n**Conclusion:** Based on the excerpts, a full-thickness break to standard window glass would likely fall under \"Accidental",
+        "answer": "Based on the excerpts provided, yes \u2014 Accidental Glass Breakage is a covered event (\"Yes\") [RealInsurance Home KFS, page 1]. The policy states this cover \"is defined as 'Accidental Glass Breakage' and covers glass breakage only,\" and the only specific exclusion noted is that it \"Excludes breakage of glass in a glasshouse, greenhouse or conservatory\" [RealInsurance Home KFS, page 1]. There is no exclusion mentioned in these excerpts specifically for breakage caused by external impact such as a thrown object.\n\nHowever, the excerpts also caution that this Key Facts Sheet \"is a guide only\" and provides \"only some of many conditions, exclusions and limits in this policy,\" advising that \"you must read the PDS and policy documentation for all information about this policy\" [RealInsurance Home KFS, page 1]. Since no PDS or SPDS excerpts have been provided here, I cannot confirm whether additional conditions or exclusions in the full PDS might affect coverage for breakage caused specifically by external impact/thrown objects. Based solely on the KFS excerpts given, this scenario appears to fall under the covered \"Accidental Glass Breakage\" event, but I cannot guarantee this without reviewing the full PDS wording.",
         "citations": [
           {
             "doc_id": "realinsurance-home-kfs",
@@ -35,51 +36,44 @@
             "page": 1
           },
           {
-            "doc_id": "realinsurance-contents-kfs",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
+            "product": "Home",
             "doc_type": "KFS",
             "page": 1
           },
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 14
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           },
           {
-            "doc_id": "realinsurance-landlord-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 15
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
           },
           {
-            "doc_id": "realinsurance-contents-pds",
+            "doc_id": "realinsurance-home-kfs",
             "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 16
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 2
           }
         ]
       }
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "escalate_to_human",
-      "input": {
-        "reason": "Claim is for glass breakage covered under RealInsurance Home/Contents policy (full-thickness break, no cause-based exclusion applies) [RealInsurance Home KFS, page 1] [RealInsurance Contents PDS, page 16]. However, extract_fields returned a null estimated_amount because no glazier quote has been obtained yet, and there is no other way to determine the claimed repair cost. Payout cannot be calculated without a claim amount, so this needs human follow-up to obtain a quote before processing."
-      },
-      "output": {
-        "status": "escalated",
-        "reason": "Claim is for glass breakage covered under RealInsurance Home/Contents policy (full-thickness break, no cause-based exclusion applies) [RealInsurance Home KFS, page 1] [RealInsurance Contents PDS, page 16]. However, extract_fields returned a null estimated_amount because no glazier quote has been obtained yet, and there is no other way to determine the claimed repair cost. Payout cannot be calculated without a claim amount, so this needs human follow-up to obtain a quote before processing."
-      }
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim's cause (cricket ball breaking window glass) appears to be covered under RealInsurance's Accidental Glass Breakage cover, with no applicable exclusion found in the KFS text [RealInsurance Home KFS, page 1] [RealInsurance Home KFS, page 2]. However, extract_fields returned a null estimated_amount, and the policyholder has stated they have not yet obtained a glazier's quote for the replacement cost. This amount cannot be resolved from the claim narrative or any other tool, so per escalation policy I cannot proceed to calculate_payout with a guessed figure. This claim should be sent to a human reviewer to obtain a repair/replacement estimate before a payout decision can be calculated."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim is for glass breakage covered under RealInsurance Home/Contents policy (full-thickness break, no cause-based exclusion applies) [RealInsurance Home KFS, page 1] [RealInsurance Contents PDS, page 16]. However, extract_fields returned a null estimated_amount because no glazier quote has been obtained yet, and there is no other way to determine the claimed repair cost. Payout cannot be calculated without a claim amount, so this needs human follow-up to obtain a quote before processing.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim's cause (cricket ball breaking window glass) appears to be covered under RealInsurance's Accidental Glass Breakage cover, with no applicable exclusion found in the KFS text [RealInsurance Home KFS, page 1] [RealInsurance Home KFS, page 2]. However, extract_fields returned a null estimated_amount, and the policyholder has stated they have not yet obtained a glazier's quote for the replacement cost. This amount cannot be resolved from the claim narrative or any other tool, so per escalation policy I cannot proceed to calculate_payout with a guessed figure. This claim should be sent to a human reviewer to obtain a repair/replacement estimate before a payout decision can be calculated.",
   "citations": [
     {
       "doc_id": "realinsurance-home-kfs",
@@ -89,11 +83,11 @@
       "page": 1
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 16
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
     }
   ],
   "retrieved_sources": [
@@ -105,32 +99,32 @@
       "page": 1
     },
     {
-      "doc_id": "realinsurance-contents-kfs",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
+      "product": "Home",
       "doc_type": "KFS",
       "page": 1
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 14
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     },
     {
-      "doc_id": "realinsurance-landlord-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 15
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
     },
     {
-      "doc_id": "realinsurance-contents-pds",
+      "doc_id": "realinsurance-home-kfs",
       "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 16
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 2
     }
   ],
   "claim_id": "claim-009"

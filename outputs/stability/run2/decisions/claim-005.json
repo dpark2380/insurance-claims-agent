@@ -21,48 +21,13 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is fire damage caused by electrical fault covered? Any exclusions for electrical fault fires?",
-        "insurer": "AAMI"
+        "query": "Is fire damage caused by electrical fault covered? Any exclusion for electrical fault fires?",
+        "insurer": "AAMI",
+        "product": "Home"
       },
       "output": {
-        "answer": "Yes \u2014 fire damage caused by an electrical fault is covered, but only in a specific, limited way.\n\n**Coverage:**\nBoth the AAMI Contents PDS and AAMI Building PDS exclude loss or damage caused by, connected with, or arising from mechanical or electrical failure or breakdown, or anything that fails to operate properly [AAMI Contents PDS, page 35; AAMI Building PDS, page 30].\n\nHowever, an exception is carved out: **fire spreading from an electrical fault** to other parts of the contents or building is covered, \"to the extent it's covered under insured event 'Fire (including bushfire)'\" [AAMI Contents PDS, page 35; AAMI Building PDS, page 30].\n\n**Exclusions/limitations:**\n- The exclusion applies to the electrical failure/breakdown itself \u2014 i.e., the initial electrical fault or malfunction is not covered.\n- Only the **fire that spreads** from that electrical fault to other parts of the contents or building is covered, and only \"to the extent\" it qualifies under the separate 'Fire (including bushfire)' insured event terms [AAMI Contents PDS, page 35; AAMI Building PDS, page 30].\n- Similarly, damage from **lightning** related to an electrical fault is covered only to the extent it falls under the 'Lightning' insured event, and damage from **motor burnout** is covered only to the extent it falls under the 'Motor burnout' additional cover [AAMI Contents PDS, page 35; AAMI Building PDS, page 30].\n\nThe excerpts provided do not include the full text of the 'Fire (including bushfire)' insured event itself, so I cannot detail the specific terms/conditions of that coverage beyond what is stated here.",
-        "citations": [
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 35
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 30
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 85
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 30
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 44
-          }
-        ]
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
       }
     },
     {
@@ -80,6 +45,55 @@
     {
       "turn": 2,
       "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "fire damage coverage electrical fault house fire",
+        "insurer": "AAMI"
+      },
+      "output": {
+        "answer": "Based on the excerpts, here's the coverage for fire damage arising from an electrical fault:\n\n**General exclusion for mechanical/electrical breakdown**\nBoth the AAMI Building and Contents policies exclude loss or damage \"caused by, connected with, or arising from mechanical or electrical failure or breakdown or anything that fails to operate properly\" [AAMI Building PDS, page 30]; [AAMI Contents PDS, page 35].\n\n**Exception for fire spreading from an electrical fault**\nHowever, both policies carve out an exception: damage will be covered where **fire spreads from an electrical fault** to other parts of the building or contents, \"to the extent it's covered under insured event 'Fire (including bushfire)'\" [AAMI Building PDS, page 30]; [AAMI Contents PDS, page 35].\n\n**Limits under the Fire (including bushfire) insured event**\nUnder that insured event, the policies note a $1,000 cap on \"extra costs cover in the event of bushfire in your area... for any one incident\" [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48]. They also state that certain related losses are **not** covered, specifically:\n- Arcing, scorching, melting, or cigarette burns \u2014 unless a fire spreads from the initial burn spot [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48]\n- Pollution or vapour from a home heater or cooking appliance \u2014 unless a fire spreads from the heater/appliance [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48]\n- Gradual exposure to fire, heat, ash, soot, and smoke due to recurring incidents of fire or bushfire [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48]\n\n**Summary:** If an electrical fault causes an actual fire that spreads and damages the building or contents, this is covered under the \"Fire (including bushfire)\" insured event, subject to the general exclusions listed above. However, damage from the electrical fault itself (i.e., the breakdown/failure), without a fire actually spreading, is excluded.\n\nThe excerpts provided do not include the full wording of the \"Fire (including bushfire)\" insured event itself (e.g., sum insured limits, specific inclusions), so I cannot provide further detail beyond what is quoted above.",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 43
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 35
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
       "tool": "calculate_payout",
       "input": {
         "claim_amount": 14000,
@@ -91,14 +105,21 @@
       }
     },
     {
-      "turn": 3,
+      "turn": 4,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning: The claim involves fire damage (to washing machine, dryer, wall cabinetry, ceiling, and hallway carpet) that spread from an initial electrical fault in the laundry. Per AAMI's policy text, while the electrical failure/breakdown itself is excluded, fire that *spreads* from an electrical fault to other parts of the contents or building is covered under the \"Fire (including bushfire)\" insured event [AAMI Contents PDS, page 35; AAMI Building PDS, page 30]. This matches the claim narrative \u2014 the damage described is fire/smoke/heat damage resulting from the spreading fire, not damage from the electrical malfunction itself, so no exclusion conflict applies.\n\nPolicy certificate for AAMI: excess $500, coverage limit $50,000. Claimed amount: $14,000 (policyholder estimate, no formal quotes yet).\n\nPayout calculation: $14,000 - $500 excess = $13,500, within the $50,000 coverage limit.\n\nNote: The estimated amount is a rough guess without formal quotes. This does not meet the escalation threshold (it's not null), but the insurer may wish to request formal quotes before final settlement \u2014 this is a processing note rather than a triage blocker.\n\nApproved payout: $13,500, subject to insurer's standard claims documentation (e.g., final quotes/invoices) requirements.\n\nSources cited: [AAMI Contents PDS, page 35], [AAMI Building PDS, page 30]."
+      "text": "DECISION: approve\n\nReasoning: The claim describes an electrical fault in the laundry that caused an actual fire, which spread and damaged the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Per AAMI's policy, damage from mere electrical failure/breakdown is excluded, but the policy explicitly carves out an exception: damage is covered where fire spreads from an electrical fault, under the \"Fire (including bushfire)\" insured event [AAMI Building PDS, page 30]; [AAMI Contents PDS, page 35]. Since the narrative confirms an actual fire that spread beyond the point of origin (not just scorching/arcing without spread), this falls within the covered exception, not the excluded scenario [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48].\n\nPolicy certificate for policyholder HM-559213: excess $500, coverage limit $50,000. Estimated claim amount: $14,000 (though the policyholder notes this is a rough guess pending quotes).\n\nPayout calculation: $14,000 - $500 excess = $13,500, well within the $50,000 coverage limit.\n\nNote: the estimate is not yet backed by formal quotes, so the final payout may be adjusted once actual repair quotes are provided, but this does not block an initial approval based on current information."
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning: The claim involves fire damage (to washing machine, dryer, wall cabinetry, ceiling, and hallway carpet) that spread from an initial electrical fault in the laundry. Per AAMI's policy text, while the electrical failure/breakdown itself is excluded, fire that *spreads* from an electrical fault to other parts of the contents or building is covered under the \"Fire (including bushfire)\" insured event [AAMI Contents PDS, page 35; AAMI Building PDS, page 30]. This matches the claim narrative \u2014 the damage described is fire/smoke/heat damage resulting from the spreading fire, not damage from the electrical malfunction itself, so no exclusion conflict applies.\n\nPolicy certificate for AAMI: excess $500, coverage limit $50,000. Claimed amount: $14,000 (policyholder estimate, no formal quotes yet).\n\nPayout calculation: $14,000 - $500 excess = $13,500, within the $50,000 coverage limit.\n\nNote: The estimated amount is a rough guess without formal quotes. This does not meet the escalation threshold (it's not null), but the insurer may wish to request formal quotes before final settlement \u2014 this is a processing note rather than a triage blocker.\n\nApproved payout: $13,500, subject to insurer's standard claims documentation (e.g., final quotes/invoices) requirements.\n\nSources cited: [AAMI Contents PDS, page 35], [AAMI Building PDS, page 30].",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim describes an electrical fault in the laundry that caused an actual fire, which spread and damaged the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Per AAMI's policy, damage from mere electrical failure/breakdown is excluded, but the policy explicitly carves out an exception: damage is covered where fire spreads from an electrical fault, under the \"Fire (including bushfire)\" insured event [AAMI Building PDS, page 30]; [AAMI Contents PDS, page 35]. Since the narrative confirms an actual fire that spread beyond the point of origin (not just scorching/arcing without spread), this falls within the covered exception, not the excluded scenario [AAMI Building PDS, page 43]; [AAMI Contents PDS, page 48].\n\nPolicy certificate for policyholder HM-559213: excess $500, coverage limit $50,000. Estimated claim amount: $14,000 (though the policyholder notes this is a rough guess pending quotes).\n\nPayout calculation: $14,000 - $500 excess = $13,500, well within the $50,000 coverage limit.\n\nNote: the estimate is not yet backed by formal quotes, so the final payout may be adjusted once actual repair quotes are provided, but this does not block an initial approval based on current information.",
   "citations": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
+    },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
@@ -111,7 +132,14 @@
       "insurer": "AAMI",
       "product": "Building",
       "doc_type": "PDS",
-      "page": 30
+      "page": 43
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
     }
   ],
   "retrieved_sources": [
@@ -120,7 +148,7 @@
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 35
+      "page": 48
     },
     {
       "doc_id": "aami-building-pds",
@@ -134,7 +162,7 @@
       "insurer": "AAMI",
       "product": "Building",
       "doc_type": "PDS",
-      "page": 85
+      "page": 43
     },
     {
       "doc_id": "aami-building-pds",
@@ -148,7 +176,7 @@
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 44
+      "page": 35
     }
   ],
   "claim_id": "claim-005"

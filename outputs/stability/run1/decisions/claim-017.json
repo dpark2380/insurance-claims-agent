@@ -5,14 +5,14 @@
       "type": "tool_call",
       "tool": "extract_fields",
       "input": {
-        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $9,000."
+        "claim_text": "A king tide combined with storm surge pushed sea water up over our beachfront property, flooding the ground floor and ruining the flooring and skirting boards. Repair estimate is $8,000."
       },
       "output": {
         "claim_type": "flood",
         "date_of_loss": "2023-10-15",
         "cause": "king tide and storm surge",
         "damaged_item": "ground floor flooring and skirting boards",
-        "estimated_amount": 9000.0,
+        "estimated_amount": 8000.0,
         "policy_number": null
       }
     },
@@ -21,45 +21,45 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is damage caused by storm surge, king tide, or sea water inundation covered or excluded?"
+        "query": "storm surge king tide sea water flood damage coverage exclusion"
       },
       "output": {
-        "answer": "Damage caused by storm surge, king tide, or other actions of the sea is **excluded** under all four policies referenced:\n\n- **BudgetDirect Home PDS**: \"You are not covered for loss or damage caused by: high tide, king tide, tidal wave, storm surge, or any other action of the sea\" [BudgetDirect Home PDS, page 60]\n\n- **ING Home PDS**: Identical exclusion language \u2014 \"You are not covered for loss or damage caused by: high tide, king tide, tidal wave, storm surge, or any other action of the sea\" [ING Home PDS, page 60]\n\n- **Allianz Landlord PDS**: \"Excluded... Actions of the sea Including: storm surge, or a rise in the level of the ocean or sea caused by a high tide, a king tide or any other movement of the sea\" [Allianz Landlord PDS, page 49]\n\n- **Allianz Home PDS**: Same exclusion \u2014 \"Excluded... Actions of the sea Including: storm surge, or a rise in the level of the ocean or sea caused by a high tide, a king tide or any other movement of the sea\" [Allianz Home PDS, page 52]\n\nNote: For the Allianz Landlord policy, the definition of \"actions of the sea\" specifically clarifies that **tsunami is not included** in this exclusion [Allianz Landlord PDS, page 75], meaning tsunami-related damage may be treated differently (though this excerpt does not confirm whether tsunami is separately covered).\n\nRegarding **general \"sea water inundation\"** beyond the specific terms listed (storm surge, king tide, high tide, tidal wave), the excerpts do not provide a broader definition, so I cannot confirm coverage or exclusion status for inundation events not explicitly named in these clauses.\n\n**Flood** is treated separately: under the BudgetDirect and ING policies, flood damage is excluded \"unless you have selected and we have agreed to provide this optional cover and it's stated on your Insurance Certificate\" [BudgetDirect Home PDS, page 60; ING Home PDS, page 60]. The Allianz excerpts provided do not mention flood cover status.",
+        "answer": "Based on the excerpts provided, here's how storm surge, king tides, and related water damage are treated:\n\n## Storm Surge \u2014 Covered (with conditions)\n\nBoth RACV Home and RACV Landlord policies cover **storm surge**, defined as \"an increase in sea level that occurs because of an intense storm or cyclone\" [RACV Home PDS, page 41; RACV Landlord PDS, page 39].\n\n**Covered:**\n- Storm surge itself\n- Landslide or subsidence that happens immediately as a direct result of storm surge\n\n**Not covered (even under storm surge cover):**\n- Retaining walls\n- Gates, fences, or free-standing walls damaged due to poor structural condition/maintenance\n- Pontoons, jetties, or bridges\n- Gravel driveways\n- Swimming pool/spa covers more than 5 years old\n- **Loss or damage caused by \"actions of the sea\"** [RACV Home PDS, page 41; RACV Landlord PDS, page 39]\n\n**Condition:** If RACV identifies your home/rental property is at risk of storm surge, you may choose to remove this cover (with RACV's agreement). Doing so also removes flood and rainwater run-off cover, in exchange for a lower premium [RACV Home PDS, page 41; RACV Landlord PDS, page 39].\n\n## King Tides \u2014 Excluded\n\nUnder the **general exclusions** applying to *all* covers and benefits, both RACV policies exclude loss/damage from \"**actions of the sea**,\" which explicitly **includes**:\n- High tides or king tides\n- Sea waves\n- Normal movement or changes in ocean levels\n\nHowever, \"actions of the sea\" **does not include storm surge** [RACV Home PDS, page 74; RACV Landlord PDS, page 57].\n\n## Key Distinction\n\nThe policies draw a clear line:\n- **Storm surge** (storm/cyclone-driven sea level rise) \u2192 **covered**, subject to the conditions and sub-limits above\n- **King tides / high tides / normal sea movement** (\"actions of the sea\") \u2192 **excluded** under general exclusions [RACV Home PDS, pages 41, 74; RACV Landlord PDS, pages 39, 57]\n\n## Gaps in the Excerpts\n\n- The excerpts don't include the RACV **Flood** or **Rainwater Run-off** cover sections, so I cannot detail those separately.\n- The **Allianz Home",
         "citations": [
           {
-            "doc_id": "budgetdirect-home-pds",
-            "insurer": "BudgetDirect",
+            "doc_id": "racv-home-pds",
+            "insurer": "RACV",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 60
+            "page": 74
           },
           {
-            "doc_id": "ing-home-pds",
-            "insurer": "ING",
+            "doc_id": "racv-home-pds",
+            "insurer": "RACV",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 60
+            "page": 41
           },
           {
-            "doc_id": "allianz-landlord-pds",
-            "insurer": "Allianz",
+            "doc_id": "racv-landlord-pds",
+            "insurer": "RACV",
             "product": "Landlord",
             "doc_type": "PDS",
-            "page": 49
+            "page": 57
+          },
+          {
+            "doc_id": "racv-landlord-pds",
+            "insurer": "RACV",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 39
           },
           {
             "doc_id": "allianz-home-pds",
             "insurer": "Allianz",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 52
-          },
-          {
-            "doc_id": "allianz-landlord-pds",
-            "insurer": "Allianz",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 75
+            "page": 11
           }
         ]
       }
@@ -67,76 +67,76 @@
     {
       "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved for excess/coverage-limit figures, and `calculate_payout` would require guessing those numbers \u2014 this alone requires escalation per policy.\n\nAdditionally, the claimed cause (\"king tide combined with storm surge\" pushing sea water onto the property) directly matches an exclusion found in every policy checked: storm surge, king tide, and other \"actions of the sea\" are explicitly excluded perils under BudgetDirect, ING, and Allianz home/landlord policies [BudgetDirect Home PDS, page 60], [ING Home PDS, page 60], [Allianz Landlord PDS, page 49], [Allianz Home PDS, page 52]. This is a direct conflict between the claimed cause and standard policy exclusions, which is itself a mandatory escalation trigger.\n\nGiven both the missing insurer identification and the apparent exclusion conflict, this claim must be handed to a human reviewer rather than decided automatically \u2014 a human should confirm the actual insurer/policy wording (in case it differs from the general market text retrieved) before any denial is finalized."
+      "text": "DECISION: escalate\n\nReasoning:\n1. The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 this alone requires escalation per policy.\n2. Additionally, the cause here (\"king tide combined with storm surge\") is a mixed/ambiguous peril. Policy research (e.g., RACV) shows a critical distinction: storm surge is typically covered, but king tides / high tides are explicitly excluded as \"actions of the sea\" [RACV Home PDS, page 74][RACV Home PDS, page 41][RACV Landlord PDS, page 57][RACV Landlord PDS, page 39]. Since the claimant describes both a king tide AND storm surge acting together as the cause of loss, it is not possible to determine from the narrative alone whether the proximate cause falls under covered \"storm surge\" or excluded \"actions of the sea,\" creating a direct conflict with a policy exclusion that cannot be resolved without further investigation (e.g., which insurer, and expert determination of primary cause).\n\nGiven both the missing insurer (blocking excess/limit lookup) and the ambiguous/contradictory cause-of-loss situation relative to known exclusions, this claim must be handed to a human reviewer rather than decided automatically."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved for excess/coverage-limit figures, and `calculate_payout` would require guessing those numbers \u2014 this alone requires escalation per policy.\n\nAdditionally, the claimed cause (\"king tide combined with storm surge\" pushing sea water onto the property) directly matches an exclusion found in every policy checked: storm surge, king tide, and other \"actions of the sea\" are explicitly excluded perils under BudgetDirect, ING, and Allianz home/landlord policies [BudgetDirect Home PDS, page 60], [ING Home PDS, page 60], [Allianz Landlord PDS, page 49], [Allianz Home PDS, page 52]. This is a direct conflict between the claimed cause and standard policy exclusions, which is itself a mandatory escalation trigger.\n\nGiven both the missing insurer identification and the apparent exclusion conflict, this claim must be handed to a human reviewer rather than decided automatically \u2014 a human should confirm the actual insurer/policy wording (in case it differs from the general market text retrieved) before any denial is finalized.",
+  "reasoning": "DECISION: escalate\n\nReasoning:\n1. The claim narrative does not name a specific insurer, so `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 this alone requires escalation per policy.\n2. Additionally, the cause here (\"king tide combined with storm surge\") is a mixed/ambiguous peril. Policy research (e.g., RACV) shows a critical distinction: storm surge is typically covered, but king tides / high tides are explicitly excluded as \"actions of the sea\" [RACV Home PDS, page 74][RACV Home PDS, page 41][RACV Landlord PDS, page 57][RACV Landlord PDS, page 39]. Since the claimant describes both a king tide AND storm surge acting together as the cause of loss, it is not possible to determine from the narrative alone whether the proximate cause falls under covered \"storm surge\" or excluded \"actions of the sea,\" creating a direct conflict with a policy exclusion that cannot be resolved without further investigation (e.g., which insurer, and expert determination of primary cause).\n\nGiven both the missing insurer (blocking excess/limit lookup) and the ambiguous/contradictory cause-of-loss situation relative to known exclusions, this claim must be handed to a human reviewer rather than decided automatically.",
   "citations": [
     {
-      "doc_id": "budgetdirect-home-pds",
-      "insurer": "BudgetDirect",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 60
+      "page": 74
     },
     {
-      "doc_id": "ing-home-pds",
-      "insurer": "ING",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 60
+      "page": 41
     },
     {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 49
+      "page": 57
     },
     {
-      "doc_id": "allianz-home-pds",
-      "insurer": "Allianz",
-      "product": "Home",
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
       "doc_type": "PDS",
-      "page": 52
+      "page": 39
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "budgetdirect-home-pds",
-      "insurer": "BudgetDirect",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 60
+      "page": 74
     },
     {
-      "doc_id": "ing-home-pds",
-      "insurer": "ING",
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 60
+      "page": 41
     },
     {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
       "product": "Landlord",
       "doc_type": "PDS",
-      "page": 49
+      "page": 57
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 39
     },
     {
       "doc_id": "allianz-home-pds",
       "insurer": "Allianz",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 52
-    },
-    {
-      "doc_id": "allianz-landlord-pds",
-      "insurer": "Allianz",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 75
+      "page": 11
     }
   ],
   "claim_id": "claim-017"

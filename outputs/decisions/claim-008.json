@@ -21,11 +21,11 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "vandalism malicious damage to fence letterbox coverage",
-        "insurer": "RAA"
+        "insurer": "RAA",
+        "query": "Is malicious damage or vandalism to fences covered? Any exclusions for vandalism or graffiti?"
       },
       "output": {
-        "answer": "Based on the provided excerpts, here's what applies to vandalism/malicious damage affecting a fence or letterbox:\n\n**General Malicious Damage Coverage:**\nThe policy covers loss or damage to Insured Property resulting from Malicious Damage, Intentional Damage, or damage by vandals [RAA Contents PDS, page 47]. However, this cover does **not** apply to:\n- Chips, scratches, dents, or superficial markings\n- Wear and tear, or damage caused over a period of time\n- Loss or damage caused by you, your Guest, an Occupier, or any Co-Insured\n- Loss or damage caused by a person who entered your Home with consent (implied or otherwise) of you, your Guest, an Occupier, or Co-Insured\n- Loss or damage that has **not been reported to the police** [RAA Contents PDS, page 47]\n\n**Specific Exclusion for Fences:**\nThere is a specific limitation regarding fences (along with paths, driveways, garden borders, paving, and freestanding/retaining walls): coverage does **not** apply if these items \"were not structurally sound or were not maintained in a reasonable manner prior to the loss or damage occurring\" [RAA Contents PDS, page 50]. A Specific Limit of 10% of the Sum Insured applies for loss or damage to these items, along with a 72-hour waiting period after the Policy's Inception Date [RAA Contents PDS, page 50].\n\n**Fence Adjoining Another Property:**\nSeparately, if a claim involves \"the repair or replacement of a fence that adjoins another person's property,\" this falls under a specific payment provision where the insurer will pay in cash or vouchers rather than authorizing you to repair/replace directly [RAA Contents PDS, page 80].\n\n**Letterbox:**\nThe provided excerpts do **not** contain any specific mention of letterboxes. I cannot confirm whether a letterbox is covered under Malicious Damage or under what limits, as this information is not present in the excerpts provided. You would need to consult additional policy sections or your insurer directly for clarification on letterbox coverage.",
+        "answer": "Based on the provided excerpts, here is what I can determine:\n\n**Malicious Damage Coverage**\n\nThe RAA Contents PDS covers loss or damage to \"Insured Property\" as a result of \"Malicious Damage, Intentional Damage or damage by vandals\" [RAA Contents PDS, page 47]. However, the excerpts provided do not specifically confirm whether **fences** fall within the definition of \"Insured Property\" under this policy \u2014 this would depend on the policy's definitions section, which is not included in the excerpts provided. I cannot confirm coverage for fences specifically without that definition.\n\n**Exclusions for Malicious Damage/Vandalism**\n\nThe excerpts identify the following exclusions applicable to this Insured Event:\n- Chips, scratches, dents or any superficial markings to the Insured Property;\n- Wear and tear, or damage caused over a period of time;\n- Loss or damage caused by you, your Guest, an Occupier or any Co-Insured;\n- Loss or damage caused by a person who entered your Home with the consent, implied or otherwise, of you, your Guest, an Occupier or any Co-Insured; or\n- Loss or damage that has not been reported to the police\n\n[RAA Contents PDS, page 47]\n\nAdditionally, a separate general exclusion applies regarding occupancy:\n\n- If the Home has been **Unoccupied for more than 90 consecutive days** and remains Unoccupied at the time of the Malicious Damage, you will not be covered for Malicious Damage until the Home is Occupied again [RAA Contents PDS, page 74]\n\n**Note on Graffiti**\n\nNone of the provided excerpts specifically mention \"graffiti\" as a term. If graffiti is treated separately from \"Malicious Damage, Intentional Damage or damage by vandals\" in the policy, I do not have sufficient information in these excerpts to address it.\n\n**Gaps in the excerpts provided:**\n- No definition of \"Insured Property\" confirming whether fences are included.\n- No specific mention of \"graffiti\" as a defined term or separate exclusion.\n\nI recommend consulting the policy's full Definitions section and Insured Property description to confirm fence coverage specifically.",
         "citations": [
           {
             "doc_id": "raa-contents-pds",
@@ -60,7 +60,7 @@
             "insurer": "RAA",
             "product": "Contents",
             "doc_type": "PDS",
-            "page": 80
+            "page": 67
           }
         ]
       }
@@ -79,12 +79,26 @@
     },
     {
       "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "RAA",
+        "product": "Home",
+        "query": "Is malicious damage or vandalism to fences and letterboxes covered under the building policy? Are fences included in insured property definition?"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 3,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim describes vandalism (spray paint + kicked-in paling) to the fence and letterbox, which would generally fall under Malicious Damage cover [RAA Contents PDS, page 47]. However, that same policy section explicitly excludes \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative gives no indication that a police report was filed \u2014 the policyholder states they didn't hear anything and only discovered the damage the next morning, with no mention of police involvement. This is a condition precedent to coverage that directly determines whether the claim can be approved, and I cannot resolve it from the information given. Additionally, coverage for fences carries a specific limitation if the fence \"were not structurally sound or were not maintained in a reasonable manner\" [RAA Contents PDS, page 50], which also cannot be confirmed from the narrative.\n\nBecause the claimed cause potentially conflicts with a policy exclusion (missing police report) that cannot be verified from the available information, this must be escalated to a human reviewer to confirm whether a police report was filed and whether the fence was properly maintained before a payout determination can be made. No payout calculation was performed pending resolution of this coverage question."
+      "text": "DECISION: escalate\n\nReasoning: The claim involves vandalism/malicious damage to a front fence and letterbox. RAA's Contents PDS confirms malicious damage/vandalism is a covered peril in general [RAA Contents PDS, page 47], but the retrieved excerpts do not confirm whether fences and letterboxes fall within the \"Insured Property\" definition for this claim (the claim is really a Building-type item, and a targeted search of RAA's Home/Building product returned no matching policy text at all). Additionally, the same page listing the insured event explicitly carries an exclusion for \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative gives no indication a police report was filed \u2014 this is a condition that could void coverage but cannot be confirmed either way from the facts given.\n\nBecause (1) coverage of the specific damaged items (fence/letterbox) under RAA's applicable product is ambiguous/unconfirmed, and (2) the claimed cause (vandalism) potentially conflicts with an exclusion (no police report) that hasn't been verified, this claim meets two independent triggers in the escalation policy. I am not proceeding to calculate a payout despite having the excess/coverage-limit figures on file, since coverage itself is not yet established.\n\nCitations: [RAA Contents PDS, page 47], [RAA Contents PDS, page 74], [RAA Contents PDS, page 50], [RAA Contents PDS, page 67]"
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim describes vandalism (spray paint + kicked-in paling) to the fence and letterbox, which would generally fall under Malicious Damage cover [RAA Contents PDS, page 47]. However, that same policy section explicitly excludes \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative gives no indication that a police report was filed \u2014 the policyholder states they didn't hear anything and only discovered the damage the next morning, with no mention of police involvement. This is a condition precedent to coverage that directly determines whether the claim can be approved, and I cannot resolve it from the information given. Additionally, coverage for fences carries a specific limitation if the fence \"were not structurally sound or were not maintained in a reasonable manner\" [RAA Contents PDS, page 50], which also cannot be confirmed from the narrative.\n\nBecause the claimed cause potentially conflicts with a policy exclusion (missing police report) that cannot be verified from the available information, this must be escalated to a human reviewer to confirm whether a police report was filed and whether the fence was properly maintained before a payout determination can be made. No payout calculation was performed pending resolution of this coverage question.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves vandalism/malicious damage to a front fence and letterbox. RAA's Contents PDS confirms malicious damage/vandalism is a covered peril in general [RAA Contents PDS, page 47], but the retrieved excerpts do not confirm whether fences and letterboxes fall within the \"Insured Property\" definition for this claim (the claim is really a Building-type item, and a targeted search of RAA's Home/Building product returned no matching policy text at all). Additionally, the same page listing the insured event explicitly carries an exclusion for \"loss or damage that has not been reported to the police\" [RAA Contents PDS, page 47], and the claim narrative gives no indication a police report was filed \u2014 this is a condition that could void coverage but cannot be confirmed either way from the facts given.\n\nBecause (1) coverage of the specific damaged items (fence/letterbox) under RAA's applicable product is ambiguous/unconfirmed, and (2) the claimed cause (vandalism) potentially conflicts with an exclusion (no police report) that hasn't been verified, this claim meets two independent triggers in the escalation policy. I am not proceeding to calculate a payout despite having the excess/coverage-limit figures on file, since coverage itself is not yet established.\n\nCitations: [RAA Contents PDS, page 47], [RAA Contents PDS, page 74], [RAA Contents PDS, page 50], [RAA Contents PDS, page 67]",
   "citations": [
     {
       "doc_id": "raa-contents-pds",
@@ -98,7 +112,21 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
       "page": 50
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 67
     }
   ],
   "retrieved_sources": [
@@ -135,7 +163,7 @@
       "insurer": "RAA",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 80
+      "page": 67
     }
   ],
   "claim_id": "claim-008"

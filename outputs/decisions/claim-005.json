@@ -21,13 +21,48 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "fire damage caused by electrical fault - is it covered, any exclusions?",
-        "insurer": "AAMI",
-        "product": "Home"
+        "query": "Is fire damage caused by electrical fault covered? Any exclusions for electrical fault fires?",
+        "insurer": "AAMI"
       },
       "output": {
-        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
-        "citations": []
+        "answer": "Based on the excerpts provided, here is what is covered regarding fire damage caused by an electrical fault:\n\n**Contents Policy**\n\nUnder the AAMI Contents PDS, mechanical or electrical failure or breakdown is generally excluded \u2014 this includes anything that \"fails to operate properly\" [AAMI Contents PDS, page 35]. However, an exception applies: **fire spreading from an electrical fault to other parts of your contents is covered**, but only \"to the extent it's covered under insured event 'Fire (including bushfire)'\" [AAMI Contents PDS, page 35].\n\n**Building Policy**\n\nSimilarly, under the AAMI Building PDS, mechanical or electrical failure or breakdown is generally excluded [AAMI Building PDS, page 30]. The same exception applies: **fire spreading from an electrical fault to other parts of the building is covered**, again only \"to the extent it's covered under insured event 'Fire (including bushfire)'\" [AAMI Building PDS, page 30].\n\n**Key exclusions/limitations to note:**\n\n1. The general exclusion for mechanical or electrical breakdown/failure still applies to the electrical fault itself \u2014 i.e., damage to the faulty electrical component or appliance that breaks down is not covered [AAMI Contents PDS, page 35; AAMI Building PDS, page 30].\n2. Only the **fire that spreads** from the electrical fault to other parts of the contents/building is covered, and this coverage is conditional on it meeting the requirements of the \"Fire (including bushfire)\" insured event referenced on page 48 (Contents) or page 43 (Building) \u2014 the excerpts provided don't include the full text of that insured event, so I cannot confirm what additional conditions or limits might apply there.\n3. The excerpts do not specify whether there are further exclusions specific to electrical fault fires (e.g., inherent defects). Note that a related exclusion for Building policies states that resultant damage from an inherent defect or fault is not covered if the policyholder knew or should have known about it [AAMI Building PDS, page 85] \u2014 this could potentially apply if an electrical fault stemmed from a known defect, but the excerpts don't explicitly connect this exclusion to electrical fault fires.\n\n**Insufficient information:** The excerpts do not include the full \"Fire (including bushfire)\" insured event wording, so I cannot confirm all conditions, limits, or exclusions that might apply to f",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 85
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 44
+          }
+        ]
       }
     },
     {
@@ -45,55 +80,6 @@
     {
       "turn": 2,
       "type": "tool_call",
-      "tool": "retrieve_policy",
-      "input": {
-        "query": "fire damage coverage",
-        "insurer": "AAMI"
-      },
-      "output": {
-        "answer": "# Fire Damage Coverage Summary\n\nBased on the AAMI policy excerpts provided, here is what is covered under **Fire (including bushfire)**:\n\n## What's Covered\n\nBoth the **AAMI Contents PDS** and **AAMI Building PDS** provide the same core fire coverage:\n\n- Loss or damage caused by **fire (including bushfire)** [AAMI Contents PDS, page 48][AAMI Building PDS, page 43]\n- **Heat, ash, soot, and smoke** that are the direct result of a fire within **100 metres** of the insured address [AAMI Contents PDS, page 48][AAMI Building PDS, page 43]\n\n## Extra Costs Cover for Bushfire\n\nIf a bushfire occurs in your area during the period of insurance, additional costs are covered **even if there's no physical loss or damage**:\n\n**For Contents:**\n- Cost of replacing water in tanks, containers, pools, spas, or other storage vessels where the water was used to limit the bushfire's spread, or became contaminated by fire retardant used at the insured address [AAMI Contents PDS, page 48]\n\n**For Building:**\n- Same water replacement cost as above, **plus**\n- Cost of cleaning fire retardant off the building [AAMI Building PDS, page 43]\n\nFor both, **no excess applies** if the claim is solely for these extra costs, and the maximum payable is **$1,000 per incident** [AAMI Contents PDS, page 48][AAMI Building PDS, page 43].\n\n## What's NOT Covered\n\nUnder both Contents and Building PDS, fire-related exclusions include:\n\n- **Arcing, scorching, melting, or cigarette burns** \u2014 unless a fire spreads from the initial burn spot (e.g., a cigarette burn to carpet is not covered unless fire actually spreads) [AAMI Contents PDS, page 48][AAMI Building PDS, page 43]\n- **Pollution or vapour** from a home heater or cooking appliance \u2014 unless a fire spreads from that heater/appliance [AAMI Contents PDS, page 48][AAMI Building PDS, page 43]\n- **Gradual exposure** to fire, heat, ash, soot, and smoke due to **recurring incidents** of fire or bushfire [AAMI Contents PDS, page 48][AAMI Building PDS, page 43]\n- All exclusions listed in the policy's \"General exclus",
-        "citations": [
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 48
-          },
-          {
-            "doc_id": "aami-contents-pds",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 48
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 43
-          },
-          {
-            "doc_id": "aami-building-pds",
-            "insurer": "AAMI",
-            "product": "Building",
-            "doc_type": "PDS",
-            "page": 43
-          },
-          {
-            "doc_id": "aami-contents-kfs",
-            "insurer": "AAMI",
-            "product": "Contents",
-            "doc_type": "KFS",
-            "page": 1
-          }
-        ]
-      }
-    },
-    {
-      "turn": 3,
-      "type": "tool_call",
       "tool": "calculate_payout",
       "input": {
         "claim_amount": 14000,
@@ -105,27 +91,27 @@
       }
     },
     {
-      "turn": 4,
+      "turn": 3,
       "type": "final",
-      "text": "DECISION: approve\n\nReasoning: The claim involves an electrical fault that caused a fire which spread and damaged the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet (via smoke/heat). AAMI's policy covers \"loss or damage caused by fire (including bushfire)\" as well as heat, ash, soot, and smoke that are the direct result of a fire at the insured address [AAMI Building PDS, page 43][AAMI Contents PDS, page 48]. The policy excludes arcing/scorching/melting only when the fire does NOT spread from the initial point \u2014 but here the claimant explicitly states the fire \"spread faster than I expected,\" so the spread exception applies and the damage is covered, not excluded.\n\nPolicy certificate for AAMI (policy HM-559213) shows an excess of $500 and coverage limit of $50,000. Applying these to the estimated claim amount of $14,000 yields a payout of $13,500.\n\nNote: The estimated amount is a rough guess pending formal quotes ($14,000), which is within the coverage limit, so no escalation is needed on that basis. Approve for $13,500, subject to final invoiced amount reconciliation once quotes are obtained."
+      "text": "DECISION: approve\n\nReasoning: The claim involves fire damage that spread from an electrical fault in the laundry to the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. While AAMI's policies generally exclude mechanical/electrical failure or breakdown itself, both the Building and Contents PDS carve out an exception: fire that spreads from an electrical fault to other parts of the property is covered under the \"Fire (including bushfire)\" insured event [AAMI Contents PDS, page 35] [AAMI Building PDS, page 30]. The damage described here \u2014 items \"badly burnt\" and smoke/heat damage to the ceiling and carpet \u2014 is consistent with fire spread damage, not simply the electrical component's own failure, so it falls within the covered exception rather than the excluded electrical breakdown itself.\n\nUsing the policyholder's certificate figures (excess: $500, coverage limit: $50,000) against the estimated claim amount of $14,000 (an unquoted estimate, but reasonable and well within the coverage limit), the calculated payout is $13,500.\n\nNote: the policyholder has not yet obtained formal quotes, so this approval is for the estimated amount pending confirmation via final invoices/quotes, which is standard practice and does not itself warrant escalation.\n\nCitations: [AAMI Contents PDS, page 35], [AAMI Building PDS, page 30]"
     }
   ],
   "final_decision": "approve",
-  "reasoning": "DECISION: approve\n\nReasoning: The claim involves an electrical fault that caused a fire which spread and damaged the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet (via smoke/heat). AAMI's policy covers \"loss or damage caused by fire (including bushfire)\" as well as heat, ash, soot, and smoke that are the direct result of a fire at the insured address [AAMI Building PDS, page 43][AAMI Contents PDS, page 48]. The policy excludes arcing/scorching/melting only when the fire does NOT spread from the initial point \u2014 but here the claimant explicitly states the fire \"spread faster than I expected,\" so the spread exception applies and the damage is covered, not excluded.\n\nPolicy certificate for AAMI (policy HM-559213) shows an excess of $500 and coverage limit of $50,000. Applying these to the estimated claim amount of $14,000 yields a payout of $13,500.\n\nNote: The estimated amount is a rough guess pending formal quotes ($14,000), which is within the coverage limit, so no escalation is needed on that basis. Approve for $13,500, subject to final invoiced amount reconciliation once quotes are obtained.",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves fire damage that spread from an electrical fault in the laundry to the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. While AAMI's policies generally exclude mechanical/electrical failure or breakdown itself, both the Building and Contents PDS carve out an exception: fire that spreads from an electrical fault to other parts of the property is covered under the \"Fire (including bushfire)\" insured event [AAMI Contents PDS, page 35] [AAMI Building PDS, page 30]. The damage described here \u2014 items \"badly burnt\" and smoke/heat damage to the ceiling and carpet \u2014 is consistent with fire spread damage, not simply the electrical component's own failure, so it falls within the covered exception rather than the excluded electrical breakdown itself.\n\nUsing the policyholder's certificate figures (excess: $500, coverage limit: $50,000) against the estimated claim amount of $14,000 (an unquoted estimate, but reasonable and well within the coverage limit), the calculated payout is $13,500.\n\nNote: the policyholder has not yet obtained formal quotes, so this approval is for the estimated amount pending confirmation via final invoices/quotes, which is standard practice and does not itself warrant escalation.\n\nCitations: [AAMI Contents PDS, page 35], [AAMI Building PDS, page 30]",
   "citations": [
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 43
-    },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 48
+      "page": 35
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
     }
   ],
   "retrieved_sources": [
@@ -134,35 +120,35 @@
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 48
+      "page": 35
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 85
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
     },
     {
       "doc_id": "aami-contents-pds",
       "insurer": "AAMI",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 48
-    },
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 43
-    },
-    {
-      "doc_id": "aami-building-pds",
-      "insurer": "AAMI",
-      "product": "Building",
-      "doc_type": "PDS",
-      "page": 43
-    },
-    {
-      "doc_id": "aami-contents-kfs",
-      "insurer": "AAMI",
-      "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
+      "page": 44
     }
   ],
   "claim_id": "claim-005"

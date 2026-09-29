@@ -19,19 +19,132 @@
     {
       "turn": 2,
       "type": "tool_call",
-      "tool": "escalate_to_human",
+      "tool": "retrieve_policy",
       "input": {
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing figures. Additionally, the claimant reports the insurer itself gave ambiguous guidance on whether river/flood-related shed damage falls under flood cover or storm cover, indicating unresolved coverage ambiguity that requires human review."
+        "query": "flood caused by river overflowing its banks after heavy rain - is this covered as flood or storm damage?"
       },
       "output": {
-        "status": "escalated",
-        "reason": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing figures. Additionally, the claimant reports the insurer itself gave ambiguous guidance on whether river/flood-related shed damage falls under flood cover or storm cover, indicating unresolved coverage ambiguity that requires human review."
+        "answer": "Based on the excerpts, this scenario would be classified as **flood**, not storm damage \u2014 but coverage depends on the insurer and whether flood cover applies.\n\n**RACV Home PDS and RACV Landlord PDS** directly address this scenario. Both define 'flood' as \"the covering of normally dry land by water that has escaped or been released from the normal confines of any of the following: (a) a lake... (b) a river... (c) a creek... (d) another natural watercourse... (e) a reservoir; (f) a canal; (g) a dam\" [RACV Home PDS, page 37; RACV Landlord PDS, page 34]. Both excerpts give the example: \"damage is caused when heavy or sustained rainfall causes a river or creek near you to overflow\" as an illustration of flood cover [RACV Home PDS, page 37; RACV Landlord PDS, page 34]. This is covered under their Flood section, along with \"landslide or subsidence that happens immediately as a direct result of a flood\" [RACV Home PDS, page 37; RACV Landlord PDS, page 34].\n\n**ING Home PDS and BudgetDirect Home PDS** explicitly exclude this scenario from their Storms and rainwater cover. Both state you are \"not covered for... flood\" under storm/rainwater [ING Home PDS, page 39], and BudgetDirect specifies you are not covered \"caused by flood unless you have selected and we have agreed to provide the optional Flood cover\" [BudgetDirect Home PDS, page 37]. Neither excerpt provided defines \"flood\" itself, so I cannot confirm from these excerpts whether river overflow specifically falls under their flood definition \u2014 only that it is excluded from storm cover and would need to be assessed under a separate flood peril/optional cover.\n\n**Not enough information:** The excerpts do not include ING's or BudgetDirect's definition of \"flood,\" so I cannot confirm precisely how river overflow is defined for those two products \u2014 only that it is excluded from the Storms and rainwater section. I also do not have RealInsurance's flood definition or an excerpt clarifying how RealInsurance treats river overflow (the RealInsurance excerpt only defines \"storm,\" which explicitly excludes \"heavy or persistent rain by itself\" [RealInsurance Landlord PDS, page 71], but does not address flood).\n\n**In summary:** Where excerpts are available (RACV), river overflow after heavy rain",
+        "citations": [
+          {
+            "doc_id": "ing-home-pds",
+            "insurer": "ING",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 39
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 37
+          },
+          {
+            "doc_id": "racv-home-pds",
+            "insurer": "RACV",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 37
+          },
+          {
+            "doc_id": "racv-landlord-pds",
+            "insurer": "RACV",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 34
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 71
+          }
+        ]
       }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policyholder-specific excess/coverage_limit via get_policy_certificate, nor can calculate_payout be run without guessing those figures. Additionally, the policy research confirms genuine ambiguity across insurers: coverage for \"river overflow after heavy rain\" varies significantly by insurer \u2014 RACV explicitly covers this under its Flood definition [RACV Home PDS, page 37][RACV Landlord PDS, page 34], while ING and BudgetDirect exclude flood from Storm/rainwater cover and require separate/optional flood cover [ING Home PDS, page 39][BudgetDirect Home PDS, page 37], and other insurers' flood definitions were not available to confirm treatment [RealInsurance Landlord PDS, page 71]. The claimant themselves also noted their insurer's documentation was unclear on flood vs. storm classification, matching the escalation criteria for ambiguous coverage text and an unnamed insurer. This claim must be handed to a human reviewer to identify the correct insurer and resolve the flood-vs-storm classification before any payout determination."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim does not name a specific insurer, so get_policy_certificate/calculate_payout cannot be resolved without guessing figures. Additionally, the claimant reports the insurer itself gave ambiguous guidance on whether river/flood-related shed damage falls under flood cover or storm cover, indicating unresolved coverage ambiguity that requires human review.",
-  "citations": [],
-  "retrieved_sources": [],
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policyholder-specific excess/coverage_limit via get_policy_certificate, nor can calculate_payout be run without guessing those figures. Additionally, the policy research confirms genuine ambiguity across insurers: coverage for \"river overflow after heavy rain\" varies significantly by insurer \u2014 RACV explicitly covers this under its Flood definition [RACV Home PDS, page 37][RACV Landlord PDS, page 34], while ING and BudgetDirect exclude flood from Storm/rainwater cover and require separate/optional flood cover [ING Home PDS, page 39][BudgetDirect Home PDS, page 37], and other insurers' flood definitions were not available to confirm treatment [RealInsurance Landlord PDS, page 71]. The claimant themselves also noted their insurer's documentation was unclear on flood vs. storm classification, matching the escalation criteria for ambiguous coverage text and an unnamed insurer. This claim must be handed to a human reviewer to identify the correct insurer and resolve the flood-vs-storm classification before any payout determination.",
+  "citations": [
+    {
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 37
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 39
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 37
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 71
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 39
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 37
+    },
+    {
+      "doc_id": "racv-home-pds",
+      "insurer": "RACV",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 37
+    },
+    {
+      "doc_id": "racv-landlord-pds",
+      "insurer": "RACV",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 71
+    }
+  ],
   "claim_id": "claim-018"
 }

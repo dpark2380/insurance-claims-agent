@@ -18,19 +18,12 @@
     },
     {
       "turn": 2,
-      "type": "tool_call",
-      "tool": "escalate_to_human",
-      "input": {
-        "reason": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage."
-      },
-      "output": {
-        "status": "escalated",
-        "reason": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage."
-      }
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative provides no identifiable insurer, no known cause of loss, and no estimated repair amount. The extraction confirms `estimated_amount: null` and `cause: unknown`, and no insurer is named in the text, which means:\n\n1. `get_policy_certificate` cannot be resolved without guessing an insurer.\n2. `calculate_payout` cannot run without a real excess/coverage_limit (which requires the insurer) and without a resolvable claimed amount.\n3. `retrieve_policy` cannot be meaningfully applied to check coverage since the cause of damage is unknown \u2014 there's nothing to check against exclusions.\n\nPer policy, this meets multiple escalation triggers: null estimated_amount that cannot be resolved another way, and no named insurer preventing certificate lookup. This requires a human to gather more information from the policyholder (insurer name, cause of damage, and a repair estimate) before any coverage or payout determination can be made."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "Claim lacks a named insurer (cannot retrieve certificate for excess/coverage limit), the cause of damage is unknown (cannot verify coverage/exclusions), and estimated_amount is null with no way to resolve it from the narrative. Insufficient information to proceed with automated triage.",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative provides no identifiable insurer, no known cause of loss, and no estimated repair amount. The extraction confirms `estimated_amount: null` and `cause: unknown`, and no insurer is named in the text, which means:\n\n1. `get_policy_certificate` cannot be resolved without guessing an insurer.\n2. `calculate_payout` cannot run without a real excess/coverage_limit (which requires the insurer) and without a resolvable claimed amount.\n3. `retrieve_policy` cannot be meaningfully applied to check coverage since the cause of damage is unknown \u2014 there's nothing to check against exclusions.\n\nPer policy, this meets multiple escalation triggers: null estimated_amount that cannot be resolved another way, and no named insurer preventing certificate lookup. This requires a human to gather more information from the policyholder (insurer name, cause of damage, and a repair estimate) before any coverage or payout determination can be made.",
   "citations": [],
   "retrieved_sources": [],
   "claim_id": "claim-016"

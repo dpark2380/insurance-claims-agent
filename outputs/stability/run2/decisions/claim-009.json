@@ -21,18 +21,32 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is accidental breakage of glass/windows caused by external impact (e.g. thrown ball) covered?",
+        "query": "Is accidental breakage of glass/windows caused by impact (e.g. cricket ball) covered under home building insurance?",
         "insurer": "RealInsurance"
       },
       "output": {
-        "answer": "Based on the excerpts provided, here's what I can determine:\n\n**Accidental Glass Breakage is a covered event** under both the Home and Contents policies [RealInsurance Home KFS, page 1; RealInsurance Contents KFS, page 1]. This cover is defined as \"Accidental Glass Breakage\" and \"covers glass breakage only\" [RealInsurance Home KFS, page 1; RealInsurance Contents KFS, page 1].\n\nUnder this event, coverage includes:\n- Window glass and other fixed glass (building-related items) [RealInsurance Contents PDS, page 16; RealInsurance Landlord PDS, page 15]\n- Mirrors and fixed glass in furniture (contents-related items) [RealInsurance Contents PDS, page 16]\n- Repair/replacement of the frame of the applicable window, door or shower screen if necessary to enable glass replacement [RealInsurance Contents PDS, page 16; RealInsurance Landlord PDS, page 15]\n\n**However, the excerpts do not explicitly state that damage caused by external impact (such as a thrown ball) is excluded.** The exclusions listed for accidental glass breakage relate to specific items rather than specific causes:\n- Glass that doesn't break through the entire thickness [RealInsurance Contents PDS, page 16; RealInsurance Landlord PDS, page 15]\n- Screens of computers, TVs, or visual display units [RealInsurance Home KFS, page 1; RealInsurance Contents KFS, page 1; RealInsurance Contents PDS, page 16]\n- Glass in glasshouses, greenhouses, or conservatories [RealInsurance Home KFS, page 1; RealInsurance Contents PDS, page 16]\n- Glass forming part of a stove top, cooking surface, heater, or oven door [RealInsurance Contents PDS, page 16]\n\nI also note that one excerpt states coverage excludes \"damage caused by the broken item\" itself [RealInsurance Contents PDS, page 16], but this refers to secondary damage caused by the glass once broken (e.g., a falling shard damaging something else), not the cause of the breakage.\n\n**Conclusion:** The excerpts do not specifically address whether an external impact (like a thrown ball) causing glass breakage would be covered or excluded. Since the general Accidental Glass Breakage cover appears broad (covering breakage of",
+        "answer": "Yes",
         "citations": [
           {
-            "doc_id": "realinsurance-home-kfs",
+            "doc_id": "realinsurance-contents-pds",
             "insurer": "RealInsurance",
-            "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 14
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 32
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 15
           },
           {
             "doc_id": "realinsurance-contents-kfs",
@@ -47,20 +61,6 @@
             "product": "Contents",
             "doc_type": "PDS",
             "page": 14
-          },
-          {
-            "doc_id": "realinsurance-landlord-pds",
-            "insurer": "RealInsurance",
-            "product": "Landlord",
-            "doc_type": "PDS",
-            "page": 15
-          },
-          {
-            "doc_id": "realinsurance-contents-pds",
-            "insurer": "RealInsurance",
-            "product": "Contents",
-            "doc_type": "PDS",
-            "page": 16
           }
         ]
       }
@@ -80,32 +80,25 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nReasoning: The claim is for accidental glass breakage caused by a cricket ball, which appears to be a covered event under RealInsurance's policy \u2014 \"Accidental Glass Breakage\" is explicitly covered for window glass, and none of the listed exclusions (non-through-thickness cracks, screens, glasshouses, stove-top glass) apply to this cause [RealInsurance Home KFS, page 1] [RealInsurance Contents KFS, page 1] [RealInsurance Contents PDS, page 16] [RealInsurance Landlord PDS, page 15].\n\nHowever, `extract_fields` returned a null `estimated_amount`, and the claim narrative confirms no glazier quote has been obtained yet, so there is no way to resolve a claimed dollar figure from the narrative or any other tool. Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review rather than a guessed payout calculation. I did retrieve the policyholder's certificate figures (excess: $500, coverage_limit: $40,000) for reference, but `calculate_payout` cannot be meaningfully run without a real claimed amount.\n\nRecommend: request a glazier quote/repair estimate from the policyholder, then reprocess with the actual claimed amount using the excess ($500) and coverage limit ($40,000) noted above."
+      "text": "DECISION: escalate\n\nReasoning: extract_fields returned a null estimated_amount (\"estimated_amount\": null) because the policyholder has not yet had a glazier quote the replacement. This figure cannot be resolved from the narrative or from any other tool (get_policy_certificate only supplies excess/coverage limits, not claim amounts), so per policy I must escalate rather than guess a claimed amount to run through calculate_payout.\n\nAdditionally, the retrieve_policy results returned coverage confirmation only from RealInsurance's Contents and Landlord PDS/KFS documents [RealInsurance Contents PDS, page 14][RealInsurance Contents PDS, page 32][RealInsurance Landlord PDS, page 15][RealInsurance Contents KFS, page 1] \u2014 none from a Building/Home PDS, even though a smashed front window is a building (not contents) item. This is an ambiguous match between the claimed item and the coverage documentation retrieved, reinforcing the need for human review to confirm the correct product/policy section and obtain an actual repair estimate before any payout calculation."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for accidental glass breakage caused by a cricket ball, which appears to be a covered event under RealInsurance's policy \u2014 \"Accidental Glass Breakage\" is explicitly covered for window glass, and none of the listed exclusions (non-through-thickness cracks, screens, glasshouses, stove-top glass) apply to this cause [RealInsurance Home KFS, page 1] [RealInsurance Contents KFS, page 1] [RealInsurance Contents PDS, page 16] [RealInsurance Landlord PDS, page 15].\n\nHowever, `extract_fields` returned a null `estimated_amount`, and the claim narrative confirms no glazier quote has been obtained yet, so there is no way to resolve a claimed dollar figure from the narrative or any other tool. Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review rather than a guessed payout calculation. I did retrieve the policyholder's certificate figures (excess: $500, coverage_limit: $40,000) for reference, but `calculate_payout` cannot be meaningfully run without a real claimed amount.\n\nRecommend: request a glazier quote/repair estimate from the policyholder, then reprocess with the actual claimed amount using the excess ($500) and coverage limit ($40,000) noted above.",
+  "reasoning": "DECISION: escalate\n\nReasoning: extract_fields returned a null estimated_amount (\"estimated_amount\": null) because the policyholder has not yet had a glazier quote the replacement. This figure cannot be resolved from the narrative or from any other tool (get_policy_certificate only supplies excess/coverage limits, not claim amounts), so per policy I must escalate rather than guess a claimed amount to run through calculate_payout.\n\nAdditionally, the retrieve_policy results returned coverage confirmation only from RealInsurance's Contents and Landlord PDS/KFS documents [RealInsurance Contents PDS, page 14][RealInsurance Contents PDS, page 32][RealInsurance Landlord PDS, page 15][RealInsurance Contents KFS, page 1] \u2014 none from a Building/Home PDS, even though a smashed front window is a building (not contents) item. This is an ambiguous match between the claimed item and the coverage documentation retrieved, reinforcing the need for human review to confirm the correct product/policy section and obtain an actual repair estimate before any payout calculation.",
   "citations": [
     {
-      "doc_id": "realinsurance-home-kfs",
-      "insurer": "RealInsurance",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "realinsurance-contents-kfs",
+      "doc_id": "realinsurance-contents-pds",
       "insurer": "RealInsurance",
       "product": "Contents",
-      "doc_type": "KFS",
-      "page": 1
+      "doc_type": "PDS",
+      "page": 14
     },
     {
       "doc_id": "realinsurance-contents-pds",
       "insurer": "RealInsurance",
       "product": "Contents",
       "doc_type": "PDS",
-      "page": 16
+      "page": 32
     },
     {
       "doc_id": "realinsurance-landlord-pds",
@@ -113,15 +106,36 @@
       "product": "Landlord",
       "doc_type": "PDS",
       "page": 15
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "retrieved_sources": [
     {
-      "doc_id": "realinsurance-home-kfs",
+      "doc_id": "realinsurance-contents-pds",
       "insurer": "RealInsurance",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 32
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 15
     },
     {
       "doc_id": "realinsurance-contents-kfs",
@@ -136,20 +150,6 @@
       "product": "Contents",
       "doc_type": "PDS",
       "page": 14
-    },
-    {
-      "doc_id": "realinsurance-landlord-pds",
-      "insurer": "RealInsurance",
-      "product": "Landlord",
-      "doc_type": "PDS",
-      "page": 15
-    },
-    {
-      "doc_id": "realinsurance-contents-pds",
-      "insurer": "RealInsurance",
-      "product": "Contents",
-      "doc_type": "PDS",
-      "page": 16
     }
   ],
   "claim_id": "claim-009"

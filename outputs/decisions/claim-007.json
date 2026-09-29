@@ -21,12 +21,12 @@
       "type": "tool_call",
       "tool": "retrieve_policy",
       "input": {
-        "query": "Is accidental fire damage caused by a candle covered?",
+        "query": "Is fire damage caused by an accidentally tipped over burning candle covered?",
         "insurer": "NRMA",
         "product": "Home"
       },
       "output": {
-        "answer": "The excerpts provided do not contain enough information to answer this question. They describe general Fire cover (loss or damage caused by fire or bushfire) and exclusions related to intentional fires, scorching/melting without flame, and certain tree-related damage [NRMA Home PDS, page 14; NRMA Home KFS, page 1], but there is no specific mention of candle-caused fires or whether such an incident would be classified as accidental fire damage under the policy.",
+        "answer": "Based on the provided excerpts, this cannot be fully answered.\n\nThe NRMA Home PDS confirms that \"We cover loss or damage caused by fire or bushfire\" [NRMA Home PDS, page 14], and explicitly excludes only fires \"started with the intention to cause damage\" by the insured, their family, anyone normally living in the home, or a tenant [NRMA Home PDS, page 14]. An accidentally tipped-over candle causing fire damage does not appear to fall within this intentional-damage exclusion, based on the wording provided.\n\nHowever, the NRMA Home KFS notes that \"Fire - not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1], which suggests some nuance in how \"fire\" damage is defined and limited, but the excerpt does not provide the full definition or all relevant conditions.\n\nThe excerpts provided do not contain a complete definition of \"Fire\" as a Listed Event, nor any specific exclusion addressing accidental causes like a tipped-over candle. Therefore, I cannot definitively confirm coverage without access to the full policy wording, including the complete \"Fire\" section of the PDS and any relevant definitions or exclusions not shown here.",
         "citations": [
           {
             "doc_id": "nrma-home-pds",
@@ -36,20 +36,6 @@
             "page": 14
           },
           {
-            "doc_id": "nrma-home-kfs",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "KFS",
-            "page": 1
-          },
-          {
-            "doc_id": "nrma-home-pds",
-            "insurer": "NRMA",
-            "product": "Home",
-            "doc_type": "PDS",
-            "page": 3
-          },
-          {
             "doc_id": "nrma-home-pds",
             "insurer": "NRMA",
             "product": "Home",
@@ -61,7 +47,21 @@
             "insurer": "NRMA",
             "product": "Home",
             "doc_type": "PDS",
-            "page": 18
+            "page": 27
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 21
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
           }
         ]
       }
@@ -69,11 +69,11 @@
     {
       "turn": 2,
       "type": "final",
-      "text": "DECISION: escalate\n\nThe claim involves fire damage from a candle, which appears to fall under general Fire cover in the NRMA Home policy [NRMA Home PDS, page 14][NRMA Home KFS, page 1]. However, two issues prevent a confident automated decision:\n\n1. **Missing estimated amount**: extract_fields returned a null estimated_amount because no assessor has yet inspected the damage, and there is no other way to resolve a claimed dollar figure. Per policy, this alone requires escalation to a human reviewer rather than guessing a cost.\n\n2. **Ambiguous coverage classification**: The retrieved policy text confirms general fire cover but does not clearly address whether a self-inflicted, accidental candle fire (as opposed to bushfire or third-party fire) is treated the same, and separately flags an exclusion for \"scorching/melting without flame\" [NRMA Home PDS, page 14] which could be relevant to the scorched wall/carpet portion of the claim. This creates potential ambiguity as to whether all the damage described is fully covered.\n\nGiven the unresolved estimated amount and the ambiguous scope of coverage relative to a specific exclusion, this claim should be handed to a human reviewer for assessment and correct application of policy terms, rather than approved or denied automatically."
+      "text": "DECISION: escalate\n\nReasoning: Two independent escalation triggers apply here.\n\n1. **Ambiguous/contradictory coverage text**: The NRMA Home PDS covers \"loss or damage caused by fire or bushfire\" [NRMA Home PDS, page 14] and only excludes intentionally-started fires [NRMA Home PDS, page 14]. However, the NRMA Home KFS states \"Fire - not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1]. Since this claim involves both open flame (curtains, wall) and possible scorching (wall/carpet), it's unclear whether the KFS limitation reduces or excludes the scorched-wall/carpet portion of the damage. The retrieval itself flagged this as not fully resolvable without the complete \"Fire\" Listed Event definition.\n\n2. **Null estimated amount**: extract_fields returned a null estimated_amount, and the policyholder confirmed no assessor has inspected the damage yet, so there is no way to resolve a claimed dollar figure from the narrative or elsewhere.\n\nGiven the ambiguous scope-of-cover question (open flame vs. scorching-only damage) combined with an unresolvable missing claim amount, this claim must be handed to a human reviewer rather than approved or denied automatically. No payout calculation was performed since the claim amount is unknown and coverage scope is unresolved."
     }
   ],
   "final_decision": "escalate",
-  "reasoning": "DECISION: escalate\n\nThe claim involves fire damage from a candle, which appears to fall under general Fire cover in the NRMA Home policy [NRMA Home PDS, page 14][NRMA Home KFS, page 1]. However, two issues prevent a confident automated decision:\n\n1. **Missing estimated amount**: extract_fields returned a null estimated_amount because no assessor has yet inspected the damage, and there is no other way to resolve a claimed dollar figure. Per policy, this alone requires escalation to a human reviewer rather than guessing a cost.\n\n2. **Ambiguous coverage classification**: The retrieved policy text confirms general fire cover but does not clearly address whether a self-inflicted, accidental candle fire (as opposed to bushfire or third-party fire) is treated the same, and separately flags an exclusion for \"scorching/melting without flame\" [NRMA Home PDS, page 14] which could be relevant to the scorched wall/carpet portion of the claim. This creates potential ambiguity as to whether all the damage described is fully covered.\n\nGiven the unresolved estimated amount and the ambiguous scope of coverage relative to a specific exclusion, this claim should be handed to a human reviewer for assessment and correct application of policy terms, rather than approved or denied automatically.",
+  "reasoning": "DECISION: escalate\n\nReasoning: Two independent escalation triggers apply here.\n\n1. **Ambiguous/contradictory coverage text**: The NRMA Home PDS covers \"loss or damage caused by fire or bushfire\" [NRMA Home PDS, page 14] and only excludes intentionally-started fires [NRMA Home PDS, page 14]. However, the NRMA Home KFS states \"Fire - not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1]. Since this claim involves both open flame (curtains, wall) and possible scorching (wall/carpet), it's unclear whether the KFS limitation reduces or excludes the scorched-wall/carpet portion of the damage. The retrieval itself flagged this as not fully resolvable without the complete \"Fire\" Listed Event definition.\n\n2. **Null estimated amount**: extract_fields returned a null estimated_amount, and the policyholder confirmed no assessor has inspected the damage yet, so there is no way to resolve a claimed dollar figure from the narrative or elsewhere.\n\nGiven the ambiguous scope-of-cover question (open flame vs. scorching-only damage) combined with an unresolvable missing claim amount, this claim must be handed to a human reviewer rather than approved or denied automatically. No payout calculation was performed since the claim amount is unknown and coverage scope is unresolved.",
   "citations": [
     {
       "doc_id": "nrma-home-pds",
@@ -99,20 +99,6 @@
       "page": 14
     },
     {
-      "doc_id": "nrma-home-kfs",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "KFS",
-      "page": 1
-    },
-    {
-      "doc_id": "nrma-home-pds",
-      "insurer": "NRMA",
-      "product": "Home",
-      "doc_type": "PDS",
-      "page": 3
-    },
-    {
       "doc_id": "nrma-home-pds",
       "insurer": "NRMA",
       "product": "Home",
@@ -124,7 +110,21 @@
       "insurer": "NRMA",
       "product": "Home",
       "doc_type": "PDS",
-      "page": 18
+      "page": 27
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 21
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
     }
   ],
   "claim_id": "claim-007"
