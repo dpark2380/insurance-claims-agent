@@ -1,0 +1,215 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "We took out our policy on 1 February 2026 because we'd never had home insurance before. The next day, 2 February 2026, heavy rain caused the river to flood and water came through the ground floor. Carpets, a lounge suite and the lower plasterboard are damaged, estimated at $14,000."
+      },
+      "output": {
+        "claim_type": "flood",
+        "date_of_loss": "2026-02-03",
+        "cause": "river flooding due to heavy rain",
+        "damaged_item": "carpets, lounge suite, and lower plasterboard",
+        "estimated_amount": 14000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "flood coverage waiting period new policy",
+        "insurer": "RACWA"
+      },
+      "output": {
+        "answer": "Based on the excerpts, for the RACWA Landlord policy, **Flood** is an insured event, but there is a waiting period exclusion:\n\n> Loss or damage caused by Flood within the first 48 hours after the initial commencement of your policy, unless your policy commenced:\n> - When you first took possession of your building, or\n> - Immediately after another policy covering the same risk expired without a break in cover.\n\n[RACWA Landlord PDS, page 9]\n\nSo under a new policy, flood damage occurring within the first **48 hours** of the policy's initial commencement is **not covered**, unless one of the two exceptions above applies (e.g., taking possession of the building at that time, or seamless continuation from a prior policy covering the same risk).\n\nThe excerpts provided do not include equivalent flood waiting period information for the RACWA Home product, so I cannot confirm whether the same 48-hour rule applies there.",
+        "citations": [
+          {
+            "doc_id": "racwa-home-spds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "SPDS",
+            "page": 2
+          },
+          {
+            "doc_id": "racwa-landlord-spds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "SPDS",
+            "page": 2
+          },
+          {
+            "doc_id": "racwa-home-spds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "SPDS",
+            "page": 2
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 9
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 9
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "flood waiting period 48 hours new policy commencement",
+        "insurer": "RACWA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, here is the flood waiting period information:\n\n**Flood waiting period: 48 hours**\n\nYour policy does **not** cover loss or damage caused by flood within the first 48 hours after the initial commencement of your policy [RACWA Home PDS, page 10].\n\n**Exceptions** \u2013 this 48-hour waiting period does not apply if your policy commenced:\n- When you first took possession of your building, or\n- When your lease for your building first commenced, or\n- Immediately after another policy covering the same risk expired without a break in cover [RACWA Home PDS, page 10].\n\nThis is confirmed again in the General Exclusions section, which states: \"We will not cover loss, damage or liability caused by flood, storm or bushfire within the first 48 hours after the initial commencement of your policy or to the extent that you have increased your existing insurance cover,\" with the same three exceptions listed (take possession, lease commencement, or immediate continuation from a prior policy) [RACWA Home PDS, page 30].\n\n**Note:** The SPDS excerpts provided do not amend or reference this 48-hour flood waiting period provision, so the PDS wording above applies as stated.",
+        "citations": [
+          {
+            "doc_id": "racwa-home-pds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 10
+          },
+          {
+            "doc_id": "racwa-home-pds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 10
+          },
+          {
+            "doc_id": "racwa-home-pds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "racwa-home-spds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "SPDS",
+            "page": 2
+          },
+          {
+            "doc_id": "racwa-home-spds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "SPDS",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim's cause (river flooding due to heavy rain) directly conflicts with a policy exclusion found in the RACWA Home PDS: flood damage occurring within the first 48 hours after initial policy commencement is excluded, unless the policyholder just took possession of the building, just began a lease, or the policy commenced immediately after a prior policy on the same risk lapsed [RACWA Home PDS, page 10] [RACWA Home PDS, page 30]. Here, the policy commenced 1 February 2026 and the flood loss occurred 2 February 2026 \u2014 well within the 48-hour window. The narrative states the policyholders \"never had home insurance before,\" which does not clearly establish any of the three exceptions (e.g., it's unclear whether they just took possession of the building on 1 Feb 2026 or had owned it longer without insurance). Because the claimed cause directly conflicts with this exclusion and the applicability of an exception is ambiguous from the facts given, this must be escalated to a human reviewer to confirm the possession/lease timing before a coverage decision (approve/deny) can be made. No payout calculation was performed pending that determination."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe claim's cause (river flooding due to heavy rain) directly conflicts with a policy exclusion found in the RACWA Home PDS: flood damage occurring within the first 48 hours after initial policy commencement is excluded, unless the policyholder just took possession of the building, just began a lease, or the policy commenced immediately after a prior policy on the same risk lapsed [RACWA Home PDS, page 10] [RACWA Home PDS, page 30]. Here, the policy commenced 1 February 2026 and the flood loss occurred 2 February 2026 \u2014 well within the 48-hour window. The narrative states the policyholders \"never had home insurance before,\" which does not clearly establish any of the three exceptions (e.g., it's unclear whether they just took possession of the building on 1 Feb 2026 or had owned it longer without insurance). Because the claimed cause directly conflicts with this exclusion and the applicability of an exception is ambiguous from the facts given, this must be escalated to a human reviewer to confirm the possession/lease timing before a coverage decision (approve/deny) can be made. No payout calculation was performed pending that determination.",
+  "citations": [
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 10
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 30
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "racwa-home-spds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "SPDS",
+      "page": 2
+    },
+    {
+      "doc_id": "racwa-landlord-spds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "SPDS",
+      "page": 2
+    },
+    {
+      "doc_id": "racwa-home-spds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "SPDS",
+      "page": 2
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 9
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 9
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 10
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 10
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "racwa-home-spds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "SPDS",
+      "page": 2
+    },
+    {
+      "doc_id": "racwa-home-spds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "SPDS",
+      "page": 2
+    }
+  ],
+  "claim_id": "exp-008"
+}

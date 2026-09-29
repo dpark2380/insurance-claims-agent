@@ -1,0 +1,228 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 22 June 2026 strong winds during a storm blew over about 15 metres of our timber side fence. A fencing contractor quoted $3,200 to replace it. Policy number CGU-HB-771204. (Policyholder with CGU home insurance.)"
+      },
+      "output": {
+        "claim_type": "storm",
+        "date_of_loss": "2026-06-22",
+        "cause": "strong winds blowing over timber fence",
+        "damaged_item": "timber side fence",
+        "estimated_amount": 3200.0,
+        "policy_number": "CGU-HB-771204"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Storm damage to fences - is fence damage covered under storm peril?",
+        "insurer": "CGU",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, I cannot fully confirm coverage for storm damage to fences.\n\nWhat the excerpts do show is that **storm** (along with flood, rainwater or wind) is a covered peril for buildings or contents generally [CGU Home PDS, page 16]. However, one excerpt lists a specific exclusion related to fences: \"free-standing gates, fences or walls that are made of timber and are more than 15 years old\" \u2014 but this exclusion is stated specifically \"for damage by flood\" [CGU Home PDS, page 17], not storm.\n\nThe excerpts do not contain a general exclusion for fences under the storm peril specifically, nor do they provide a definition of \"buildings\" that confirms whether fences are included within that term for storm cover purposes.\n\n**I don't have enough information in these excerpts to give a definitive answer** on whether storm damage to fences is covered, because:\n1. There is no explicit statement confirming fences are covered under the storm peril, and\n2. The only fence-related exclusion I can see applies to flood damage, not storm.\n\nTo answer this accurately, I would need additional excerpts that either (a) define what counts as \"buildings\" for the purposes of storm cover, or (b) list any general exclusions specific to storm damage affecting fences.",
+        "citations": [
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 66
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 36
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 59
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 16
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "CGU"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Does the definition of 'buildings' include fences, gates, or walls? Is there a specific sub-limit for fence damage under storm cover?",
+        "insurer": "CGU",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot fully answer this question.\n\nThe excerpts do not include the specific definition of \"buildings\" from the CGU Home PDS, so I cannot confirm whether fences, gates, or walls are included within that definition.\n\nRegarding a sub-limit for fence damage under storm cover, I found no excerpt addressing storm cover limits for fences. However, [CGU Home PDS, page 17] does reference an exclusion related to fences under a different context \u2014 flood damage \u2014 stating that the policy will **not** cover: \"free-standing gates, fences or walls that are made of timber and are more than 15 years old ... for damage by flood\" [CGU Home PDS, page 17]. This relates to flood, not storm, and is an exclusion rather than a sub-limit.\n\nTo answer your question definitively, I would need the excerpts containing the policy's definitions section (for \"buildings\") and the specific storm cover conditions and any associated sub-limits table, which are not included in the material provided.",
+        "citations": [
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 15
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 36
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 63
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 7
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "This is genuinely ambiguous in the retrieved policy text \u2014 I cannot confirm whether fences fall within \"buildings\" coverage for storm damage, and the only explicit fence-related clause found applies to flood (not storm), with no exclusion or sub-limit for fences under storm identified. Per policy, ambiguous coverage text requires escalation rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim is for storm damage (wind) to a timber fence under CGU Home policy CGU-HB-771204. retrieve_policy confirms storm is a covered peril generally [CGU Home PDS, page 16], but could not confirm whether fences are included within the \"buildings\" definition for storm cover, and found no storm-specific exclusion or sub-limit for fences \u2014 only a flood-related exclusion for timber fences over 15 years old [CGU Home PDS, page 17], which does not apply here since the peril is storm/wind, not flood. Because coverage for this specific damaged item (timber fence) under the storm peril remains ambiguous in the retrieved policy text, and cannot be resolved with the available excerpts, this claim should be escalated to a human reviewer rather than approved or denied based on a guess. (Excess $500 and coverage limit $50,000 were retrieved from get_policy_certificate but payout was not calculated pending confirmation of coverage.)"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This is genuinely ambiguous in the retrieved policy text \u2014 I cannot confirm whether fences fall within \"buildings\" coverage for storm damage, and the only explicit fence-related clause found applies to flood (not storm), with no exclusion or sub-limit for fences under storm identified. Per policy, ambiguous coverage text requires escalation rather than a guess.\n\nDECISION: escalate\n\nReasoning: The claim is for storm damage (wind) to a timber fence under CGU Home policy CGU-HB-771204. retrieve_policy confirms storm is a covered peril generally [CGU Home PDS, page 16], but could not confirm whether fences are included within the \"buildings\" definition for storm cover, and found no storm-specific exclusion or sub-limit for fences \u2014 only a flood-related exclusion for timber fences over 15 years old [CGU Home PDS, page 17], which does not apply here since the peril is storm/wind, not flood. Because coverage for this specific damaged item (timber fence) under the storm peril remains ambiguous in the retrieved policy text, and cannot be resolved with the available excerpts, this claim should be escalated to a human reviewer rather than approved or denied based on a guess. (Excess $500 and coverage limit $50,000 were retrieved from get_policy_certificate but payout was not calculated pending confirmation of coverage.)",
+  "citations": [
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 59
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 15
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 63
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 7
+    }
+  ],
+  "claim_id": "exp-004"
+}

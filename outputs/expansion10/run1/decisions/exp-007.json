@@ -1,0 +1,156 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 28 August 2026 my son knocked our 65-inch TV off the entertainment unit while playing and the screen cracked. It cost $1,600 two years ago. I'm not sure whether our policy includes accidental damage. Policyholder has Shannons home contents insurance."
+      },
+      "output": {
+        "claim_type": "accidental_damage",
+        "date_of_loss": "2026-08-28",
+        "cause": "TV fell off entertainment unit during play",
+        "damaged_item": "65-inch TV",
+        "estimated_amount": 1600.0,
+        "policy_number": "Shanons"
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is accidental damage to contents (TV knocked off unit) covered?",
+        "insurer": "Shannons",
+        "product": "Home Contents"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Shannons"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Accidental damage cover for contents, optional accidental damage cover exclusions",
+        "insurer": "Shannons"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is the information on Accidental Loss or Damage cover for contents (an optional, extra-premium cover):\n\n**What's Covered**\n\nWhen Accidental Loss or Damage cover applies to a contents policy, it covers your contents and enthusiast items for:\n- Accidental loss (e.g., accidentally dropping a ring down the drain and being unable to retrieve it)\n- Accidental damage (e.g., accidentally dropping a laptop causing damage to it)\n\nThis applies at the insured address during the period of insurance [Shannons Contents PDS, page 88].\n\n**Exclusions**\n\nThe cover explicitly does **not** include loss or damage caused by any of the insured events [Shannons Contents PDS, page 88].\n\nAdditionally, this optional cover does not cover:\n- Anything excluded under Section 3 \"General exclusions\" [Shannons Contents PDS, page 88]\n- Loss or damage that's covered under an insured event listed elsewhere in the PDS (as a claim can be made under that applicable insured event instead) [Shannons Contents PDS, page 88]\n- Loss or damage that's covered under an additional cover listed elsewhere in the PDS [Shannons Contents PDS, page 88]\n- Loss or damage that occurred gradually, except to the extent covered under the \"Escape of liquid\" insured event [Shannons Contents PDS, page 88]\n- Loss or damage where you're unable to establish that the accidental loss or damage took place at a certain time and date [Shannons Contents PDS, page 88]\n\nSpecific items excluded from cover include:\n- Retaining walls, sea walls, revetments, garden borders, and free-standing outdoor walls [Shannons Contents PDS, page 88]\n- Shower bases (tiled or otherwise), including loss or damage from liquid escaping [Shannons Contents PDS, page 88]\n- Sporting surfaces or courts, including tennis courts, squash courts (the excerpt is cut off here, so further items in this list are not available) [Shannons Contents PDS, page 88]\n\n**Note:** The excerpt listing specific excluded items is truncated, so there may be additional items in this list not captured in the provided material. Additionally, the Key Facts Sheet (KFS) confirms this is an **optional** cover requiring an extra premium, described simply as \"Accidental Damage at home\" cover [Shannons Contents KFS, page 1],",
+        "citations": [
+          {
+            "doc_id": "shannons-contents-pds",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "doc_id": "shannons-building-kfs",
+            "insurer": "Shannons",
+            "product": "Building",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "shannons-contents-kfs",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "shannons-contents-pds",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 88
+          },
+          {
+            "doc_id": "shannons-contents-pds",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 9
+          }
+        ]
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim is for accidental damage to a TV knocked over by a child at home. Shannons' contents PDS confirms that \"Accidental Loss or Damage\" cover (which would cover this scenario) is an **optional, extra-premium add-on**, not a standard inclusion [Shannons Contents PDS, page 88][Shannons Contents KFS, page 1]. Neither the claim narrative nor the policy certificate lookup (which only returns excess/coverage_limit figures) indicates whether this policyholder actually purchased the optional Accidental Damage cover. Without confirmation that this add-on was selected, I cannot determine coverage \u2014 approving would risk paying a claim not actually covered, and denying could wrongly refuse a covered claim if the optional cover was in fact purchased. This is a case of ambiguous/incomplete information regarding whether an optional cover applies, so it must be escalated to a human reviewer to check the policyholder's actual schedule/certificate for the Accidental Damage option before a payout decision (and corresponding excess of $500 / coverage limit of $50,000) can be applied."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for accidental damage to a TV knocked over by a child at home. Shannons' contents PDS confirms that \"Accidental Loss or Damage\" cover (which would cover this scenario) is an **optional, extra-premium add-on**, not a standard inclusion [Shannons Contents PDS, page 88][Shannons Contents KFS, page 1]. Neither the claim narrative nor the policy certificate lookup (which only returns excess/coverage_limit figures) indicates whether this policyholder actually purchased the optional Accidental Damage cover. Without confirmation that this add-on was selected, I cannot determine coverage \u2014 approving would risk paying a claim not actually covered, and denying could wrongly refuse a covered claim if the optional cover was in fact purchased. This is a case of ambiguous/incomplete information regarding whether an optional cover applies, so it must be escalated to a human reviewer to check the policyholder's actual schedule/certificate for the Accidental Damage option before a payout decision (and corresponding excess of $500 / coverage limit of $50,000) can be applied.",
+  "citations": [
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "shannons-contents-kfs",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "shannons-building-kfs",
+      "insurer": "Shannons",
+      "product": "Building",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "shannons-contents-kfs",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 88
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 9
+    }
+  ],
+  "claim_id": "exp-007"
+}

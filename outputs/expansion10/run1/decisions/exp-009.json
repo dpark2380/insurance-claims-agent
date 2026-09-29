@@ -1,0 +1,170 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Policyholder with RACWA landlord insurance. Our tenant moved out on 30 June 2026 and left holes punched in several walls and a broken internal door. The property manager thinks it was done deliberately. The repair quote is $2,700. Policy number RAC-LL-30918."
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2026-06-30",
+        "cause": "tenant intentionally damaged property before moving out",
+        "damaged_item": "walls and internal door",
+        "estimated_amount": 2700.0,
+        "policy_number": "RAC-LL-30918"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Malicious damage or deliberate damage by tenant coverage for landlord insurance",
+        "insurer": "RACWA",
+        "product": "Landlord"
+      },
+      "output": {
+        "answer": "Based on the RACWA Landlord PDS, here is what the excerpts show regarding malicious damage/deliberate damage by a tenant:\n\n**Coverage:**\n- The policy covers theft or malicious damage caused by your tenant (or their guest/s), up to a combined maximum of $10,000 during that tenant's rental period [RACWA Landlord PDS, page 10].\n- This cover applies **less**: the deduction of bond moneys (where applicable), the malicious damage/theft excess, and any other applicable excesses shown on your policy schedule [RACWA Landlord PDS, page 10].\n- The general exclusion for intentional acts by \"a person who has entered your site with consent\" does **not** apply to malicious damage or theft by a tenant under a rental agreement \u2014 i.e., this type of damage is specifically carved back into cover [RACWA Landlord PDS, page 24].\n\n**Definition of \"malicious damage by tenant\":**\n- Damage to the building and/or contents by the tenant (or anyone on-site with the tenant's permission) that is motivated by spite, malice or vindictiveness, and committed with the intention of damaging the building and/or contents [RACWA Landlord PDS, page 41].\n\n**What is excluded from \"malicious damage\":**\n- Accidental loss or damage [RACWA Landlord PDS, page 10, page 41]\n- Wear and tear [RACWA Landlord PDS, page 10, page 41]\n- Damage from the tenant's carelessness or neglect [RACWA Landlord PDS, page 10, page 41]\n- Damage caused by a tenant's poor housekeeping or unhygienic living habits [RACWA Landlord PDS, page 41]\n\n**Related exclusion:**\n- The policy does not cover loss, damage, liability, injury or death arising from repairs or attempted repairs carried out by the tenant or anyone acting on the tenant's instructions [RACWA Landlord PDS, page 24].\n\n**Note:** The excerpts do not specify the malicious damage/theft excess amount itself, nor do they clarify whether \"deliberate damage\" (as distinct from \"malicious damage\") is separately defined or covered \u2014 I cannot answer that distinction based on the excerpts provided.",
+        "citations": [
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 10
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 41
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 41
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 24
+          },
+          {
+            "doc_id": "racwa-landlord-pds",
+            "insurer": "RACWA",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 42
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RACWA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 2700,
+        "excess": 550,
+        "coverage_limit": 55000
+      },
+      "output": {
+        "payout": 2150
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim involves damage (punched holes in walls, broken internal door) allegedly caused deliberately by the departing tenant. Per the RACWA Landlord PDS, malicious damage by a tenant is specifically covered (carved back from the general intentional-acts exclusion), up to a combined $10,000 per tenancy, less bond moneys and the applicable excess [RACWA Landlord PDS, page 10] [RACWA Landlord PDS, page 24] [RACWA Landlord PDS, page 41]. The described damage (holes punched in walls, broken door) is consistent with the policy's definition of malicious damage \u2014 damage intended to harm the property \u2014 rather than the excluded categories of accidental damage, wear and tear, or neglect [RACWA Landlord PDS, page 41] [RACWA Landlord PDS, page 42].\n\nThe $2,700 repair estimate is well under the $10,000 tenant-damage sub-limit and the policyholder's overall coverage limit of $55,000. Using the certificate figures (excess $550, coverage limit $55,000), the calculated payout is $2,700 \u2212 $550 = $2,150.\n\nNote: no bond-deduction information was provided in the claim narrative; if bond funds were retained/applied by the property manager, that amount should be deducted from the payout before disbursement. This does not change the underlying coverage decision."
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim involves damage (punched holes in walls, broken internal door) allegedly caused deliberately by the departing tenant. Per the RACWA Landlord PDS, malicious damage by a tenant is specifically covered (carved back from the general intentional-acts exclusion), up to a combined $10,000 per tenancy, less bond moneys and the applicable excess [RACWA Landlord PDS, page 10] [RACWA Landlord PDS, page 24] [RACWA Landlord PDS, page 41]. The described damage (holes punched in walls, broken door) is consistent with the policy's definition of malicious damage \u2014 damage intended to harm the property \u2014 rather than the excluded categories of accidental damage, wear and tear, or neglect [RACWA Landlord PDS, page 41] [RACWA Landlord PDS, page 42].\n\nThe $2,700 repair estimate is well under the $10,000 tenant-damage sub-limit and the policyholder's overall coverage limit of $55,000. Using the certificate figures (excess $550, coverage limit $55,000), the calculated payout is $2,700 \u2212 $550 = $2,150.\n\nNote: no bond-deduction information was provided in the claim narrative; if bond funds were retained/applied by the property manager, that amount should be deducted from the payout before disbursement. This does not change the underlying coverage decision.",
+  "citations": [
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 10
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 41
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 42
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 10
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 41
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 41
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "doc_id": "racwa-landlord-pds",
+      "insurer": "RACWA",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 42
+    }
+  ],
+  "claim_id": "exp-009"
+}

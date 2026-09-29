@@ -1,0 +1,143 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 19 July 2026 the boiler in our benchtop espresso machine exploded while it was heating up. Nobody was hurt and the kitchen is fine apart from a bit of water on the bench, but the machine is a write-off. It cost $1,800 and I'd like it replaced. Policyholder has GIO home and contents insurance, including accidental damage cover."
+      },
+      "output": {
+        "claim_type": "accidental_damage",
+        "date_of_loss": "2026-07-19",
+        "cause": "boiler explosion during heat cycle",
+        "damaged_item": "benchtop espresso machine",
+        "estimated_amount": 1800.0,
+        "policy_number": "GIO-001"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "GIO",
+        "product": "Contents",
+        "query": "Coverage for mechanical or electrical breakdown / explosion of appliance, boiler explosion, accidental damage to contents"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what applies to your question:\n\n**Mechanical or electrical breakdown**\nGIO Contents PDS excludes loss or damage, or legal liability, \"caused by, connected with, or arising from mechanical or electrical failure or breakdown or anything that fails to operate properly\" [GIO Contents PDS, page 34]. Exceptions to this exclusion are limited to:\n- Fire spreading from an electrical fault to other parts of the home/contents, to the extent covered under the \"Fire (including bushfire)\" insured event [GIO Contents PDS, page 34]\n- Lightning, to the extent covered under the \"Lightning\" insured event [GIO Contents PDS, page 34]\n- Motor burnout, to the extent covered under the optional \"Motor burnout\" cover [GIO Contents PDS, page 34]\n\n**Explosion**\nThe KFS confirms \"Explosion\" is a covered insured event (Yes), but notes \"no cover for the cost of repairing or replacing the item or container that exploded\" [GIO Contents KFS, page 1]. The excerpts do not provide further detail on explosion coverage terms in the PDS itself.\n\n**Boiler explosion**\nThe excerpts provided do not specifically mention boiler explosion. I cannot answer this part of your question based on the available excerpts.\n\n**Accidental damage to contents**\nAccidental damage is either optional (Classic level) or automatically included (Classic Extras and Platinum levels) [GIO Contents PDS, page 76; GIO Contents KFS, page 1]. When contents cover includes this, it covers \"accidental loss\" (e.g., dropping a ring down a drain and being unable to retrieve it) and \"accidental damage\" (e.g., dropping and damaging a laptop) at the insured address during the period of insurance [GIO Contents PDS, page 76].\n\nHowever, accidental loss or damage does **not** include:\n- Loss or damage caused by any of the insured events (these are claimed under the specific insured event instead) [GIO Contents PDS, page 76]\n- Anything excluded under \"General exclusions\" (pages 27\u201340, not provided in these excerpts) [GIO Contents PDS, page 76]\n- Loss or damage covered under an additional cover (pages 54\u201372) [GIO Contents PDS, page 76]\n\n**Gap in the excerpts:** The text on page 76 is cut off (\"that's occurred...\")",
+        "citations": [
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 34
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 24
+          },
+          {
+            "doc_id": "gio-contents-kfs",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 66
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 76
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "GIO"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim is for a benchtop espresso machine whose boiler exploded. GIO's Contents PDS/KFS explicitly address this scenario: explosion is a listed insured event, but the KFS states there is \"no cover for the cost of repairing or replacing the item or container that exploded\" [GIO Contents KFS, page 1]. Separately, the PDS excludes loss/damage \"caused by, connected with, or arising from mechanical or electrical failure or breakdown or anything that fails to operate properly,\" with only narrow carve-outs (fire spread, lightning, motor burnout) that don't apply here [GIO Contents PDS, page 34]. The Accidental Damage c"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for a benchtop espresso machine whose boiler exploded. GIO's Contents PDS/KFS explicitly address this scenario: explosion is a listed insured event, but the KFS states there is \"no cover for the cost of repairing or replacing the item or container that exploded\" [GIO Contents KFS, page 1]. Separately, the PDS excludes loss/damage \"caused by, connected with, or arising from mechanical or electrical failure or breakdown or anything that fails to operate properly,\" with only narrow carve-outs (fire spread, lightning, motor burnout) that don't apply here [GIO Contents PDS, page 34]. The Accidental Damage c",
+  "citations": [
+    {
+      "doc_id": "gio-contents-kfs",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 34
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 24
+    },
+    {
+      "doc_id": "gio-contents-kfs",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 76
+    }
+  ],
+  "claim_id": "exp-001"
+}

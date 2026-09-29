@@ -1,0 +1,11 @@
+claim_id,decision,escalated,tool_calls_count,error
+exp-000,escalate,True,3,
+exp-001,escalate,True,3,
+exp-002,deny,False,2,
+exp-003,escalate,True,4,
+exp-004,escalate,True,4,
+exp-005,escalate,True,5,
+exp-006,approve,False,4,
+exp-007,escalate,True,4,
+exp-008,escalate,True,3,
+exp-009,approve,False,4,

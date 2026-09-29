@@ -1,0 +1,225 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Policyholder with ING contents insurance. I own an apartment in a strata building. On 11 September 2026 a storm knocked out power in our building and when it came back the electric hot water system inside my apartment had failed and the air conditioning unit wouldn't start. An electrician says both need replacing, around $4,200 in total. I haven't checked with the body corporate yet."
+      },
+      "output": {
+        "claim_type": "storm",
+        "date_of_loss": "2026-09-11",
+        "cause": "power outage during storm followed by faulty hot water system and AC unit not starting after power return",
+        "damaged_item": "electric hot water system and air conditioning unit",
+        "estimated_amount": 4200.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "ING",
+        "product": "Contents",
+        "query": "power surge storm damage electric hot water system air conditioning coverage exclusion, strata building fixtures"
+      },
+      "output": {
+        "answer": "Based on the provided ING Contents KFS excerpts, I cannot fully answer this question.\n\nThe excerpts confirm that **Storm** is a covered event, but exclude \"loss or damage caused by rain, hail, wind, snow or dust entering the home due to defects in design, structure, materials, workmanship or construction\" [ING Contents KFS, page 1]. There is no mention in these excerpts of power surge as a specific peril, nor any specific provisions for electric hot water systems or air conditioning units.\n\nRegarding strata building fixtures, the excerpts do not address strata title arrangements or coverage for building fixtures in a strata context at all.\n\nThe Key Facts Sheet itself states it is only \"a guide\" and explicitly notes: \"The examples provided are only some of the conditions, exclusions and limits in this policy. You must read the PDS and policy documentation for all information about this policy\" [ING Contents KFS, page 1]. It also directs that \"To find out these limits you need to read the PDS and other relevant policy documentation\" [ING Contents KFS, page 2].\n\nTo answer your question about power surge damage to hot water systems/air conditioning, and strata building fixtures coverage, you would need to consult the full ING Contents PDS (and any applicable SPDS), as this information is not contained in the KFS excerpts provided.",
+        "citations": [
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieke_policy",
+      "input": {},
+      "output": {
+        "error": "Unknown tool: retrieke_policy"
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "ING",
+        "product": "Contents",
+        "query": "is a hot water system or air conditioning unit fixed to the apartment considered contents or building item; power surge damage to electrical appliances coverage"
+      },
+      "output": {
+        "answer": "I don't have enough information in the provided excerpts to answer this question.\n\nThe excerpts from the ING Contents KFS do not address:\n- Whether a hot water system or air conditioning unit fixed to an apartment is classified as a \"contents\" item or a \"building\" item\n- Coverage for power surge damage to electrical appliances\n\nThe excerpts explicitly state that this Key Facts Sheet \"does not provide a complete statement of the cover offered, exclusions, conditions and limits that apply under the policy\" and directs readers to \"read the PDS and other policy documentation for details\" [ING Contents KFS, page 1]. Neither \"power surge\" nor the classification of fixed appliances (hot water systems, air conditioning units) as building vs. contents items is mentioned anywhere in the excerpts provided.\n\nTo answer your question accurately, you would need to consult the full PDS (Product Disclosure Statement) and any applicable SPDS for the specific definitions of \"contents\" versus \"building,\" as well as the list of covered events, which may include a specific \"power surge\" or \"electrical surge\" event not covered in these excerpts.",
+        "citations": [
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "ing-contents-kfs",
+            "insurer": "ING",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "turn": 4,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: This claim involves fixed items (an electric hot water system and an air conditioning unit) in a strata apartment, damaged by a storm-related power outage. The key coverage question \u2014 whether these built-in/fixed appliances fall under the policyholder's ING **Contents** policy at all, or are instead building fixtures that would fall under the strata body corporate's building policy \u2014 cannot be resolved from the available policy text. The retrieve_policy tool confirmed that Storm is a covered event generally [ING Contents KFS, page 1], but explicitly stated it has no information on whether power surge is a covered peril, and no information on whether hot water systems/air conditioning units fixed to a strata apartment are classified as \"contents\" versus \"building\" items [ING Contents KFS, page 1][ING Contents KFS, page 2]. \n\nThis is compounded by the policyholder's own statement that they \"haven't checked with the body corporate yet\" \u2014 meaning ownership/responsibility for these fixed items is unresolved on the claimant's side as well as the policy's side.\n\nPer escalation policy, ambiguous/contradictory coverage text (here, genuinely absent/inconclusive text on a material coverage question) requires escalation rather than a guessed approval or denial. I have not called get_policy_certificate or calculate_payout because the coverage question itself is unresolved \u2014 computing a payout would be premature and could produce a misleading figure.\n\nRecommend human review to: (1) obtain the full ING Contents PDS/SPDS sections defining contents vs. building fixtures in strata contexts and any power-surge peril clause, and (2) confirm with the body corporate whether the hot water system and A/C are insured under the strata building policy instead."
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim involves fixed items (an electric hot water system and an air conditioning unit) in a strata apartment, damaged by a storm-related power outage. The key coverage question \u2014 whether these built-in/fixed appliances fall under the policyholder's ING **Contents** policy at all, or are instead building fixtures that would fall under the strata body corporate's building policy \u2014 cannot be resolved from the available policy text. The retrieve_policy tool confirmed that Storm is a covered event generally [ING Contents KFS, page 1], but explicitly stated it has no information on whether power surge is a covered peril, and no information on whether hot water systems/air conditioning units fixed to a strata apartment are classified as \"contents\" versus \"building\" items [ING Contents KFS, page 1][ING Contents KFS, page 2]. \n\nThis is compounded by the policyholder's own statement that they \"haven't checked with the body corporate yet\" \u2014 meaning ownership/responsibility for these fixed items is unresolved on the claimant's side as well as the policy's side.\n\nPer escalation policy, ambiguous/contradictory coverage text (here, genuinely absent/inconclusive text on a material coverage question) requires escalation rather than a guessed approval or denial. I have not called get_policy_certificate or calculate_payout because the coverage question itself is unresolved \u2014 computing a payout would be premature and could produce a misleading figure.\n\nRecommend human review to: (1) obtain the full ING Contents PDS/SPDS sections defining contents vs. building fixtures in strata contexts and any power-surge peril clause, and (2) confirm with the body corporate whether the hot water system and A/C are insured under the strata building policy instead.",
+  "citations": [
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "ing-contents-kfs",
+      "insurer": "ING",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    }
+  ],
+  "claim_id": "exp-003"
+}

@@ -1,0 +1,127 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 2 August 2026 the hot water tank in our garage burst at the base overnight. The water ran out under the garage door onto the driveway so nothing else was damaged, but the tank itself is finished. A plumber quoted $2,400 to remove it and install a replacement tank. Policy number SUN-5520913. (Suncorp home and contents insurance, including accidental damage cover.)"
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2026-08-02",
+        "cause": "hot water tank burst at base overnight",
+        "damaged_item": "garage hot water tank",
+        "estimated_amount": 2400.0,
+        "policy_number": "SUN-5520913"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is damage to a hot water system/tank that bursts covered under home insurance?",
+        "insurer": "Suncorp"
+      },
+      "output": {
+        "answer": "Based on the excerpts, damage from a hot water tank bursting is **not covered** under \"Accidental damage\" cover, and the SPDS has actually broadened this exclusion.\n\nSpecifically:\n\n- The original PDS excluded coverage \"of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [Suncorp Landlord PDS, page 79].\n- However, the Suncorp Contents SPDS (dated 23 June 2026) amends this exclusion under \"Accidental damage at home,\" replacing it with: \"of repairing or replacing **items** that explode, burst, or leak, such as a hot water tank bursting or leaking\" [Suncorp Contents SPDS, page 1].\n- Similarly, the Suncorp Landlord SPDS applies the same amended exclusion under \"Accidental damage at the property\" [Suncorp Landlord SPDS, page 1].\n\nSince an SPDS amends and takes precedence over conflicting PDS wording, the current exclusion is broader than the original \u2014 it now excludes accidental damage repair/replacement costs for **any items** that explode, burst, or leak (not just tanks/containers), with a hot water tank bursting still given as the example [Suncorp Contents SPDS, page 1; Suncorp Landlord SPDS, page 1].\n\n**In short:** Under the \"Accidental damage\" optional cover, damage caused by a hot water tank/system bursting is excluded \u2014 this is not covered, both under the original PDS wording and under the updated (broader) SPDS wording.\n\nNote: These excerpts only address the \"Accidental damage\" section of the policy. I cannot confirm from the provided excerpts whether hot water system bursting damage might be covered under other sections of the PDS (e.g., a general \"Contents\" or \"Buildings\" cover for storm/impact/malicious damage, or a specific \"burst pipes\" benefit), as no such excerpts have been provided. If you need a definitive answer on overall coverage, the base PDS in full would need to be reviewed.",
+        "citations": [
+          {
+            "doc_id": "suncorp-contents-spds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-landlord-spds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-landlord-spds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-contents-spds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 79
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Suncorp"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: extract_fields confirms the claim is for a burst hot water tank (garage), estimated at $2,400, under Suncorp policy SUN-5520913 with accidental damage cover. retr"
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: extract_fields confirms the claim is for a burst hot water tank (garage), estimated at $2,400, under Suncorp policy SUN-5520913 with accidental damage cover. retr",
+  "citations": [],
+  "retrieved_sources": [
+    {
+      "doc_id": "suncorp-contents-spds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-spds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-spds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-contents-spds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    }
+  ],
+  "claim_id": "exp-000"
+}

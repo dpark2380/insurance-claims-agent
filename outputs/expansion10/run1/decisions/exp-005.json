@@ -1,0 +1,228 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 March 2026 a hailstorm cracked a lot of the roof tiles on our house and rain got into the ceiling of the main bedroom. A roofer quoted $4,800 for the tiles and the ceiling repair."
+      },
+      "output": {
+        "claim_type": "storm",
+        "date_of_loss": "2026-03-14",
+        "cause": "hail storm cracking roof tiles and causing rain entry into bedroom ceiling",
+        "damaged_item": "roof tiles and ceiling",
+        "estimated_amount": 4800.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is damage to roof tiles and ceiling from hailstorm covered?",
+        "insurer": "CommBank",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, I cannot fully answer this question.\n\nThe excerpts do not contain information confirming whether hailstorm damage itself is a covered event under this policy. What I can tell you from the provided material:\n\n- If roof tiles are damaged and repairs require matching materials for undamaged tiles to achieve a consistent finish, the policy provides up to an additional $750 per claim for such matching materials \u2014 but only for garage doors, roof tiles, roof sheeting, or external walls specifically [CommBank Home PDS, page 62].\n- This matching benefit does not cover undamaged items in adjoining functional areas/rooms or on different floors [CommBank Home PDS, page 62].\n- Coverage may be affected by maintenance obligations: if you were aware of an issue (e.g., a hole in the roof) and failed to take reasonable steps to fix it, resulting damage from a subsequent event like a storm may not be covered [CommBank Home PDS, page 55].\n\nHowever, none of the excerpts confirm that hailstorm is a listed insured event, nor do they describe ceiling damage coverage specifically. To answer definitively, I would need the excerpts listing \"insured events\" or \"what is covered\" sections that specify storm/hail as a covered peril, and any specific terms regarding ceiling damage.",
+        "citations": [
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 62
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 63
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 79
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "CommBank"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "storm and hail listed as insured event covered peril",
+        "insurer": "CommBank",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot fully answer this question.\n\nThe excerpts include a definition of \"storm\" \u2014 \"a violent atmospheric disturbance generally producing strong winds. It can be accompanied by rain, lightning, hail or snow and it includes cyclones and tornadoes\" [CommBank Home PDS, page 80] \u2014 which indicates hail can be associated with a storm event under this policy's terminology. However, none of the excerpts provided include the specific \"Insured Events\" section listing \"Storm\" (or \"Storm and Rainwater\"/\"Hail\") as a covered peril with its \"What is covered\" and \"What is not covered\" details (similar in format to the Malicious Damage and Riot entries shown on page 22).\n\nTo confirm whether storm and hail is listed as a covered peril, and what conditions or exclusions apply, I would need the specific \"Insured Events\" excerpt covering storm damage, which is not included in the excerpts supplied.",
+        "citations": [
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 80
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 78
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 61
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 36
+          },
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 22
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Unable to confirm via retrieve_policy whether storm/hail damage is a covered insured event under the CommBank Home PDS. Searches returned only the policy's definition of \"storm\" [CommBank Home PDS, page 80] and ancillary provisions (roof tile matching benefit [page 62], maintenance exclusion [page 55]), but not the core \"Insured Events\" section that would confirm storm/hail is listed as covered and detail any exclusions. This is a claim for $4,800 hail damage to roof tiles and bedroom ceiling from a CommBank policyholder (excess $500, coverage limit $45,000 per get_policy_certificate), but coverage confirmation is ambiguous/incomplete, so I cannot responsibly approve or deny without a human reviewing the full Insured Events wording."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Unable to confirm via retrieve_policy whether storm/hail damage is a covered insured event under the CommBank Home PDS. Searches returned only the policy's definition of \"storm\" [CommBank Home PDS, page 80] and ancillary provisions (roof tile matching benefit [page 62], maintenance exclusion [page 55]), but not the core \"Insured Events\" section that would confirm storm/hail is listed as covered and detail any exclusions. This is a claim for $4,800 hail damage to roof tiles and bedroom ceiling from a CommBank policyholder (excess $500, coverage limit $45,000 per get_policy_certificate), but coverage confirmation is ambiguous/incomplete, so I cannot responsibly approve or deny without a human reviewing the full Insured Events wording."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Unable to confirm via retrieve_policy whether storm/hail damage is a covered insured event under the CommBank Home PDS. Searches returned only the policy's definition of \"storm\" [CommBank Home PDS, page 80] and ancillary provisions (roof tile matching benefit [page 62], maintenance exclusion [page 55]), but not the core \"Insured Events\" section that would confirm storm/hail is listed as covered and detail any exclusions. This is a claim for $4,800 hail damage to roof tiles and bedroom ceiling from a CommBank policyholder (excess $500, coverage limit $45,000 per get_policy_certificate), but coverage confirmation is ambiguous/incomplete, so I cannot responsibly approve or deny without a human reviewing the full Insured Events wording.",
+  "citations": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 80
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 63
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 80
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 78
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 61
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 22
+    }
+  ],
+  "claim_id": "exp-005"
+}
