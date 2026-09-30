@@ -56,7 +56,7 @@ def generate_answer(question: str, retrieved_chunks: list[dict]) -> str:
     with instrument_call("retrieve_policy") as rec:
         response = _client().messages.create(
             model=MODEL,
-            max_tokens=800,
+            max_tokens=2048,  # shared with thinking blocks -- see agent/loop.py
             system=[
                 {"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}},
             ],
@@ -65,8 +65,8 @@ def generate_answer(question: str, retrieved_chunks: list[dict]) -> str:
             ],
         )
         rec["response"] = response
-    text = next((block.text for block in response.content if block.type == "text"), None)
-    if text is None:
+    text = "".join(block.text for block in response.content if block.type == "text")
+    if not text:
         raise RuntimeError(
             f"No text block in response (stop_reason={response.stop_reason!r}) -- "
             f"likely a refusal or truncation before any text was generated."

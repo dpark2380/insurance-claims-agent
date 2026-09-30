@@ -8,12 +8,15 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 from rag.generate import MODEL, _client
 from rag.index import build_indexes
 
 from eval.instrumentation import instrument_call
+from redteam.fairness_pairs import scan_reasoning_for_flags
+from redteam.injection_suite import scan_claim_text
 
 from .tools import (
     TOOLS,
@@ -158,36 +161,56 @@ def run_claim(claim_text: str) -> dict:
     the escalation reason), `citations` (only the retrieved chunks the
     reasoning explicitly cites, see `_cited_sources`), and `retrieved_sources`
     (every chunk any `retrieve_policy` call put in context, for auditing).
+
+    Audit fields: `timestamp` (UTC, when the decision was made),
+    `model_version` (model id the API reported serving), `stop_reason` of
+    the final model turn (anything but "end_turn" means the reply may be
+    incomplete), `redteam_flags` (injection-like patterns in the claim text)
+    and `fairness_flags` (protected-attribute terms in the reasoning). Flags
+    are for human audit only; they never change the decision.
     """
     messages = [{"role": "user", "content": f"Triage this claim:\n\n{claim_text}"}]
     turns = []
     retrieved: list[dict] = []
+    last = {"model": MODEL, "stop_reason": None}
 
     def result(decision: str, reasoning: str) -> dict:
         return {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "model_version": last["model"],
+            "stop_reason": last["stop_reason"],
             "turns": turns,
             "final_decision": decision,
             "reasoning": reasoning,
             "citations": _cited_sources(reasoning, retrieved),
             "retrieved_sources": retrieved,
+            "redteam_flags": scan_claim_text(claim_text),
+            "fairness_flags": scan_reasoning_for_flags(reasoning),
         }
 
     for turn_count in range(1, MAX_TURNS + 1):
         with instrument_call("loop") as rec:
             response = _client().messages.create(
                 model=MODEL,
-                max_tokens=1024,
+                # Thinking blocks share this budget with the reply; at 1024 long
+                # replies were cut off mid-sentence (stop_reason=max_tokens).
+                # Billing is per token used, so headroom is free.
+                max_tokens=4096,
                 system=SYSTEM_PROMPT,
                 tools=TOOLS,
                 messages=messages,
             )
             rec["response"] = response
         messages.append({"role": "assistant", "content": response.content})
+        last["model"], last["stop_reason"] = response.model, response.stop_reason
 
         # No more tool calls -- the model has committed to a final decision.
         if response.stop_reason != "tool_use":
-            text = next((b.text for b in response.content if b.type == "text"), "")
-            turns.append({"turn": turn_count, "type": "final", "text": text})
+            # Join every text block: a reply can arrive split across several,
+            # and keeping only the first cut decisions off mid-sentence.
+            text = "".join(b.text for b in response.content if b.type == "text")
+            turns.append({"turn": turn_count, "type": "final", "text": text, "stop_reason": response.stop_reason,
+                          "block_types": [b.type for b in response.content]})
             return result(_parse_decision(text), text)
 
         # Otherwise execute every tool call this turn requested and report
