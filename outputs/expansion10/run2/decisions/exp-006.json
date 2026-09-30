@@ -1,0 +1,158 @@
+{
+  "timestamp": "2026-09-30T01:15:04.422526+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 May 2026 someone broke in through the back sliding door while we were at work and took a laptop and some jewellery. Police attended and gave us an event number. The laptop was $1,900 and the jewellery about $1,600. Insurer: Westpac home and contents insurance."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2026-05-03",
+        "cause": "unauthorized entry into property via sliding door",
+        "damaged_item": "laptop and jewellery",
+        "estimated_amount": 3500.0,
+        "policy_number": "WPC-12345"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Theft or burglary cover for contents including jewellery, forced entry break-in",
+        "insurer": "Westpac",
+        "product": "Contents"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n**Theft and Burglary cover:** This is an optional cover (Yes) under the policy [Westpac Contents KFS, page 1]. However, the excerpts specify one key exclusion: it is **not covered where the actual or attempted theft or burglary is committed by any person you (or anyone who lives at the insured address) invite into your home** [Westpac Contents KFS, page 1]. The excerpts do not specifically address forced entry break-ins as a separate category \u2014 they only note this one exclusion related to invited persons.\n\nYou must also report any theft, attempted theft, burglary, or malicious damage to the police as soon as reasonably possible [Westpac Contents KFS, page 1].\n\n**Jewellery specifically:** Under \"High value items and collections,\" jewellery, watches (except smart watches), or items containing gold or silver are **not covered for more than $2,500 per item, set or collection, up to $7,500 in total**, unless they are separately listed in your policy schedule as specified contents [Westpac Contents KFS, page 1].\n\n**Gap in the excerpts:** The excerpts do not provide details on:\n- Whether forced entry is a specific requirement/condition for a valid theft/burglary claim (e.g., evidence of forced entry).\n- The general sum insured or excess applicable specifically to theft/burglary claims (aside from the general note that excesses apply per incident, and that additional excesses like earthquake excess can apply) [Westpac Contents KFS, page 2].\n- Full policy wording on burglary definitions.\n\nThe Key Facts Sheet itself states it is only a guide and that **\"the examples provided are only some of the conditions, exclusions and limits in this policy. You must read the PDS and policy documentation for all information about this policy\"** [Westpac Contents KFS, page 1]. Therefore, for complete details on forced-entry requirements and full theft/burglary conditions, the PDS and policy documentation would need to be consulted, as this information is not contained in the provided excerpts.",
+        "citations": [
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          },
+          {
+            "doc_id": "westpac-contents-kfs",
+            "insurer": "Westpac",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Westpac"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 3500,
+        "excess": 500,
+        "coverage_limit": 50000
+      },
+      "output": {
+        "payout": 3000
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim is for theft via forced entry (broken sliding door) while the occupants were away \u2014 a burglary, not a theft by an invited guest, so the policy's only stated exclusion for theft/burglary cover (invited persons) does not apply [Westpac Contents KFS, page 1]. Police were notified and an event number obtained, satisfying the policy's requirement to report theft to police [Westpac Contents KFS, page 1]. The jewellery claimed ($1,600) falls within the $2,500 per-item/set high-value sublimit, so no cap issue arises [Westpac Contents KFS, page 1]. Total claimed amount is $3,500 (laptop $1,900 + jewellery $1,600).\n\nUsing the policyholder's certificate figures (excess $500, coverage limit $50,000), the payout calculates to $3,000 ($3,500 claimed \u2212 $500 excess), which is well within the coverage limit.\n\nApproved payout: $3,000.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim is for theft via forced entry (broken sliding door) while the occupants were away \u2014 a burglary, not a theft by an invited guest, so the policy's only stated exclusion for theft/burglary cover (invited persons) does not apply [Westpac Contents KFS, page 1]. Police were notified and an event number obtained, satisfying the policy's requirement to report theft to police [Westpac Contents KFS, page 1]. The jewellery claimed ($1,600) falls within the $2,500 per-item/set high-value sublimit, so no cap issue arises [Westpac Contents KFS, page 1]. Total claimed amount is $3,500 (laptop $1,900 + jewellery $1,600).\n\nUsing the policyholder's certificate figures (excess $500, coverage limit $50,000), the payout calculates to $3,000 ($3,500 claimed \u2212 $500 excess), which is well within the coverage limit.\n\nApproved payout: $3,000.",
+  "citations": [
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    },
+    {
+      "doc_id": "westpac-contents-kfs",
+      "insurer": "Westpac",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 2
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "exp-006"
+}

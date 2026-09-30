@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-09-30T01:15:16.438309+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 28 August 2026 my son knocked our 65-inch TV off the entertainment unit while playing and the screen cracked. It cost $1,600 two years ago. I'm not sure whether our policy includes accidental damage."
+      },
+      "output": {
+        "claim_type": "accidental_damage",
+        "date_of_loss": "2026-08-28",
+        "cause": "TV fell off entertainment unit during play",
+        "damaged_item": "65-inch TV",
+        "estimated_amount": 1600.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Does the policy cover accidental damage to contents, such as a TV knocked over and cracked?",
+        "insurer": "Shannons",
+        "product": "Home Contents"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Shannons"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim is for accidental damage to a TV ($1,600, Shannons home contents policy, excess $500, coverage limit $50,000 per the policyholder's certificate). However, when I queried Shannons' policy text to determine whether accidental damage is covered, retrieve_policy returned no matching text and could not confirm or deny coverage. Since accidental damage cover is often an optional add-on that varies by policy tier, and I cannot confirm whether this policyholder's contract includes it, this is an ambiguous coverage determination that I must not guess on. Per escalation policy, contradictory/ambiguous coverage text requires human review before any payout calculation or denial is issued.\n\nNo citations are available to support a coverage determination, so none are provided.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "thinking",
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim is for accidental damage to a TV ($1,600, Shannons home contents policy, excess $500, coverage limit $50,000 per the policyholder's certificate). However, when I queried Shannons' policy text to determine whether accidental damage is covered, retrieve_policy returned no matching text and could not confirm or deny coverage. Since accidental damage cover is often an optional add-on that varies by policy tier, and I cannot confirm whether this policyholder's contract includes it, this is an ambiguous coverage determination that I must not guess on. Per escalation policy, contradictory/ambiguous coverage text requires human review before any payout calculation or denial is issued.\n\nNo citations are available to support a coverage determination, so none are provided.",
+  "citations": [],
+  "retrieved_sources": [],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "exp-007"
+}

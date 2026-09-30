@@ -1,0 +1,260 @@
+{
+  "timestamp": "2026-09-30T01:14:13.720902+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 22 June 2026 strong winds during a storm blew over about 15 metres of our timber side fence. A fencing contractor quoted $3,200 to replace it. Policy number CGU-HB-771204. Insurer: CGU"
+      },
+      "output": {
+        "claim_type": "storm",
+        "date_of_loss": "2026-06-22",
+        "cause": "strong winds blowing over timber fence",
+        "damaged_item": "timber side fence",
+        "estimated_amount": 3200.0,
+        "policy_number": "CGU-HB-771204"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "storm damage to fences coverage and exclusions",
+        "insurer": "CGU",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here's what is available regarding storm damage to fences:\n\n**Specific fence exclusion found:**\nThe policy excludes coverage for \"free-standing gates, fences or walls that are made of timber and are more than 15 years old\" \u2014 however, this exclusion is listed specifically \"for damage by flood\" [CGU Home PDS, page 17], not storm. The excerpts do not clarify whether this same age/material exclusion applies to storm damage.\n\n**General exclusions that could affect storm-related fence claims:**\nUnder the general exclusions, the policy will not cover loss or damage arising from \"storm surge\" or \"erosion, the action of the sea, tidal wave or high water\" (unless the damage is the result of a tsunami) [CGU Home PDS, page 36]. If storm damage to a fence were caused by these specific perils, it would be excluded.\n\n**Insufficient information:**\nThe excerpts provided do not contain the specific \"Storm\" section of the policy that would outline the primary coverage terms and any fence-specific sublimits or exclusions for storm damage (the index references \"storm 10, 30, 53\" [CGU Home PDS, page 66], indicating relevant content exists on pages not included in these excerpts). Additionally, the Accidental Damage cover exclusions on page 33 list many general exclusions (e.g., wear and tear, rats/mice, defects) but do not specifically address storm or fences.\n\n**Summary:** Based solely on the excerpts provided, I cannot give a complete answer on storm damage coverage for fences. The core \"Storm\" policy section (pages 10, 30, 53 per the index) is not included here, and I cannot confirm whether the 15-year timber fence exclusion applies beyond flood damage. Please consult those specific pages for a complete answer.",
+        "citations": [
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 36
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 34
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 66
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 33
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "CGU"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Storm section coverage page 10 30 53 fence age exclusion timber",
+        "insurer": "CGU",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information in the provided excerpts to answer this question. The excerpts include only index/glossary references (e.g., \"storm 10, 30, 53\" on page 66) and fragments, but do not contain the actual policy text describing storm coverage, fence age exclusions, or timber fence provisions. Please provide the relevant excerpts from pages 10, 30, or 53 of the CGU Home PDS for a substantive answer.",
+        "citations": [
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 66
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 36
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 66
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 16
+          },
+          {
+            "doc_id": "cgu-home-pds",
+            "insurer": "CGU",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 59
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe retrieved CGU Home PDS text is ambiguous regarding this claim. There is a clear exclusion for \"free-standing gates, fences or walls that are made of timber and are more than 15 years old\" but this excerpt explicitly ties that exclusion to flood damage only [CGU Home PDS, page 17]. The actual \"Storm\" coverage section (indexed at pages 10, 30, 53) [CGU Home PDS, page 66] was not retrievable in the excerpts, so I cannot confirm whether an equivalent age/material exclusion applies to storm damage to fences, nor confirm the primary storm coverage terms or any fence sub-limits. Because the claimed cause (storm wind damage to a timber fence) sits right next to a policy exclusion clause whose scope is unclear from the available text, and I cannot verify whether it applies, this must go to a human reviewer rather than be decided automatically.\n\nPer policy: \"the claimed cause directly conflicts with a policy exclusion you found\" / \"retrieve_policy returns contradictory or ambiguous coverage text\" \u2014 both triggers apply here. I have not proceeded to calculate a payout since coverage itself is unresolved.\n\nCitations: [CGU Home PDS, page 17], [CGU Home PDS, page 36], [CGU Home PDS, page 66], [CGU Home PDS, page 34], [CGU Home PDS, page 33]",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe retrieved CGU Home PDS text is ambiguous regarding this claim. There is a clear exclusion for \"free-standing gates, fences or walls that are made of timber and are more than 15 years old\" but this excerpt explicitly ties that exclusion to flood damage only [CGU Home PDS, page 17]. The actual \"Storm\" coverage section (indexed at pages 10, 30, 53) [CGU Home PDS, page 66] was not retrievable in the excerpts, so I cannot confirm whether an equivalent age/material exclusion applies to storm damage to fences, nor confirm the primary storm coverage terms or any fence sub-limits. Because the claimed cause (storm wind damage to a timber fence) sits right next to a policy exclusion clause whose scope is unclear from the available text, and I cannot verify whether it applies, this must go to a human reviewer rather than be decided automatically.\n\nPer policy: \"the claimed cause directly conflicts with a policy exclusion you found\" / \"retrieve_policy returns contradictory or ambiguous coverage text\" \u2014 both triggers apply here. I have not proceeded to calculate a payout since coverage itself is unresolved.\n\nCitations: [CGU Home PDS, page 17], [CGU Home PDS, page 36], [CGU Home PDS, page 66], [CGU Home PDS, page 34], [CGU Home PDS, page 33]",
+  "citations": [
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 33
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 36
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 66
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 16
+    },
+    {
+      "doc_id": "cgu-home-pds",
+      "insurer": "CGU",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 59
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [
+    "age"
+  ],
+  "claim_id": "exp-004"
+}

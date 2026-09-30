@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-09-30T01:13:13.715226+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 6 January 2026 a bushfire burned through bushland about 2 kilometres from our house. The fire never reached our street, but smoke and ash came in through the vents for two days and the curtains, couch and ceilings are stained and smell. Cleaning and replacing the curtains is quoted at $3,100. Policyholder has BudgetDirect home and contents insurance, did not take accidental damage option."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2026-01-06",
+        "cause": "bushfire spread beyond property boundaries",
+        "damaged_item": "curtains, couch and ceilings",
+        "estimated_amount": 3100.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Smoke and ash damage from nearby bushfire not directly reaching property - is this covered?",
+        "insurer": "BudgetDirect"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n**Not covered under standard Fire cover.** The policy defines \"Fire\" as damage caused by burning by flames, and explicitly states you are **not** covered for \"smoke or soot when no damage from fire has occurred\" [BudgetDirect Home PDS, page 33]. This exclusion is repeated separately at [BudgetDirect Home PDS, page 52]. Since smoke and ash from a nearby bushfire that does not directly reach your property would not involve actual flame damage to the insured home/contents, this would fall under the excluded category.\n\n**Exception \u2013 Optional Accidental Damage cover:** If you have selected and been agreed cover for optional Accidental Damage, the policy states this option \"also covers... loss or damage caused by smoke or soot when no damage from fire has occurred\" [BudgetDirect Home PDS, page 52]. So if this optional cover is on your policy, smoke/soot damage without direct fire damage would be covered.\n\n**Summary:** Under the standard \"Fire\" insured event, smoke and ash damage from a nearby bushfire that does not directly burn your property is excluded [page 33; page 52]. It would only be covered if you have opted for and been granted Accidental Damage cover, which specifically extends to smoke or soot damage without fire damage [page 52].\n\nThe excerpts do not address ash damage specifically (only \"smoke or soot\"), so I cannot confirm from this documentation whether ash damage is treated identically \u2014 the policy language covers \"smoke or soot\" only.",
+        "citations": [
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 33
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 41
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 61
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: deny\n\nThe claim describes smoke and ash damage (curtains, couch, ceilings) caused by a bushfire that burned bushland roughly 2km away, without flame or fire damage reaching the insured property itself. Per BudgetDirect's Home PDS, the standard \"Fire\" insured event explicitly excludes \"smoke or soot when no damage from fire has occurred\" [BudgetDirect Home PDS, page 33] [BudgetDirect Home PDS, page 52]. This exclusion would only be lifted if the policyholder had selected the optional Accidental Damage cover, which the claim narrative explicitly states was not taken.\n\nSince the cause of loss (smoke/ash damage with no actual fire damage to the property) directly matches a stated policy exclusion, and no accidental damage option is in force, this claim is not covered under the standard policy. No payout calculation is needed since coverage is declined at the peril-determination stage.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "deny",
+  "reasoning": "DECISION: deny\n\nThe claim describes smoke and ash damage (curtains, couch, ceilings) caused by a bushfire that burned bushland roughly 2km away, without flame or fire damage reaching the insured property itself. Per BudgetDirect's Home PDS, the standard \"Fire\" insured event explicitly excludes \"smoke or soot when no damage from fire has occurred\" [BudgetDirect Home PDS, page 33] [BudgetDirect Home PDS, page 52]. This exclusion would only be lifted if the policyholder had selected the optional Accidental Damage cover, which the claim narrative explicitly states was not taken.\n\nSince the cause of loss (smoke/ash damage with no actual fire damage to the property) directly matches a stated policy exclusion, and no accidental damage option is in force, this claim is not covered under the standard policy. No payout calculation is needed since coverage is declined at the peril-determination stage.",
+  "citations": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 33
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 41
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 61
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "exp-002"
+}

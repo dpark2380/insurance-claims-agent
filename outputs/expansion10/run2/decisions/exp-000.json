@@ -1,0 +1,237 @@
+{
+  "timestamp": "2026-09-30T01:12:30.956862+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "tool_use",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 2 August 2026 the hot water tank in our garage burst at the base overnight. The water ran out under the garage door onto the driveway so nothing else was damaged, but the tank itself is finished. A plumber quoted $2,400 to remove it and install a replacement tank. Policy number SUN-5520913. Suncorp home and contents insurance, including accidental damage cover."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2026-08-02",
+        "cause": "hot water tank burst at base overnight",
+        "damaged_item": "garage hot water tank",
+        "estimated_amount": 2400.0,
+        "policy_number": "SUN-5520913"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "burst hot water tank/system sudden accidental damage coverage",
+        "insurer": "Suncorp",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Suncorp"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "burst water pipe or tank causing damage covered under Home policy",
+        "insurer": "Suncorp"
+      },
+      "output": {
+        "answer": "Based on the excerpts for the Suncorp Home & Contents policy, coverage depends on what exactly is being claimed:\n\n**Damage caused by the escaping liquid (e.g., to floors, walls, contents):**\nUnder \"Escape of liquid,\" the policy covers loss or damage caused by liquid escaping from an item such as a pipe or tank [Suncorp Contents PDS, page 48]. However, this cover excludes **\"the cost of repairing or replacing the item from which the liquid escaped, for example, a cracked pipe or split water tank\"** [Suncorp Contents PDS, page 48].\n\n**Cost of repairing/replacing the burst pipe or tank itself:**\nThis is separately addressed under \"Accidental damage at home.\" The original PDS excluded \"the cost of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [Suncorp Contents PDS, page 75]. However, this wording has been amended by the SPDS (dated 23 June 2026), which replaces it with a broader exclusion: **\"of repairing or replacing items that explode, burst, or leak, such as a hot water tank bursting or leaking\"** [Suncorp Contents SPDS, page 1]. Since the SPDS amends the PDS and takes precedence where they conflict, this broader exclusion \u2014 now covering any item that bursts or leaks (not just tanks/containers) \u2014 applies.\n\n**Summary:**\n- Consequential damage caused by the liquid escaping from a burst pipe or tank (e.g., damage to flooring, contents) may be covered under \"Escape of liquid\" [Suncorp Contents PDS, page 48].\n- The cost of repairing or replacing the burst pipe or tank itself is **not covered**, whether under \"Escape of liquid\" [Suncorp Contents PDS, page 48] or \"Accidental damage at home\" as amended by the SPDS [Suncorp Contents SPDS, page 1].\n\nThe excerpts provided relate to the Home & Contents policy. If you are asking about the Landlord policy specifically, the equivalent exclusion under \"Accidental damage at the property\" has also been amended by SPDS in the same way [Suncorp Landlord SPDS, page 1; Suncorp Landlord PDS, page 79], but no \"Escape of liquid\" excerpt for the Landlord product was provided, so I cannot confirm how consequential damage would be treated under that policy based on the excerpts given.",
+        "citations": [
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 79
+          },
+          {
+            "doc_id": "suncorp-contents-spds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-landlord-spds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 75
+          },
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "gradual wear and tear or deterioration exclusion for hot water systems",
+        "insurer": "Suncorp"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n**General exclusion for wear, tear and deterioration:**\nUnder an optional cover discussed in the Suncorp Landlord PDS, wear, tear and deterioration is listed as an exclusion, alongside other items such as cracking of sealed paths, driveways, and roads [Suncorp Landlord PDS, page 79]. This indicates that ordinary wear, tear and deterioration is not covered under that optional cover.\n\n**Hot water tank bursting or leaking \u2014 treated as a covered event, not wear and tear:**\nSeparately, the excerpts show that \"repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" is specifically referenced as something covered under the optional cover in the Landlord PDS [Suncorp Landlord PDS, page 79]. This is amended by the Landlord SPDS, which replaces the wording with \"repairing or replacing items that explode, burst, or leak, such as a hot water tank bursting or leaking\" [Suncorp Landlord SPDS, page 1]. Similarly, the Contents PDS wording is amended in the same way by the Contents SPDS [Suncorp Contents SPDS, page 1]. Since the SPDS amends the PDS and prevails in case of conflict, the current wording for both Landlord and Contents policies covers a hot water tank (or other item) that \"explodes, bursts, or leaks.\"\n\n**Escape of liquid cover:**\nBoth the Landlord PDS and Contents PDS also provide \"Escape of liquid\" cover for sudden and unexpected loss or damage caused by liquid escaping from \"fixed tanks\" (which could include a hot water tank), as well as gradual loss or damage from such escapes where the ongoing damage \"wasn't easily visible to a reasonable person in the circumstances\" [Suncorp Landlord PDS, page 53; Suncorp Contents PDS, page 47].\n\n**Answering your specific question directly:**\nThe excerpts provided do **not** contain an explicit standalone clause stating a general \"gradual wear and tear or deterioration\" exclusion specifically naming hot water systems. The only explicit wear, tear and deterioration exclusion appears in the context of the Landlord PDS optional cover section [Suncorp Landlord PDS, page 79], and it is not explicitly linked in the excerpts to hot water systems specifically \u2014 rather, hot water tank bursting/leaking is listed as a covered event, not excluded, under that same clause (as amended by the SPDS).\n\nIf you need the precise wording of a wear-and-tear exclusion as it applies specifically to hot water systems (e.g., in a general exclusions section), the provided excerpts do not include that section, and I cannot guess beyond what is quoted here.",
+        "citations": [
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 79
+          },
+          {
+            "doc_id": "suncorp-contents-spds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "suncorp-landlord-spds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "SPDS",
+            "page": 1
+          },
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 53
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim is for the cost to remove and replace the burst hot water tank itself ($2,400), which directly conflicts with the Suncorp Contents policy's Accidental Damage exclusion (as amended by the 23 June 2026 SPDS) for \"repairing or replacing items that explode, burst, or leak, such as a hot water tank bursting or leaking\" [Suncorp Contents SPDS, page 1; Suncorp Contents PDS, page 75]. The Escape of Liquid cover would only apply to consequential damage to other property, but the policyholder states nothing else was damaged. Given the direct conflict between the claimed cause/amount and this exclusion, per policy this must be escalated for human review rather than auto-denied."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim is for the cost to remove and replace the burst hot water tank itself ($2,400), which directly conflicts with the Suncorp Contents policy's Accidental Damage exclusion (as amended by the 23 June 2026 SPDS) for \"repairing or replacing items that explode, burst, or leak, such as a hot water tank bursting or leaking\" [Suncorp Contents SPDS, page 1; Suncorp Contents PDS, page 75]. The Escape of Liquid cover would only apply to consequential damage to other property, but the policyholder states nothing else was damaged. Given the direct conflict between the claimed cause/amount and this exclusion, per policy this must be escalated for human review rather than auto-denied."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim is for the cost to remove and replace the burst hot water tank itself ($2,400), which directly conflicts with the Suncorp Contents policy's Accidental Damage exclusion (as amended by the 23 June 2026 SPDS) for \"repairing or replacing items that explode, burst, or leak, such as a hot water tank bursting or leaking\" [Suncorp Contents SPDS, page 1; Suncorp Contents PDS, page 75]. The Escape of Liquid cover would only apply to consequential damage to other property, but the policyholder states nothing else was damaged. Given the direct conflict between the claimed cause/amount and this exclusion, per policy this must be escalated for human review rather than auto-denied.",
+  "citations": [],
+  "retrieved_sources": [
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "suncorp-contents-spds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-spds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 75
+    },
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "suncorp-contents-spds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "suncorp-landlord-spds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "SPDS",
+      "page": 1
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 53
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "exp-000"
+}
