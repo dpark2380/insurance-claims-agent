@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-09-30T05:33:07.407567+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
+      },
+      "output": {
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual corrosion or wear and tear damage to pipes and resulting rot covered, or excluded?"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, gradual corrosion, wear and tear, and resulting rot are **excluded** across all the insurers referenced:\n\n- **CommBank Home PDS**: Excludes loss or damage caused by \"wear and tear or gradual deterioration,\" \"the gradual seepage of water or other liquids,\" and \"a lack of routine maintenance\" [CommBank Home PDS, page 19].\n\n- **Suncorp Landlord PDS**: Excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot,\" and separately excludes \"the cost of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [Suncorp Landlord PDS, page 79].\n\n- **AAMI Contents PDS**: Excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [AAMI Contents PDS, page 70].\n\n- **Shannons Contents PDS**: Excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot\" [Shannons Contents PDS, page 89].\n\n- **AAMI Building PDS**: Excludes \"wear, tear, deterioration, rust, fading, rising damp, mould, mildew, corrosion, and rot,\" and also excludes \"the cost of repairing or replacing tanks or containers that burst or leak, such as a hot water tank bursting or leaking\" [AAMI Building PDS, page 70].\n\n**Summary**: All excerpts consistently exclude gradual corrosion, wear and tear, and rot from cover, whether framed as general exclusions (\"wear, tear, deterioration... corrosion, and rot\") or specific exclusions relating to pipes/tanks (e.g., CommBank's exclusion of \"gradual seepage\" and cost to repair the leaking item itself, or Suncorp/AAMI's exclusion of costs to repair bursting or leaking tanks). None of the excerpts provide an exception that would bring gradual corrosion-related pipe damage or resulting rot back into cover.",
+        "citations": [
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 19
+          },
+          {
+            "doc_id": "suncorp-landlord-pds",
+            "insurer": "Suncorp",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 79
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 70
+          },
+          {
+            "doc_id": "shannons-contents-pds",
+            "insurer": "Shannons",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 89
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 70
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or compute a payout \u2014 per policy, this alone requires escalation rather than guessing figures. Additionally, extract_fields failed to produce a valid structured extraction (no estimated_amount, policy_number, etc. could be resolved), which is a second independent escalation trigger.\n\nSeparately, on the merits: the cause described (gradual corrosion of hot water pipes leading to leaking and rot) directly conflicts with standard exclusions found across every insurer's policy text I checked \u2014 gradual wear, tear, deterioration, corrosion, and rot are explicitly excluded, and several insurers specifically exclude damage from leaking/bursting hot water tanks/pipes [CommBank Home PDS, page 19], [Suncorp Landlord PDS, page 79], [AAMI Contents PDS, page 70], [Shannons Contents PDS, page 89], [AAMI Building PDS, page 70]. This conflict with a clear exclusion is itself grounds for escalation rather than an outright automated denial, especially combined with the missing insurer/amount data \u2014 a human reviewer should confirm the insurer, verify the specific policy wording that applies, and make the final coverage determination.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit) or compute a payout \u2014 per policy, this alone requires escalation rather than guessing figures. Additionally, extract_fields failed to produce a valid structured extraction (no estimated_amount, policy_number, etc. could be resolved), which is a second independent escalation trigger.\n\nSeparately, on the merits: the cause described (gradual corrosion of hot water pipes leading to leaking and rot) directly conflicts with standard exclusions found across every insurer's policy text I checked \u2014 gradual wear, tear, deterioration, corrosion, and rot are explicitly excluded, and several insurers specifically exclude damage from leaking/bursting hot water tanks/pipes [CommBank Home PDS, page 19], [Suncorp Landlord PDS, page 79], [AAMI Contents PDS, page 70], [Shannons Contents PDS, page 89], [AAMI Building PDS, page 70]. This conflict with a clear exclusion is itself grounds for escalation rather than an outright automated denial, especially combined with the missing insurer/amount data \u2014 a human reviewer should confirm the insurer, verify the specific policy wording that applies, and make the final coverage determination.",
+  "citations": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 89
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 70
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "suncorp-landlord-pds",
+      "insurer": "Suncorp",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 70
+    },
+    {
+      "doc_id": "shannons-contents-pds",
+      "insurer": "Shannons",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 89
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 70
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-015"
+}

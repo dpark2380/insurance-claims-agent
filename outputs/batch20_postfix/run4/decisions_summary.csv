@@ -1,0 +1,21 @@
+claim_id,decision,escalated,tool_calls_count,error
+claim-000,approve,False,6,
+claim-001,escalate,True,3,
+claim-002,escalate,True,2,
+claim-003,approve,False,5,
+claim-004,escalate,True,4,
+claim-005,approve,False,6,
+claim-006,approve,False,4,
+claim-007,escalate,True,3,
+claim-008,escalate,True,4,
+claim-009,escalate,True,3,
+claim-010,escalate,True,5,
+claim-011,deny,False,3,
+claim-012,escalate,True,3,
+claim-013,approve,False,6,
+claim-014,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6pyf411mVaKMydrWvo'}"
+claim-015,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6q1PUm7hxCyoEAZyy4'}"
+claim-016,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6q3gPoaftqXffmXJTz'}"
+claim-017,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6q5Unm8LF9jQhkqCr3'}"
+claim-018,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6q743ibhTkyyHaBzuN'}"
+claim-019,,,0,"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfZ6q8gGnJCAUNRV1h4CL'}"

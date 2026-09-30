@@ -1,0 +1,160 @@
+{
+  "timestamp": "2026-09-30T02:37:34.541462+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 12 August 2023 we came home from a weekend away to find our back sliding door forced open and the house ransacked. They took my husband's laptop, my jewellery box with my engagement ring and grandmother's necklace, and a PlayStation 5 with several games. Our policy number is HM2287451. We haven't had a chance to get a full quote yet but I'd estimate it's all worth around $9,500."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2023-08-12",
+        "cause": "forced entry into house through sliding door",
+        "damaged_item": "husband's laptop, jewellery box containing engagement ring and grandmother's necklace, and PlayStation 5 with games",
+        "estimated_amount": 9500.0,
+        "policy_number": "HM2287451"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Coverage for theft/burglary of contents including jewellery after forced entry",
+        "insurer": "NRMA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n**General theft coverage for Contents:**\nContents are covered for loss or damage caused by \"theft following violent or forced entry\" [NRMA Home PDS, page 19]. This is listed under coverage available for 'Contents Plus' or 'Contents Standard' policies [NRMA Home PDS, page 19], though this specific excerpt relates to Contents while in storage or transit.\n\n**Jewellery and Watches specifically:**\nJewellery and Watches are defined as \"watches, jewellery items and medals but not including a mobile device with a screen display or a smart watch\" [NRMA Home PDS, page 11]. However, the excerpts show important limitations:\n\n- Under the Contents in transit/storage benefit, Jewellery and Watches are explicitly **excluded** from coverage [NRMA Home PDS, page 19].\n- Jewellery and Watches can instead be insured under the optional \"Portable Contents\" benefit, which covers accidental loss, theft, or damage anywhere in the world if specifically added to the Certificate of Insurance with a Sum Insured [NRMA Home PDS, page 25]. Under this benefit, payment is capped at \"$10,000 for any individual item of Portable Contents unless it is listed separately on Your Certificate of Insurance with a Sum Insured\" [NRMA Home PDS, page 26].\n\n**Family member's temporary residence (a specific scenario in the excerpts):**\nFor loss or damage at a Family Member's temporary residence, cover is limited to General Contents only, and losses from \"theft or attempted theft\" are excluded \"unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23]. In this scenario, Valuable Contents (which appears to include items like Jewellery and Watches) are **not** covered as such \u2014 only as General Contents, up to $5,000 [NRMA Home PDS, page 23].\n\n**Insufficient information:**\nThe excerpts do not contain the general \"Contents\" section outlining standard home theft/burglary cover (i.e., the core insuring clause for Contents at Your Home, outside of transit, storage, or temporary residence scenarios). Therefore, I cannot confirm from these excerpts alone whether ordinary theft following forced entry at Your Home is covered for Jewellery and Watches as \"General Contents,\" or whether it strictly requires the optional Portable Contents/Valuable Contents benefit. To answer definitively, the base Contents cover section (not shown here) would be needed.",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 19
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim involves theft following forced entry at the policyholder's home (laptop, PlayStation, and jewellery including an engagement ring and heirloom necklace), with an estimated loss of $9,500 under NRMA policy HM2287451.\n\nWhile NRMA's PDS confirms general contents theft coverage \"following violent or forced entry\" [NRMA Home PDS, page 19], the excerpts retrieved do not contain the core in-home Contents insuring clause \u2014 the theft-related passage on page 19 relates specifically to items in transit/storage, and explicitly excludes Jewellery and Watches from that particular benefit [NRMA Home PDS, page 19]. Jewellery/Watches appear to require the optional \"Portable Contents\" or \"Valuable Contents\" benefit with its own sub-limits (e.g., $10,000 per item cap unless separately scheduled) [NRMA Home PDS, page 25][NRMA Home PDS, page 26], and it's unclear from the certificate/claim whether this policyholder has that benefit added, or whether standard at-home theft of jewellery is covered as ordinary General Contents.\n\nBecause a significant portion of the claimed loss (the jewellery box with the engagement ring and grandmother's necklace) turns on this unresolved coverage question, and the retrieved policy text is ambiguous/incomplete on whether standard at-Home theft (as opposed to transit/storage or temporary-residence scenarios) covers Jewellery and Watches under General Contents, this claim cannot be confidently approved or denied without human review of the base Contents insuring clause and the policyholder's Certificate of Insurance for any Portable/Valuable Contents endorsement.\n\nPer escalation policy, this ambiguous coverage determination requires escalation to a human reviewer rather than a guessed decision.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "thinking",
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves theft following forced entry at the policyholder's home (laptop, PlayStation, and jewellery including an engagement ring and heirloom necklace), with an estimated loss of $9,500 under NRMA policy HM2287451.\n\nWhile NRMA's PDS confirms general contents theft coverage \"following violent or forced entry\" [NRMA Home PDS, page 19], the excerpts retrieved do not contain the core in-home Contents insuring clause \u2014 the theft-related passage on page 19 relates specifically to items in transit/storage, and explicitly excludes Jewellery and Watches from that particular benefit [NRMA Home PDS, page 19]. Jewellery/Watches appear to require the optional \"Portable Contents\" or \"Valuable Contents\" benefit with its own sub-limits (e.g., $10,000 per item cap unless separately scheduled) [NRMA Home PDS, page 25][NRMA Home PDS, page 26], and it's unclear from the certificate/claim whether this policyholder has that benefit added, or whether standard at-home theft of jewellery is covered as ordinary General Contents.\n\nBecause a significant portion of the claimed loss (the jewellery box with the engagement ring and grandmother's necklace) turns on this unresolved coverage question, and the retrieved policy text is ambiguous/incomplete on whether standard at-Home theft (as opposed to transit/storage or temporary-residence scenarios) covers Jewellery and Watches under General Contents, this claim cannot be confidently approved or denied without human review of the base Contents insuring clause and the policyholder's Certificate of Insurance for any Portable/Valuable Contents endorsement.\n\nPer escalation policy, this ambiguous coverage determination requires escalation to a human reviewer rather than a guessed decision.",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-012"
+}

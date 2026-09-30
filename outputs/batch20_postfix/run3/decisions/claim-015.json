@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-09-30T05:42:15.390747+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
+      },
+      "output": {
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual corrosion of pipes and resulting rot/damage covered, or excluded as wear and tear / gradual deterioration?"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, gradual corrosion of pipes and any resulting rot/damage would be **excluded** as wear and tear/gradual deterioration under all four insurers' policies, though the excerpts describe this in terms of gradual water escape rather than corrosion specifically.\n\nHere's what the excerpts show:\n\n- **CommBank Home PDS**: Excludes loss or damage caused by \"wear and tear or gradual deterioration\" and \"the escape of liquid occurring as a result of a gradual process of leaking, splashing, dripping or overflowing\" [CommBank Home PDS, page 19]. Gradual corrosion leading to a slow leak would fall under this exclusion.\n\n- **CommBank Landlord PDS**: Contains identical exclusions for \"wear and tear, or gradual deterioration\" and gradual leaking processes [CommBank Landlord PDS, page 15].\n\n- **RealInsurance Landlord PDS / Contents PDS**: Coverage is limited to escape of liquid that is \"sudden, unexpected, accidental and without warning.\" The exclusions explicitly rule out \"wear and tear, gradual deterioration\" and \"the escape of liquid occurring as a result of a gradual process of leaking, splashing, dripping or overflowing\" [RealInsurance Landlord PDS, page 17; RealInsurance Contents PDS, page 17]. Since corrosion is inherently gradual, damage arising from it would not meet the \"sudden... and without warning\" test and would fall within the gradual deterioration exclusion.\n\n- **Allianz Landlord PDS**: Defines \"Wear and tear\" to include \"depreciation, gradual deterioration, or lack of maintenance,\" with examples such as \"gradual deterioration and breakdown of bricks, mortar or concrete\" [Allianz Landlord PDS, page 52]. While this excerpt does not explicitly mention pipe corrosion, it confirms that gradual deterioration processes generally are treated as excluded wear and tear under this policy.\n\n**Conclusion**: None of the excerpts provide direct coverage for gradual corrosion of pipes. All exclusion clauses point toward gradual deterioration processes \u2014 including gradual escape of liquid \u2014 being excluded as wear and tear. The excerpts do not explicitly address \"corrosion\" as a standalone term, so I cannot confirm with certainty how a corrosion-specific claim would be treated distinct from the general \"gradual deterioration\" and \"gradual escape of liquid\" exclusions cited above. If your question relates to a specific policy's precise definition of corrosion versus wear and tear, the excerpts provided do not contain that level of detail, and further sections of the PDS (e.g., full \"Wear and tear\" definitions in Allianz, or additional exclusion lists in CommBank/RealInsurance) may be needed for a definitive answer.",
+        "citations": [
+          {
+            "doc_id": "commbank-home-pds",
+            "insurer": "CommBank",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 19
+          },
+          {
+            "doc_id": "commbank-landlord-pds",
+            "insurer": "CommBank",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 15
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 17
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 52
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be processed automatically for two independent reasons, either of which triggers escalation per policy:\n\n1. **No insurer named**: The claim narrative does not identify a specific insurer/product. Without that, `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted.\n\n2. **Field extraction failed**: `extract_fields` was unable to parse structured fields (claim type, estimated amount, policy number, etc.) from the narrative, leaving the estimated amount unresolved.\n\n3. **Direct exclusion conflict**: Even setting aside the above, the claimed cause \u2014 corrosion of hot water pipes building up \"gradually over the last several years\" \u2014 squarely matches the wear-and-tear/gradual-deterioration exclusions found across every insurer's policy text reviewed: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Landlord PDS, page 17], [RealInsurance Contents PDS, page 17], [Allianz Landlord PDS, page 52]. The claimant explicitly states this was \"not a sudden event,\" which directly conflicts with the coverage requirement (in policies like RealInsurance) that escape of liquid be \"sudden, unexpected, accidental and without warning,\" and matches the explicit gradual-deterioration exclusion language in all four insurers' documents.\n\nGiven the missing insurer, failed field extraction, and a claimed cause that directly conflicts with a policy exclusion found in every retrieved policy, this claim must be escalated to a human reviewer rather than auto-decided.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be processed automatically for two independent reasons, either of which triggers escalation per policy:\n\n1. **No insurer named**: The claim narrative does not identify a specific insurer/product. Without that, `get_policy_certificate` cannot be resolved and `calculate_payout` would require guessing an excess/coverage limit \u2014 which is not permitted.\n\n2. **Field extraction failed**: `extract_fields` was unable to parse structured fields (claim type, estimated amount, policy number, etc.) from the narrative, leaving the estimated amount unresolved.\n\n3. **Direct exclusion conflict**: Even setting aside the above, the claimed cause \u2014 corrosion of hot water pipes building up \"gradually over the last several years\" \u2014 squarely matches the wear-and-tear/gradual-deterioration exclusions found across every insurer's policy text reviewed: [CommBank Home PDS, page 19], [CommBank Landlord PDS, page 15], [RealInsurance Landlord PDS, page 17], [RealInsurance Contents PDS, page 17], [Allianz Landlord PDS, page 52]. The claimant explicitly states this was \"not a sudden event,\" which directly conflicts with the coverage requirement (in policies like RealInsurance) that escape of liquid be \"sudden, unexpected, accidental and without warning,\" and matches the explicit gradual-deterioration exclusion language in all four insurers' documents.\n\nGiven the missing insurer, failed field extraction, and a claimed cause that directly conflicts with a policy exclusion found in every retrieved policy, this claim must be escalated to a human reviewer rather than auto-decided.",
+  "citations": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 15
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "commbank-home-pds",
+      "insurer": "CommBank",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "commbank-landlord-pds",
+      "insurer": "CommBank",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 15
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 17
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 52
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-015"
+}

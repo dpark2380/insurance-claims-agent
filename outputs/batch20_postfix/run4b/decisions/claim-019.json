@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-09-30T13:22:42.730911+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "A break-in occurred at our home on 2025-07-10 and the thief stole jewellery and electronics. We do not have receipts, but we estimate the total loss at $18,000, which is well above what we believe our policy sub-limits allow for unspecified valuables."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2025-07-10",
+        "cause": "break-in by unknown person",
+        "damaged_item": "jewellery and electronics",
+        "estimated_amount": 18000.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "theft burglary jewellery unspecified valuables sub-limit coverage"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is what can be said about sub-limits for unspecified jewellery/valuables coverage:\n\n**Suncorp**: For \"Personal valuables - unspecified items,\" you can choose a sum insured from available options, but there is a **$1,000 limit per item, pair, set, or collection**. The maximum payable for all unspecified items combined is the sum insured shown on the certificate of insurance [Suncorp Contents PDS, page 26].\n\n**AAMI**: The \"Extra Cover Portable valuables - unspecified items cover\" operates the same way \u2014 a chosen sum insured applies, with a **$1,000 limit per item, pair, set or collection**, and the total payable for all unspecified items is capped at the sum insured on the certificate of insurance [AAMI Contents PDS, page 25].\n\n**GIO**: The excerpts confirm GIO offers \"Portable valuables \u2013 unspecified items\" cover as one of two portable valuables options, with jewellery and watches covered worldwide for up to 30 consecutive days while worn or in a secure safe [GIO Contents PDS, page 25]. However, the specific per-item sub-limit for GIO's unspecified items is not stated in the excerpts provided (it references page 83 for details, which is not included here). Separately, the excerpts note that under GIO's \"Classic\" cover tier, an unlisted jewellery item defaults to being covered as an ordinary contents item with a **maximum of $2,000** once specified/portable valuables cover has been exhausted via a claim payout [GIO Contents PDS, page 101].\n\n**RACWA**: The excerpts confirm jewellery and watches (rings, watches, bracelets, necklaces) fall under the \"Personal valuables\" category and can be insured as either unspecified or specified personal valuables, with unspecified items covered under one of several selectable sum-insured options [RACWA Home PDS, page 23]. However, the specific dollar sub-limit per item for RACWA's unspecified option is not included in the excerpt provided \u2014 it cuts off before detailing the limit amounts.\n\n**Note on theft/burglary specifically**: None of the excerpts explicitly discuss theft or burglary as a distinct peril or limitation for jewellery/valuables cover \u2014 they describe \"accidental loss or damage\" generally. I cannot confirm from these excerpts whether theft/burglary is treated differently (e.g., additional conditions, security requirements) under any of these policies. If you need theft-specific conditions, please provide the relevant policy pages.",
+        "citations": [
+          {
+            "doc_id": "suncorp-contents-pds",
+            "insurer": "Suncorp",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "racwa-home-pds",
+            "insurer": "RACWA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 101
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 25
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit/sub-limit figures) or run calculate_payout with real numbers \u2014 guessing would violate policy. Additionally, the retrieve_policy results themselves show that unspecified-jewellery/valuables sub-limits vary materially by insurer (e.g., $1,000 per item for Suncorp and AAMI [Suncorp Contents PDS, page 26], [AAMI Contents PDS, page 25]; a $2,000 fallback cap for GIO [GIO Contents PDS, page 101]; and unclear/cut-off limits for RACWA [RACWA Home PDS, page 23]), and the claimant explicitly states the loss likely exceeds their sub-limit. Given the missing insurer identity and the claimant's own note of a probable sub-limit shortfall (with no receipts to substantiate value), this requires human review to identify the correct policy, confirm the applicable sub-limit, and assess the no-receipts valuation issue rather than an automated decision.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim does not name a specific insurer, so I cannot retrieve a policy certificate (excess/coverage limit/sub-limit figures) or run calculate_payout with real numbers \u2014 guessing would violate policy. Additionally, the retrieve_policy results themselves show that unspecified-jewellery/valuables sub-limits vary materially by insurer (e.g., $1,000 per item for Suncorp and AAMI [Suncorp Contents PDS, page 26], [AAMI Contents PDS, page 25]; a $2,000 fallback cap for GIO [GIO Contents PDS, page 101]; and unclear/cut-off limits for RACWA [RACWA Home PDS, page 23]), and the claimant explicitly states the loss likely exceeds their sub-limit. Given the missing insurer identity and the claimant's own note of a probable sub-limit shortfall (with no receipts to substantiate value), this requires human review to identify the correct policy, confirm the applicable sub-limit, and assess the no-receipts valuation issue rather than an automated decision.",
+  "citations": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 101
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "suncorp-contents-pds",
+      "insurer": "Suncorp",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "racwa-home-pds",
+      "insurer": "RACWA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 101
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 25
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-019"
+}

@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-09-30T05:33:29.031046+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Something happened to our house last month and there is some damage we noticed. We are not sure of the cause or how much it will cost to fix."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2023-10-15",
+        "cause": "unknown",
+        "damaged_item": "entire backyard garden",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "This claim lacks critical, unresolvable information: no insurer is named (so no certificate/excess/coverage lookup is possible), the cause of damage is unknown (so coverage/exclusion cannot be assessed), and the estimated amount is null with no way to resolve it from the narrative.\n\nDECISION: escalate\nReasoning: Per escalation policy, this claim triggers multiple conditions \u2014 (1) the claim does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing excess/coverage-limit figures; (2) estimated_amount is null and cannot be resolved from the narrative; (3) the cause is \"unknown,\" making it impossible to check against policy coverage/exclusion text via retrieve_policy without guessing. No tool calls to retrieve_policy or get_policy_certificate were made because no insurer/product or cause was specified to search against, and no policy citations are available. This claim must be handed to a human reviewer to gather more information (insurer name, cause of damage, and repair cost estimate) before it can be triaged.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This claim lacks critical, unresolvable information: no insurer is named (so no certificate/excess/coverage lookup is possible), the cause of damage is unknown (so coverage/exclusion cannot be assessed), and the estimated amount is null with no way to resolve it from the narrative.\n\nDECISION: escalate\nReasoning: Per escalation policy, this claim triggers multiple conditions \u2014 (1) the claim does not name a specific insurer, so get_policy_certificate cannot be resolved and calculate_payout would require guessing excess/coverage-limit figures; (2) estimated_amount is null and cannot be resolved from the narrative; (3) the cause is \"unknown,\" making it impossible to check against policy coverage/exclusion text via retrieve_policy without guessing. No tool calls to retrieve_policy or get_policy_certificate were made because no insurer/product or cause was specified to search against, and no policy citations are available. This claim must be handed to a human reviewer to gather more information (insurer name, cause of damage, and repair cost estimate) before it can be triaged.",
+  "citations": [],
+  "retrieved_sources": [],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-016"
+}

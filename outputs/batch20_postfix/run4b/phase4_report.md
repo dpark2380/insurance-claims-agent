@@ -1,0 +1,12 @@
+# Phase 4 cost/latency report
+
+n claims: 20
+mean wall-clock latency/claim (end to end): 29.10s
+p95 wall-clock latency/claim (end to end): 50.94s
+mean API latency/claim: 23.99s
+p95 API latency/claim: 45.56s
+mean cost/claim (incl. extraction fallback): $0.0401
+total cost: $0.8015
+extraction fallback calls: 1 ($0.0027)
+prompt cache tokens: 0 written, 0 read (no cache writes: cached prefix is under the model's minimum cacheable length or unmarked)
+one-time startup (LoRA load + index build, excluded above): 10.82s

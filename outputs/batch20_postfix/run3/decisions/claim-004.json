@@ -1,0 +1,224 @@
+{
+  "timestamp": "2026-09-30T05:37:26.707766+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "tool_use",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 February 2024, someone broke into our shed and stole my husband's mountain bike. We noticed it missing when he went to get it for his ride the next morning and found the shed padlock cut. The bike was worth around $2,200. Our policy number is HOM-4471203. Insurer: RealInsurance."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2024-02-14",
+        "cause": "break-in at shed by unknown person",
+        "damaged_item": "husband's mountain bike",
+        "estimated_amount": 2200.0,
+        "policy_number": "HOM-4471203"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Theft of personal belongings from a locked shed / outbuilding - is this covered?",
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot answer this question. The excerpts include information about theft and burglary cover under the RealInsurance Contents KFS [RealInsurance Contents KFS, page 1], which notes an exclusion for theft from common property, common/public areas, or unenclosed individual car parks at multi-residency sites \u2014 but there is no information in the excerpts about theft from a locked shed or outbuilding specifically.\n\nTo answer this accurately, I would need the full policy wording (PDS) covering theft/burglary conditions, exclusions, and any definitions relating to outbuildings or sheds, which are not included in the excerpts provided.",
+        "citations": [
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 71
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 64
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RealInsurance"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 40000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Theft or burglary requiring evidence of forced entry to a shed, garage or outbuilding on the property - is stolen property from the shed covered?",
+        "insurer": "RealInsurance",
+        "product": "Contents"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, I cannot answer this question. The excerpts describe an exclusion for theft from a multi-residency site's common property, common areas, or unenclosed individual car parks/car spaces [RealInsurance Contents KFS, page 1], but they do not contain any information about theft or burglary from a shed, garage, or outbuilding, nor any requirement for evidence of forced entry to such structures.\n\nTo answer this question accurately, I would need additional excerpts from the PDS specifically addressing coverage conditions for theft/burglary from sheds, garages, or outbuildings.",
+        "citations": [
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "realinsurance-contents-kfs",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 29
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 20
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 42
+          }
+        ]
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "escalate_to_human",
+      "input": {
+        "reason": "Claim involves theft of a mountain bike from a locked/padlocked shed (forced entry evidenced by cut padlock). retrieve_policy could not locate clear PDS/KFS wording confirming or excluding coverage for theft from a shed/outbuilding under RealInsurance's Contents policy despite two targeted queries - only unrelated exclusions (common property/car parks at multi-residency sites) were returned. Coverage determination is ambiguous and requires human review of the full PDS before a payout decision can be made."
+      },
+      "output": {
+        "status": "escalated",
+        "reason": "Claim involves theft of a mountain bike from a locked/padlocked shed (forced entry evidenced by cut padlock). retrieve_policy could not locate clear PDS/KFS wording confirming or excluding coverage for theft from a shed/outbuilding under RealInsurance's Contents policy despite two targeted queries - only unrelated exclusions (common property/car parks at multi-residency sites) were returned. Coverage determination is ambiguous and requires human review of the full PDS before a payout decision can be made."
+      }
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "Claim involves theft of a mountain bike from a locked/padlocked shed (forced entry evidenced by cut padlock). retrieve_policy could not locate clear PDS/KFS wording confirming or excluding coverage for theft from a shed/outbuilding under RealInsurance's Contents policy despite two targeted queries - only unrelated exclusions (common property/car parks at multi-residency sites) were returned. Coverage determination is ambiguous and requires human review of the full PDS before a payout decision can be made.",
+  "citations": [],
+  "retrieved_sources": [
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 71
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 64
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-contents-kfs",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 29
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 20
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 42
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-004"
+}

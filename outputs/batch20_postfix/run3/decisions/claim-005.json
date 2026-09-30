@@ -1,0 +1,373 @@
+{
+  "timestamp": "2026-09-30T05:38:20.021694+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 August 2023 we had an electrical fault in the laundry that started a small fire, and it spread faster than I expected before I could put it out. The washing machine, dryer, and the wall cabinetry all got badly burnt, and the ceiling and part of the hallway carpet were damaged by smoke and heat. My policy number is HM-559213. I haven't gotten quotes yet but I'd guess it's around $14,000 to fix everything."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2023-08-03",
+        "cause": "electrical fault in laundry starting fire",
+        "damaged_item": "washing machine, dryer, wall cabinetry, ceiling, and hallway carpet",
+        "estimated_amount": 14000.0,
+        "policy_number": "HM-559213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "AAMI",
+        "product": "Home",
+        "query": "Is fire damage caused by electrical fault covered? Any exclusions for fire from electrical faults?"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "AAMI"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 50000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "AAMI",
+        "product": "Home",
+        "query": "fire damage coverage house fire"
+      },
+      "output": {
+        "answer": "I don't have enough information to answer that -- no matching policy text was found.",
+        "citations": []
+      }
+    },
+    {
+      "turn": 3,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "fire damage coverage electrical fault home insurance"
+      },
+      "output": {
+        "answer": "Based on the excerpts, here is what is available regarding fire damage from an electrical fault:\n\n**GIO Contents PDS:** GIO generally excludes loss or damage caused by mechanical or electrical failure or breakdown. However, an exception applies: GIO **will cover damage caused by fire spreading from an electrical fault to other parts of the home or contents**, to the extent it is covered under the insured event \"Fire (including bushfire)\" referenced on page 46 of that PDS [GIO Contents PDS, page 34]. The excerpt provided does not include the full text of the \"Fire (including bushfire)\" insured event itself, so I cannot detail the specific terms, limits, or conditions of that cover.\n\n**Other policies (Allianz Home/Landlord, Woolworths Home, RealInsurance Contents):** The excerpts provided for these policies do not address fire damage caused by electrical faults specifically. The Allianz excerpts discuss the 72-hour exclusion period for certain insured events generally, but do not name fire or electrical faults. The Woolworths and RealInsurance excerpts describe general product tiers (Standard/Essential vs. Comprehensive/Top) and suitability criteria, but do not mention fire or electrical fault coverage.\n\n**Summary:** Only the GIO Contents PDS excerpt directly addresses fire damage arising from an electrical fault, confirming that such fire spread is covered (subject to the terms of the \"Fire (including bushfire)\" insured event) despite the general exclusion for electrical breakdown [GIO Contents PDS, page 34]. I do not have sufficient excerpt information to confirm whether the other insurers listed provide equivalent coverage.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "woolworths-home-pds",
+            "insurer": "Woolworths",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 5
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 7
+          },
+          {
+            "doc_id": "gio-contents-pds",
+            "insurer": "GIO",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 34
+          }
+        ]
+      }
+    },
+    {
+      "turn": 4,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "AAMI",
+        "query": "Fire insured event definition what is covered"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, the \"Fire (including bushfire)\" insured event is defined identically for both Contents and Building cover:\n\n**What is covered:**\n\nLoss or damage caused by either of the following:\n- Fire (including bushfire)\n- Heat, ash, soot, and smoke that's the direct result of a fire within 100 metres of the insured address\n\n[AAMI Contents PDS, page 48; AAMI Building PDS, page 43]\n\n**Extra costs cover in the event of bushfire:**\n\nIf there's a bushfire in your area during the period of insurance, both policies also cover certain costs even if there's no physical loss or damage:\n\n- **Contents PDS:** The cost of replacing water in any tank, container, pool, spa, or other storage vessel where the water has either been used to limit the spread of bushfire in your area, or become contaminated due to the use of fire retardant at the insured address [AAMI Contents PDS, page 48].\n\n- **Building PDS:** The same water replacement cost cover, **plus** the cost of cleaning fire retardant off the building [AAMI Building PDS, page 43].\n\nFor both policies:\n- If the claim is for these extra costs only, no excess applies [AAMI Contents PDS, page 48; AAMI Building PDS, page 43].\n- The most payable under this extra costs cover is $1,000 for any one incident [AAMI Contents PDS, page 48; AAMI Building PDS, page 43].\n\n**What is NOT covered (exclusions specific to this insured event):**\n\n- Arcing, scorching, melting, or cigarette burns \u2014 unless a fire spreads from the initial burn spot (e.g., cigarette burns to carpet where no fire has spread) [AAMI Building PDS, page 43].\n- Pollution or vapour from a home heater or cooking appliance \u2014 unless a fire spreads from the heater or cooking appliance [AAMI Building PDS, page 43].\n- Gradual exposure to fire, heat, ash, soot, and smoke due to recurring incidents of fire or bushfire [AAMI Building PDS, page 43].\n\nThe Contents PDS excerpt is cut off at \"unless a fire spreads from the\" [AAMI Contents PDS, page 48], so I cannot confirm whether its exclusions list is identical, though it appears to begin the same way.\n\n**General exclusions:** Both policies also state that anything listed in Section 3 \"General exclusions\" is not covered \u2014 pages 27\u201341 for Contents and pages 23\u201336 for Building [AAMI Contents PDS, page 48; AAMI Building PDS, page 43]. The specific content of those general exclusions is not included in the excerpts provided, so I cannot detail them here.\n\n**Claim limits:**\n\n- If you have a **building sum insured**, the most payable for any one incident is that sum insured, unless stated otherwise elsewhere in the policy [AAMI Building PDS, page 38].\n- If you have **Complete Replacement Cover\u00ae**, the most payable is the assessed quote to repair or rebuild on a \"new for old\" basis, unless stated otherwise [AAMI Building PDS, page 38].\n\nThe excerpts do not specify an equivalent contents sum insured limit statement, so I cannot confirm that detail for Contents cover.",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 48
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 43
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 38
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 43
+          }
+        ]
+      }
+    },
+    {
+      "turn": 4,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "AAMI",
+        "query": "electrical or mechanical breakdown exclusion"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, both AAMI's Contents and Building policies contain a mechanical or electrical breakdown or failure exclusion, worded identically:\n\n**General exclusion:**\n> \"We don't cover loss or damage caused by, connected with, or arising from, or legal liability for or caused by, connected with, or arising from mechanical or electrical failure or breakdown or anything that fails to operate properly.\" [AAMI Contents PDS, page 35]; [AAMI Building PDS, page 30]\n\n**Carve-backs (exceptions to the exclusion) \u2014 cover is still provided for:**\n\n- **Contents policy:**\n  - Fire spreading from an electrical fault to other parts of the contents, to the extent covered under the 'Fire (including bushfire)' insured event [AAMI Contents PDS, page 35]\n  - Lightning, to the extent covered under the 'Lightning' insured event [AAMI Contents PDS, page 35]\n  - Motor burnout, to the extent covered under the 'Motor burnout' additional cover [AAMI Contents PDS, page 35]\n\n- **Building policy:**\n  - Fire spreading from an electrical fault to other parts of the building, to the extent covered under the 'Fire (including bushfire)' insured event [AAMI Building PDS, page 30]\n  - Lightning, to the extent covered under the 'Lightning' insured event (the excerpt is cut off before fully confirming this clause, but it begins to reference it) [AAMI Building PDS, page 30]\n\nThe excerpts do not include the full text of the Building PDS lightning carve-back or any additional carve-backs beyond what's quoted, nor do they include an SPDS that might amend this exclusion. If you need confirmation of the complete Building policy wording or whether an SPDS varies this clause, that information is not contained in the excerpts supplied.",
+        "citations": [
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 30
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 79
+          },
+          {
+            "doc_id": "aami-building-pds",
+            "insurer": "AAMI",
+            "product": "Building",
+            "doc_type": "PDS",
+            "page": 35
+          },
+          {
+            "doc_id": "aami-contents-pds",
+            "insurer": "AAMI",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 82
+          }
+        ]
+      }
+    },
+    {
+      "turn": 5,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 14000,
+        "excess": 500,
+        "coverage_limit": 50000
+      },
+      "output": {
+        "payout": 13500
+      }
+    },
+    {
+      "turn": 6,
+      "type": "final",
+      "text": "DECISION: approve\n\nThe claim describes a fire that started from an electrical fault in the laundry and spread to damage the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Under AAMI's policy, the general exclusion for \"mechanical or electrical failure or breakdown\" [AAMI Building PDS, page 30] [AAMI Contents PDS, page 35] does not apply here because both the Building and Contents PDS contain an explicit carve-back: fire spreading from an electrical fault to other parts of the building/contents remains covered under the \"Fire (including bushfire)\" insured event [AAMI Building PDS, page 30] [AAMI Contents PDS, page 35]. That insured event covers \"Fire (including bushfire)\" and \"heat, ash, soot and smoke that's the direct result of a fire within 100 metres of the insured address\" [AAMI Building PDS, page 43] [AAMI Contents PDS, page 48], which matches the described fire, heat, and smoke damage to the ceiling and carpet as well as the burnt appliances/cabinetry.\n\nNo conflicting or ambiguous exclusion applies (arcing/scorching-only damage is excluded, but this claim involves an actual fire that spread, not mere arcing/scorching).\n\nPolicyholder certificate details for AAMI: excess = $500, coverage limit = $50,000. Estimated claim amount = $14,000 (self-estimated, no formal quotes yet, but usable as a reasonable estimate).\n\nPayout calculation: $14,000 - $500 excess = $13,500, well within the $50,000 coverage limit.\n\n**Payout: $13,500**, subject to final confirmation once formal repair quotes are obtained (the insurer may adjust the final figure based on actual invoiced/quoted costs).",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nThe claim describes a fire that started from an electrical fault in the laundry and spread to damage the washing machine, dryer, wall cabinetry, ceiling, and hallway carpet. Under AAMI's policy, the general exclusion for \"mechanical or electrical failure or breakdown\" [AAMI Building PDS, page 30] [AAMI Contents PDS, page 35] does not apply here because both the Building and Contents PDS contain an explicit carve-back: fire spreading from an electrical fault to other parts of the building/contents remains covered under the \"Fire (including bushfire)\" insured event [AAMI Building PDS, page 30] [AAMI Contents PDS, page 35]. That insured event covers \"Fire (including bushfire)\" and \"heat, ash, soot and smoke that's the direct result of a fire within 100 metres of the insured address\" [AAMI Building PDS, page 43] [AAMI Contents PDS, page 48], which matches the described fire, heat, and smoke damage to the ceiling and carpet as well as the burnt appliances/cabinetry.\n\nNo conflicting or ambiguous exclusion applies (arcing/scorching-only damage is excluded, but this claim involves an actual fire that spread, not mere arcing/scorching).\n\nPolicyholder certificate details for AAMI: excess = $500, coverage limit = $50,000. Estimated claim amount = $14,000 (self-estimated, no formal quotes yet, but usable as a reasonable estimate).\n\nPayout calculation: $14,000 - $500 excess = $13,500, well within the $50,000 coverage limit.\n\n**Payout: $13,500**, subject to final confirmation once formal repair quotes are obtained (the insurer may adjust the final figure based on actual invoiced/quoted costs).",
+  "citations": [
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "woolworths-home-pds",
+      "insurer": "Woolworths",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 5
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 7
+    },
+    {
+      "doc_id": "gio-contents-pds",
+      "insurer": "GIO",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 34
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 48
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 38
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 43
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 30
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 79
+    },
+    {
+      "doc_id": "aami-building-pds",
+      "insurer": "AAMI",
+      "product": "Building",
+      "doc_type": "PDS",
+      "page": 35
+    },
+    {
+      "doc_id": "aami-contents-pds",
+      "insurer": "AAMI",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 82
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-005"
+}

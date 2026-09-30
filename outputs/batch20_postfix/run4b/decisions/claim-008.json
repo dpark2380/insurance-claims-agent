@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-09-30T13:17:47.165959+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 September 2023 I woke up to find my front fence and letterbox spray painted with some kind of symbol, and one of the timber palings had been kicked in. I'm not sure exactly when it happened overnight, and I didn't hear anything, but it definitely wasn't like that when I went to bed. My policy number is HM-773245 and I'd guess it'll cost around $850 to repaint and replace the paling."
+      },
+      "output": {
+        "claim_type": "malicious_damage",
+        "date_of_loss": "2023-09-03",
+        "cause": "unknown vandalism on front fence and letterbox",
+        "damaged_item": "front fence and timber palings",
+        "estimated_amount": 850.0,
+        "policy_number": "HM-773245"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "vandalism malicious damage to fence coverage",
+        "insurer": "RAA"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, malicious damage/vandalism to a fence **can be covered**, but is subject to several important conditions and limits:\n\n**General cover:** The policy covers loss or damage to Insured Property resulting from Malicious Damage, Intentional Damage or damage by vandals [RAA Contents PDS, page 47].\n\n**Exclusions applying to this cover generally:**\n- Chips, scratches, dents or superficial markings\n- Wear and tear or damage caused over time\n- Damage caused by you, your Guest, an Occupier or any Co-Insured\n- Damage caused by a person who entered your Home with consent (implied or otherwise) of you, your Guest, an Occupier or Co-Insured\n- Loss or damage that has not been reported to the police [RAA Contents PDS, page 47]\n\n**Fence-specific exclusion:** Cover does not apply to gates and fences (along with paths, driveways, garden borders, paving, freestanding or retaining walls) **if they were not structurally sound or were not maintained in a reasonable manner** prior to the loss or damage occurring [RAA Contents PDS, page 50].\n\n**Waiting period:** A 72-hour waiting period applies after the Policy's Inception Date [RAA Contents PDS, page 50].\n\n**Specific limit:** For loss or damage to paths, driveways, garden borders, paving, freestanding and retaining walls, gates or fences, cover is limited to **10% of the Sum Insured** for the relevant Insured Property [RAA Contents PDS, page 50].\n\n**Payment method:** If your claim is for repair or replacement of a fence that adjoins another person's property, the insurer will pay you in cash or vouchers (rather than arranging repairs directly) \u2014 either the cost to repair with the nearest equivalent new materials available in Australia, or the cost to replace with As New items, whichever is lesser [RAA Contents PDS, page 80].\n\nIf you need details on the overall Sum Insured, policy Excess, or how \"Malicious Damage\" is defined, those are not included in the excerpts provided, so I cannot confirm those specifics here.",
+        "citations": [
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 74
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 47
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 50
+          },
+          {
+            "doc_id": "raa-contents-pds",
+            "insurer": "RAA",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 80
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "RAA"
+      },
+      "output": {
+        "excess": 500,
+        "coverage_limit": 45000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 850,
+        "excess": 500,
+        "coverage_limit": 45000
+      },
+      "output": {
+        "payout": 350
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning:\n- Extracted claim: malicious damage/vandalism (spray paint + kicked-in paling) to front fence and letterbox, dated 3 Sept 2023, estimated $850, policy HM-773245.\n- RAA Contents PDS confirms malicious damage/vandalism to insured property, including fences, is covered [RAA Contents PDS, page 47]. There is a fence-specific sub-limit of 10% of the sum insured and a requirement that the fence be structurally sound/maintained prior to loss [RAA Contents PDS, page 50] \u2014 nothing in the narrative suggests the fence was unsound, and $850 is well within the 10% sub-limit given the $45,000 coverage limit.\n- Cover excludes damage caused by the insured, a guest, or someone who entered with consent, and requires that the loss be reported to police [RAA Contents PDS, page 47] \u2014 nothing in the narrative indicates the damage was caused by the policyholder or an invitee, and there is no stated conflict with these exclusions (standard practice is that a police report would be lodged as part of claim substantiation, which is a process step rather than a coverage ambiguity).\n- Payment for fence damage adjoining another's property is made as cash/voucher for repair/replacement cost [RAA Contents PDS, page 80], consistent with the claimed repaint/paling replacement cost.\n- Policy certificate for RAA: excess $500, coverage limit $45,000.\n- calculate_payout($850 claim, $500 excess, $45,000 limit) = $350 payable.\n\nFinal: Approve payout of $350, subject to standard claim documentation (e.g., photos, police report reference) being provided per policy conditions.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning:\n- Extracted claim: malicious damage/vandalism (spray paint + kicked-in paling) to front fence and letterbox, dated 3 Sept 2023, estimated $850, policy HM-773245.\n- RAA Contents PDS confirms malicious damage/vandalism to insured property, including fences, is covered [RAA Contents PDS, page 47]. There is a fence-specific sub-limit of 10% of the sum insured and a requirement that the fence be structurally sound/maintained prior to loss [RAA Contents PDS, page 50] \u2014 nothing in the narrative suggests the fence was unsound, and $850 is well within the 10% sub-limit given the $45,000 coverage limit.\n- Cover excludes damage caused by the insured, a guest, or someone who entered with consent, and requires that the loss be reported to police [RAA Contents PDS, page 47] \u2014 nothing in the narrative indicates the damage was caused by the policyholder or an invitee, and there is no stated conflict with these exclusions (standard practice is that a police report would be lodged as part of claim substantiation, which is a process step rather than a coverage ambiguity).\n- Payment for fence damage adjoining another's property is made as cash/voucher for repair/replacement cost [RAA Contents PDS, page 80], consistent with the claimed repaint/paling replacement cost.\n- Policy certificate for RAA: excess $500, coverage limit $45,000.\n- calculate_payout($850 claim, $500 excess, $45,000 limit) = $350 payable.\n\nFinal: Approve payout of $350, subject to standard claim documentation (e.g., photos, police report reference) being provided per policy conditions.",
+  "citations": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 50
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 80
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 74
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 47
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 50
+    },
+    {
+      "doc_id": "raa-contents-pds",
+      "insurer": "RAA",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 80
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-008"
+}

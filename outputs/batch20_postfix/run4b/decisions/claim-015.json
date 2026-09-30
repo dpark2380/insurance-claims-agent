@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-09-30T13:21:15.874550+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event."
+      },
+      "output": {
+        "error": "extract_fields: both LoRA and Claude failed to produce a valid extraction for: 'Our hot water pipes are corroded from years of use and finally started leaking under the house, causing rot to the bearers. This has clearly been building up gradually over the last several years, not a sudden event.'"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is gradual corrosion, wear and tear, or gradual deterioration causing pipe leaks and resulting rot covered or excluded?"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, **gradual corrosion, wear and tear, and gradual deterioration are excluded** across all the policies referenced:\n\n- **ING Home PDS**: \"You are not covered for loss or damage caused by any gradual deterioration to the extent that the gradual deterioration contributed to or caused the loss or damage. Some examples of gradual deterioration are things like rust, corrosion, rot, mould, rising damp, mildew, wear, tear, or fading.\" Furthermore, \"We will not repair or replace parts of your home or contents that have suffered loss or damage as a result of gradual deterioration\" [ING Home PDS, page 65].\n\n- **BudgetDirect Home PDS**: \"You are not covered for loss or damage caused by rust, corrosion, rot, mould, rising damp, mildew, wear, tear, fading, or other gradual deterioration\" [BudgetDirect Home PDS, page 62].\n\n- **RealInsurance Landlord PDS** and **RealInsurance Contents PDS**: Both list \"gradual deterioration, including wear and tear, rust, corrosion, depreciation, fading or deterioration from exposure to light\" as an exclusion [RealInsurance Landlord PDS, page 31; RealInsurance Contents PDS, page 39].\n\n**Regarding pipe leaks causing rot specifically**: The excerpts do not directly address a scenario where a pipe leak (a sudden/accidental event) causes rot as a consequence. However, the ING Home PDS does clarify a partial-cause rule: \"In the instance where there are multiple causes or areas of loss or damage to your home or contents, we will cover the part of the loss or damage caused by an insured event or optional cover\" [ING Home PDS, page 65]. This suggests that if a pipe leak itself is an insured event, the leak damage may be covered, but any rot or damage arising from *gradual* deterioration (e.g., a long-term slow leak) would still be excluded.\n\n**Limitation of available information**: None of the excerpts explicitly discuss \"pipe leaks\" as a specific peril or how it interacts with the gradual deterioration exclusion in detail (e.g., whether a sudden pipe burst is treated differently from a slow, undetected leak over time). To give a precise answer on pipe leak coverage specifically, additional policy sections dealing with \"escape of liquid,\" \"water damage,\" or \"burst pipes\" would be needed, as these are not included in the excerpts provided.",
+        "citations": [
+          {
+            "doc_id": "ing-home-pds",
+            "insurer": "ING",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 65
+          },
+          {
+            "doc_id": "ing-home-pds",
+            "insurer": "ING",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 65
+          },
+          {
+            "doc_id": "realinsurance-landlord-pds",
+            "insurer": "RealInsurance",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 31
+          },
+          {
+            "doc_id": "budgetdirect-home-pds",
+            "insurer": "BudgetDirect",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 62
+          },
+          {
+            "doc_id": "realinsurance-contents-pds",
+            "insurer": "RealInsurance",
+            "product": "Contents",
+            "doc_type": "PDS",
+            "page": 39
+          }
+        ]
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: This claim cannot be resolved automatically for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer/product. Without that, `get_policy_certificate` cannot be looked up and `calculate_payout` would require guessing an excess/coverage limit, which is not permitted.\n\n2. **Extraction failure / unresolved estimated amount** \u2013 `extract_fields` failed entirely to parse the claim (no claim_type, cause, damaged_item, or estimated_amount could be produced), so there is no reliable estimated amount to work with.\n\n3. **Direct conflict with a policy exclusion** \u2013 Even setting aside the above, the claim explicitly self-describes the cause as gradual corrosion/wear over \"years,\" not a sudden event. Policy text retrieved shows this squarely falls under standard gradual deterioration/wear-and-tear exclusions: \"You are not covered for loss or damage caused by any gradual deterioration... rust, corrosion, rot...\" [ING Home PDS, page 65]; \"You are not covered for loss or damage caused by rust, corrosion, rot, mould, rising damp, mildew, wear, tear, fading, or other gradual deterioration\" [BudgetDirect Home PDS, page 62]; \"gradual deterioration, including wear and tear, rust, corrosion, depreciation, fading\" [RealInsurance Landlord PDS, page 31]; [RealInsurance Contents PDS, page 39]. The claimant's own description directly conflicts with coverage under every insurer's exclusion language reviewed.\n\nGiven the combination of an unnamed insurer, a failed field extraction, and a claimed cause that directly conflicts with standard gradual-deterioration exclusions across all reviewed policies, this claim must be handed to a human reviewer rather than approved or denied automatically.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: This claim cannot be resolved automatically for two independent reasons that both trigger escalation policy:\n\n1. **No insurer named** \u2013 The claim narrative does not identify a specific insurer/product. Without that, `get_policy_certificate` cannot be looked up and `calculate_payout` would require guessing an excess/coverage limit, which is not permitted.\n\n2. **Extraction failure / unresolved estimated amount** \u2013 `extract_fields` failed entirely to parse the claim (no claim_type, cause, damaged_item, or estimated_amount could be produced), so there is no reliable estimated amount to work with.\n\n3. **Direct conflict with a policy exclusion** \u2013 Even setting aside the above, the claim explicitly self-describes the cause as gradual corrosion/wear over \"years,\" not a sudden event. Policy text retrieved shows this squarely falls under standard gradual deterioration/wear-and-tear exclusions: \"You are not covered for loss or damage caused by any gradual deterioration... rust, corrosion, rot...\" [ING Home PDS, page 65]; \"You are not covered for loss or damage caused by rust, corrosion, rot, mould, rising damp, mildew, wear, tear, fading, or other gradual deterioration\" [BudgetDirect Home PDS, page 62]; \"gradual deterioration, including wear and tear, rust, corrosion, depreciation, fading\" [RealInsurance Landlord PDS, page 31]; [RealInsurance Contents PDS, page 39]. The claimant's own description directly conflicts with coverage under every insurer's exclusion language reviewed.\n\nGiven the combination of an unnamed insurer, a failed field extraction, and a claimed cause that directly conflicts with standard gradual-deterioration exclusions across all reviewed policies, this claim must be handed to a human reviewer rather than approved or denied automatically.",
+  "citations": [
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 65
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 39
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 65
+    },
+    {
+      "doc_id": "ing-home-pds",
+      "insurer": "ING",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 65
+    },
+    {
+      "doc_id": "realinsurance-landlord-pds",
+      "insurer": "RealInsurance",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 31
+    },
+    {
+      "doc_id": "budgetdirect-home-pds",
+      "insurer": "BudgetDirect",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 62
+    },
+    {
+      "doc_id": "realinsurance-contents-pds",
+      "insurer": "RealInsurance",
+      "product": "Contents",
+      "doc_type": "PDS",
+      "page": 39
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-015"
+}

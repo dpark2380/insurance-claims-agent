@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-09-30T02:37:05.710110+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 16 February 2024 I noticed new cracks running through the brickwork and internal walls on the western side of my house. A builder has advised that the ground beneath that part of the house has subsided and the footings have moved. I have been quoted approximately $12,500 for the repairs."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2024-02-16",
+        "cause": "subsidence due to foundation movement",
+        "damaged_item": "brickwork and internal walls",
+        "estimated_amount": 12500.0,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is subsidence or ground movement causing foundation/footing damage covered or excluded?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, **subsidence and soil movement are generally excluded**, but there is a specific exception:\n\n**General exclusion:** Loss, damage, injury or legal liability caused by soil movement \u2014 including erosion, landslide, mudslide or subsidence \u2014 is excluded [Allianz Home PDS, page 55].\n\n**Exception (limited cover):** This exclusion does not apply if the soil movement (including subsidence) is directly caused by, and occurs within 72 hours of, one of the following insured events:\n- explosion\n- earthquake\n- tsunami\n- storm\n- cyclone\n- rainwater or flood or flood water, combined with run-off and/or rainwater\n\n[Allianz Home PDS, page 55]\n\nThis is reinforced specifically for earthquake/tsunami events at [Allianz Home PDS, page 26], which confirms that loss or damage caused by soil movement (including subsidence) **is covered** under both Buildings and Contents Insurance if it is caused directly by, and occurs within 72 hours of, an earthquake or tsunami.\n\n**Summary:** Subsidence/ground movement damage to foundations or footings is **excluded by default**, unless it directly results from \u2014 and occurs within 72 hours of \u2014 an insured event such as earthquake, tsunami, explosion, storm, cyclone, or flood/rainwater [Allianz Home PDS, pages 26, 55]. The excerpts provided do not indicate any broader cover for subsidence arising from other causes (e.g., drought, tree roots, or normal ground settlement over time), so such damage would fall under the exclusion.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 55
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 52
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 26
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 79
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "The claim describes gradual subsidence discovered over time, with no mention of a triggering insured event (earthquake, tsunami, explosion, storm, cyclone, or flood) within 72 hours. This is a direct conflict with a clear policy exclusion.\n\nDECISION: escalate \u2014 although the general exclusion for subsidence/soil movement is clearly stated, this is a case where the claimed cause directly conflicts with a policy exclusion, and there is no indication of a qualifying triggering event (earthquake, tsunami, explosion, storm, cyclone, flood) within 72 hours that would restore cover. Per escalation policy, \"the claimed cause directly conflicts with a policy exclusion you found\" requires human review rather than an automatic deny, since a builder's assessment doesn't rule out a possible qualifying trigger (e.g., a recent storm) that may not have been mentioned in the narrative. A human reviewer should confirm with the policyholder whether any such triggering event occurred in the 72 hours prior to noticing the cracks before finalizing as a denial.\n\nCitations: [Allianz Home PDS, page 55], [Allianz Home PDS, page 26]",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "The claim describes gradual subsidence discovered over time, with no mention of a triggering insured event (earthquake, tsunami, explosion, storm, cyclone, or flood) within 72 hours. This is a direct conflict with a clear policy exclusion.\n\nDECISION: escalate \u2014 although the general exclusion for subsidence/soil movement is clearly stated, this is a case where the claimed cause directly conflicts with a policy exclusion, and there is no indication of a qualifying triggering event (earthquake, tsunami, explosion, storm, cyclone, flood) within 72 hours that would restore cover. Per escalation policy, \"the claimed cause directly conflicts with a policy exclusion you found\" requires human review rather than an automatic deny, since a builder's assessment doesn't rule out a possible qualifying trigger (e.g., a recent storm) that may not have been mentioned in the narrative. A human reviewer should confirm with the policyholder whether any such triggering event occurred in the 72 hours prior to noticing the cracks before finalizing as a denial.\n\nCitations: [Allianz Home PDS, page 55], [Allianz Home PDS, page 26]",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 55
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 52
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 26
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 79
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-011"
+}

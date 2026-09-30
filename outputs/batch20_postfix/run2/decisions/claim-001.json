@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-09-30T02:41:47.395453+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 August 2023 our washing machine hose burst overnight and flooded the laundry, spreading water into the hallway and adjoining bedroom. By morning the laundry vinyl flooring was lifting, the hallway carpet was soaked through, and the bedroom skirting boards had started swelling. My policy number is HC-4489213 and I think the repairs could run to around $6,500."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2023-08-14",
+        "cause": "burst washing machine hose during night time",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, bedroom skirting boards",
+        "estimated_amount": 6500.0,
+        "policy_number": "HC-4489213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is water damage from a burst washing machine hose covered?",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, this is not clearly covered.\n\nThe policy states that coverage exists for \"Loss or damage resulting directly from bursting, leaking, discharging or overflowing\" of certain items [Allianz Home PDS, page 27]. However, the same excerpt explicitly lists \"domestic appliances \u2013 for example a dishwasher or washing machine\" under the \"What's not covered?\" column [Allianz Home PDS, page 27].\n\nBased on this, damage from a burst washing machine appears to be excluded. However, the excerpt refers to \"domestic appliances\" generally as an example including washing machines, but does not specifically address a \"hose\" connected to a washing machine as distinct from the appliance itself. The provided excerpts do not clarify whether a hose is treated differently from the appliance for coverage purposes, so I cannot give a definitive answer on that specific distinction without additional policy text.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 27
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 28
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "This is genuinely ambiguous policy text, which requires escalation per policy.\n\nDECISION: escalate\n\nThe claim involves water damage from a burst washing machine hose. The Allianz Home PDS text is contradictory/ambiguous on this specific scenario: it covers loss from \"bursting, leaking, discharging or overflowing\" of certain items [Allianz Home PDS, page 27], but the same excerpt explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" under \"What's not covered\" [Allianz Home PDS, page 27]. It is unclear whether a burst *hose* connecting to the washing machine is treated as part of the excluded appliance or as a separate covered water-supply pipe/fitting failure \u2014 the retrieved text does not resolve this distinction [Allianz Home PDS, page 23; page 25; page 28].\n\nSince the coverage determination is ambiguous and the claimed cause potentially conflicts with an explicit exclusion, per escalation policy I cannot proceed to approve or deny. I am not calculating a payout amount since the coverage decision itself is unresolved \u2014 this should be reviewed by a human claims handler who can examine the full exclusion wording and any endorsements regarding water-supply pipes versus appliances.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This is genuinely ambiguous policy text, which requires escalation per policy.\n\nDECISION: escalate\n\nThe claim involves water damage from a burst washing machine hose. The Allianz Home PDS text is contradictory/ambiguous on this specific scenario: it covers loss from \"bursting, leaking, discharging or overflowing\" of certain items [Allianz Home PDS, page 27], but the same excerpt explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" under \"What's not covered\" [Allianz Home PDS, page 27]. It is unclear whether a burst *hose* connecting to the washing machine is treated as part of the excluded appliance or as a separate covered water-supply pipe/fitting failure \u2014 the retrieved text does not resolve this distinction [Allianz Home PDS, page 23; page 25; page 28].\n\nSince the coverage determination is ambiguous and the claimed cause potentially conflicts with an explicit exclusion, per escalation policy I cannot proceed to approve or deny. I am not calculating a payout amount since the coverage decision itself is unresolved \u2014 this should be reviewed by a human claims handler who can examine the full exclusion wording and any endorsements regarding water-supply pipes versus appliances.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 28
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-001"
+}

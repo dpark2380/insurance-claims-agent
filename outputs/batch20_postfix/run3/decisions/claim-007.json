@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-09-30T05:38:57.855732+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913. (Policyholder with NRMA home insurance.)"
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2024-02-03",
+        "cause": "candle tip over and catch curtains on fire",
+        "damaged_item": "wall and carpet in lounge room",
+        "estimated_amount": null,
+        "policy_number": "HC-882913"
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim narrative provides no repair estimate or invoice, and `extract_fields` returned a null `estimated_amount` that cannot be resolved from any other information in the claim (the policyholder explicitly states no assessor has inspected the damage yet). Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review rather than a guessed figure. I have not proceeded to calculate a payout since there is no claim amount to compute against, and pulling policy certificate/coverage figures now would be premature until a damage estimate exists.\n\nEscalating for a human to follow up once a repair quote/assessment is obtained, at which point coverage (fire/accidental damage peril) and the NRMA excess/coverage limit can be properly evaluated.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "thinking",
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim narrative provides no repair estimate or invoice, and `extract_fields` returned a null `estimated_amount` that cannot be resolved from any other information in the claim (the policyholder explicitly states no assessor has inspected the damage yet). Per escalation policy, a null estimated_amount that cannot be resolved another way requires human review rather than a guessed figure. I have not proceeded to calculate a payout since there is no claim amount to compute against, and pulling policy certificate/coverage figures now would be premature until a damage estimate exists.\n\nEscalating for a human to follow up once a repair quote/assessment is obtained, at which point coverage (fire/accidental damage peril) and the NRMA excess/coverage limit can be properly evaluated.",
+  "citations": [],
+  "retrieved_sources": [],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-007"
+}

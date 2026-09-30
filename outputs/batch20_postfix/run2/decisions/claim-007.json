@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-09-30T02:44:22.287829+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 February 2024 a candle I left burning on the lounge room shelf tipped over and caught the curtains on fire. The flames spread quickly and scorched part of the wall and carpet before I managed to put it out with a wet towel. I haven't had anyone come look at the damage yet so I don't know what it'll cost to fix. My policy number is HC-882913."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2024-02-03",
+        "cause": "candle tip over and catch curtains on fire",
+        "damaged_item": "wall and carpet near lounge room shelf",
+        "estimated_amount": null,
+        "policy_number": "HC-882913"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "Is accidental fire damage from a candle covered under home building policy?",
+        "insurer": "NRMA",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided, fire is a covered event under the home building policy [NRMA Home PDS, page 14]. The excerpts state: \"We cover loss or damage caused by fire or bushfire\" [NRMA Home PDS, page 14], and the exclusion applies only to fires \"started with the intention to cause damage\" by You, Your Family, anyone who normally lives in Your Home including a tenant [NRMA Home PDS, page 14].\n\nThe Key Facts Sheet also notes that \"Fire - not covered for scorching or melting where there is no flame\" [NRMA Home KFS, page 1].\n\nThe excerpts do not specifically address a scenario involving a candle. However, based on the general fire coverage terms provided, accidental fire damage (i.e., not started with intent to cause damage) involving actual flame would appear to fall within the covered fire event, provided it does not fall under the \"scorching or melting where there is no flame\" exclusion.\n\nI don't have enough information in these excerpts to give a definitive answer specific to candle-caused fires, as no excerpt explicitly mentions candles. I'd recommend reviewing the full PDS or contacting NRMA directly for a specific determination on this scenario.",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 3
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 18
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 14
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nReasoning: The claim involves fire damage from a tipped candle, which appears to be a covered peril under the NRMA Home PDS (\"We cover loss or damage caused by fire or bushfire\") [NRMA Home PDS, page 14], and the incident involved actual flame (curtains caught fire, spread to wall/carpet), so it does not appear to fall under the \"scorching or melting where there is no flame\" exclusion [NRMA Home KFS, page 1]. There is also no indication the fire was started intentionally, so the intentional-damage exclusion does not apply [NRMA Home PDS, page 14].\n\nHowever, `extract_fields` returned a null `estimated_amount` because the policyholder has not yet had the damage inspected or quoted, and there is no other way to resolve a claimed amount from the narrative. Per policy, I cannot guess a claim amount, and `calculate_payout` requires a real claimed amount alongside the excess ($550) and coverage limit ($55,000) obtained from the NRMA certificate. Since the dollar amount is indeterminate, this claim must be escalated to a human reviewer to obtain a damage assessment/quote before a payout can be calculated.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "thinking",
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nReasoning: The claim involves fire damage from a tipped candle, which appears to be a covered peril under the NRMA Home PDS (\"We cover loss or damage caused by fire or bushfire\") [NRMA Home PDS, page 14], and the incident involved actual flame (curtains caught fire, spread to wall/carpet), so it does not appear to fall under the \"scorching or melting where there is no flame\" exclusion [NRMA Home KFS, page 1]. There is also no indication the fire was started intentionally, so the intentional-damage exclusion does not apply [NRMA Home PDS, page 14].\n\nHowever, `extract_fields` returned a null `estimated_amount` because the policyholder has not yet had the damage inspected or quoted, and there is no other way to resolve a claimed amount from the narrative. Per policy, I cannot guess a claim amount, and `calculate_payout` requires a real claimed amount alongside the excess ($550) and coverage limit ($55,000) obtained from the NRMA certificate. Since the dollar amount is indeterminate, this claim must be escalated to a human reviewer to obtain a damage assessment/quote before a payout can be calculated.",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 3
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 18
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 14
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-007"
+}

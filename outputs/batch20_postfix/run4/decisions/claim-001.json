@@ -1,0 +1,144 @@
+{
+  "timestamp": "2026-09-30T05:44:54.833520+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 14 August 2023 our washing machine hose burst overnight and flooded the laundry, spreading water into the hallway and adjoining bedroom. By morning the laundry vinyl flooring was lifting, the hallway carpet was soaked through, and the bedroom skirting boards had started swelling. My policy number is HC-4489213 and I think the repairs could run to around $6,500."
+      },
+      "output": {
+        "claim_type": "escape_of_liquid",
+        "date_of_loss": "2023-08-14",
+        "cause": "burst washing machine hose during night time",
+        "damaged_item": "laundry vinyl flooring, hallway carpet, bedroom skirting boards",
+        "estimated_amount": 6500.0,
+        "policy_number": "HC-4489213"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "insurer": "Allianz",
+        "query": "water damage from burst washing machine hose / sudden escape of water coverage"
+      },
+      "output": {
+        "answer": "Based on the policy excerpts provided, here is what applies to a burst washing machine hose / sudden escape of water:\n\n**What's covered:**\nLoss or damage resulting directly from bursting, leaking, discharging or overflowing of fixed pipes, gutters or drainpipes, sinks, baths, basins or water carrying apparatus is covered under both Buildings and Contents Insurance [Allianz Home PDS, page 27; Allianz Landlord PDS, page 25].\n\n**What's NOT covered:**\nThe excerpts explicitly exclude loss or damage from **domestic appliances \u2013 for example a dishwasher or washing machine** [Allianz Home PDS, page 27; Allianz Landlord PDS, page 25]. This exclusion is listed as an example of what is *not* covered under the \"Sudden escape of liquid\" section.\n\n**Key implication for your question:**\nSince a washing machine is specifically named as an excluded \"domestic appliance\" in both the Allianz Home PDS and Allianz Landlord PDS, damage arising directly from the washing machine appliance itself (which may include its hose, depending on how \"domestic appliance\" is interpreted) appears to fall under this exclusion. The excerpts do not provide further clarification on whether a washing machine's connecting hose is treated separately from the appliance itself, so I cannot confirm with certainty whether hose failure specifically (as distinct from the appliance) would be treated differently.\n\n**Additional consideration:**\nThere is also a **72-hour exclusion period** for certain insured events (cyclone, flood, flood water combined with run-off/rainwater, grassfires, and bushfires) starting when you first take out or increase cover [Allianz Home PDS, page 11; Allianz Landlord PDS, page 11]. However, the excerpts state that **immediate coverage applies to other insured events** from the time you take out or amend your policy [Allianz Home PDS, page 11; Allianz Landlord PDS, page 11], and sudden escape of liquid is not listed among the events subject to the 72-hour exclusion.\n\n**What I cannot confirm:**\nThe excerpts do not provide a specific definition of \"domestic appliance\" or clarify whether damage from a hose connecting a washing machine (as opposed to the washing machine unit itself) is treated as excluded appliance damage or as covered \"water carrying apparatus\" damage. If this distinction matters for your claim, you would need additional policy wording (such as a definitions section) not included in these excerpts to confirm.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 27
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 25
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-landlord-pds",
+            "insurer": "Allianz",
+            "product": "Landlord",
+            "doc_type": "PDS",
+            "page": 11
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "DECISION: escalate\n\nThe claim concerns water damage caused by a burst washing machine hose. The retrieved Allianz Home PDS text is genuinely ambiguous/contradictory on this point: it covers \"bursting, leaking, discharging or overflowing of... water carrying apparatus\" [Allianz Home PDS, page 27], but it also explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" [Allianz Home PDS, page 27]. The excerpt does not clarify whether a washing machine's connecting hose is treated as \"water carrying apparatus\" (covered) or as part of the excluded \"domestic appliance\" (excluded), and there is no definitions section available to resolve this distinction.\n\nSince the claimed cause (washing machine hose burst) sits directly at the boundary of a stated exclusion and a stated coverage grant, and the policy text is ambiguous as to which applies, this meets the escalation criteria (\"retrieve_policy returns contradictory or ambiguous coverage text\" / \"the claimed cause directly conflicts with a policy exclusion you found\"). I am not calculating a payout or making a coverage determination, since doing so would require guessing how the exclusion applies.\n\nPolicyholder facts for the reviewer: Allianz policy HC-4489213, excess $600, coverage limit $60,000, claimed amount ~$6,500, loss date 14 Aug 2023, cause: burst washing machine hose flooding laundry/hallway/bedroom.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "DECISION: escalate\n\nThe claim concerns water damage caused by a burst washing machine hose. The retrieved Allianz Home PDS text is genuinely ambiguous/contradictory on this point: it covers \"bursting, leaking, discharging or overflowing of... water carrying apparatus\" [Allianz Home PDS, page 27], but it also explicitly excludes damage caused by \"domestic appliances \u2013 for example a dishwasher or washing machine\" [Allianz Home PDS, page 27]. The excerpt does not clarify whether a washing machine's connecting hose is treated as \"water carrying apparatus\" (covered) or as part of the excluded \"domestic appliance\" (excluded), and there is no definitions section available to resolve this distinction.\n\nSince the claimed cause (washing machine hose burst) sits directly at the boundary of a stated exclusion and a stated coverage grant, and the policy text is ambiguous as to which applies, this meets the escalation criteria (\"retrieve_policy returns contradictory or ambiguous coverage text\" / \"the claimed cause directly conflicts with a policy exclusion you found\"). I am not calculating a payout or making a coverage determination, since doing so would require guessing how the exclusion applies.\n\nPolicyholder facts for the reviewer: Allianz policy HC-4489213, excess $600, coverage limit $60,000, claimed amount ~$6,500, loss date 14 Aug 2023, cause: burst washing machine hose flooding laundry/hallway/bedroom.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 27
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 25
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-landlord-pds",
+      "insurer": "Allianz",
+      "product": "Landlord",
+      "doc_type": "PDS",
+      "page": 11
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-001"
+}

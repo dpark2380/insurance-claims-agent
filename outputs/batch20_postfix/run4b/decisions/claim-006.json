@@ -1,0 +1,179 @@
+{
+  "timestamp": "2026-09-30T13:16:49.524647+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 3 August 2023, our clothes dryer caught fire while running in the laundry and scorched the wall and cabinetry beside it. I managed to put it out with a fire extinguisher before it spread further. My policy number is HM-2298471. I'd estimate the damage to be around $2,800 to repair."
+      },
+      "output": {
+        "claim_type": "fire",
+        "date_of_loss": "2023-08-03",
+        "cause": "clothes dryer malfunctioned and caught fire while running",
+        "damaged_item": "laundry room wall and cabinetry near clothes dryer",
+        "estimated_amount": 2800.0,
+        "policy_number": "HM-2298471"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "fire damage caused by household appliance (clothes dryer) coverage",
+        "insurer": "Allianz",
+        "product": "Home"
+      },
+      "output": {
+        "answer": "Based on the excerpts provided:\n\n**Fire damage from a clothes dryer would generally be covered** under the Fire, smoke, bushfires and grassfires section, which states that loss or damage caused by \"fire,\" \"smoke, ash or soot from a fire\" is covered under both Buildings and Contents insurance [Allianz Home PDS, page 23]. This is not limited to a specific ignition source, so if a clothes dryer caused a fire that damaged your buildings or contents, this would fall within that covered event.\n\nHowever, there are some relevant exclusions to be aware of:\n\n- Loss or damage that **\"arises gradually out of repeated exposure to fire or smoke\"** is not covered [Allianz Home PDS, page 23].\n- Loss or damage **\"of an item that is designed to be exposed to heat\"** during normal use (the excerpt gives examples like a cooking appliance or fireplace) is not covered [Allianz Home PDS, page 23]. It is unclear from the excerpts whether a clothes dryer would be treated as such an item.\n- Damage from **scorching or melting** (e.g., cigarette burns) is excluded, **unless** it is \"a direct result of a fire covered under your policy\" or the optional Accidental Damage benefit applies [Allianz Home PDS, page 23].\n\nSeparately, if the dryer itself was damaged by an **electrical current** (rather than fire) and you have selected the optional **Motor Burnout** cover, damage to the dryer's electrical motor from electrical current could be covered under that option [Allianz Home PDS, pages 46, 54]. Note this is a distinct scenario from fire damage and applies only if you have opted into and are shown as having this benefit on your policy details document.\n\n**What the excerpts do not clarify:** Whether damage to the clothes dryer itself (as opposed to fire spreading from it to other property) would be excluded under the \"designed to be exposed to heat\" exclusion, and whether any 72-hour exclusion period applies to a dryer-caused fire (the 72-hour exclusion described on page 11 applies specifically to cyclone, flood, flood water combined with run-off/rainwater, grassfires, and bushfires \u2014 not fire generally, based on the wording provided) [Allianz Home PDS, page 11]. If you need certainty on how a dryer-specific fire would be assessed, the excerpts do not give enough detail, and you should check further policy wording or contact the insurer.",
+        "citations": [
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 54
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "allianz-home-pds",
+            "insurer": "Allianz",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 46
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "Allianz"
+      },
+      "output": {
+        "excess": 600,
+        "coverage_limit": 60000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 2800,
+        "excess": 600,
+        "coverage_limit": 60000
+      },
+      "output": {
+        "payout": 2200
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim is for fire damage to a laundry wall and cabinetry caused by a clothes dryer fire on 3 August 2023. Allianz's Home PDS covers loss or damage caused by fire to buildings/contents without restricting the ignition source [Allianz Home PDS, page 23]. The exclusion for items \"designed to be exposed to heat\" applies to the appliance itself (the dryer), not to collateral fire damage to the surrounding wall and cabinetry, which is the damage actually being claimed here \u2014 so it does not conflict with this claim. The 72-hour exclusion cited on page 11 applies only to cyclone/flood/bushfire/grassfire perils, not fire generally, so it is not relevant [Allianz Home PDS, page 11].\n\nPolicy certificate for this policyholder: excess $600, coverage limit $60,000. Claimed amount: $2,800.\n\nPayout calculation: $2,800 \u2212 $600 excess = $2,200, well within the $60,000 coverage limit.\n\nSources: [Allianz Home PDS, page 23], [Allianz Home PDS, page 11], [Allianz Home PDS, page 46], [Allianz Home PDS, page 54]\n\nFinal payout: $2,200.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim is for fire damage to a laundry wall and cabinetry caused by a clothes dryer fire on 3 August 2023. Allianz's Home PDS covers loss or damage caused by fire to buildings/contents without restricting the ignition source [Allianz Home PDS, page 23]. The exclusion for items \"designed to be exposed to heat\" applies to the appliance itself (the dryer), not to collateral fire damage to the surrounding wall and cabinetry, which is the damage actually being claimed here \u2014 so it does not conflict with this claim. The 72-hour exclusion cited on page 11 applies only to cyclone/flood/bushfire/grassfire perils, not fire generally, so it is not relevant [Allianz Home PDS, page 11].\n\nPolicy certificate for this policyholder: excess $600, coverage limit $60,000. Claimed amount: $2,800.\n\nPayout calculation: $2,800 \u2212 $600 excess = $2,200, well within the $60,000 coverage limit.\n\nSources: [Allianz Home PDS, page 23], [Allianz Home PDS, page 11], [Allianz Home PDS, page 46], [Allianz Home PDS, page 54]\n\nFinal payout: $2,200.",
+  "citations": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 46
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 54
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "allianz-home-pds",
+      "insurer": "Allianz",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 46
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-006"
+}

@@ -1,0 +1,185 @@
+{
+  "timestamp": "2026-09-30T02:46:36.541498+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "On 12 August 2023 we came home from a weekend away to find our back sliding door forced open and the house ransacked. They took my husband's laptop, my jewellery box with my engagement ring and grandmother's necklace, and a PlayStation 5 with several games. Our policy number is HM2287451. We haven't had a chance to get a full quote yet but I'd estimate it's all worth around $9,500."
+      },
+      "output": {
+        "claim_type": "theft",
+        "date_of_loss": "2023-08-12",
+        "cause": "forced entry into house through sliding door",
+        "damaged_item": "husband's laptop, jewellery box containing engagement ring and grandmother's necklace, and PlayStation 5 with games",
+        "estimated_amount": 9500.0,
+        "policy_number": "HM2287451"
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "retrieve_policy",
+      "input": {
+        "query": "theft burglary forced entry coverage, jewellery sub-limits, exclusions",
+        "insurer": "NRMA"
+      },
+      "output": {
+        "answer": "Based on the provided excerpts, here is what I can confirm:\n\n**Theft/Burglary Coverage**\n\n- Both the NRMA Home KFS and NRMA Contents KFS confirm theft and burglary are covered, including attempted theft, but explicitly **exclude** theft or attempted theft committed by \"You, Your Family or anyone who normally lives in Your Home including a tenant\" [NRMA Home KFS, page 1; NRMA Contents KFS, page 1].\n\n- For the \"Storage costs\" additional benefit (under Contents Plus/Standard), theft coverage is narrower: loss or damage from theft or attempted theft is **not** covered \"unless the theft is from a secure building or room within a building with walls and a roof and follows forced and violent entry to that building\" [NRMA Home PDS, page 23].\n\n- For the \"Contents in transit\" benefit, theft is only covered if it follows \"violent or forced entry\" [NRMA Home PDS, page 19].\n\n**Jewellery and Watches Sub-limits**\n\n- The PDS defines \"Jewellery and Watches\" as watches, jewellery items and medals (excluding mobile devices with screen displays or smart watches), and notes that within General Contents, \"limits apply to what We pay for these items as General Contents\" [NRMA Home PDS, page 11]. However, the excerpts provided **do not specify the actual dollar sub-limit amount** for Jewellery and Watches.\n\n- Separately, the \"Storage costs\" benefit excludes Jewellery and Watches from cover altogether when Contents are in storage (listed among items not covered) [NRMA Home PDS, page 19] \u2014 note this exclusion appears in the context of the Contents in transit/storage section.\n\n**Other Relevant Exclusions**\n\n- The Storage costs/Temporary accommodation benefit excludes: Money, theft not involving forced/violent entry to a secure building or room, and lost or misplaced items [NRMA Home PDS, page 23].\n\n- Contents in transit excludes: computers and related equipment, personal electronic devices/Portable Electronic Devices, Works of Art, music/games/movies media, Collections, Jewellery and Watches, Tools of Trade, Money, Unattached Accessories, and computer software [NRMA Home PDS, page 19].\n\n**Information Not Available**\n\nThe excerpts do **not** contain the specific dollar sub-limit for Jewellery and Watches under General Contents cover, nor do they specify whether a separate \"Jewellery Plus\" or specified items option exists with higher limits. If you need the exact sub-limit figure, please provide the relevant PDS page containing that Sum Insured table, as it is not included in the excerpts above.",
+        "citations": [
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 23
+          },
+          {
+            "doc_id": "nrma-contents-kfs",
+            "insurer": "NRMA",
+            "product": "Contents",
+            "doc_type": "KFS",
+            "page": 1
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 19
+          },
+          {
+            "doc_id": "nrma-home-pds",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "PDS",
+            "page": 11
+          },
+          {
+            "doc_id": "nrma-home-kfs",
+            "insurer": "NRMA",
+            "product": "Home",
+            "doc_type": "KFS",
+            "page": 1
+          }
+        ]
+      }
+    },
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "get_policy_certificate",
+      "input": {
+        "insurer": "NRMA"
+      },
+      "output": {
+        "excess": 550,
+        "coverage_limit": 55000
+      }
+    },
+    {
+      "turn": 2,
+      "type": "tool_call",
+      "tool": "calculate_payout",
+      "input": {
+        "claim_amount": 9500,
+        "excess": 550,
+        "coverage_limit": 55000
+      },
+      "output": {
+        "payout": 8950
+      }
+    },
+    {
+      "turn": 3,
+      "type": "final",
+      "text": "DECISION: approve\n\nReasoning: The claim describes theft following forced/violent entry (back sliding door forced open) while the insureds were away \u2014 this matches NRMA's covered theft/burglary peril, and the policy's exclusion for theft only applies when committed by the policyholder, family, or a resident/tenant, which is not the case here [NRMA Home KFS, page 1; NRMA Contents KFS, page 1]. The narrower theft restrictions (forced entry required) found in the \"Storage costs\" and \"Contents in transit\" benefit sections [NRMA Home PDS, page 23; NRMA Home PDS, page 19] don't apply here since this is a straightforward burglary of the home itself, not property in transit or storage. There's a noted general-contents sub-limit for \"Jewellery and Watches\" [NRMA Home PDS, page 11], but the exact dollar cap wasn't returned by the search \u2014 this is a minor unresolved detail on the claim's item mix, not a contradiction in coverage, so it does not by itself meet the escalation bar (the core cause of loss is clearly covered and not in conflict with any exclusion).\n\nPolicy certificate for NRMA: excess $550, coverage limit $55,000. Applying these to the claimed $9,500 estimate:\n\nPayout = $9,500 \u2212 $550 excess = **$8,950**, well within the $55,000 coverage limit.\n\nNote: this is based on the policyholder's rough estimate since no formal quote/valuation has been obtained yet. If actual replacement costs (particularly for the jewellery items) differ materially from the $9,500 estimate, or exceed any per-item jewellery sub-limit, the payout may need to be revisited once itemized valuations/receipts are provided.\n\nCitations: [NRMA Home KFS, page 1], [NRMA Contents KFS, page 1], [NRMA Home PDS, page 23], [NRMA Home PDS, page 19], [NRMA Home PDS, page 11]",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "approve",
+  "reasoning": "DECISION: approve\n\nReasoning: The claim describes theft following forced/violent entry (back sliding door forced open) while the insureds were away \u2014 this matches NRMA's covered theft/burglary peril, and the policy's exclusion for theft only applies when committed by the policyholder, family, or a resident/tenant, which is not the case here [NRMA Home KFS, page 1; NRMA Contents KFS, page 1]. The narrower theft restrictions (forced entry required) found in the \"Storage costs\" and \"Contents in transit\" benefit sections [NRMA Home PDS, page 23; NRMA Home PDS, page 19] don't apply here since this is a straightforward burglary of the home itself, not property in transit or storage. There's a noted general-contents sub-limit for \"Jewellery and Watches\" [NRMA Home PDS, page 11], but the exact dollar cap wasn't returned by the search \u2014 this is a minor unresolved detail on the claim's item mix, not a contradiction in coverage, so it does not by itself meet the escalation bar (the core cause of loss is clearly covered and not in conflict with any exclusion).\n\nPolicy certificate for NRMA: excess $550, coverage limit $55,000. Applying these to the claimed $9,500 estimate:\n\nPayout = $9,500 \u2212 $550 excess = **$8,950**, well within the $55,000 coverage limit.\n\nNote: this is based on the policyholder's rough estimate since no formal quote/valuation has been obtained yet. If actual replacement costs (particularly for the jewellery items) differ materially from the $9,500 estimate, or exceed any per-item jewellery sub-limit, the payout may need to be revisited once itemized valuations/receipts are provided.\n\nCitations: [NRMA Home KFS, page 1], [NRMA Contents KFS, page 1], [NRMA Home PDS, page 23], [NRMA Home PDS, page 19], [NRMA Home PDS, page 11]",
+  "citations": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-contents-kfs",
+      "insurer": "NRMA",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 23
+    },
+    {
+      "doc_id": "nrma-contents-kfs",
+      "insurer": "NRMA",
+      "product": "Contents",
+      "doc_type": "KFS",
+      "page": 1
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 19
+    },
+    {
+      "doc_id": "nrma-home-pds",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "PDS",
+      "page": 11
+    },
+    {
+      "doc_id": "nrma-home-kfs",
+      "insurer": "NRMA",
+      "product": "Home",
+      "doc_type": "KFS",
+      "page": 1
+    }
+  ],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-012"
+}

@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-09-30T05:42:24.909752+00:00",
+  "model_version": "claude-sonnet-5",
+  "stop_reason": "end_turn",
+  "turns": [
+    {
+      "turn": 1,
+      "type": "tool_call",
+      "tool": "extract_fields",
+      "input": {
+        "claim_text": "Something happened to our house last month and there is some damage we noticed. We are not sure of the cause or how much it will cost to fix."
+      },
+      "output": {
+        "claim_type": "other",
+        "date_of_loss": "2023-10-15",
+        "cause": "unknown",
+        "damaged_item": "entire backyard garden",
+        "estimated_amount": null,
+        "policy_number": null
+      }
+    },
+    {
+      "turn": 2,
+      "type": "final",
+      "text": "This claim is missing critical, unresolvable information: the cause is unknown, no insurer is named, and the estimated amount is null.\n\nDECISION: escalate\n\nReasoning: extract_fields returned a null estimated_amount with no way to resolve it from the narrative, the cause of damage is explicitly unknown (so coverage/exclusion cannot be checked against policy text), and no insurer is named \u2014 meaning get_policy_certificate cannot be looked up and calculate_payout would require guessing an excess/coverage limit. Per policy, all three of these conditions independently require escalation rather than a guessed decision. A human reviewer should follow up with the policyholder to identify the insurer, the cause of loss, and an estimated repair cost before this claim can be processed.",
+      "stop_reason": "end_turn",
+      "block_types": [
+        "text"
+      ]
+    }
+  ],
+  "final_decision": "escalate",
+  "reasoning": "This claim is missing critical, unresolvable information: the cause is unknown, no insurer is named, and the estimated amount is null.\n\nDECISION: escalate\n\nReasoning: extract_fields returned a null estimated_amount with no way to resolve it from the narrative, the cause of damage is explicitly unknown (so coverage/exclusion cannot be checked against policy text), and no insurer is named \u2014 meaning get_policy_certificate cannot be looked up and calculate_payout would require guessing an excess/coverage limit. Per policy, all three of these conditions independently require escalation rather than a guessed decision. A human reviewer should follow up with the policyholder to identify the insurer, the cause of loss, and an estimated repair cost before this claim can be processed.",
+  "citations": [],
+  "retrieved_sources": [],
+  "redteam_flags": [],
+  "fairness_flags": [],
+  "claim_id": "claim-016"
+}
