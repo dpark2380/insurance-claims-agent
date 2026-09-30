@@ -133,7 +133,8 @@ Structured `citations` in the decision log, resolved from those tags: `raa-conte
 - **A known retrieval gap exists for insurers with combined Building and Contents documents** (NRMA, Suncorp, Allianz). Filtering by `product="Contents"` for these insurers misses their combined PDS, which is tagged `product="Home"`. Next step: either multi-label combined documents or fall back to an unfiltered search when a strict product filter returns thin results.
 - **Agent decisions are not deterministic between runs, and it matters.** `claude-sonnet-5` accepts no `temperature`, `top_p`, or `seed` parameter, so there is no sampling control. Measured over 4 runs of batch20: 5 of 20 claims changed decision at least once, all between approve and escalate (8 of 20 on the previous corpus's 4 runs). Next step: tighten the escalation rules in the system prompt, or take a majority vote over several runs at proportionally higher cost.
 - **Escalation is high and its correctness is unmeasured.** 13 to 17 of 20 claims escalate per run, including routine-looking ones (burst hoses, graffiti), not just the 5 claims written to be unresolvable (015 to 019). Next step: fill in the blind gold labels and run `python -m eval.decision_agreement` to get agreement and escalation precision/recall.
-- **Prompt-injection and fairness red-teaming are stubbed, not implemented** (`code/redteam/injection_suite.py`, `code/redteam/fairness_pairs.py`). Function signatures and TODOs exist; no test cases or logic have been written yet.
+- **Red-teaming is small-n.** 10 injection cases passed (0 successful), and 6 fairness pairs × 3 runs showed no majority-decision change ([outputs/phase4_findings.md](outputs/phase4_findings.md)). But 9 of the 10 injection bases are claims the agent escalates anyway, and the 3 fairness-run escalations all fell on the attribute side (0/18 vs 3/18, one-sided Fisher p≈0.11). Each was traced to a retrieval gap, not the attribute, but it's worth re-testing at higher n.
+- **Prompt caching isn't in effect.** 0 cache tokens written or read: the only cached prefix (generate.py's system prompt) is under Sonnet 5's 1024-token minimum, and the agent loop's repeated tools + history prefix has no cache marker. Next step: add one and re-measure.
 - **The free-text field gap (`cause`, `damaged_item`) between zero-shot and LoRA is unexplained.** It is not a training-data-volume problem (more data did not close it) and not a model-capacity problem (higher LoRA rank did not close it either). The actual cause has not been identified.
 
 ## Project status by phase
@@ -144,7 +145,7 @@ Structured `citations` in the decision log, resolved from those tags: `raa-conte
 | 2. Structured extraction, LoRA fine-tuning ablation | Done, with the limitations above |
 | 3. Agent orchestration (tools, escalation policy, decision logs) | Done |
 | 4. Cost/latency instrumentation | Done |
-| 4. Prompt-injection and fairness red-teaming | Stubbed only, not implemented |
+| 4. Prompt-injection and fairness red-teaming, audit trail | Done: 10/10 injections resisted, 0/6 fairness findings, append-only audit logs ([findings](outputs/phase4_findings.md)) |
 | 5. Golden-set evaluation, naive baseline comparison | In progress: stability measured, gold-label sheet and scorer built, labels not yet filled in |
 | 6. Vector DB, multi-agent split, web UI | Not started |
 
@@ -224,7 +225,7 @@ code/
   extract/     schema, synthetic data generation, zero-shot baseline, LoRA training and inference
   agent/       tool definitions, decision loop, batch runner
   eval/        bootstrap confidence intervals, leakage check, retrieval hit-rate, cost/latency instrumentation
-  redteam/     prompt-injection and fairness test scaffolding (not yet implemented)
+  redteam/     prompt-injection suite and fairness pairs (python -m redteam.injection_suite / redteam.fairness_pairs)
 data/
   raw_pdfs/    source insurer PDF documents
   extracted/   per-page extracted text
