@@ -19,6 +19,11 @@ from contextlib import contextmanager
 
 INPUT_PRICE = 2.00 / 1_000_000
 OUTPUT_PRICE = 10.00 / 1_000_000
+# Prompt caching on claude-sonnet-5: 5-minute-TTL writes bill at 1.25x input,
+# reads at 0.1x. The API's `input_tokens` excludes both, so they're priced here
+# separately rather than silently dropped.
+CACHE_WRITE_PRICE = INPUT_PRICE * 1.25
+CACHE_READ_PRICE = INPUT_PRICE * 0.10
 
 # Records accumulate here across an entire batch run; run_batch.py reads
 # this at the end to build the report. Module-level, not per-instance,
@@ -38,12 +43,10 @@ def set_current_claim(claim_id: str | None) -> None:
 
 
 def compute_cost(usage: dict) -> float:
-    """usage -> $ cost. Cache tokens aren't used anywhere in this project's
-    call sites (no cache_control on the agent loop or generate_answer's
-    system prompt beyond what's already there), so only input/output need
-    pricing -- if cache fields are added later this needs a cache-read rate
-    too, since cache reads are billed well below the fresh-input rate."""
-    return usage.get("input_tokens", 0) * INPUT_PRICE + usage.get("output_tokens", 0) * OUTPUT_PRICE
+    """usage -> $ cost, including cache writes/reads (absent keys count as 0)."""
+    return (usage.get("input_tokens", 0) * INPUT_PRICE + usage.get("output_tokens", 0) * OUTPUT_PRICE
+            + usage.get("cache_creation_input_tokens", 0) * CACHE_WRITE_PRICE
+            + usage.get("cache_read_input_tokens", 0) * CACHE_READ_PRICE)
 
 
 @contextmanager
@@ -65,11 +68,15 @@ def instrument_call(call_site: str):
         elapsed = time.monotonic() - start
         response = rec.pop("response", None)
         if response is not None:
-            usage = {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens}
+            u = response.usage
+            usage = {"input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
+                     "cache_creation_input_tokens": u.cache_creation_input_tokens or 0,
+                     "cache_read_input_tokens": u.cache_read_input_tokens or 0}
             rec.update(usage)
             rec["cost_usd"] = compute_cost(usage)
         else:
             rec["input_tokens"] = rec["output_tokens"] = rec["cost_usd"] = 0
+            rec["cache_creation_input_tokens"] = rec["cache_read_input_tokens"] = 0
         rec["latency_s"] = elapsed
         RECORDS.append(rec)
 
@@ -121,6 +128,8 @@ def aggregate_report(records: list[dict], wall_times: dict[str, float] | None = 
         "total_cost_usd": sum(costs),
         "n_fallback_calls": sum(1 for r in tagged if r["call_site"] == "extract_fallback"),
         "fallback_cost_usd": sum(r["cost_usd"] for r in tagged if r["call_site"] == "extract_fallback"),
+        "cache_write_tokens": sum(r.get("cache_creation_input_tokens", 0) for r in tagged),
+        "cache_read_tokens": sum(r.get("cache_read_input_tokens", 0) for r in tagged),
     }
 
 
@@ -137,6 +146,9 @@ def write_report(records: list[dict], out_path, wall_times: dict[str, float] | N
         f"mean cost/claim (incl. extraction fallback): ${agg['mean_cost_usd']:.4f}",
         f"total cost: ${agg['total_cost_usd']:.4f}",
         f"extraction fallback calls: {agg['n_fallback_calls']} (${agg['fallback_cost_usd']:.4f})",
+        f"prompt cache tokens: {agg['cache_write_tokens']} written, {agg['cache_read_tokens']} read"
+        + (f" (read:write {agg['cache_read_tokens'] / agg['cache_write_tokens']:.2f})" if agg["cache_write_tokens"]
+           else " (no cache writes: cached prefix is under the model's minimum cacheable length or unmarked)"),
     ]
     if startup_s is not None:
         lines.append(f"one-time startup (LoRA load + index build, excluded above): {startup_s:.2f}s")
@@ -149,6 +161,8 @@ if __name__ == "__main__":
     # expected cost, and aggregate_report on synthetic per-call records.
     cost = compute_cost({"input_tokens": 1_000_000, "output_tokens": 1_000_000})
     assert abs(cost - 12.00) < 1e-9, f"expected $12.00 for 1M in + 1M out, got {cost}"
+    cache_cost = compute_cost({"cache_creation_input_tokens": 1_000_000, "cache_read_input_tokens": 1_000_000})
+    assert abs(cache_cost - (2.50 + 0.20)) < 1e-9, cache_cost
 
     fake_records = [
         {"claim_id": "c1", "call_site": "loop", "input_tokens": 1000, "output_tokens": 100, "cost_usd": compute_cost({"input_tokens": 1000, "output_tokens": 100}), "latency_s": 1.0},
