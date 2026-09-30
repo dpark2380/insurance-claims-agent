@@ -50,6 +50,14 @@ def main():
     with open(args.claims_path) as f:
         claims = [json.loads(line) for line in f]
 
+    # Decision logs are an append-only audit trail: never overwrite one. Check
+    # up front so a rerun into a used directory fails before spending money,
+    # not halfway through (each write below also opens with mode "x").
+    existing = [c.get("claim_id") for c in claims if (decisions_dir / f"{c.get('claim_id')}.json").exists()]
+    if existing:
+        raise SystemExit(f"{len(existing)} decision log(s) already exist in {decisions_dir} "
+                         f"(e.g. {existing[0]}.json) -- pass a fresh --out-dir; logs are never overwritten.")
+
     # Load the LoRA model and build the retrieval index up front so their
     # one-time cost is reported once, not folded into whichever claim
     # happens to trigger them first.
@@ -72,7 +80,8 @@ def main():
         try:
             result = run_claim(claim["narrative"])
             result["claim_id"] = claim_id
-            (decisions_dir / f"{claim_id}.json").write_text(json.dumps(result, indent=2))
+            with open(decisions_dir / f"{claim_id}.json", "x") as f:
+                json.dump(result, f, indent=2)
 
             row["decision"] = result["final_decision"]
             row["escalated"] = result["final_decision"] == "escalate"
